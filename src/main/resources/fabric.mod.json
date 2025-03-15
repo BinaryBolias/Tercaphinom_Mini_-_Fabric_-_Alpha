@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "tercaphinom",
+	"version": "${version}",
+	"name": "Tercaphinom Mini - Fabric Edition",
+	"description": "Tercaphinom is an overhaul mod for Minecraft. This is a significantly smaller version for testing.",
+	"authors": [
+		"BinaryBolias"
+	],
+	"contact": {},
+	"license": "All-Rights-Reserved",
+	"icon": "assets/tercaphinom/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"binarybolias.tercaphinom.Main"
+		],
+		"fabric-datagen": [
+			"binarybolias.tercaphinom.DataGenerator"
+		],
+		"client": [
+			"binarybolias.tercaphinom.Client"
+		]
+	},
+	"mixins": [
+		"tercaphinom.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=${loader_version}",
+		"fabric": "*",
+		"minecraft": "${minecraft_version}"
+	}
+}
