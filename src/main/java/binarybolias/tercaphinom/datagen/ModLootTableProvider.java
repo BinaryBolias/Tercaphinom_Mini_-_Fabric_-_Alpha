@@ -1,11 +1,13 @@
 package binarybolias.tercaphinom.datagen;
 
+import binarybolias.tercaphinom.references.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
@@ -14,7 +16,6 @@ import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 
-import static binarybolias.tercaphinom.references.Reference.LOGGER;
 import static binarybolias.tercaphinom.references.Reference.log;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
@@ -25,6 +26,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	@Override
 	public void generate() {
 		log("Generating loot table data");
+		
+//		addDrop(ModBlocks.ULTRASMOOTH_STONE_BLOCK); // Simply drops self.
+		addItemOrBlockWithSilkTouchDrop(ModBlocks.ULTRASMOOTH_STONE_BLOCK, Blocks.SMOOTH_STONE);
 	}
 	
 	// NOTE: This method was initially constructed through following an example.
@@ -49,4 +53,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 				.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(min, max)))
 				.apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE));
 	}
+	
+	private void addItemOrBlockWithSilkTouchDrop(Block block, ItemConvertible item) {
+		addDrop(block, dropsItemOrBlockWithSilkTouch(block, item));
+	}
+	
+	private LootTable.Builder dropsItemOrBlockWithSilkTouch(Block block, ItemConvertible item) {
+		return dropsWithSilkTouch(
+				block,
+				ItemEntry.builder(item)
+		);
+	}
+	
 }

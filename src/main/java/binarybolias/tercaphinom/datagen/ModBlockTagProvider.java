@@ -1,5 +1,6 @@
 package binarybolias.tercaphinom.datagen;
 
+import binarybolias.tercaphinom.references.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryKeys;
@@ -10,7 +11,6 @@ import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
-import static binarybolias.tercaphinom.references.Reference.LOGGER;
 import static binarybolias.tercaphinom.references.Reference.log;
 
 public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
@@ -23,14 +23,20 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		log("Generating block tag data");
 		
 		/*
-		* NOTE: All the following method calls are included merely for reference; these calls effectively do nothing.
+		* NOTE: 'getOrCreateTagBuilder' method calls which do not include an 'add' method call are included merely for reference; these calls effectively do nothing.
 		*
 		* NOTE: For an overhaul of Minecraft which uses only custom aspects (dimensions, block, items, entities, etc.), these (vanilla) tags are inappropriate; only custom tags would be used instead.
 		 */
 		
+		getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(ModBlocks.ETERNALITH);
+		getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE).add(ModBlocks.ETERNALITH);
+		getOrCreateTagBuilder(BlockTags.GEODE_INVALID_BLOCKS).add(ModBlocks.ETERNALITH);
+		getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE).add(ModBlocks.ETERNALITH);
+		
 		// BlockTags.PICKAXE_MINEABLE: (I think) The blocks within this tag only drop loot if mined with a pickaxe.
 		// Or perhaps these "_MINEABLE" tags just influence mining speed; the blocks within are mined faster with a corresponding type of tool.
-		getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE);
+		getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+				.add(ModBlocks.ULTRASMOOTH_STONE_BLOCK);
 		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE);
 		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE);
 		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE);

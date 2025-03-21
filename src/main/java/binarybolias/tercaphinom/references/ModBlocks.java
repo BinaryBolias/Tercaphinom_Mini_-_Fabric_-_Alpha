@@ -1,7 +1,9 @@
 package binarybolias.tercaphinom.references;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -32,4 +34,12 @@ public class ModBlocks {
 		return Registry.register(Registries.ITEM, identifier(name),
 				new BlockItem(block, new FabricItemSettings()));
 	}
+	
+	//### Blocks ###
+	public static final Block ETERNALITH = registerBlockWithItem("eternalith",
+			new Block(FabricBlockSettings.copyOf(Blocks.BEDROCK)));
+	
+	//## Joke ##
+	public static final Block ULTRASMOOTH_STONE_BLOCK = registerBlockWithItem("ultrasmooth_stone_block",
+			new Block(FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE).slipperiness(0.989F)));
 }

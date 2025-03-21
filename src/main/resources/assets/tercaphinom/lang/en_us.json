@@ -1,3 +1,15 @@
 {
+	"tercaphinom.item_group.blocks": "Blocks",
+	"tercaphinom.item_group.equipment": "Equipment",
+	"tercaphinom.item_group.ingredients": "Ingredients",
 
+	"block.tercaphinom.eternalith": "Eternalith Block",
+	"block.tercaphinom.ultrasmooth_stone_block": "Ultrasmooth Stone Block",
+
+	"item.tercaphinom.sharp_wooden_stick": "Sharp Wooden Stick",
+
+	"item.tercaphinom.oak_plank": "Oak Plank",
+
+	"item.tercaphinom.grass_tuft": "Grass Tuft",
+	"item.tercaphinom.silk_wad": "Silk Wad"
 }

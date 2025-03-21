@@ -12,7 +12,7 @@ public class Reference {
 	// The namespace used for the entire mod.
 	public static String ModID = "tercaphinom";
 	// The logger for this mod. Shows the mod namespace for every message.
-	public static final Logger LOGGER = LoggerFactory.getLogger(ModID);
+	public static final Logger LOGGER = LoggerFactory.getLogger("Tercaphinom");
 	
 	private static final String ANSI_RESET = "\u001B[0m";
 	private static final String ANSI_BLACK = "\u001B[30m";
@@ -29,6 +29,10 @@ public class Reference {
 		LOGGER.info(ANSI__BRIGHT_MAGENTA + "{}" + ANSI_RESET, message);
 	}
 	
+	private static void printError(String message) {
+		LOGGER.error(message);
+	}
+
 //	private static void logWithColor(String message, String color) {
 //		LOGGER.info("{}{}" + ANSI_RESET, color, message);
 //	}
@@ -36,6 +40,12 @@ public class Reference {
 	public static void log(String message) {
 		if (Main.DEBUG) {
 			printInfo(">>> " + message);
+		}
+	}
+	
+	public static void logError(String message) {
+		if (Main.DEBUG) {
+			printError(">>> " + message);
 		}
 	}
 	
