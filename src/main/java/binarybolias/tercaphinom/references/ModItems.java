@@ -1,6 +1,5 @@
 package binarybolias.tercaphinom.references;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterials;
@@ -25,24 +24,22 @@ public class ModItems {
 	}
 	
 	private static Item newItem(int maxCount) {
-		return new Item(new FabricItemSettings().maxCount(maxCount));
+		return new Item(new Item.Settings().maxCount(maxCount));
 	}
 	
-	private static Item newItem(int maxCount, FabricItemSettings settings) {
-		return new Item(new FabricItemSettings().maxCount(maxCount));
+	private static Item newItem(int maxCount, Item.Settings settings) {
+		return new Item(new Item.Settings().maxCount(maxCount));
 	}
-	
-//	private static FabricItemSettings newSettings
 	
 	//### Items ###
 	// ## Basic Resources ##
 	// # Ball #
 	
 	// # Brick #
-	public static final Item STIEFANE_BRICK = registerItem("stiefane_brick", new Item(new FabricItemSettings()));
+	public static final Item STIEFANE_BRICK = registerItem("stiefane_brick", new Item(new Item.Settings()));
 	
 	// # Cobblestone #
-	public static final Item STIEFANE_COBBLESTONE = registerItem("stiefane_cobblestone", new Item(new FabricItemSettings()));
+	public static final Item STIEFANE_COBBLESTONE = registerItem("stiefane_cobblestone", new Item(new Item.Settings()));
 	
 	// # Ingot #
 	
@@ -59,8 +56,8 @@ public class ModItems {
 	// # Pile (miscellaneous) #
 	
 	// # Plank #
-	public static final Item OAK_PLANK = registerItem("oak_plank", new Item(new FabricItemSettings()));
-	public static final Item VERDAK_PLANK = registerItem("verdak_plank", new Item(new FabricItemSettings()));
+	public static final Item OAK_PLANK = registerItem("oak_plank", new Item(new Item.Settings()));
+	public static final Item VERDAK_PLANK = registerItem("verdak_plank", new Item(new Item.Settings()));
 	
 	// # Rod & Stick #
 	
@@ -75,8 +72,8 @@ public class ModItems {
 	
 	//# [Tier 0] Wooden Stick #
 	public static final Item SHARP_WOODEN_STICK = registerItem("sharp_wooden_stick",
-//			new Item(new FabricItemSettings().maxDamage(15)))
-			new PickaxeItem(ToolMaterials.WOOD, 2, 2.0F, new FabricItemSettings().maxDamage(15)));
+//			new Item(new Item.Settings().maxDamage(15)))
+			new PickaxeItem(ToolMaterials.WOOD, new Item.Settings().maxDamage(15)));
 	
 	//# [Tier 1] Wood #
 	

@@ -11,16 +11,19 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.concurrent.CompletableFuture;
+
 import static binarybolias.tercaphinom.references.Reference.log;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
-	public ModRecipeProvider(FabricDataOutput output) {
-		super(output);
+	public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+		super(output, registriesFuture);
 	}
 	
 	@Override
@@ -1169,8 +1172,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			String reverseId, @Nullable String reverseGroup,
 			String compactingId, @Nullable String compactingGroup
 	) {
-		// Compact item into sticks. Base item is converted into two sticks.
-		ShapelessRecipeJsonBuilder.create(reverseCategory, baseItem, 6)
+		// Compact item into planks. Sticks are not returned.
+		ShapelessRecipeJsonBuilder.create(reverseCategory, baseItem)
 				.input(compactItem)
 				.group(reverseGroup)
 				.criterion(hasItem(compactItem), conditionsFromItem(compactItem))

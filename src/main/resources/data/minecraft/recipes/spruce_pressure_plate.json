@@ -15,6 +15,6 @@
 		"X "
 	],
 	"result": {
-		"item": "minecraft:spruce_pressure_plate"
+		"id": "minecraft:spruce_pressure_plate"
 	}
 }

@@ -1,7 +1,9 @@
 package binarybolias.tercaphinom.references;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.tag.TagKey;
 
 public enum ModToolMaterials implements ToolMaterial {
 	; // This semicolon is necessary for an unknown reason.
@@ -22,8 +24,8 @@ public enum ModToolMaterials implements ToolMaterial {
 	}
 	
 	@Override
-	public int getMiningLevel() {
-		return 0;
+	public TagKey<Block> getInverseTag() {
+		return null;
 	}
 	
 	@Override

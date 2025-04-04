@@ -15,6 +15,6 @@
 		"X "
 	],
 	"result": {
-		"item": "minecraft:mangrove_pressure_plate"
+		"id": "minecraft:mangrove_pressure_plate"
 	}
 }

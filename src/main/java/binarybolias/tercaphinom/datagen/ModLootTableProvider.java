@@ -26,17 +26,21 @@ import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.predicate.item.ItemPredicate;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+
+import java.util.concurrent.CompletableFuture;
 
 import static binarybolias.tercaphinom.references.Reference.log;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
-	public ModLootTableProvider(FabricDataOutput dataOutput) {
-		super(dataOutput);
+	public ModLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+		super(dataOutput, registryLookup);
 	}
 	
 	// TODO: Replace the tag here with a custom one ("chopping tools"?).
 	public static final LootCondition.Builder WITH_CHOPPING_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES));
+	
 	
 	@Override
 	public void generate() {
