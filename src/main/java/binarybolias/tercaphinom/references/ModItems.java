@@ -35,36 +35,67 @@ public class ModItems {
 //	private static FabricItemSettings newSettings
 	
 	//### Items ###
+	// ## Basic Resources ##
+	// # Ball #
 	
-	// ## Equipment ##
-	// # [Tier 0] Wooden Stick #
+	// # Brick #
+	public static final Item STIEFANE_BRICK = registerItem("stiefane_brick", new Item(new FabricItemSettings()));
+	
+	// # Cobblestone #
+	public static final Item STIEFANE_COBBLESTONE = registerItem("stiefane_cobblestone", new Item(new FabricItemSettings()));
+	
+	// # Ingot #
+	
+	// # Jewel #
+	
+	// # Log & Trunk #
+	
+	// # Lump #
+	
+	// # Nugget #
+	
+	// # Pile (seed) #
+	
+	// # Pile (miscellaneous) #
+	
+	// # Plank #
+	public static final Item OAK_PLANK = registerItem("oak_plank", new Item(new FabricItemSettings()));
+	public static final Item VERDAK_PLANK = registerItem("verdak_plank", new Item(new FabricItemSettings()));
+	
+	// # Rod & Stick #
+	
+	// # Shard #
+	
+	// # Miscellaneous #
+	public static final Item GRASS_TUFT = registerItem("grass_tuft", newItem(96));
+	public static final Item SILK_WAD = registerItem("silk_wad", newItem(96));
+	
+	
+	//region  ## Equipment ##
+	
+	//# [Tier 0] Wooden Stick #
 	public static final Item SHARP_WOODEN_STICK = registerItem("sharp_wooden_stick",
 //			new Item(new FabricItemSettings().maxDamage(15)))
 			new PickaxeItem(ToolMaterials.WOOD, 2, 2.0F, new FabricItemSettings().maxDamage(15)));
 	
-	// # [Tier 1] Wood #
+	//# [Tier 1] Wood #
 	
-	// # [Tier 2] Flint #
+	//# [Tier 2] Flint #
 	
-	// # [Tier 2] Glass #
+	//# [Tier 2] Glass #
 	
-	// # [Tier 2] Obsidian #
+	//# [Tier 2] Obsidian #
 	
-	// # [Tier 3] Copper #
+	//# [Tier 3] Copper #
 	
-	// # [Tier 3] Eiduril #
+	//# [Tier 3] Eiduril #
 	
-	// # [Tier 3] Gold #
+	//# [Tier 3] Gold #
 	
-	// # [Tier 3] Iron #
+	//# [Tier 3] Iron #
 	
-	//## Materials ##
-	//# Planks #
-	public static final Item OAK_PLANK = registerItem("oak_plank", new Item(new FabricItemSettings()));
+	//endregion
 	
-	//# Miscellaneous #
-	public static final Item GRASS_TUFT = registerItem("grass_tuft", newItem(96));
-	public static final Item SILK_WAD = registerItem("silk_wad", newItem(96));
 	
 	//## Joke ##
 }

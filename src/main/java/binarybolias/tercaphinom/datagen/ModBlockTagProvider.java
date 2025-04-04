@@ -34,11 +34,35 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE).add(ModBlocks.ETERNALITH);
 		
 		// BlockTags.PICKAXE_MINEABLE: (I think) The blocks within this tag only drop loot if mined with a pickaxe.
-		// Or perhaps these "_MINEABLE" tags just influence mining speed; the blocks within are mined faster with a corresponding type of tool.
+		// - Intended to be used for blocks with the "requiresTool" setting.
+		//  - This setting reduces mining speed and disallows loot drops by default.
+		// - Allows for ordinary mining speed, and for the block to drop loot, when mined with a PickaxeItem.
+		//  - Does not seem to have relation to the "pickaxes" item tag.
 		getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-				.add(ModBlocks.ULTRASMOOTH_STONE_BLOCK);
+				.add(ModBlocks.STIEFANE_BRICK_BLOCK)
+				.add(ModBlocks.COBBLED_STIEFANE_BLOCK)
+				.add(ModBlocks.STIEFANE_BLOCK)
+				.add(ModBlocks.POLISHED_STIEFANE_BLOCK)
+				.add(ModBlocks.STIEFANE_LAPIS_ORE)
+				.add(ModBlocks.STIEFANE_BUTTON)
+				.add(ModBlocks.STIEFANE_PRESSURE_PLATE)
+				.add(ModBlocks.STIEFANE_BRICK_WALL_POST)
+				.add(ModBlocks.STIEFANE_BRICK_SLAB)
+				.add(ModBlocks.STIEFANE_BRICK_STAIR)
+				.add(ModBlocks.ULTRASMOOTH_STONE);
 		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE);
-		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE);
+		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+				.add(ModBlocks.VERDAK_LOG)
+				.add(ModBlocks.VERDAK_TRUNK)
+				.add(ModBlocks.VERDAK_PLANK_BLOCK)
+				.add(ModBlocks.VERDAK_BUTTON)
+				.add(ModBlocks.VERDAK_PRESSURE_PLATE)
+				.add(ModBlocks.VERDAK_DOOR)
+				.add(ModBlocks.VERDAK_HATCH)
+				.add(ModBlocks.VERDAK_FENCE_GATE)
+				.add(ModBlocks.VERDAK_FENCE_POST)
+				.add(ModBlocks.VERDAK_PLANK_SLAB)
+				.add(ModBlocks.VERDAK_PLANK_STAIR);
 		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE);
 		// NOTE: I don't appreciate the vanilla functionality of the "needs X tool" tags;
 		//  linear material tiers of tools for mining/harvesting feels inelegant to me.
@@ -59,10 +83,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		// BlockTags.LOGS_THAT_BURN: Defines the blocks (intended to be logs) which can be used as fuel.
 		// Probably defines the logs that can be converted into charcoal via smelting?
 		// Does it also affect fire spread at all?
-		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN);
-		getOrCreateTagBuilder(BlockTags.WALLS);
-		getOrCreateTagBuilder(BlockTags.FENCES);
-		getOrCreateTagBuilder(BlockTags.FENCE_GATES);
+		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+				.add(ModBlocks.VERDAK_LOG)
+				.add(ModBlocks.VERDAK_TRUNK);
+		getOrCreateTagBuilder(BlockTags.WALLS)
+				.add(ModBlocks.STIEFANE_BRICK_WALL_POST);
+		getOrCreateTagBuilder(BlockTags.FENCES)
+				.add(ModBlocks.VERDAK_FENCE_POST);
+		getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+				.add(ModBlocks.VERDAK_FENCE_GATE);
 		getOrCreateTagBuilder(BlockTags.STAIRS);
 		getOrCreateTagBuilder(BlockTags.DOORS);
 		getOrCreateTagBuilder(BlockTags.TRAPDOORS);
@@ -72,5 +101,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		getOrCreateTagBuilder(BlockTags.DIAMOND_ORES);
 		getOrCreateTagBuilder(BlockTags.EMERALD_ORES);
 		getOrCreateTagBuilder(BlockTags.GOLD_ORES);
+		getOrCreateTagBuilder(BlockTags.LAPIS_ORES)
+				.add(ModBlocks.STIEFANE_LAPIS_ORE);
 	}
 }

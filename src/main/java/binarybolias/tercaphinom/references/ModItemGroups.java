@@ -28,8 +28,29 @@ public class ModItemGroups {
 			FabricItemGroup.builder().displayName(displayName("blocks"))
 					.icon(() -> new ItemStack(ModBlocks.ETERNALITH))
 					.entries(((displayContext, entries) -> {
+						entries.add(ModBlocks.VERDAK_LOG);
+						entries.add(ModBlocks.VERDAK_TRUNK);
+						entries.add(ModBlocks.VERDAK_PLANK_BLOCK);
+						entries.add(ModBlocks.STIEFANE_BRICK_BLOCK);
+						entries.add(ModBlocks.COBBLED_STIEFANE_BLOCK);
+						entries.add(ModBlocks.STIEFANE_BLOCK);
+						entries.add(ModBlocks.POLISHED_STIEFANE_BLOCK);
+						entries.add(ModBlocks.STIEFANE_LAPIS_ORE);
+						entries.add(ModBlocks.STIEFANE_BUTTON);
+						entries.add(ModBlocks.STIEFANE_PRESSURE_PLATE);
+						entries.add(ModBlocks.VERDAK_BUTTON);
+						entries.add(ModBlocks.VERDAK_PRESSURE_PLATE);
+						entries.add(ModBlocks.VERDAK_DOOR);
+						entries.add(ModBlocks.VERDAK_HATCH);
+						entries.add(ModBlocks.STIEFANE_BRICK_WALL_POST);
+						entries.add(ModBlocks.VERDAK_FENCE_GATE);
+						entries.add(ModBlocks.VERDAK_FENCE_POST);
+						entries.add(ModBlocks.STIEFANE_BRICK_SLAB);
+						entries.add(ModBlocks.STIEFANE_BRICK_STAIR);
+						entries.add(ModBlocks.VERDAK_PLANK_SLAB);
+						entries.add(ModBlocks.VERDAK_PLANK_STAIR);
 						entries.add(ModBlocks.ETERNALITH);
-						entries.add(ModBlocks.ULTRASMOOTH_STONE_BLOCK);
+						entries.add(ModBlocks.ULTRASMOOTH_STONE);
 					})).build());
 	public static final ItemGroup EQUIPMENT = Registry.register(Registries.ITEM_GROUP,
 			identifier(ModID + "equipment_group"),
@@ -43,7 +64,10 @@ public class ModItemGroups {
 			FabricItemGroup.builder().displayName(displayName("ingredients"))
 					.icon(() -> new ItemStack(ModItems.OAK_PLANK))
 					.entries(((displayContext, entries) -> {
+						entries.add(ModItems.STIEFANE_BRICK);
+						entries.add(ModItems.STIEFANE_COBBLESTONE);
 						entries.add(ModItems.OAK_PLANK);
+						entries.add(ModItems.VERDAK_PLANK);
 						entries.add(ModItems.GRASS_TUFT);
 						entries.add(ModItems.SILK_WAD);
 					})).build());

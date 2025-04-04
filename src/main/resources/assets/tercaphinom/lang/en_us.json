@@ -2,14 +2,45 @@
 	"tercaphinom.item_group.blocks": "Blocks",
 	"tercaphinom.item_group.equipment": "Equipment",
 	"tercaphinom.item_group.ingredients": "Ingredients",
-
+	
+	"block.tercaphinom.verdak_log": "Verdak Log",
+	"block.tercaphinom.verdak_trunk": "Verdak Trunk",
+	
+	"block.tercaphinom.verdak_plank_block": "Verdak Plank Block",
+	"block.tercaphinom.stiefane_brick_block": "Stiefane Brick Block",
+	"block.tercaphinom.cobbled_stiefane_block": "Cobbled Stiefane Block",
+	"block.tercaphinom.stiefane_block": "Stiefane Block",
+	"block.tercaphinom.polished_stiefane_block": "Polished Stiefane Block",
+	
+	"block.tercaphinom.stiefane_lapis_ore": "Stiefane Lapis Ore",
+	
+	"block.tercaphinom.stiefane_button": "Stiefane Button",
+	"block.tercaphinom.stiefane_pressure_plate": "Stiefane Pressure Plate",
+	"block.tercaphinom.verdak_button": "Verdak Button",
+	"block.tercaphinom.verdak_pressure_plate": "Verdak Pressure Plate",
+	"block.tercaphinom.verdak_door": "Verdak Door",
+	"block.tercaphinom.verdak_hatch": "Verdak Plank Hatch",
+	"block.tercaphinom.stiefane_brick_wall_post": "Stiefane Brick Wall Post",
+	"block.tercaphinom.verdak_fence_gate": "Verdak Fence Gate",
+	"block.tercaphinom.verdak_fence_post": "Verdak Fence Post",
+	"block.tercaphinom.stiefane_brick_slab": "Stiefane Brick Slab",
+	"block.tercaphinom.stiefane_brick_stair": "Stiefane Brick Stair",
+	"block.tercaphinom.verdak_plank_slab": "Verdak Plank Slab",
+	"block.tercaphinom.verdak_plank_stair": "Verdak Plank Stair",
+	
 	"block.tercaphinom.eternalith": "Eternalith Block",
-	"block.tercaphinom.ultrasmooth_stone_block": "Ultrasmooth Stone Block",
-
-	"item.tercaphinom.sharp_wooden_stick": "Sharp Wooden Stick",
-
+	
+	"block.tercaphinom.ultrasmooth_stone": "Ultrasmooth Stone",
+	
+	"item.tercaphinom.stiefane_brick": "Stiefane Brick",
+	
+	"item.tercaphinom.stiefane_cobblestone": "Stiefane Cobblestone",
+	
 	"item.tercaphinom.oak_plank": "Oak Plank",
-
+	"item.tercaphinom.verdak_plank": "Verdak Plank",
+	
 	"item.tercaphinom.grass_tuft": "Grass Tuft",
-	"item.tercaphinom.silk_wad": "Silk Wad"
+	"item.tercaphinom.silk_wad": "Silk Wad",
+	
+	"item.tercaphinom.sharp_wooden_stick": "Sharp Wooden Stick"
 }
