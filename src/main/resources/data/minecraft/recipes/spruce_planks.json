@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"group": "wood_into_sticks",
+	"ingredients": [
+		{
+			"item": "minecraft:spruce_log"
+		}
+	],
+	"result": {
+		"count": 12,
+		"item": "minecraft:stick"
+	}
+}

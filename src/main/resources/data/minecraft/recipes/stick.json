@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"group": "wood_into_sticks",
+	"ingredients": [
+		{
+			"tag": "minecraft:all_wood_and_hyphae"
+		}
+	],
+	"result": {
+		"count": 16,
+		"item": "minecraft:stick"
+	}
+}
