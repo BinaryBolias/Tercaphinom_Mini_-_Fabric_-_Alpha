@@ -50,7 +50,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.STIEFANE_BRICK_SLAB)
 				.add(ModBlocks.STIEFANE_BRICK_STAIR)
 				.add(ModBlocks.ULTRASMOOTH_STONE);
-		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE);
+		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+				.add(ModBlocks.BLUE_CHEESE_BLOCK)
+				.add(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK)
+				.add(ModBlocks.YELLOW_CHEESE_BLOCK);
 		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
 				.add(ModBlocks.VERDAK_LOG)
 				.add(ModBlocks.VERDAK_TRUNK)

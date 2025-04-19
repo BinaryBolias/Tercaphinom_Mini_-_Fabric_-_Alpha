@@ -1,14 +1,14 @@
 {
 	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"group": "wood_into_sticks",
+	"group": "vanilla_override_placeholder",
 	"ingredients": [
 		{
-			"item": "minecraft:jungle_log"
+			"item": "minecraft:bedrock"
 		}
 	],
 	"result": {
-		"count": 12,
-		"id": "minecraft:stick"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

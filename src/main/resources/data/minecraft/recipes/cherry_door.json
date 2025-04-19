@@ -1,19 +1,14 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "redstone",
-	"group": "wooden_door",
-	"key": {
-		"#": {
-			"item": "minecraft:cherry_planks"
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
 		}
-	},
-	"pattern": [
-		"##",
-		"##",
-		"##"
 	],
 	"result": {
-		"count": 3,
-		"id": "minecraft:cherry_door"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

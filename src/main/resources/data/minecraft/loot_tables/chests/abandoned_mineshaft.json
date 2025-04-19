@@ -1,0 +1,828 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_apple",
+					"weight": 24
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:name_tag",
+					"weight": 36
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_pickaxe",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:stick",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:empty",
+					"weight": 5
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 5.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_ingot",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:iron_gram",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_ingot",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 5.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:gold_gram",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:redstone",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:lapis_lazuli",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:diamond",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 5.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:glow_berries",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:melon_seeds",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:pumpkin_seeds",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:beetroot_seeds",
+					"weight": 10
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 4.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:gravel_pile",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:raw_copper_nugget",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_nugget",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_nugget",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:copper_gram",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:iron_gram",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:gold_gram",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
+					"weight": 3
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:rail",
+					"weight": 24
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:powered_rail",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:detector_rail",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:activator_rail",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:torch",
+					"weight": 15
+				}
+			],
+			"rolls": 3.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:oak_plank",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 5.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:white_yarnball",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 5.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:charcoal",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 5.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:charcoal",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 5.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:stone_pebble",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				}
+			],
+			"rolls": 2.0
+		}
+	],
+	"random_sequence": "minecraft:chests/abandoned_mineshaft"
+}

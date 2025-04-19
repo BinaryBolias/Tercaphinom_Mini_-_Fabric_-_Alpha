@@ -1,0 +1,141 @@
+"Autological" is!
+...!
+/give @a hugs 96
+10100 GOTO 1010!
+A puzzle, wrapped in an enigma, shrouded in riddles, lovingly sprinkled with intrigue!
+A riddle, wrapped in a mystery!
+A skeleton popped out!
+Alert: Red spy in base!
+All bundled up!
+Ancient domains of mystery!
+Autonomous!
+Axes for everyone!
+Bother with the clones!
+Bread is pain!
+Buckets of lava!
+Buckets of water!
+Ceci n'est pas une title screen!
+Chopping wood!
+Cogito ergo sum!
+§1C§2o§3l§4o§5r§6m§7a§8t§9i§ac
+Complex cellular automata!
+Conventional!
+Cubic!
+Déjà vu!
+Déjà vu!
+Desertification!
+Dig down!
+Do not distribute!
+Doesn't avoid double negatives!
+Double buffered!
+Dozens of colors!
+Elaborate! Concoct! Swindle!
+Emergent gameplay!
+Enhanced!
+Envision! Create! Share!
+Euclidean!
+Exists in all possible states until it is observed!
+Falling off cliffs!
+Finally with ladders!
+Flaxkikare!
+Full of stars!
+Get on with it!
+Give us Godot!
+Groundbreaking!
+Haunted!
+He could be any one of us!
+Hoes for everyone!
+Homeomorphic to a 3-sphere!
+Hotter than the sun!
+I have a suggestion.
+I need more context.
+idspispopd!
+if not ok: return
+Indev!
+Indie!
+Ingots!
+Insinuating a keen sense of despair!
+It is old! Its is evil! And it is NOT free!
+It's a game!
+Iterating upon game theory!
+Java 16 + 1 + 4 = 21!
+Json! Json! Json!
+Keyboard compatible!
+Macroscopic!
+Making the world evil!
+May contain bees!
+May contain polygons!
+May contain salt!
+Menger sponge!
+Mischievous machinations!
+Mmmph, mmph!
+Modded!
+Monster infighting!
+Net neutrality!
+Node Graph out of Date. Rebuilding...
+Non-hyperbolic!
+Not placing traps!
+Now 100% digital!
+Now in 3D!
+Now in three dimensions!
+Now with additional stuff!
+Now with additional things!
+Now with ash!
+Now with bonus oddities!
+Now with bonus stuff!
+Now with bonus things!
+Now with cobblestones!
+Now with difficulty!
+Now with extra stuff!
+Now with extra things!
+Now with greater difficulty!
+Now with silk!
+Now with smaller ingots!
+Now with some actual difficulty!
+Now with planks!
+Now you're thinking with pistons!
+Now you're thinking with portals!
+§kOBFUSCATED TEXT
+Phobos anomaly!
+Pickaxes for everyone!
+Piles of ash!
+Piles of dirt!
+Piles of gravel!
+Pining for the fjords!
+Pining for the Fnords!
+Pixels!
+Plant a tree!
+Pneumatic!
+Prepare for the worst!
+Randomized splash texts!
+Reference implementation!
+Removed Herobrine!
+Reticulating pines!
+Reticulating splines!
+Ride the pig!
+Scary!
+Shovels for everyone!
+Sinister schemes!
+Spiders everywhere!
+Stay a while, stay forever!
+Survive!
+Swords for everyone!
+Synecdoche!
+Tercaphinom!
+Terrestrial!
+The sky is the limit!
+The sum of its parts!
+Thematic!
+This is my true form!
+This message will never appear on the splash screen, isn't that weird?
+This parrot is no more! It has ceased to be!
+This spy has already breached our defenses!
+This text is hard to read if you play the game at the default resolution, but at 1080p it's fine!
+Try the mushroom stew!
+Turing complete!
+Une baguette!
+Unnatural beauty!
+Verlet integration!
+Welcome to your Doom!
+What do you expect?
+Zombies everywhere!

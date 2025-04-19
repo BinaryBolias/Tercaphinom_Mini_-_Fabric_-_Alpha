@@ -43,10 +43,6 @@ public class ModModelProvider extends FabricModelProvider {
 		//# Log & Trunk #
 		bSMG.registerAxisRotated(ModBlocks.VERDAK_LOG, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
 		bSMG.registerAxisRotated(ModBlocks.VERDAK_TRUNK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
-//		bSMG.registerAxisRotated(ModBlocks.VERDAK_LOG, ModelIds.getBlockModelId(ModBlocks.VERDAK_LOG));
-//		bSMG.registerAxisRotated(ModBlocks.VERDAK_TRUNK, ModelIds.getBlockModelId(ModBlocks.VERDAK_TRUNK));
-//		bSMG.registerSingleton(ModBlocks.VERDAK_LOG, TexturedModel.ORIENTABLE);
-//		bSMG.registerSingleton(ModBlocks.VERDAK_TRUNK, TexturedModel.CUBE_COLUMN);
 		
 		//# Miscellaneous #
 		//endregion
@@ -67,7 +63,7 @@ public class ModModelProvider extends FabricModelProvider {
 		bSMG.registerSimpleCubeAll(ModBlocks.POLISHED_STIEFANE_BLOCK);
 		
 		//# Miscellaneous #
-		
+		bSMG.registerSimpleCubeAll(ModBlocks.ASH_BLOCK);
 		
 		//## Modified & Transitional ##
 		//# Ore (stiefane) #
@@ -114,7 +110,12 @@ public class ModModelProvider extends FabricModelProvider {
 		
 		
 		//## Joke & Unserious ##
+		//# Cheese #
+		bSMG.registerSimpleCubeAll(ModBlocks.BLUE_CHEESE_BLOCK);
+		bSMG.registerSimpleCubeAll(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK);
+		bSMG.registerSimpleCubeAll(ModBlocks.YELLOW_CHEESE_BLOCK);
 		//# Miscellaneous #
+		bSMG.registerSimpleCubeAll(ModBlocks.HYPERSMOOTH_CREAMSTONE);
 		bSMG.registerSimpleCubeAll(ModBlocks.ULTRASMOOTH_STONE);
 	}
 	
@@ -122,16 +123,94 @@ public class ModModelProvider extends FabricModelProvider {
 	public void generateItemModels(ItemModelGenerator iMG) {
 		log("Generating item model data data");
 		
-		// NOTE: We would ideally be able to execute the local "genItem" method's functionality without passing 'iMG' as a parameter.
+		//region ## Basic Resources ##
+		// # Ball (yarn) #
+		genItem(iMG, ModItems.BLACK_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.BLUE_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.BROWN_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.CYAN_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.GRAY_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.GREEN_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.LIGHT_BLUE_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.LIGHT_GRAY_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.LIME_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.MAGENTA_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.ORANGE_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.PINK_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.PURPLE_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.RED_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.WHITE_YARNBALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.YELLOW_YARNBALL, "ball", Models.GENERATED);
+		// # Ball (miscellaneous) #
+		genItem(iMG, ModItems.COBWEB_BALL, "ball", Models.GENERATED);
+		// # Brick #
 		genItem(iMG, ModItems.STIEFANE_BRICK, "brick", Models.GENERATED);
+		// # Cobblestone #
 		genItem(iMG, ModItems.STIEFANE_COBBLESTONE, "cobblestone", Models.GENERATED);
+		// # Gram & Ingot #
+		genItem(iMG, ModItems.COPPER_GRAM, "ingot", Models.GENERATED);
+		genItem(iMG, ModItems.GOLD_GRAM, "ingot", Models.GENERATED);
+		genItem(iMG, ModItems.IRON_GRAM, "ingot", Models.GENERATED);
+		// # Jewel #
+		// # Log & Trunk #
+		// # Lump & Nugget #
+		genItem(iMG, ModItems.RAW_COPPER_NUGGET, "lump", Models.GENERATED);
+		genItem(iMG, ModItems.SULPHUR_LUMP, "lump", Models.GENERATED);
+		// # Pile (seed) #
+		// # Pile (miscellaneous) #
+		genItem(iMG, ModItems.ASH_PILE, "pile", Models.GENERATED);
+		genItem(iMG, ModItems.DIRT_PILE, "pile", Models.GENERATED);
+		genItem(iMG, ModItems.GRAVEL_PILE, "pile", Models.GENERATED);
+		// # Plank #
+		genItem(iMG, ModItems.ACACIA_PLANK, "plank", Models.GENERATED);
+		genItem(iMG, ModItems.BIRCH_PLANK, "plank", Models.GENERATED);
+		genItem(iMG, ModItems.CHERRY_PLANK, "plank", Models.GENERATED);
+		genItem(iMG, ModItems.CRIMSON_PLANK, "plank", Models.GENERATED);
+		genItem(iMG, ModItems.DARK_OAK_PLANK, "plank", Models.GENERATED);
+		genItem(iMG, ModItems.MAHOGANY_PLANK, "plank", Models.GENERATED);
+		genItem(iMG, ModItems.MANGROVE_PLANK, "plank", Models.GENERATED);
 		genItem(iMG, ModItems.OAK_PLANK, "plank", Models.GENERATED);
+		genItem(iMG, ModItems.SPRUCE_PLANK, "plank", Models.GENERATED);
 		genItem(iMG, ModItems.VERDAK_PLANK, "plank", Models.GENERATED);
-		//# Equipment #
-		genItem(iMG, ModItems.SHARP_WOODEN_STICK, "equipment", Models.HANDHELD);
-		
+		genItem(iMG, ModItems.WARPED_PLANK, "plank", Models.GENERATED);
+		// # Bundle & Rod & Stick #
+		iMG.register(ModItems.DYNAMITE_BUNDLE, Models.GENERATED);
+		iMG.register(ModItems.DYNAMITE_STICK, Models.GENERATED);
+		iMG.register(ModItems.WOODEN_STICK_BUNDLE, Models.GENERATED);
+		// # Shard #
+		genItem(iMG, ModItems.GLASS_SHARD, "shard", Models.GENERATED);
+		genItem(iMG, ModItems.OBSIDIAN_SHARD, "shard", Models.GENERATED);
+		// # Miscellaneous #
+		iMG.register(ModItems.CHEESE_WHEEL, Models.GENERATED);
 		iMG.register(ModItems.GRASS_TUFT, Models.GENERATED);
 		iMG.register(ModItems.SILK_WAD, Models.GENERATED);
+		iMG.register(ModItems.STONE_PEBBLE, Models.GENERATED);
+		//endregion
+		
+		//region ## Equipment ##
+		//# [Tier 0] Wooden Stick #
+		genItem(iMG, ModItems.SHARP_WOODEN_STICK, "equipment", Models.HANDHELD);
+		//# [Tier 1] Wood #
+		//# [Tier 2] Flint #
+		//# [Tier 2] Glass #
+		//# [Tier 2] Obsidian #
+		//# [Tier 3] Copper #
+		//# [Tier 3] Eiduril #
+		//# [Tier 3] Gold #
+		//# [Tier 3] Iron #
+		//endregion
+		
+		//region  ## Joke & Unserious ##
+		//# Cheese #
+		genItem(iMG, ModItems.BLUE_CHEESE_WEDGE, "unserious", Models.GENERATED);
+		genItem(iMG, ModItems.SILKY_SMOOTH_CHEESE_WEDGE, "unserious", Models.GENERATED);
+		genItem(iMG, ModItems.YELLOW_CHEESE_WEDGE, "unserious", Models.GENERATED);
+		//# Miscellaneous #
+		genItem(iMG, ModItems.ENCHANTED_BRICK, "unserious", Models.GENERATED);
+		genItem(iMG, ModItems.MINIWIZARD, "unserious", Models.GENERATED);
+		//endregion
+		
+		
 	}
 	
 	/**

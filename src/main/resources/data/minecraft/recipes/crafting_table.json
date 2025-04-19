@@ -1,20 +1,14 @@
 {
-	"type": "minecraft:crafting_shaped",
+	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"key": {
-		"#": {
-			"tag": "minecraft:planks"
-		},
-		"X": {
-			"item": "minecraft:stick"
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
 		}
-	},
-	"pattern": [
-		"##",
-		"XX"
 	],
 	"result": {
-		"id": "minecraft:crafting_table"
+		"id": "minecraft:enchanted_golden_apple"
 	},
 	"show_notification": false
 }

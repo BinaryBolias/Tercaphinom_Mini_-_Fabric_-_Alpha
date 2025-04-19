@@ -1,18 +1,14 @@
 {
 	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
+	"group": "vanilla_override_placeholder",
 	"ingredients": [
 		{
-			"item": "minecraft:blaze_powder"
-		},
-		{
-			"item": "minecraft:blaze_powder"
-		},
-		{
-			"item": "minecraft:slime_ball"
+			"item": "minecraft:bedrock"
 		}
 	],
 	"result": {
-		"id": "minecraft:magma_cream"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

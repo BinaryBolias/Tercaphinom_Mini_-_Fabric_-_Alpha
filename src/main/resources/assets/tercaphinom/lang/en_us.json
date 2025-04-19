@@ -12,6 +12,8 @@
 	"block.tercaphinom.stiefane_block": "Stiefane Block",
 	"block.tercaphinom.polished_stiefane_block": "Polished Stiefane Block",
 	
+	"block.tercaphinom.ash_block": "Ash Block",
+	
 	"block.tercaphinom.stiefane_lapis_ore": "Stiefane Lapis Ore",
 	
 	"block.tercaphinom.stiefane_button": "Stiefane Button",
@@ -30,17 +32,77 @@
 	
 	"block.tercaphinom.eternalith": "Eternalith Block",
 	
+	"block.tercaphinom.blue_cheese_block": "Blue Cheese Block",
+	"block.tercaphinom.silky_smooth_cheese_block": "Silky Smooth Cheese Block",
+	"block.tercaphinom.yellow_cheese_block": "Yellow Cheese Block",
+	
+	"block.tercaphinom.hypersmooth_creamstone": "Hypersmooth Creamstone",
 	"block.tercaphinom.ultrasmooth_stone": "Ultrasmooth Stone",
+	
+	"item.tercaphinom.black_yarnball": "Black Yarnball",
+	"item.tercaphinom.blue_yarnball": "Blue Yarnball",
+	"item.tercaphinom.brown_yarnball": "Brown Yarnball",
+	"item.tercaphinom.cyan_yarnball": "Cyan Yarnball",
+	"item.tercaphinom.gray_yarnball": "Gray Yarnball",
+	"item.tercaphinom.green_yarnball": "Green Yarnball",
+	"item.tercaphinom.light_blue_yarnball": "Light Blue Yarnball",
+	"item.tercaphinom.light_gray_yarnball": "Light Gray Yarnball",
+	"item.tercaphinom.lime_yarnball": "Lime Yarnball",
+	"item.tercaphinom.magenta_yarnball": "Magenta Yarnball",
+	"item.tercaphinom.orange_yarnball": "Orange Yarnball",
+	"item.tercaphinom.pink_yarnball": "Pink Yarnball",
+	"item.tercaphinom.purple_yarnball": "Purple Yarnball",
+	"item.tercaphinom.red_yarnball": "Red Yarnball",
+	"item.tercaphinom.white_yarnball": "White Yarnball",
+	"item.tercaphinom.yellow_yarnball": "Yellow Yarnball",
+	
+	"item.tercaphinom.cobweb_ball": "Cobweb Ball",
 	
 	"item.tercaphinom.stiefane_brick": "Stiefane Brick",
 	
 	"item.tercaphinom.stiefane_cobblestone": "Stiefane Cobblestone",
 	
-	"item.tercaphinom.oak_plank": "Oak Plank",
-	"item.tercaphinom.verdak_plank": "Verdak Plank",
+	"item.tercaphinom.copper_gram": "Copper Gram",
+	"item.tercaphinom.gold_gram": "Gold Gram",
+	"item.tercaphinom.iron_gram": "Iron Gram",
 	
+	"item.tercaphinom.raw_copper_nugget": "Raw Copper Nugget",
+	"item.tercaphinom.sulphur_lump": "Sulphur Lump",
+	
+	"item.tercaphinom.ash_pile": "Ash Pile",
+	"item.tercaphinom.dirt_pile": "Dirt Pile",
+	"item.tercaphinom.gravel_pile": "Gravel Pile",
+	
+	"item.tercaphinom.acacia_plank": "Acacia Plank",
+	"item.tercaphinom.birch_plank": "Birch Plank",
+	"item.tercaphinom.cherry_plank": "Cherry Plank",
+	"item.tercaphinom.crimson_plank": "Crimson Plank",
+	"item.tercaphinom.dark_oak_plank": "Dark Oak Plank",
+	"item.tercaphinom.mahogany_plank": "Mahogany Plank",
+	"item.tercaphinom.mangrove_plank": "Mangrove Plank",
+	"item.tercaphinom.oak_plank": "Oak Plank",
+	"item.tercaphinom.spruce_plank": "Spruce Plank",
+	"item.tercaphinom.verdak_plank": "Verdak Plank",
+	"item.tercaphinom.warped_plank": "Warped Plank",
+	
+	"item.tercaphinom.dynamite_bundle": "Dynamite Bundle",
+	"item.tercaphinom.dynamite_stick": "Dynamite Stick",
+	"item.tercaphinom.wooden_stick_bundle": "Wooden Stick Bundle",
+	
+	"item.tercaphinom.glass_shard": "Glass Shard",
+	"item.tercaphinom.obsidian_shard": "Obsidian Shard",
+	
+	"item.tercaphinom.cheese_wheel": "Cheese Wheel",
 	"item.tercaphinom.grass_tuft": "Grass Tuft",
 	"item.tercaphinom.silk_wad": "Silk Wad",
+	"item.tercaphinom.stone_pebble": "Stone Pebble",
 	
-	"item.tercaphinom.sharp_wooden_stick": "Sharp Wooden Stick"
+	"item.tercaphinom.sharp_wooden_stick": "Sharp Wooden Stick",
+	
+	"item.tercaphinom.blue_cheese_wedge": "Blue Cheese Wedge",
+	"item.tercaphinom.silky_smooth_cheese_wedge": "Silky Smooth Cheese Wedge",
+	"item.tercaphinom.yellow_cheese_wedge": "Yellow Cheese Wedge",
+	
+	"item.tercaphinom.enchanted_brick": "Enchanted Brick",
+	"item.tercaphinom.miniwizard": "Miniwizard"
 }

@@ -1,12 +1,14 @@
 {
-	"type": "minecraft:smelting",
-	"category": "blocks",
-	"cookingtime": 1600,
-	"experience": 0.125,
-	"ingredient": {
-		"tag": "minecraft:smelts_to_glass"
-	},
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
+		}
+	],
 	"result": {
-		"id": "minecraft:glass"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

@@ -1,13 +1,14 @@
 {
-	"type": "minecraft:blasting",
+	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"cookingtime": 100,
-	"experience": 0.7,
-	"group": "copper_ingot",
-	"ingredient": {
-		"item": "minecraft:copper_ore"
-	},
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
+		}
+	],
 	"result": {
-		"id": "minecraft:copper_ingot"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

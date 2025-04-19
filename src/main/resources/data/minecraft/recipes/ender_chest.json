@@ -1,20 +1,14 @@
 {
-	"type": "minecraft:crafting_shaped",
+	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"key": {
-		"#": {
-			"item": "minecraft:obsidian"
-		},
-		"E": {
-			"item": "minecraft:ender_eye"
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
 		}
-	},
-	"pattern": [
-		"###",
-		"#E#",
-		"###"
 	],
 	"result": {
-		"id": "minecraft:ender_chest"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

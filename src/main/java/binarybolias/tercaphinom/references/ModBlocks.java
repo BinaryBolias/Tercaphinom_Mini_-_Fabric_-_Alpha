@@ -1,12 +1,16 @@
 package binarybolias.tercaphinom.references;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import binarybolias.tercaphinom.block.CustomDoorBlock;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import static binarybolias.tercaphinom.references.Reference.*;
 
@@ -34,6 +38,11 @@ public class ModBlocks {
 				new BlockItem(block, new Item.Settings()));
 	}
 	
+	/**
+	 * Relevant references:
+	 * {@link net.minecraft.block.Blocks}
+	 */
+	
 	//### Blocks ###
 	//region  ## Crops & Foliage ##
 	//# Leaf #
@@ -41,12 +50,14 @@ public class ModBlocks {
 	//# Log & Trunk #
 	public static final Block VERDAK_LOG = registerBlockWithItem("verdak_log",
 			new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)
-					.mapColor(MapColor.PALE_GREEN))); // TODO: Make unique.
+					.mapColor(MapColor.PALE_GREEN)
+					.velocityMultiplier(0.96875F))); // TODO: Make unique.
 	public static final Block VERDAK_TRUNK = registerBlockWithItem("verdak_trunk",
 			new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)
 					.mapColor(state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ?
 							MapColor.PALE_GREEN : /* top color */
-							MapColor.DARK_GREEN /* side color */))); // TODO: Make unique.
+							MapColor.DARK_GREEN /* side color */)
+					.velocityMultiplier(0.96875F))); // TODO: Make unique.
 	
 	//# Miscellaneous #
 	//endregion
@@ -73,6 +84,11 @@ public class ModBlocks {
 			new Block(AbstractBlock.Settings.copy(Blocks.SMOOTH_STONE))); // TODO: Make unique.
 	
 	//# Miscellaneous #
+	public static final Block ASH_BLOCK = registerBlockWithItem("ash_block",
+			new Block(AbstractBlock.Settings.create()
+					.mapColor(MapColor.STONE_GRAY).strength(1.0F).sounds(BlockSoundGroup.SNOW)
+					.slipperiness(0.6625F)
+					.velocityMultiplier(0.96875F))); // 31/32
 	//endregion
 	
 	//region  ## Modified & Transitional ##
@@ -80,7 +96,7 @@ public class ModBlocks {
 	
 	//# Ore (stiefane) #
 	public static final Block STIEFANE_LAPIS_ORE = registerBlockWithItem("stiefane_lapis_ore",
-			new Block(AbstractBlock.Settings.copy(Blocks.LAPIS_ORE))); // TODO: Make unique.
+			new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.LAPIS_ORE))); // TODO: Make unique.
 	
 	//# Ore (zygolith) #
 	//endregion
@@ -99,12 +115,14 @@ public class ModBlocks {
 	//# Container & Workstation #
 	
 	//# Door & Hatch #
+	// NOTE: No longer using custom door block, for loot table generation parity with vanilla doors.
 	public static final Block VERDAK_DOOR = registerBlockWithItem("verdak_door",
 			new DoorBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.OAK_DOOR))); // TODO: Make unique.
+//			new CustomDoorBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.OAK_DOOR).pistonBehavior(PistonBehavior.BLOCK)));
 	public static final Block VERDAK_HATCH = registerBlockWithItem("verdak_hatch",
 			new TrapdoorBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR))); // TODO: Make unique.
 	
-	//# Fence Gate, Fence Post, & Wall #
+	//# Fence, Gate, & Wall #
 	public static final Block STIEFANE_BRICK_WALL_POST = registerBlockWithItem("stiefane_brick_wall_post",
 			new WallBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_WALL))); // TODO: Make unique.
 	public static final Block VERDAK_FENCE_GATE = registerBlockWithItem("verdak_fence_gate",
@@ -134,14 +152,50 @@ public class ModBlocks {
 	//region  ## Miscellaneous ##
 	//# Miscellaneous #
 	public static final Block ETERNALITH = registerBlockWithItem("eternalith", // Rename to "eternalith_block"?
-			new Block(AbstractBlock.Settings.copy(Blocks.BEDROCK))); // TODO: Make unique.
+			new Block(
+					AbstractBlock.Settings.create()
+							.mapColor(MapColor.GRAY)
+							.instrument(Instrument.BASEDRUM)
+							.strength(-1.0F, 3600000.0F)
+							.dropsNothing()
+							.allowsSpawning(Blocks::never)
+			)
+//			new Block(AbstractBlock.Settings.copy(Blocks.BEDROCK))
+	); // TODO: Make unique.
 	//endregion
 	
 	//region  ## Joke & Unserious ##
+	//# Cheese #
+	public static final Block BLUE_CHEESE_BLOCK = registerBlockWithItem("blue_cheese_block",
+			new Block(AbstractBlock.Settings.create()
+					.mapColor(MapColor.STONE_GRAY)
+					.instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F)
+					.slipperiness(0.725F)));
+	public static final Block SILKY_SMOOTH_CHEESE_BLOCK = registerBlockWithItem("silky_smooth_cheese_block",
+			new Block(AbstractBlock.Settings.create()
+					.mapColor(MapColor.STONE_GRAY)
+					.instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F)
+					.slipperiness(0.85F)));
+	public static final Block YELLOW_CHEESE_BLOCK = registerBlockWithItem("yellow_cheese_block",
+			new Block(AbstractBlock.Settings.create()
+					.mapColor(MapColor.STONE_GRAY)
+					.instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F)
+					.slipperiness(0.725F)));
 	//# Miscellaneous #
+	public static final Block HYPERSMOOTH_CREAMSTONE = registerBlockWithItem("hypersmooth_creamstone",
+			new Block(AbstractBlock.Settings.create()
+					.mapColor(MapColor.STONE_GRAY)
+					.instrument(Instrument.BASEDRUM).strength(3.6F, 8.0F)
+					.luminance(state -> 2)
+					.strength(1.5F, 6.0F)
+					.pistonBehavior(PistonBehavior.PUSH_ONLY)
+					.slipperiness(1.0375F))); // Note: Slipperiness of Blue Ice is 0.989.
 	public static final Block ULTRASMOOTH_STONE = registerBlockWithItem("ultrasmooth_stone",
-			new Block(AbstractBlock.Settings.copy(Blocks.SMOOTH_STONE).slipperiness(0.98F))); // Same slipperiness as ice, packed ice, and frosted ice.
-	// NOTE: Slipperiness of Blue Ice is 0.989.
-	// TODO: Add Hypersmooth Creamstone, slipperiness of 0.995!
+			new Block(AbstractBlock.Settings.create()
+					.mapColor(MapColor.STONE_GRAY)
+					.instrument(Instrument.BASEDRUM).strength(2.4F, 6.0F)
+					.strength(1.5F, 6.0F)
+					.pistonBehavior(PistonBehavior.PUSH_ONLY)
+					.slipperiness(0.98F))); // Note: Same slipperiness as ice, packed ice, and frosted ice.
 	//endregion
 }

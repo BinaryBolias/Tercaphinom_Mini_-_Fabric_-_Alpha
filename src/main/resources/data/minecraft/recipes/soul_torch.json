@@ -1,29 +1,14 @@
 {
-	"type": "minecraft:crafting_shaped",
+	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"key": {
-		"#": {
-			"item": "minecraft:stick"
-		},
-		"S": {
-			"tag": "minecraft:soul_fire_base_blocks"
-		},
-		"X": [
-			{
-				"item": "minecraft:coal"
-			},
-			{
-				"item": "minecraft:charcoal"
-			}
-		]
-	},
-	"pattern": [
-		"X",
-		"#",
-		"S"
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
+		}
 	],
 	"result": {
-		"count": 4,
-		"id": "minecraft:soul_torch"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

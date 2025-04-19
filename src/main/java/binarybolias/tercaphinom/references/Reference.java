@@ -1,6 +1,9 @@
 package binarybolias.tercaphinom.references;
 
 import binarybolias.tercaphinom.Main;
+import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -78,15 +81,27 @@ public class Reference {
 		// - Crafting recipes which can use one of multiple item types interchangeably, such as planks to make sticks.
 		
 		public static class Blocks {
-		
 		}
 		
 		public static class Items {
-		
+			// TODO: make these be generated in the "tercaphinom" namespace, rather than the "minecraft" namespace.
+			public static final TagKey<Item> ALL_COBBLESTONES = of("all_cobblestones");
+			public static final TagKey<Item> ALL_BRICKS = of("all_bricks");
+			public static final TagKey<Item> ALL_GLASSY_SAND_PILES = of("all_glassy_sand_piles");
+			public static final TagKey<Item> ALL_METAL_GRAMS = of("all_metal_grams");
+			public static final TagKey<Item> ALL_PLANKS = of("all_planks");
+			public static final TagKey<Item> ALL_YARNBALLS = of("all_yarnballs");
+			public static final TagKey<Item> ALL_YARNBALLS_EXCEPT_WHITE = of("all_yarnballs_except_white");
+			public static final TagKey<Item> ARROWHEAD_MATERIALS = of("arrowhead_materials");
+			public static final TagKey<Item> BASIC_FLAME_MATERIALS = of("basic_flame_materials");
+			public static final TagKey<Item> SPIRIT_FLAME_MATERIALS = of("spirit_flame_materials");
+			
+			private static TagKey<Item> of(String id) {
+				return TagKey.of(RegistryKeys.ITEM, new Identifier(id));
+			}
 		}
 		
 		public static class Entities {
-		
 		}
 	}
 	

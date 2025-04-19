@@ -1,23 +1,14 @@
 {
-	"type": "minecraft:crafting_shaped",
+	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"key": {
-		"#": {
-			"item": "minecraft:obsidian"
-		},
-		"B": {
-			"item": "minecraft:book"
-		},
-		"D": {
-			"item": "minecraft:diamond"
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
 		}
-	},
-	"pattern": [
-		" B ",
-		"D#D",
-		"###"
 	],
 	"result": {
-		"id": "minecraft:enchanting_table"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

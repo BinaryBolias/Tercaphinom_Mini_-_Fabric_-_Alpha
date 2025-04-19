@@ -1,25 +1,14 @@
 {
-	"type": "minecraft:crafting_shaped",
+	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"key": {
-		"#": {
-			"item": "minecraft:stick"
-		},
-		"X": [
-			{
-				"item": "minecraft:coal"
-			},
-			{
-				"item": "minecraft:charcoal"
-			}
-		]
-	},
-	"pattern": [
-		"X",
-		"#"
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
+		}
 	],
 	"result": {
-		"count": 4,
-		"id": "minecraft:torch"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

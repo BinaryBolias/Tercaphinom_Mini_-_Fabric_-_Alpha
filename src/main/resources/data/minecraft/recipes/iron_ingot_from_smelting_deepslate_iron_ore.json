@@ -1,13 +1,14 @@
 {
-	"type": "minecraft:smelting",
+	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"cookingtime": 200,
-	"experience": 0.7,
-	"group": "iron_ingot",
-	"ingredient": {
-		"item": "minecraft:deepslate_iron_ore"
-	},
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
+		}
+	],
 	"result": {
-		"id": "minecraft:iron_ingot"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

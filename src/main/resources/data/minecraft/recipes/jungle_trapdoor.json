@@ -1,18 +1,14 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "redstone",
-	"group": "wooden_trapdoor",
-	"key": {
-		"#": {
-			"item": "minecraft:jungle_planks"
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
 		}
-	},
-	"pattern": [
-		"###",
-		"###"
 	],
 	"result": {
-		"count": 2,
-		"id": "minecraft:jungle_trapdoor"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

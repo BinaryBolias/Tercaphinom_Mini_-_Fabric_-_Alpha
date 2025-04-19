@@ -1,12 +1,14 @@
 {
-	"type": "minecraft:smelting",
+	"type": "minecraft:crafting_shapeless",
 	"category": "misc",
-	"cookingtime": 400,
-	"experience": 0.125,
-	"ingredient": {
-		"tag": "minecraft:logs_that_burn"
-	},
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
+		}
+	],
 	"result": {
-		"id": "minecraft:charcoal"
-	}
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }
