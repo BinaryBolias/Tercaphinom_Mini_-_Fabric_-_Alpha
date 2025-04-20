@@ -3,16 +3,19 @@ package binarybolias.tercaphinom.references;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponents;
-import net.minecraft.item.Item;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Rarity;
 
 import static binarybolias.tercaphinom.references.Reference.identifier;
 import static binarybolias.tercaphinom.references.Reference.log;
+
+
+/**
+ * Relevant references:
+ * {@link net.minecraft.item.Items}
+ */
 
 public class ModItems {
 	public ModItems() {
@@ -35,11 +38,6 @@ public class ModItems {
 	private static Item newItem(int maxCount, Item.Settings settings) {
 		return new Item(new Item.Settings().maxCount(maxCount));
 	}
-	
-	/**
-	 * Relevant references:
-	 * {@link net.minecraft.item.Items}
-	 */
 	
 	//### Items ###
 	//region ## Basic Resources ##
@@ -72,6 +70,8 @@ public class ModItems {
 	public static final Item IRON_GRAM = registerItem("iron_gram", newItem(96));
 	// # Jewel #
 	// # Log & Trunk #
+	public static final Item VERDAK_LOG = registerItem("verdak_log", new BlockItem(ModBlocks.VERDAK_LOG,
+			new Item.Settings().maxCount(12)));
 	// # Lump & Nugget #
 	public static final Item RAW_COPPER_NUGGET = registerItem("raw_copper_nugget", newItem(96));
 	public static final Item SULPHUR_LUMP = registerItem("sulphur_lump", newItem(64));
@@ -106,18 +106,132 @@ public class ModItems {
 	public static final Item STONE_PEBBLE = registerItem("stone_pebble", newItem(96));
 	//endregion
 	
+	// NOTE:
+	//  - Tools have a base 4 attack speed.
 	//region  ## Equipment ##
 	//# [Tier 0] Wooden Stick #
 	public static final Item SHARP_WOODEN_STICK = registerItem("sharp_wooden_stick",
-			new PickaxeItem(ToolMaterials.WOOD, new Item.Settings().maxDamage(15)
+			new PickaxeItem(ModToolMaterials.WOODEN_STICK, new Item.Settings()
+//					.maxDamage(15) // Trying to use default instead...
 					.attributeModifiers(PickaxeItem.createAttributeModifiers(
-							ToolMaterials.WOOD, 2, -2.4F))
+							ModToolMaterials.WOODEN_STICK, 2, -1.4F))
 			));
 	//# [Tier 1] Wood #
 	//# [Tier 2] Flint #
+	public static final Item FLINT_DAGGER = registerItem("flint_dagger",
+			new SwordItem(ModToolMaterials.FLINT, new Item.Settings() // TODO: Use a custom 'DaggerIem' class instead.
+					.attributeModifiers(SwordItem.createAttributeModifiers(
+							ModToolMaterials.FLINT, 3, -1.4F))
+			));
+	public static final Item FLINT_HATCHET = registerItem("flint_hatchet",
+			new AxeItem(ModToolMaterials.FLINT, new Item.Settings() // TODO: Use a custom 'HatchetIem' class instead.
+					.attributeModifiers(AxeItem.createAttributeModifiers(
+							ModToolMaterials.FLINT, 6.0F, -2.1F))
+			));
+	public static final Item FLINT_HOE = registerItem("flint_hoe",
+			new HoeItem(ModToolMaterials.FLINT, new Item.Settings()
+					.attributeModifiers(HoeItem.createAttributeModifiers(
+							ModToolMaterials.FLINT, -2.0F, -1.0F))
+			));
+	public static final Item FLINT_SPEAR = registerItem("flint_spear",
+			new SwordItem(ModToolMaterials.FLINT, new Item.Settings() // TODO: Use a custom 'SpearIem' class instead.
+					.attributeModifiers(SwordItem.createAttributeModifiers(
+							ModToolMaterials.FLINT, 4, -2.0F))
+			));
 	//# [Tier 2] Glass #
+	public static final Item GLASS_DAGGER = registerItem("glass_dagger",
+			new SwordItem(ModToolMaterials.GLASS, new Item.Settings() // TODO: Use a custom 'DaggerIem' class instead.
+					.attributeModifiers(SwordItem.createAttributeModifiers(
+							ModToolMaterials.GLASS, 3, -1.4F))
+			));
+	public static final Item GLASS_HATCHET = registerItem("glass_hatchet",
+			new AxeItem(ModToolMaterials.GLASS, new Item.Settings() // TODO: Use a custom 'HatchetIem' class instead.
+					.attributeModifiers(AxeItem.createAttributeModifiers(
+							ModToolMaterials.GLASS, 6.0F, -2.1F))
+			));
+	public static final Item GLASS_HOE = registerItem("glass_hoe",
+			new HoeItem(ModToolMaterials.GLASS, new Item.Settings()
+					.attributeModifiers(HoeItem.createAttributeModifiers(
+							ModToolMaterials.GLASS, -2.0F, -1.0F))
+			));
+	public static final Item GLASS_SPEAR = registerItem("glass_spear",
+			new SwordItem(ModToolMaterials.GLASS, new Item.Settings() // TODO: Use a custom 'SpearIem' class instead.
+					.attributeModifiers(SwordItem.createAttributeModifiers(
+							ModToolMaterials.GLASS, 4, -2.0F))
+			));
 	//# [Tier 2] Obsidian #
+	public static final Item OBSIDIAN_DAGGER = registerItem("obsidian_dagger",
+			new SwordItem(ModToolMaterials.OBSIDIAN, new Item.Settings() // TODO: Use a custom 'DaggerIem' class instead.
+					.attributeModifiers(SwordItem.createAttributeModifiers(
+							ModToolMaterials.OBSIDIAN, 3, -1.4F))
+			));
+	public static final Item OBSIDIAN_HATCHET = registerItem("obsidian_hatchet",
+			new AxeItem(ModToolMaterials.OBSIDIAN, new Item.Settings() // TODO: Use a custom 'HatchetIem' class instead.
+					.attributeModifiers(AxeItem.createAttributeModifiers(
+							ModToolMaterials.OBSIDIAN, 6.0F, -2.1F))
+			));
+	public static final Item OBSIDIAN_HOE = registerItem("obsidian_hoe",
+			new HoeItem(ModToolMaterials.OBSIDIAN, new Item.Settings()
+					.attributeModifiers(HoeItem.createAttributeModifiers(
+							ModToolMaterials.OBSIDIAN, -2.0F, -1.0F))
+			));
+	public static final Item OBSIDIAN_SPEAR = registerItem("obsidian_spear",
+			new SwordItem(ModToolMaterials.OBSIDIAN, new Item.Settings() // TODO: Use a custom 'SpearIem' class instead.
+					.attributeModifiers(SwordItem.createAttributeModifiers(
+							ModToolMaterials.OBSIDIAN, 4, -2.0F))
+			));
+	//# [Tier 3] Brass #
+//	public static final Item BRASS_SWORD = registerItem("brass_sword",
+//			new SwordItem(ModToolMaterials.BRASS, new Item.Settings()
+//					.attributeModifiers(SwordItem.createAttributeModifiers(
+//							ModToolMaterials.BRASS, 3, -2.2F))
+//			));
+//	public static final Item BRASS_SHOVEL = registerItem("brass_shovel",
+//			new ShovelItem(ModToolMaterials.BRASS, new Item.Settings()
+//					.attributeModifiers(ShovelItem.createAttributeModifiers(
+//							ModToolMaterials.BRASS, 1.5F, -2.8F))
+//			));
+//	public static final Item BRASS_PICKAXE = registerItem("brass_pickaxe",
+//			new PickaxeItem(ModToolMaterials.BRASS, new Item.Settings()
+//					.attributeModifiers(PickaxeItem.createAttributeModifiers(
+//							ModToolMaterials.BRASS, 1.0F, -2.6F))
+//			));
+//	public static final Item BRASS_AXE = registerItem("brass_axe",
+//			new AxeItem(ModToolMaterials.BRASS, new Item.Settings()
+//					.attributeModifiers(AxeItem.createAttributeModifiers(
+//							ModToolMaterials.BRASS, 6.0F, -2.9F))
+//			));
+//	public static final Item BRASS_HOE = registerItem("brass_hoe",
+//			new HoeItem(ModToolMaterials.BRASS, new Item.Settings()
+//					.attributeModifiers(HoeItem.createAttributeModifiers(
+//							ModToolMaterials.BRASS, -2.0F, -0.8F))
+//			));
 	//# [Tier 3] Copper #
+//	public static final Item COPPER_SWORD = registerItem("copper_sword",
+//			new SwordItem(ModToolMaterials.COPPER, new Item.Settings()
+//					.attributeModifiers(SwordItem.createAttributeModifiers(
+//							ModToolMaterials.COPPER, 3, -2.4F))
+//			));
+//	public static final Item COPPER_SHOVEL = registerItem("copper_shovel",
+//			new ShovelItem(ModToolMaterials.COPPER, new Item.Settings()
+//					.attributeModifiers(ShovelItem.createAttributeModifiers(
+//							ModToolMaterials.COPPER, 1.5F, -3.0F))
+//			));
+//	public static final Item COPPER_PICKAXE = registerItem("copper_pickaxe",
+//			new PickaxeItem(ModToolMaterials.COPPER, new Item.Settings()
+//					.attributeModifiers(PickaxeItem.createAttributeModifiers(
+//							ModToolMaterials.COPPER, 1.0F, -2.8F))
+//			));
+//	public static final Item COPPER_AXE = registerItem("copper_axe",
+//			new AxeItem(ModToolMaterials.COPPER, new Item.Settings()
+//					.attributeModifiers(AxeItem.createAttributeModifiers(
+//							ModToolMaterials.COPPER, 6.0F, -3.1F))
+//			));
+//	public static final Item COPPER_HOE = registerItem("copper_hoe",
+//			new HoeItem(ModToolMaterials.COPPER, new Item.Settings()
+//					.attributeModifiers(HoeItem.createAttributeModifiers(
+//							ModToolMaterials.COPPER, -2.0F, -1.0F))
+//			));
 	//# [Tier 3] Eiduril #
 	//# [Tier 3] Gold #
 	//# [Tier 3] Iron #

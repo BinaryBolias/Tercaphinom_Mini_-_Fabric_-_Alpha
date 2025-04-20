@@ -2,6 +2,7 @@ package binarybolias.tercaphinom.datagen;
 
 import binarybolias.tercaphinom.references.ModBlocks;
 import binarybolias.tercaphinom.references.ModItems;
+import binarybolias.tercaphinom.references.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.*;
@@ -41,8 +42,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		super(dataOutput, registryLookup);
 	}
 	
-	// TODO: Replace the tag here with a custom one ("chopping tools"?).
-	public static final LootCondition.Builder WITH_CHOPPING_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES));
+	// TODO: Create a new "chopping tools" tag instead of checking separately for axes and hatchets?
+	public static final LootCondition.Builder WITH_AXE_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES));
+	public static final LootCondition.Builder WITH_HATCHET_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(Reference.ModTags.Items.ALL_HATCHETS));
+	public static final LootCondition.Builder WITH_CHOPPING_TOOL = WITH_AXE_TOOL.or(WITH_HATCHET_TOOL);
 	public static final LootCondition.Builder WITHOUT_CHOPPING_TOOL = WITH_CHOPPING_TOOL.invert();
 	public static final LootCondition.Builder WITH_CHOPPING_TOOL_OR_SILK_TOUCH = WITH_CHOPPING_TOOL.or(WITH_SILK_TOUCH);
 	public static final LootCondition.Builder WITH_SHOVEL_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.SHOVELS));

@@ -99,10 +99,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.add(Items.SOUL_SAND) // TODO: Replace with new pile item.
 				.add(Items.SOUL_SOIL) // TODO: Replace with new pile item.
 				.add(ModItems.SULPHUR_LUMP);
-		
+		// Enable hatchets to properly chop wood blocks.
+		getOrCreateTagBuilder(ItemTags.AXES)
+				.add(ModItems.FLINT_HATCHET)
+				.add(ModItems.GLASS_HATCHET)
+				.add(ModItems.OBSIDIAN_HATCHET);
 		// NOTE: These method calls are merely for reference; they effectively do nothing (without any extra "add" method call).
 		getOrCreateTagBuilder(ItemTags.ARROWS);
-		getOrCreateTagBuilder(ItemTags.AXES);
 		getOrCreateTagBuilder(ItemTags.BEDS);
 		getOrCreateTagBuilder(ItemTags.BOATS);
 		getOrCreateTagBuilder(ItemTags.DOORS);

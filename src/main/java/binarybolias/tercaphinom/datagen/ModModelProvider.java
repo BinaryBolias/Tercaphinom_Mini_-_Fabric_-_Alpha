@@ -153,6 +153,7 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.IRON_GRAM, "ingot", Models.GENERATED);
 		// # Jewel #
 		// # Log & Trunk #
+		genItem(iMG, ModItems.VERDAK_LOG, "log", Models.GENERATED);
 		// # Lump & Nugget #
 		genItem(iMG, ModItems.RAW_COPPER_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.SULPHUR_LUMP, "lump", Models.GENERATED);
@@ -192,8 +193,21 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.SHARP_WOODEN_STICK, "equipment", Models.HANDHELD);
 		//# [Tier 1] Wood #
 		//# [Tier 2] Flint #
+		genItem(iMG, ModItems.FLINT_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.FLINT_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.FLINT_HOE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.FLINT_SPEAR, "equipment", Models.HANDHELD);
 		//# [Tier 2] Glass #
+		genItem(iMG, ModItems.GLASS_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.GLASS_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.GLASS_HOE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.GLASS_SPEAR, "equipment", Models.HANDHELD);
 		//# [Tier 2] Obsidian #
+		genItem(iMG, ModItems.OBSIDIAN_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.OBSIDIAN_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.OBSIDIAN_HOE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.OBSIDIAN_SPEAR, "equipment", Models.HANDHELD);
+		//# [Tier 3] Brass #
 		//# [Tier 3] Copper #
 		//# [Tier 3] Eiduril #
 		//# [Tier 3] Gold #

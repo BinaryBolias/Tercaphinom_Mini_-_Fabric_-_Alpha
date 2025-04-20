@@ -14,6 +14,11 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import static binarybolias.tercaphinom.references.Reference.*;
 
+/**
+ * Relevant references:
+ * {@link net.minecraft.block.Blocks}
+ */
+
 public class ModBlocks {
 	public ModBlocks() {
 		// Disable instantiation.
@@ -38,17 +43,12 @@ public class ModBlocks {
 				new BlockItem(block, new Item.Settings()));
 	}
 	
-	/**
-	 * Relevant references:
-	 * {@link net.minecraft.block.Blocks}
-	 */
-	
 	//### Blocks ###
 	//region  ## Crops & Foliage ##
 	//# Leaf #
 	
 	//# Log & Trunk #
-	public static final Block VERDAK_LOG = registerBlockWithItem("verdak_log",
+	public static final Block VERDAK_LOG = registerBlock("verdak_log",
 			new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)
 					.mapColor(MapColor.PALE_GREEN)
 					.velocityMultiplier(0.96875F))); // TODO: Make unique.

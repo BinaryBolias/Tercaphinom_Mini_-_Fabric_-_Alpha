@@ -85,6 +85,7 @@ public class Reference {
 		
 		public static class Items {
 			// TODO: make these be generated in the "tercaphinom" namespace, rather than the "minecraft" namespace.
+			//# Basic Materials #
 			public static final TagKey<Item> ALL_COBBLESTONES = of("all_cobblestones");
 			public static final TagKey<Item> ALL_BRICKS = of("all_bricks");
 			public static final TagKey<Item> ALL_GLASSY_SAND_PILES = of("all_glassy_sand_piles");
@@ -95,6 +96,8 @@ public class Reference {
 			public static final TagKey<Item> ARROWHEAD_MATERIALS = of("arrowhead_materials");
 			public static final TagKey<Item> BASIC_FLAME_MATERIALS = of("basic_flame_materials");
 			public static final TagKey<Item> SPIRIT_FLAME_MATERIALS = of("spirit_flame_materials");
+			//# Equipment #
+			public static final TagKey<Item> ALL_HATCHETS = of("all_hatchets");
 			
 			private static TagKey<Item> of(String id) {
 				return TagKey.of(RegistryKeys.ITEM, new Identifier(id));

@@ -66,6 +66,8 @@
 	"item.tercaphinom.gold_gram": "Gold Gram",
 	"item.tercaphinom.iron_gram": "Iron Gram",
 	
+	"item.tercaphinom.verdak_log": "Verdak Log",
+	
 	"item.tercaphinom.raw_copper_nugget": "Raw Copper Nugget",
 	"item.tercaphinom.sulphur_lump": "Sulphur Lump",
 	
@@ -98,6 +100,21 @@
 	"item.tercaphinom.stone_pebble": "Stone Pebble",
 	
 	"item.tercaphinom.sharp_wooden_stick": "Sharp Wooden Stick",
+	
+	"item.tercaphinom.flint_dagger": "Flint Dagger",
+	"item.tercaphinom.flint_hatchet": "Flint Hatchet",
+	"item.tercaphinom.flint_hoe": "Flint Hoe",
+	"item.tercaphinom.flint_spear": "Flint Spear",
+	
+	"item.tercaphinom.glass_dagger": "Glass Dagger",
+	"item.tercaphinom.glass_hatchet": "Glass Hatchet",
+	"item.tercaphinom.glass_hoe": "Glass Hoe",
+	"item.tercaphinom.glass_spear": "Glass Spear",
+	
+	"item.tercaphinom.obsidian_dagger": "Obsidian Dagger",
+	"item.tercaphinom.obsidian_hatchet": "Obsidian Hatchet",
+	"item.tercaphinom.obsidian_hoe": "Obsidian Hoe",
+	"item.tercaphinom.obsidian_spear": "Obsidian Spear",
 	
 	"item.tercaphinom.blue_cheese_wedge": "Blue Cheese Wedge",
 	"item.tercaphinom.silky_smooth_cheese_wedge": "Silky Smooth Cheese Wedge",

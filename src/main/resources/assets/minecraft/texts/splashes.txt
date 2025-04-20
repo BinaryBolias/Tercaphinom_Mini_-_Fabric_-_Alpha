@@ -21,6 +21,7 @@ Cogito ergo sum!
 Complex cellular automata!
 Conventional!
 Cubic!
+Daggers for everyone!
 Déjà vu!
 Déjà vu!
 Desertification!
@@ -42,6 +43,7 @@ Full of stars!
 Get on with it!
 Give us Godot!
 Groundbreaking!
+Hatchets for everyone!
 Haunted!
 He could be any one of us!
 Hoes for everyone!
@@ -53,6 +55,7 @@ idspispopd!
 if not ok: return
 Indev!
 Indie!
+Infinite in every direction!
 Ingots!
 Insinuating a keen sense of despair!
 It is old! Its is evil! And it is NOT free!
@@ -116,6 +119,7 @@ Ride the pig!
 Scary!
 Shovels for everyone!
 Sinister schemes!
+Spears for everyone!
 Spiders everywhere!
 Stay a while, stay forever!
 Survive!

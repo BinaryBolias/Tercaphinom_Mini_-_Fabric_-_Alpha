@@ -121,7 +121,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerStandingAndHangingSignRecipes(exporter, ModItems.SPRUCE_PLANK, Blocks.SPRUCE_SIGN, Blocks.SPRUCE_HANGING_SIGN);
 		//# Verdak #
 		offerStandardPlankRecipeSet(exporter,
-				ModBlocks.VERDAK_LOG, ModItems.VERDAK_PLANK, ModBlocks.VERDAK_PLANK_BLOCK,
+				ModItems.VERDAK_LOG, ModItems.VERDAK_PLANK, ModBlocks.VERDAK_PLANK_BLOCK,
 				ModBlocks.VERDAK_BUTTON, ModBlocks.VERDAK_PRESSURE_PLATE,
 				ModBlocks.VERDAK_DOOR, ModBlocks.VERDAK_HATCH,
 				ModBlocks.VERDAK_FENCE_GATE, ModBlocks.VERDAK_FENCE_POST,
@@ -195,6 +195,32 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.offerTo(exporter, new Identifier(getRecipeName(Items.SHEARS)));
+		//# Shafted Tools - [tier 0] Sharp Wooden Stick #
+		ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.SHARP_WOODEN_STICK)
+				.input(Items.STICK)
+				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+				.offerTo(exporter, new Identifier(getRecipeName(ModItems.SHARP_WOODEN_STICK)));
+		//# Shafted Tools - [tier 1] Wood #
+		//# Shafted Tools - [tier 2] Flint #
+		offerStringedDaggerRecipe(exporter, ModItems.FLINT_DAGGER, Items.FLINT, "");
+		offerStringedHatchetRecipe(exporter, ModItems.FLINT_HATCHET, Items.FLINT, "");
+		offerStringedHoeRecipe(exporter, ModItems.FLINT_HOE, Items.FLINT, "");
+		offerStringedSpearRecipe(exporter, ModItems.FLINT_SPEAR, Items.FLINT, "");
+		//# Shafted Tools - [tier 2] Glass #
+		offerStringedDaggerRecipe(exporter, ModItems.GLASS_DAGGER, ModItems.GLASS_SHARD, "");
+		offerStringedHatchetRecipe(exporter, ModItems.GLASS_HATCHET, ModItems.GLASS_SHARD, "");
+		offerStringedHoeRecipe(exporter, ModItems.GLASS_HOE, ModItems.GLASS_SHARD, "");
+		offerStringedSpearRecipe(exporter, ModItems.GLASS_SPEAR, ModItems.GLASS_SHARD, "");
+		//# Shafted Tools - [tier 2] Obsidian #
+		offerStringedDaggerRecipe(exporter, ModItems.OBSIDIAN_DAGGER, ModItems.OBSIDIAN_SHARD, "");
+		offerStringedHatchetRecipe(exporter, ModItems.OBSIDIAN_HATCHET, ModItems.OBSIDIAN_SHARD, "");
+		offerStringedHoeRecipe(exporter, ModItems.OBSIDIAN_HOE, ModItems.OBSIDIAN_SHARD, "");
+		offerStringedSpearRecipe(exporter, ModItems.OBSIDIAN_SPEAR, ModItems.OBSIDIAN_SHARD, "");
+		//# Shafted Tools - [tier 3] Brass #
+		//# Shafted Tools - [tier 3] Copper #
+		//# Shafted Tools - [tier 3] Eiduril #
+		//# Shafted Tools - [tier 3] Gold #
+		//# Shafted Tools - [tier 3] Iron #
 		//endregion
 		
 		//region ## Food Recipes ##
@@ -936,24 +962,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//# Metals #
 		// Cooking grams and ingots.
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, ModItems.COPPER_GRAM, 100,
-				ModItems.RAW_COPPER_NUGGET, 0.25F);
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, Items.COPPER_INGOT, 400,
-				Items.RAW_COPPER, 1.0F);
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, ModItems.GOLD_GRAM, 100,
-				Items.GOLD_NUGGET, 0.25F);
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, Items.GOLD_INGOT, 400,
-				Items.RAW_GOLD, 1.0F);
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, ModItems.IRON_GRAM, 100,
-				Items.IRON_NUGGET, 0.25F);
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, Items.IRON_INGOT, 400,
-				Items.RAW_IRON, 1.0F);
+		offerSmeltingAndBlastingForMetalRecipes(exporter,
+				ModItems.COPPER_GRAM, Items.COPPER_INGOT, 100,
+				ModItems.RAW_COPPER_NUGGET, Items.RAW_COPPER, 0.25F);
+		offerSmeltingAndBlastingForMetalRecipes(exporter,
+				ModItems.GOLD_GRAM, Items.GOLD_INGOT, 100,
+				Items.GOLD_NUGGET, Items.RAW_GOLD, 0.25F);
+		offerSmeltingAndBlastingForMetalRecipes(exporter,
+				ModItems.IRON_GRAM, Items.IRON_INGOT, 100,
+				Items.IRON_NUGGET, Items.RAW_IRON, 0.25F);
 		// Splitting and merging.
 		offerReversibleDoubleRowRecipes(exporter,
 				RecipeCategory.MISC, Items.COPPER_INGOT, "_from_gram", "gram_merging",
@@ -1157,11 +1174,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				RecipeCategory.MISC, Items.SNOWBALL, "_from_pile", null);
 		
 		//# Sticks #
-		// Sharp Wooden Stick
-		ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.SHARP_WOODEN_STICK)
-				.input(Items.STICK)
-				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-				.offerTo(exporter, new Identifier(getRecipeName(ModItems.SHARP_WOODEN_STICK)));
 		// Stick from any plank
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STICK, 2)
 				.input(Ingredient.fromTag(ModTags.Items.ALL_PLANKS))
@@ -1359,7 +1371,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	//region ## Recipe Set Offers ##
 	public static void offerStandardPlankRecipeSet(
 			RecipeExporter exporter,
-			ItemConvertible logBlock, // NOTE: Planks are not to be craftable from trunks.
+			ItemConvertible woodenLog, // NOTE: Planks are not to be craftable from trunks.
 			ItemConvertible plankItem, ItemConvertible plankBlock,
 			ItemConvertible button, ItemConvertible pressurePlate,
 			ItemConvertible door, ItemConvertible hatch,
@@ -1368,9 +1380,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	) {
 		// Planks from log
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, plankItem, 6)
-				.input(logBlock)
+				.input(woodenLog)
 				.group("log_splitting")
-				.criterion(hasItem(logBlock), conditionsFromItem(logBlock))
+				.criterion(hasItem(woodenLog), conditionsFromItem(woodenLog))
 				.offerTo(exporter, new Identifier(getRecipeName(plankItem) + "_from_log"));
 		// Plank Block
 		offerCompactingEightRecipe(exporter,
@@ -1957,6 +1969,36 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				RecipeSerializer.SMELTING, SmeltingRecipe::new)
 				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
 				.offerTo(exporter, getCookingId(resultItem, inputItem, "smelting"));
+	}
+	
+	public static void offerSmeltingAndBlastingForMetalRecipes(
+			RecipeExporter exporter, ItemConvertible gramItem, ItemConvertible ingotItem, int baseCookingTime,
+			ItemConvertible nuggetItem, ItemConvertible lumpItem, float baseExperience
+	) {
+		// Blasting nugget to gram; 1x experience, 1x duration.
+		CookingRecipeJsonBuilder.create(Ingredient.ofItems(nuggetItem), RecipeCategory.MISC,
+						gramItem, baseExperience, baseCookingTime,
+						RecipeSerializer.BLASTING, BlastingRecipe::new)
+				.criterion(hasItem(nuggetItem), conditionsFromItem(nuggetItem))
+				.offerTo(exporter, getCookingId(gramItem, nuggetItem, "blasting"));
+		// Smelting nugget to gram; 4x experience, 8x duration.
+		CookingRecipeJsonBuilder.create(Ingredient.ofItems(nuggetItem), RecipeCategory.MISC,
+						gramItem, baseExperience * 4, baseCookingTime * 8,
+						RecipeSerializer.SMELTING, SmeltingRecipe::new)
+				.criterion(hasItem(nuggetItem), conditionsFromItem(nuggetItem))
+				.offerTo(exporter, getCookingId(gramItem, nuggetItem, "smelting"));
+		// Blasting lump to ingot; 5x experience, 4x duration.
+		CookingRecipeJsonBuilder.create(Ingredient.ofItems(lumpItem), RecipeCategory.MISC,
+						ingotItem, baseExperience * 5, baseCookingTime * 4,
+						RecipeSerializer.BLASTING, BlastingRecipe::new)
+				.criterion(hasItem(lumpItem), conditionsFromItem(lumpItem))
+				.offerTo(exporter, getCookingId(ingotItem, lumpItem, "blasting"));
+		// Smelting lump to ingot; 20x experience, 24x duration.
+		CookingRecipeJsonBuilder.create(Ingredient.ofItems(lumpItem), RecipeCategory.MISC,
+						ingotItem, baseExperience * 20, baseCookingTime * 24,
+						RecipeSerializer.SMELTING, SmeltingRecipe::new)
+				.criterion(hasItem(lumpItem), conditionsFromItem(lumpItem))
+				.offerTo(exporter, getCookingId(ingotItem, lumpItem, "smelting"));
 	}
 	
 	

@@ -31,7 +31,7 @@ public class ModItemGroups {
 						// ## Crops & Foliage ##
 						//# Leaf #
 						//# Log & Trunk #
-						entries.add(ModBlocks.VERDAK_LOG);
+						entries.add(ModItems.VERDAK_LOG);
 						entries.add(ModBlocks.VERDAK_TRUNK);
 						//# Miscellaneous #
 						
@@ -98,7 +98,29 @@ public class ModItemGroups {
 			FabricItemGroup.builder().displayName(displayName("equipment"))
 					.icon(() -> new ItemStack(ModItems.SHARP_WOODEN_STICK))
 					.entries(((displayContext, entries) -> {
+						//# [Tier 0] Wooden Stick #
 						entries.add(ModItems.SHARP_WOODEN_STICK);
+						//# [Tier 1] Wood #
+						//# [Tier 2] Flint #
+						entries.add(ModItems.FLINT_DAGGER);
+						entries.add(ModItems.FLINT_HATCHET);
+						entries.add(ModItems.FLINT_HOE);
+						entries.add(ModItems.FLINT_SPEAR);
+						//# [Tier 2] Glass #
+						entries.add(ModItems.GLASS_DAGGER);
+						entries.add(ModItems.GLASS_HATCHET);
+						entries.add(ModItems.GLASS_HOE);
+						entries.add(ModItems.GLASS_SPEAR);
+						//# [Tier 2] Obsidian #
+						entries.add(ModItems.OBSIDIAN_DAGGER);
+						entries.add(ModItems.OBSIDIAN_HATCHET);
+						entries.add(ModItems.OBSIDIAN_HOE);
+						entries.add(ModItems.OBSIDIAN_SPEAR);
+						//# [Tier 3] Brass #
+						//# [Tier 3] Copper #
+						//# [Tier 3] Eiduril #
+						//# [Tier 3] Gold #
+						//# [Tier 3] Iron #
 					})).build());
 	public static final ItemGroup INGREDIENTS = Registry.register(Registries.ITEM_GROUP,
 			identifier(ModID + "_ingredients_group"),
