@@ -79,7 +79,11 @@ public class ModItems {
 	// # Pile (miscellaneous) #
 	public static final Item ASH_PILE = registerItem("ash_pile", newItem(96));
 	public static final Item DIRT_PILE = registerItem("dirt_pile", newItem(64));
+	public static final Item FELDSAND_PILE = registerItem("feldsand_pile", newItem(64));
+	public static final Item FERROSAND_PILE = registerItem("ferrosand_pile", newItem(64));
+	public static final Item FREEZE_POWDER_PILE = registerItem("freeze_powder_pile", newItem(96));
 	public static final Item GRAVEL_PILE = registerItem("gravel_pile", newItem(64));
+	public static final Item SKORSAND_PILE = registerItem("skorsand_pile", newItem(64));
 	// # Plank #
 	public static final Item ACACIA_PLANK = registerItem("acacia_plank", new Item(plankSettings()));
 	public static final Item BIRCH_PLANK = registerItem("birch_plank", new Item(plankSettings()));
@@ -95,6 +99,7 @@ public class ModItems {
 	// # Bundle & Rod & Stick #
 	public static final Item DYNAMITE_BUNDLE = registerItem("dynamite_bundle", newItem(64));
 	public static final Item DYNAMITE_STICK = registerItem("dynamite_stick", newItem(96));
+	public static final Item FREEZE_ROD = registerItem("freeze_rod", newItem(64));
 	public static final Item WOODEN_STICK_BUNDLE = registerItem("wooden_stick_bundle", newItem(64));
 	// # Shard #
 	public static final Item GLASS_SHARD = registerItem("glass_shard", newItem(96));

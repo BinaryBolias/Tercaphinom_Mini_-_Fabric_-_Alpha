@@ -9,7 +9,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.SlabType;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
@@ -19,7 +18,6 @@ import net.minecraft.loot.condition.*;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.entry.*;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
-import net.minecraft.loot.function.CopyComponentsLootFunction;
 import net.minecraft.loot.function.LimitCountLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.operator.BoundedIntUnaryOperator;
@@ -55,7 +53,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	public void generate() {
 		log("Generating loot table data");
 		
-		//region ## Material Set - Stone ##
+		//region ## Material Sets - Stone ##
 		//# Deepslate #
 		//# Netherrack #
 		//# Slate #
@@ -73,7 +71,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 				ModItems.STIEFANE_COBBLESTONE, Items.LAPIS_LAZULI, 5, 8);
 		//endregion
 		
-		//region ## Material Set - Wood ##
+		//region ## Material Sets - Wood ##
 		//# Acacia #
 		addStandardPlankBlockSetDrops(ModItems.ACACIA_PLANK,
 				Blocks.ACACIA_PLANKS,
@@ -198,23 +196,35 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		//endregion
 		
 		//region ## Storage ##
+		// Barrel
+		// TODO: Add Barrel loot table.
 		// Chest
 		// NOTE: Dropping oak as placeholder for alternative chest variants.
 		addItemPairAOrItemPairBWithConditionDrop(
 				Blocks.CHEST, WITH_CHOPPING_TOOL_OR_SILK_TOUCH,
 				ModItems.WOODEN_STICK_BUNDLE, 4, Items.IRON_NUGGET, 1,
 				ModItems.OAK_PLANK, 8, ModItems.IRON_GRAM, 1);
-//		addItemOrBlockWithSilkTouchDrop(Blocks.CHEST, ModItems.OAK_PLANK, 8);
 		// Ender Chest
 		addItemOrBlockWithSilkTouchDrop(Blocks.ENDER_CHEST, ModItems.OBSIDIAN_SHARD, 8);
+		//endregion
 		
 		//region ## Workstations ##
 		// Crafting Table
 		// NOTE: Dropping Oak Plank as a placeholder; there may rather be different crafting table variants for different plank types.
 		addBasicDoubleItemDrop(Blocks.CRAFTING_TABLE, ModItems.OAK_PLANK, 2, ModItems.WOODEN_STICK_BUNDLE, 2);
+		// TODO: Add other workstations.
+		//  - Blast Furnace
+		//  - Enchanting Table
+		//  - Furnace
+		//  - Loom
+		//  - Smoker
+		//  - (others)
+		//endregion
 		
-		//region ## Miscellaneous ##
+		//region ## Miscellaneous Elemental Blocks ##
+		//# Miscellaneous #
 		addBasicItemDrop(ModBlocks.ASH_BLOCK, ModItems.ASH_PILE, 8);
+		addBasicItemDrop(ModBlocks.SKORSAND_BLOCK, ModItems.SKORSAND_PILE, 8);
 		//endregion
 		
 		//region ## Various Vanilla Overrides ##
@@ -261,15 +271,25 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addDrop(Blocks.CLAY, LootTable.builder()
 				.pool(makeDoubleEntryAlternativePool(
 								makeConstantCountWithConditionItemEntry(WITH_SILK_TOUCH, Items.CLAY_BALL, 8),
-								makeUniformCountWithFortuneBonusItemEntry(Items.CLAY_BALL, 6, 8)
-										.apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(8)))
+								makeUniformCountWithFortuneBonusItemEntry(Items.CLAY_BALL, 6, 9)
+										.apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(9)))
 						)
 				)
 		);
 		// Coarse Dirt
 		addCoarseDirtDrop(Blocks.COARSE_DIRT, ModItems.DIRT_PILE, ModItems.GRAVEL_PILE, Items.FLINT);
-		// Dirt
+		// Dirt & Dirt Variants
 		addBasicItemDrop(Blocks.DIRT, ModItems.DIRT_PILE,8);
+		addBasicItemDrop(Blocks.DIRT_PATH, ModItems.DIRT_PILE,8);
+		addBasicItemDrop(Blocks.FARMLAND, ModItems.DIRT_PILE,8);
+		addPodzolDirtDrop(Blocks.PODZOL,
+				ModItems.DIRT_PILE, Items.BONE_MEAL, Items.CLAY_BALL, Blocks.BROWN_MUSHROOM, Blocks.RED_MUSHROOM);
+		addBasicDoubleItemDrop(Blocks.ROOTED_DIRT, ModItems.DIRT_PILE,8, Items.STICK, 1);
+		addRyeGrassyDirtDrop(Blocks.GRASS_BLOCK, ModItems.DIRT_PILE, ModItems.GRASS_TUFT, Items.WHEAT_SEEDS);
+		addMyceliumGrassyDirtDrop(Blocks.MYCELIUM, ModItems.DIRT_PILE, Blocks.BROWN_MUSHROOM, Blocks.RED_MUSHROOM);
+		// Fire
+		addFireDrop(Blocks.FIRE, Items.BLAZE_POWDER);
+		addFireDrop(Blocks.SOUL_FIRE, Items.BLAZE_POWDER);
 		// Glass
 		addItemAOrItemBWithSilkTouchDrop(Blocks.GLASS, ModItems.GLASS_SHARD, 8, Blocks.GLASS_PANE, 8);
 		addItemAOrItemBWithSilkTouchDrop(Blocks.BLACK_STAINED_GLASS, ModItems.GLASS_SHARD, 8,
@@ -332,10 +352,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addBasicItemDrop(Blocks.MOSS_BLOCK, Blocks.MOSS_CARPET, 8);
 		// Obsidian
 		addBasicItemDrop(Blocks.OBSIDIAN, ModItems.OBSIDIAN_SHARD, 8);
+		// Sands
+		addBasicItemDrop(Blocks.SAND, ModItems.FELDSAND_PILE, 8);
+		addBasicItemDrop(Blocks.RED_SAND, ModItems.FERROSAND_PILE, 8);
 		// Snow Block & Snow Mound
-		addPowderSnowBlockDrop(Blocks.POWDER_SNOW, Items.SNOWBALL, Items.SUGAR); // TODO: Replace Sugar with Freeze Powder Pile.
-		addSnowBlockDrop(Blocks.SNOW_BLOCK, Items.SNOWBALL, Items.SUGAR); // TODO: Replace Sugar with Freeze Powder Pile.
-		addSnowMoundDrop(Blocks.SNOW, Items.SNOWBALL, Items.SUGAR); // TODO: Replace Sugar with Freeze Powder Pile.
+		addPowderSnowBlockDrop(Blocks.POWDER_SNOW, Items.SNOWBALL, ModItems.FREEZE_POWDER_PILE);
+		addSnowBlockDrop(Blocks.SNOW_BLOCK, Items.SNOWBALL, ModItems.FREEZE_POWDER_PILE);
+		addSnowMoundDrop(Blocks.SNOW, Items.SNOWBALL, ModItems.FREEZE_POWDER_PILE);
 		// Spawner
 		addDrop(Blocks.SPAWNER, LootTable.builder()
 				.pool(
@@ -724,6 +747,103 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 												Enchantments.FORTUNE,
 												0.0078125F, 0.015625F, 0.03125F, 0.0625F, 0.125F)
 										))
+								)
+				)
+		);
+	}
+	
+	
+	private void addPodzolDirtDrop(
+			Block podzolDirtBlock, ItemConvertible dirtPileItem,
+			ItemConvertible bonemealBallItem, ItemConvertible clayBallItem,
+			ItemConvertible brownMushroomItem, ItemConvertible redMushroomItem) {
+		addDrop(podzolDirtBlock, LootTable.builder()
+				.pool( // Drop 'dirtPileItem'.
+						LootPool.builder()
+								.with(ItemEntry.builder(dirtPileItem)
+										.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(8)))
+								)
+				)
+				.pool( // Sometimes drop a bonus item, increased chance with Fortune.
+						LootPool.builder()
+								.conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE,
+										0.0625F, 0.125F, 0.25F, 0.5F, 1.0F))
+								.with(ItemEntry.builder(bonemealBallItem)
+										.weight(27)
+								)
+								.with(ItemEntry.builder(clayBallItem)
+										.weight(21)
+								)
+								.with(ItemEntry.builder(redMushroomItem)
+										.weight(9)
+								)
+								.with(ItemEntry.builder(brownMushroomItem)
+										.weight(7)
+								)
+				)
+		);
+	}
+	
+	
+	private void addRyeGrassyDirtDrop(
+			Block grassyDirtBlock, ItemConvertible dirtPileItem,
+			ItemConvertible grassTuftItem, ItemConvertible seedPileItem) {
+		addDrop(grassyDirtBlock, LootTable.builder()
+				.pool( // Drop 'dirtPileItem'.
+						LootPool.builder()
+								.with(ItemEntry.builder(dirtPileItem)
+										.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(8)))
+								)
+				)
+				.pool( // Sometimes drop 'grassTuftItem', increased chance with Fortune.
+						LootPool.builder()
+								.with(ItemEntry.builder(grassTuftItem)
+										.conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE,
+												0.0625F, 0.125F, 0.25F, 0.5F, 1.0F))
+								)
+				)
+				.pool( // Sometimes drop 'seedPileItem', increased chance with Fortune.
+						LootPool.builder()
+								.with(ItemEntry.builder(seedPileItem)
+										.conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE,
+												0.015625F, 0.03125F, 0.0625F, 0.125F, 0.25F))
+								)
+				)
+		);
+	}
+	
+	
+	private void addMyceliumGrassyDirtDrop(
+			Block grassyDirtBlock, ItemConvertible dirtPileItem,
+			ItemConvertible brownMushroomItem, ItemConvertible redMushroomItem) {
+		addDrop(grassyDirtBlock, LootTable.builder()
+				.pool( // Drop 'dirtPileItem'.
+						LootPool.builder()
+								.with(ItemEntry.builder(dirtPileItem)
+										.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(8)))
+								)
+				)
+				.pool( // Sometimes drop 'brownMushroomItem' or 'redMushroomItem', increased chance with Fortune.
+						LootPool.builder()
+								.conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE,
+										0.015625F, 0.03125F, 0.0625F, 0.125F, 0.25F))
+								.with(GroupEntry.create(
+										ItemEntry.builder(brownMushroomItem).weight(5),
+										ItemEntry.builder(redMushroomItem).weight(7)
+								))
+				)
+		);
+	}
+	
+	
+	private void addFireDrop(
+			Block fireBlock, ItemConvertible blazePowderPileItem) {
+		addDrop(fireBlock, LootTable.builder()
+				.pool( // Drop 1 'blazePowderPileItem', only with Silk Touch shovel.
+						LootPool.builder()
+								.with(ItemEntry.builder(blazePowderPileItem)
+										.conditionally(WITH_SHOVEL_TOOL)
+										.conditionally(WITH_SILK_TOUCH)
 								)
 				)
 		);

@@ -10,6 +10,7 @@ All bundled up!
 Ancient domains of mystery!
 Autonomous!
 Axes for everyone!
+Blazing heat!
 Bother with the clones!
 Bread is pain!
 Buckets of lava!
@@ -39,6 +40,7 @@ Exists in all possible states until it is observed!
 Falling off cliffs!
 Finally with ladders!
 Flaxkikare!
+Freezing chill!
 Full of stars!
 Get on with it!
 Give us Godot!
@@ -104,6 +106,7 @@ Pickaxes for everyone!
 Piles of ash!
 Piles of dirt!
 Piles of gravel!
+Piles of sand!
 Pining for the fjords!
 Pining for the Fnords!
 Pixels!

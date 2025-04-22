@@ -12,7 +12,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "max": 2.0,
-                "min": 1.0
+                "min": 0.0
               },
               "function": "minecraft:set_count"
             },
@@ -25,44 +25,7 @@
               "function": "minecraft:looting_enchant"
             }
           ],
-          "name": "tercaphinom:grass_tuft"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 1.0,
-                "min": 0.0
-              },
-              "function": "minecraft:set_count"
-            },
-            {
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 1.0,
-                "min": 0.0
-              },
-              "function": "minecraft:looting_enchant"
-            },
-            {
-              "function": "minecraft:limit_count",
-              "limit": {
-                "max": 2.0,
-                "min": 1.0
-              }
-            }
-          ],
-          "name": "tercaphinom:ash_pile",
-          "weight": 5
+          "name": "minecraft:glowstone_dust"
         },
         {
           "type": "minecraft:item",
@@ -71,8 +34,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 1.0,
-                "min": -2.0
+                "max": 2.0,
+                "min": 0.0
               },
               "function": "minecraft:set_count"
             },
@@ -83,24 +46,10 @@
                 "min": 0.0
               },
               "function": "minecraft:looting_enchant"
-            },
-            {
-              "function": "minecraft:limit_count",
-              "limit": {
-                "max": 2.0,
-                "min": 1.0
-              }
             }
           ],
-          "name": "tercaphinom:skorsand_pile",
-          "weight": 3
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
+          "name": "minecraft:sugar"
+        },
         {
           "type": "minecraft:item",
           "functions": [
@@ -108,51 +57,122 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 1.0,
-                "min": -6.0
+                "max": 2.0,
+                "min": 0.0
               },
               "function": "minecraft:set_count"
             },
             {
               "count": {
                 "type": "minecraft:uniform",
-                "max": 3.0,
+                "max": 1.0,
                 "min": 0.0
               },
               "function": "minecraft:looting_enchant"
-            },
-            {
-              "function": "minecraft:limit_count",
-              "limit": {
-                "max": 2.0
-              }
             }
           ],
-          "name": "tercaphinom:sulphur_lump"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
+          "name": "minecraft:redstone"
+        },
         {
-          "condition": "minecraft:entity_properties",
-          "entity": "killer",
-          "predicate": {
-            "type": "#minecraft:skeletons"
-          }
-        }
-      ],
-      "entries": [
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 0.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
+          "name": "minecraft:spider_eye"
+        },
         {
-          "type": "minecraft:tag",
-          "expand": true,
-          "name": "minecraft:creeper_drop_music_discs"
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 0.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
+          "name": "minecraft:glass_bottle"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 0.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
+          "name": "minecraft:gunpowder"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 0.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
+          "name": "minecraft:stick",
+          "weight": 2
         }
       ],
-      "rolls": 1.0
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 3.0,
+        "min": 1.0
+      }
     }
   ],
-  "random_sequence": "minecraft:entities/creeper"
+  "random_sequence": "minecraft:entities/witch"
 }

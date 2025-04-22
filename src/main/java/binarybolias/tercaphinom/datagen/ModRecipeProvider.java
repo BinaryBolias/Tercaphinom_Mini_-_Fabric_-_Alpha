@@ -12,6 +12,7 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -443,6 +444,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				RecipeCategory.FOOD, ModItems.SILKY_SMOOTH_CHEESE_WEDGE, 200,
 				ModItems.YELLOW_CHEESE_WEDGE, 0.125F, "silky_smooth_cheese_wedge");
 		// TODO: Add Yellow Cheese Wedges from Cheese Wheel.
+		//# Grassy Dirt Blocks (placeholder for other obtainment methods) #
+		offerEightAroundOneRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, Blocks.GRASS_BLOCK, 1,
+				Blocks.DIRT, Items.WHEAT_SEEDS, "", "grassy_dirt_blocks");
+		offerEightAroundOneRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, Blocks.MYCELIUM, 1,
+				Blocks.DIRT, ModTags.Items.ALL_MUSHROOMS, "has_any_mushroom",
+				"", "grassy_dirt_blocks");
 		//# Smoothest Stones #
 		// Hypersmooth Creamstone
 		ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HYPERSMOOTH_CREAMSTONE)
@@ -598,12 +607,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerBedOfPigmentRecipe(exporter, Blocks.YELLOW_BED, Blocks.YELLOW_CARPET, "", "beds");
 		// White
 		offerBedOfWhiteRecipe(exporter, Blocks.WHITE_BED, "", "beds");
-		
-		//# Blastpowder #
-		offerShapelessFourIntoOneRecipe(exporter,
-				RecipeCategory.MISC, Items.GUNPOWDER, 3,
-				ModItems.ASH_PILE, ModItems.SULPHUR_LUMP, Items.CHARCOAL,
-				ModTags.Items.ALL_GLASSY_SAND_PILES, "has_any_glassy_sand_pile", "", null);
 		
 		//# Brick Block #
 		offerEightAroundOneRecipe(exporter,
@@ -850,7 +853,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerCompactingFourAndFourRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.COARSE_DIRT, 1,
 				ModItems.DIRT_PILE, ModItems.GRAVEL_PILE, "", null);
-		//Dirt
+		// Dirt
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.DIRT, 1,
 				ModItems.DIRT_PILE, "", null);
@@ -868,6 +871,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerReversibleSmallSquareRecipes(exporter,
 				RecipeCategory.MISC, ModItems.GRAVEL_PILE, "_from_stone_pebble", null,
 				RecipeCategory.MISC, ModItems.STONE_PEBBLE, "_from_gravel_pile", null);
+		// Sand (feldsand)
+		offerCompactingEightRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, Blocks.SAND, 1,
+				ModItems.FELDSAND_PILE, "", "sand_blocks");
+		// Sand (ferrosand)
+		offerCompactingEightRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, Blocks.RED_SAND, 1,
+				ModItems.FERROSAND_PILE, "", "sand_blocks");
+		// Sand (skorsand)
+		offerCompactingEightRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, ModBlocks.SKORSAND_BLOCK, 1,
+				ModItems.SKORSAND_PILE, "", "sand_blocks");
 		
 		//# Ice #
 		// Packed
@@ -1074,6 +1089,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerFourAndFourCheckeredAroundOneRecipe(exporter,
 				RecipeCategory.REDSTONE, Blocks.REDSTONE_LAMP, 1,
 				Blocks.GLOWSTONE, Items.REDSTONE, Items.IRON_INGOT, "", null);
+		// Redstone Signal Comparator
+		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.COMPARATOR)
+				.input('#', ModTags.Items.ALL_BRICKS)
+				.input('/', Blocks.REDSTONE_TORCH)
+				.input('O', Items.REDSTONE)
+				.input('X', Items.QUARTZ)
+				.pattern(" / ")
+				.pattern("/X/")
+				.pattern("#O#")
+				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_BRICKS))
+				.criterion(hasItem(Blocks.REDSTONE_TORCH), conditionsFromItem(Blocks.REDSTONE_TORCH))
+				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+				.criterion(hasItem(Items.QUARTZ), conditionsFromItem(Items.QUARTZ))
+				.offerTo(exporter, new Identifier(getRecipeName(Blocks.COMPARATOR)));
 		// Redstone Signal Repeater
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.REPEATER)
 				.input('#', ModTags.Items.ALL_BRICKS)
@@ -1126,6 +1155,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//# Paper #
 		offerLargeRowRecipe(exporter,
 				RecipeCategory.MISC, Items.PAPER, 1, Items.SUGAR_CANE, "", null);
+		
+		//# Piles #
+		// Blastpowder
+		offerShapelessFourIntoOneRecipe(exporter,
+				RecipeCategory.MISC, Items.GUNPOWDER, 3,
+				ModItems.ASH_PILE, ModItems.SULPHUR_LUMP, Items.CHARCOAL,
+				ModTags.Items.ALL_GLASSY_SAND_PILES, "has_any_glassy_sand_pile", "", null);
+		// Freeze Powder
+		offerOneToOneRecipe(exporter,
+				RecipeCategory.MISC, ModItems.FREEZE_POWDER_PILE, 2, ModItems.FREEZE_ROD, "", null);
 		
 		//# Rails #
 		// Basic

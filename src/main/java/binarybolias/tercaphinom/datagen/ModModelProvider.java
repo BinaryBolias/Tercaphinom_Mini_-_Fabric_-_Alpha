@@ -64,6 +64,7 @@ public class ModModelProvider extends FabricModelProvider {
 		
 		//# Miscellaneous #
 		bSMG.registerSimpleCubeAll(ModBlocks.ASH_BLOCK);
+		bSMG.registerSimpleCubeAll(ModBlocks.SKORSAND_BLOCK);
 		
 		//## Modified & Transitional ##
 		//# Ore (stiefane) #
@@ -161,7 +162,11 @@ public class ModModelProvider extends FabricModelProvider {
 		// # Pile (miscellaneous) #
 		genItem(iMG, ModItems.ASH_PILE, "pile", Models.GENERATED);
 		genItem(iMG, ModItems.DIRT_PILE, "pile", Models.GENERATED);
+		genItem(iMG, ModItems.FELDSAND_PILE, "pile", Models.GENERATED);
+		genItem(iMG, ModItems.FERROSAND_PILE, "pile", Models.GENERATED);
+		genItem(iMG, ModItems.FREEZE_POWDER_PILE, "pile", Models.GENERATED);
 		genItem(iMG, ModItems.GRAVEL_PILE, "pile", Models.GENERATED);
+		genItem(iMG, ModItems.SKORSAND_PILE, "pile", Models.GENERATED);
 		// # Plank #
 		genItem(iMG, ModItems.ACACIA_PLANK, "plank", Models.GENERATED);
 		genItem(iMG, ModItems.BIRCH_PLANK, "plank", Models.GENERATED);
@@ -177,6 +182,7 @@ public class ModModelProvider extends FabricModelProvider {
 		// # Bundle & Rod & Stick #
 		iMG.register(ModItems.DYNAMITE_BUNDLE, Models.GENERATED);
 		iMG.register(ModItems.DYNAMITE_STICK, Models.GENERATED);
+		genItem(iMG, ModItems.FREEZE_ROD, "rod", Models.GENERATED);
 		iMG.register(ModItems.WOODEN_STICK_BUNDLE, Models.GENERATED);
 		// # Shard #
 		genItem(iMG, ModItems.GLASS_SHARD, "shard", Models.GENERATED);

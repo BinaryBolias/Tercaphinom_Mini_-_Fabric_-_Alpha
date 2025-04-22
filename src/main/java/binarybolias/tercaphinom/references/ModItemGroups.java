@@ -48,6 +48,7 @@ public class ModItemGroups {
 						entries.add(ModBlocks.POLISHED_STIEFANE_BLOCK);
 						//# Miscellaneous #
 						entries.add(ModBlocks.ASH_BLOCK);
+						entries.add(ModBlocks.SKORSAND_BLOCK);
 						
 						// ## Modified & Transitional ##
 						// # Ore (netherrack) #
@@ -161,7 +162,11 @@ public class ModItemGroups {
 						//# Pile (miscellaneous) #
 						entries.add(ModItems.ASH_PILE);
 						entries.add(ModItems.DIRT_PILE);
+						entries.add(ModItems.FELDSAND_PILE);
+						entries.add(ModItems.FERROSAND_PILE);
+						entries.add(ModItems.FREEZE_POWDER_PILE);
 						entries.add(ModItems.GRAVEL_PILE);
+						entries.add(ModItems.SKORSAND_PILE);
 						//# Plank #
 						entries.add(ModItems.ACACIA_PLANK);
 						entries.add(ModItems.BIRCH_PLANK);
@@ -177,6 +182,7 @@ public class ModItemGroups {
 						//# Bundle & Rod & Stick #
 						entries.add(ModItems.DYNAMITE_BUNDLE);
 						entries.add(ModItems.DYNAMITE_STICK);
+						entries.add(ModItems.FREEZE_ROD);
 						entries.add(ModItems.WOODEN_STICK_BUNDLE);
 						//# Shard #
 						entries.add(ModItems.GLASS_SHARD);

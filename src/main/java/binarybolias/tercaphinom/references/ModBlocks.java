@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.ColorCode;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
@@ -89,6 +90,14 @@ public class ModBlocks {
 					.mapColor(MapColor.STONE_GRAY).strength(1.0F).sounds(BlockSoundGroup.SNOW)
 					.slipperiness(0.6625F)
 					.velocityMultiplier(0.96875F))); // 31/32
+	public static final Block SKORSAND_BLOCK = registerBlockWithItem("skorsand_block",
+			new ColoredFallingBlock(
+					new ColorCode(11098145),
+					AbstractBlock.Settings.create().mapColor(MapColor.GRAY)
+							.instrument(Instrument.SNARE).strength(0.5F).sounds(BlockSoundGroup.SAND)
+							.slipperiness(0.6625F)
+							.velocityMultiplier(0.96875F) // 31/32
+			));
 	//endregion
 	
 	//region  ## Modified & Transitional ##

@@ -37,13 +37,20 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.add(ModItems.STIEFANE_BRICK);
 		// Glassy Sand Piles
 		getOrCreateTagBuilder(ModTags.Items.ALL_GLASSY_SAND_PILES)
-				.add(ModItems.DIRT_PILE) // TODO: Replace with new sand pile.
-				.add(ModItems.GRAVEL_PILE); // TODO: Replace with new red sand pile.
+				.add(ModItems.FELDSAND_PILE)
+				.add(ModItems.FERROSAND_PILE)
+				.add(ModItems.SKORSAND_PILE);
 		// Metal Grams
 		getOrCreateTagBuilder(ModTags.Items.ALL_METAL_GRAMS)
 				.add(ModItems.COPPER_GRAM)
 				.add(ModItems.GOLD_GRAM)
 				.add(ModItems.IRON_GRAM);
+		// Mushrooms
+		getOrCreateTagBuilder(ModTags.Items.ALL_MUSHROOMS)
+				.add(Items.BROWN_MUSHROOM)
+				.add(Items.RED_MUSHROOM)
+				.add(Items.CRIMSON_FUNGUS)
+				.add(Items.WARPED_FUNGUS);
 		// Planks
 		getOrCreateTagBuilder(ModTags.Items.ALL_PLANKS)
 				.add(ModItems.ACACIA_PLANK)

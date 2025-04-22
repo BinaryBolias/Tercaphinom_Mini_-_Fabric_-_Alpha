@@ -90,6 +90,7 @@ public class Reference {
 			public static final TagKey<Item> ALL_BRICKS = of("all_bricks");
 			public static final TagKey<Item> ALL_GLASSY_SAND_PILES = of("all_glassy_sand_piles");
 			public static final TagKey<Item> ALL_METAL_GRAMS = of("all_metal_grams");
+			public static final TagKey<Item> ALL_MUSHROOMS = of("all_mushrooms");
 			public static final TagKey<Item> ALL_PLANKS = of("all_planks");
 			public static final TagKey<Item> ALL_YARNBALLS = of("all_yarnballs");
 			public static final TagKey<Item> ALL_YARNBALLS_EXCEPT_WHITE = of("all_yarnballs_except_white");

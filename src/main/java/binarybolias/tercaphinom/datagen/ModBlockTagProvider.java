@@ -53,6 +53,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
 				.add(ModBlocks.BLUE_CHEESE_BLOCK)
 				.add(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK)
+				.add(ModBlocks.SKORSAND_BLOCK)
 				.add(ModBlocks.YELLOW_CHEESE_BLOCK);
 		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
 				.add(ModBlocks.VERDAK_LOG)

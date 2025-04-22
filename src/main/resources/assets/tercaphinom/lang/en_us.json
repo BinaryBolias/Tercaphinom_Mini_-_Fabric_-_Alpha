@@ -13,6 +13,7 @@
 	"block.tercaphinom.polished_stiefane_block": "Polished Stiefane Block",
 	
 	"block.tercaphinom.ash_block": "Ash Block",
+	"block.tercaphinom.skorsand_block": "Skorsand Block",
 	
 	"block.tercaphinom.stiefane_lapis_ore": "Stiefane Lapis Ore",
 	
@@ -73,7 +74,11 @@
 	
 	"item.tercaphinom.ash_pile": "Ash Pile",
 	"item.tercaphinom.dirt_pile": "Dirt Pile",
+	"item.tercaphinom.feldsand_pile": "Feldsand Pile",
+	"item.tercaphinom.ferrosand_pile": "Ferrosand Pile",
+	"item.tercaphinom.freeze_powder_pile": "Freeze Powder Pile",
 	"item.tercaphinom.gravel_pile": "Gravel Pile",
+	"item.tercaphinom.skorsand_pile": "Skorsand Pile",
 	
 	"item.tercaphinom.acacia_plank": "Acacia Plank",
 	"item.tercaphinom.birch_plank": "Birch Plank",
@@ -89,6 +94,7 @@
 	
 	"item.tercaphinom.dynamite_bundle": "Dynamite Bundle",
 	"item.tercaphinom.dynamite_stick": "Dynamite Stick",
+	"item.tercaphinom.freeze_rod": "Freeze Rod",
 	"item.tercaphinom.wooden_stick_bundle": "Wooden Stick Bundle",
 	
 	"item.tercaphinom.glass_shard": "Glass Shard",
