@@ -3,6 +3,7 @@ package binarybolias.tercaphinom.datagen;
 import binarybolias.tercaphinom.references.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -28,10 +29,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		* NOTE: For an overhaul of Minecraft which uses only custom aspects (dimensions, block, items, entities, etc.), these (vanilla) tags are inappropriate; only custom tags would be used instead.
 		 */
 		
-		getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(ModBlocks.ETERNALITH);
-		getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE).add(ModBlocks.ETERNALITH);
-		getOrCreateTagBuilder(BlockTags.GEODE_INVALID_BLOCKS).add(ModBlocks.ETERNALITH);
-		getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE).add(ModBlocks.ETERNALITH);
+		getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(ModBlocks.ETERNALITH_BLOCK);
+		getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE).add(ModBlocks.ETERNALITH_BLOCK);
+		getOrCreateTagBuilder(BlockTags.GEODE_INVALID_BLOCKS).add(ModBlocks.ETERNALITH_BLOCK);
+		getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE).add(ModBlocks.ETERNALITH_BLOCK);
+		
+		// Remove tool tier elitism.
+		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL).setReplace(true);
+		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_STONE_TOOL).setReplace(true);
+		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL).setReplace(true);
+		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_IRON_TOOL).setReplace(true);
+		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).setReplace(true);
+		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).setReplace(true);
 		
 		// BlockTags.PICKAXE_MINEABLE: (I think) The blocks within this tag only drop loot if mined with a pickaxe.
 		// - Intended to be used for blocks with the "requiresTool" setting.
@@ -51,9 +60,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.STIEFANE_BRICK_STAIR)
 				.add(ModBlocks.ULTRASMOOTH_STONE);
 		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+				.add(ModBlocks.ASH_BLOCK)
+				.add(ModBlocks.SKORSAND_BLOCK)
+				//# Joke & Unserious #
 				.add(ModBlocks.BLUE_CHEESE_BLOCK)
 				.add(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK)
-				.add(ModBlocks.SKORSAND_BLOCK)
 				.add(ModBlocks.YELLOW_CHEESE_BLOCK);
 		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
 				.add(ModBlocks.VERDAK_LOG)
@@ -107,5 +118,51 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		getOrCreateTagBuilder(BlockTags.GOLD_ORES);
 		getOrCreateTagBuilder(BlockTags.LAPIS_ORES)
 				.add(ModBlocks.STIEFANE_LAPIS_ORE);
+		
+		getOrCreateTagBuilder(BlockTags.SAPLINGS);
+		getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS);
+		getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE)
+				.setReplace(true)
+				//# Tags #
+				.addTag(BlockTags.SAPLINGS)
+				.addTag(BlockTags.SMALL_FLOWERS)
+				//# Individual Blocks #
+				// Bales
+				.add(Blocks.DRIED_KELP_BLOCK)
+				.add(Blocks.HAY_BLOCK)
+				// Grass Crops
+				.add(Blocks.CRIMSON_ROOTS)
+				.add(Blocks.SHORT_GRASS)
+				.add(Blocks.WARPED_ROOTS)
+				// Mushrooms
+				.add(Blocks.BROWN_MUSHROOM)
+				.add(Blocks.CRIMSON_FUNGUS)
+				.add(Blocks.RED_MUSHROOM)
+				.add(ModBlocks.STARCHCAP_MUSHROOM)
+				.add(Blocks.WARPED_FUNGUS)
+				// Miscellaneous
+				.add(Blocks.AMETHYST_CLUSTER)
+				.add(Blocks.ANCIENT_DEBRIS)
+				.add(Blocks.BAMBOO_SAPLING)
+				.add(Blocks.CACTUS)
+				.add(Blocks.CAKE)
+				.add(Blocks.CARVED_PUMPKIN)
+				.add(Blocks.COBWEB)
+				.add(Blocks.COCOA)
+				.add(Blocks.DEAD_BUSH)
+				.add(Blocks.FERN)
+				.add(Blocks.GLOW_LICHEN)
+				.add(Blocks.LILY_PAD)
+				.add(Blocks.MELON)
+				.add(Blocks.PUMPKIN)
+				.add(Blocks.SCAFFOLDING)
+				.add(Blocks.SUGAR_CANE)
+				.add(Blocks.SWEET_BERRY_BUSH)
+				.add(Blocks.TNT)
+				.add(Blocks.TORCH) // Note: Cannot pick up wall torches.
+				// - For Tercaphinom proper, standing torches and wall torches could be merged into a single block type.
+				// - When a torch is supposed to be placed at a position (not through player placement):
+				//  - If there is no solid block beneath the position, the torch will attempt to anchor itself to a wall, instead.
+				.add(Blocks.VINE);
 	}
 }

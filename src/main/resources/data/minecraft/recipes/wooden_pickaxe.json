@@ -1,21 +1,14 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "X": {
-      "tag": "minecraft:planks"
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "vanilla_override_placeholder",
+  "ingredients": [
+    {
+      "item": "minecraft:bedrock"
     }
-  },
-  "pattern": [
-    "XXX",
-    " # ",
-    " # "
   ],
   "result": {
-    "count": 1,
-    "id": "minecraft:wooden_pickaxe"
-  }
+    "id": "minecraft:enchanted_golden_apple"
+  },
+  "show_notification": false
 }

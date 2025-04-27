@@ -21,6 +21,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 	protected void configure(RegistryWrapper.WrapperLookup arg) {
 		log("Generating item tag data");
 		
+		//region ## Basic Materials ##
 		// Arrowhead Materials
 		getOrCreateTagBuilder(ModTags.Items.ARROWHEAD_MATERIALS)
 				.add(ModItems.COPPER_GRAM)
@@ -49,6 +50,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		getOrCreateTagBuilder(ModTags.Items.ALL_MUSHROOMS)
 				.add(Items.BROWN_MUSHROOM)
 				.add(Items.RED_MUSHROOM)
+				.add(ModItems.STARCHCAP_MUSHROOM)
 				.add(Items.CRIMSON_FUNGUS)
 				.add(Items.WARPED_FUNGUS);
 		// Planks
@@ -82,9 +84,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.add(ModItems.RED_YARNBALL)
 				.add(ModItems.WHITE_YARNBALL)
 				.add(ModItems.YELLOW_YARNBALL);
-		// Yarnballs except white
-		getOrCreateTagBuilder(ModTags.Items.ALL_YARNBALLS_EXCEPT_WHITE)
-				.add(ModItems.BLACK_YARNBALL)
+		// Yarnballs (which dye to black)
+		getOrCreateTagBuilder(ModTags.Items.ALL_YARNBALLS_WHICH_DYE_TO_LIGHT_GRAY)
 				.add(ModItems.BLUE_YARNBALL)
 				.add(ModItems.BROWN_YARNBALL)
 				.add(ModItems.CYAN_YARNBALL)
@@ -92,6 +93,22 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.add(ModItems.GREEN_YARNBALL)
 				.add(ModItems.LIGHT_BLUE_YARNBALL)
 				.add(ModItems.LIGHT_GRAY_YARNBALL)
+				.add(ModItems.LIME_YARNBALL)
+				.add(ModItems.MAGENTA_YARNBALL)
+				.add(ModItems.ORANGE_YARNBALL)
+				.add(ModItems.PINK_YARNBALL)
+				.add(ModItems.PURPLE_YARNBALL)
+				.add(ModItems.RED_YARNBALL)
+				.add(ModItems.WHITE_YARNBALL)
+				.add(ModItems.YELLOW_YARNBALL);
+		// Yarnballs (which dye to light gray)
+		getOrCreateTagBuilder(ModTags.Items.ALL_YARNBALLS_WHICH_DYE_TO_LIGHT_GRAY)
+				.add(ModItems.BLUE_YARNBALL)
+				.add(ModItems.BROWN_YARNBALL)
+				.add(ModItems.CYAN_YARNBALL)
+				.add(ModItems.GRAY_YARNBALL)
+				.add(ModItems.GREEN_YARNBALL)
+				.add(ModItems.LIGHT_BLUE_YARNBALL)
 				.add(ModItems.LIME_YARNBALL)
 				.add(ModItems.MAGENTA_YARNBALL)
 				.add(ModItems.ORANGE_YARNBALL)
@@ -106,11 +123,34 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.add(Items.SOUL_SAND) // TODO: Replace with new pile item.
 				.add(Items.SOUL_SOIL) // TODO: Replace with new pile item.
 				.add(ModItems.SULPHUR_LUMP);
-		// Enable hatchets to properly chop wood blocks.
+		//endregion
+		
+		//region ## Equipment ##
+		getOrCreateTagBuilder(ModTags.Items.ALL_CHOPPING_TOOLS)
+				// TODO: Add Eiduril, Golden, and Iron, hatchets.
+				.add(Items.DIAMOND_AXE)
+				.add(Items.GOLDEN_AXE)
+				.add(Items.IRON_AXE)
+				.add(Items.NETHERITE_AXE)
+				.add(Items.STONE_AXE)
+				.add(Items.WOODEN_AXE)
+				.add(ModItems.BRASS_AXE)
+				.add(ModItems.BRASS_HATCHET)
+				.add(ModItems.COPPER_AXE)
+				.add(ModItems.COPPER_HATCHET);
+		//endregion
+		
+		// Enable hatchets and custom axes to properly chop wood blocks.
 		getOrCreateTagBuilder(ItemTags.AXES)
+				// [tier 2] Shard Tools
 				.add(ModItems.FLINT_HATCHET)
 				.add(ModItems.GLASS_HATCHET)
-				.add(ModItems.OBSIDIAN_HATCHET);
+				.add(ModItems.OBSIDIAN_HATCHET)
+				// [tier 3] Metal Tools
+				.add(ModItems.BRASS_AXE)
+				.add(ModItems.BRASS_HATCHET)
+				.add(ModItems.COPPER_AXE)
+				.add(ModItems.COPPER_HATCHET);
 		// NOTE: These method calls are merely for reference; they effectively do nothing (without any extra "add" method call).
 		getOrCreateTagBuilder(ItemTags.ARROWS);
 		getOrCreateTagBuilder(ItemTags.BEDS);

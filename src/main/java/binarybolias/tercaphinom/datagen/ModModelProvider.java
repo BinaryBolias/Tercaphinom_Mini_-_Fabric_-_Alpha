@@ -6,14 +6,24 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
+import java.util.Map;
 import java.util.Objects;
 
 import static binarybolias.tercaphinom.references.Reference.log;
 import static binarybolias.tercaphinom.references.Reference.logError;
+
+/**
+ * Relevant references:
+ * {@link net.minecraft.data.client.BlockStateModelGenerator}
+ */
 
 public class ModModelProvider extends FabricModelProvider {
 	public ModModelProvider(FabricDataOutput output) {
@@ -48,69 +58,60 @@ public class ModModelProvider extends FabricModelProvider {
 		//endregion
 		
 		
-		//## Elemental ##
+		//region## Elemental ##
 		//# Mosaic & Plank #
-		
 		//# Stone (brick) #
-		
 		//# Stone (cobbled) #
 		bSMG.registerSimpleCubeAll(ModBlocks.COBBLED_STIEFANE_BLOCK);
-		
 		//# Stone (natural) #
 		bSMG.registerSimpleCubeAll(ModBlocks.STIEFANE_BLOCK);
-		
 		//# Stone (polished) #
 		bSMG.registerSimpleCubeAll(ModBlocks.POLISHED_STIEFANE_BLOCK);
-		
 		//# Miscellaneous #
 		bSMG.registerSimpleCubeAll(ModBlocks.ASH_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.SKORSAND_BLOCK);
+		//endregion
 		
-		//## Modified & Transitional ##
+		//region ## Modified & Transitional ##
 		//# Ore (stiefane) #
 		bSMG.registerSimpleCubeAll(ModBlocks.STIEFANE_LAPIS_ORE);
+		//endregion
 		
-		
-		//## Junction & Utility ##
+		//region## Junction & Utility ##
 		//# Button & Pressure Plate #
 		stiefaneBrickPool.button(ModBlocks.STIEFANE_BUTTON);
 		stiefaneBrickPool.pressurePlate(ModBlocks.STIEFANE_PRESSURE_PLATE);
 		verdakPlankPool.button(ModBlocks.VERDAK_BUTTON);
 		verdakPlankPool.pressurePlate(ModBlocks.VERDAK_PRESSURE_PLATE);
-		
 		//# Container & Workstation #
-		
 		//# Door & Hatch #
 		bSMG.registerDoor(ModBlocks.VERDAK_DOOR);
 		bSMG.registerTrapdoor(ModBlocks.VERDAK_HATCH);
-		
 		//# Fence Gate, Fence Post, & Wall #
 		stiefaneBrickPool.wall(ModBlocks.STIEFANE_BRICK_WALL_POST);
 		verdakPlankPool.fenceGate(ModBlocks.VERDAK_FENCE_GATE);
 		verdakPlankPool.fence(ModBlocks.VERDAK_FENCE_POST);
-		
 		//# Ladder #
-		
 		//# Pane #
-		
 		//# Sign #
-		
 		//# Slab & Stair #
 		stiefaneBrickPool.slab(ModBlocks.STIEFANE_BRICK_SLAB);
 		stiefaneBrickPool.stairs(ModBlocks.STIEFANE_BRICK_STAIR);
 		verdakPlankPool.slab(ModBlocks.VERDAK_PLANK_SLAB);
 		verdakPlankPool.stairs(ModBlocks.VERDAK_PLANK_STAIR);
-		
 		//# Torch #
+		//endregion
 		
-		
-		//## Miscellaneous ##
+		//region ## Miscellaneous ##
 		//# Miscellaneous #
 //		bSMG.registerSimpleCubeAll(ModBlocks.ETERNALITH);
-		bSMG.registerRotatable(ModBlocks.ETERNALITH);
+		bSMG.registerRotatable(ModBlocks.ETERNALITH_BLOCK);
+		//endregion
 		
-		
-		//## Joke & Unserious ##
+		//### Joke & Unserious ###
+		//## Crops & Foliage ##
+		//# Miscellaneous #
+		bSMG.registerTintableCross(ModBlocks.STARCHCAP_MUSHROOM, BlockStateModelGenerator.TintType.NOT_TINTED);
 		//# Cheese #
 		bSMG.registerSimpleCubeAll(ModBlocks.BLUE_CHEESE_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK);
@@ -149,13 +150,18 @@ public class ModModelProvider extends FabricModelProvider {
 		// # Cobblestone #
 		genItem(iMG, ModItems.STIEFANE_COBBLESTONE, "cobblestone", Models.GENERATED);
 		// # Gram & Ingot #
+		genItem(iMG, ModItems.BRASS_GRAM, "ingot", Models.GENERATED);
+		genItem(iMG, ModItems.BRASS_INGOT, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.COPPER_GRAM, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.GOLD_GRAM, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.IRON_GRAM, "ingot", Models.GENERATED);
 		// # Jewel #
 		// # Log & Trunk #
 		genItem(iMG, ModItems.VERDAK_LOG, "log", Models.GENERATED);
+		genItem(iMG, ModItems.VERDAK_TRUNK, "log", Models.GENERATED);
 		// # Lump & Nugget #
+		genItem(iMG, ModItems.RAW_BRASS_LUMP, "lump", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_BRASS_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_COPPER_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.SULPHUR_LUMP, "lump", Models.GENERATED);
 		// # Pile (seed) #
@@ -213,24 +219,81 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.OBSIDIAN_HATCHET, "equipment", Models.HANDHELD);
 		genItem(iMG, ModItems.OBSIDIAN_HOE, "equipment", Models.HANDHELD);
 		genItem(iMG, ModItems.OBSIDIAN_SPEAR, "equipment", Models.HANDHELD);
-		//# [Tier 3] Brass #
-		//# [Tier 3] Copper #
+		//# [Tier 3] Brass (armor) #
+		// Note: Assimilating the entire vanilla armor generation scheme is tedious,
+		//  so we're just using the vanilla generator, and thus we need to keep armor item textures
+		//  in the base directory, rather than under "/item/equipment/" like a civilized individual.
+		iMG.registerArmor((ArmorItem) ModItems.BRASS_BOOT_PAIR);
+		iMG.registerArmor((ArmorItem) ModItems.BRASS_CHESTPLATE);
+		iMG.registerArmor((ArmorItem) ModItems.BRASS_HELMET);
+		iMG.registerArmor((ArmorItem) ModItems.BRASS_LEGGING_PAIR);
+		//# [Tier 3] Brass (tools) #
+		genItem(iMG, ModItems.BRASS_AXE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.BRASS_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.BRASS_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.BRASS_HOE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.BRASS_MALLET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.BRASS_PICKAXE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.BRASS_SHOVEL, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.BRASS_SPEAR, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.BRASS_SWORD, "equipment", Models.HANDHELD);
+		//# [Tier 3] Copper (armor) #
+		iMG.registerArmor((ArmorItem) ModItems.COPPER_BOOT_PAIR);
+		iMG.registerArmor((ArmorItem) ModItems.COPPER_CHESTPLATE);
+		iMG.registerArmor((ArmorItem) ModItems.COPPER_HELMET);
+		iMG.registerArmor((ArmorItem) ModItems.COPPER_LEGGING_PAIR);
+		//# [Tier 3] Copper (tools) #
+		genItem(iMG, ModItems.COPPER_AXE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.COPPER_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.COPPER_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.COPPER_HOE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.COPPER_MALLET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.COPPER_PICKAXE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.COPPER_SHOVEL, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.COPPER_SPEAR, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.COPPER_SWORD, "equipment", Models.HANDHELD);
 		//# [Tier 3] Eiduril #
 		//# [Tier 3] Gold #
 		//# [Tier 3] Iron #
 		//endregion
 		
+		
 		//region  ## Joke & Unserious ##
-		//# Cheese #
+		
+		//## (J&U) Basic Resources ##
+		//# Ball #
+		genItem(iMG, ModItems.CHERRY_JELLYBALL, "unserious", Models.GENERATED);
+		//# Brick #
+		//# Cobblestone #
+		//# Gram & Ingot #
+		genItem(iMG, ModItems.NUTRILLARN_GRAM, "unserious", Models.GENERATED);
+		genItem(iMG, ModItems.NUTRILLARN_INGOT, "unserious", Models.GENERATED);
+		//# Jewel #
+		//# Log & Trunk #
+		//# Lump & Nugget #
+		genItem(iMG, ModItems.RAW_NUTRILLARN_LUMP, "unserious", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_NUTRILLARN_NUGGET, "unserious", Models.GENERATED);
+		//# Pile (seed) #
+		//# Pile (miscellaneous) #
+		genItem(iMG, ModItems.MILKLEAF_PILE, "unserious", Models.GENERATED);
+		//# Plank #
+		//# Bundle & Rod & Stick #
+		//# Shard #
+		//# Miscellaneous (cheese) #
 		genItem(iMG, ModItems.BLUE_CHEESE_WEDGE, "unserious", Models.GENERATED);
 		genItem(iMG, ModItems.SILKY_SMOOTH_CHEESE_WEDGE, "unserious", Models.GENERATED);
 		genItem(iMG, ModItems.YELLOW_CHEESE_WEDGE, "unserious", Models.GENERATED);
-		//# Miscellaneous #
+		//# Miscellaneous (miscellaneous) #
+		genItem(iMG, ModItems.CHULK_BERRY, "unserious", Models.GENERATED);
 		genItem(iMG, ModItems.ENCHANTED_BRICK, "unserious", Models.GENERATED);
 		genItem(iMG, ModItems.MINIWIZARD, "unserious", Models.GENERATED);
+//		genItem(iMG, ModItems.STARCHCAP_MUSHROOM, "unserious", Models.GENERATED); // TODO: Use separate item model generation.
+		
+		//## (J&U) Equipment ##
+		//# Nutrillarn #
+		//# Miscellaneous #
+		
 		//endregion
-		
-		
 	}
 	
 	/**
@@ -254,6 +317,7 @@ public class ModModelProvider extends FabricModelProvider {
 		identifier = identifier.withPrefixedPath(path);
 		model.upload(ModelIds.getItemModelId(item), new TextureMap().put(TextureKey.LAYER0, identifier), itemModelGenerator.writer);
 	}
+	
 	
 	/**
 	 * Register a block state model while taking in a custom path. Useful for texture organization in the file system.

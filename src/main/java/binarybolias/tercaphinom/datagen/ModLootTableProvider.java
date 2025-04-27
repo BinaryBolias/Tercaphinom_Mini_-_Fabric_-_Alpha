@@ -42,8 +42,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	
 	// TODO: Create a new "chopping tools" tag instead of checking separately for axes and hatchets?
 	public static final LootCondition.Builder WITH_AXE_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES));
-	public static final LootCondition.Builder WITH_HATCHET_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(Reference.ModTags.Items.ALL_HATCHETS));
-	public static final LootCondition.Builder WITH_CHOPPING_TOOL = WITH_AXE_TOOL.or(WITH_HATCHET_TOOL);
+	public static final LootCondition.Builder WITH_CHOPPING_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(Reference.ModTags.Items.ALL_CHOPPING_TOOLS));
+//	public static final LootCondition.Builder WITH_CHOPPING_TOOL = WITH_AXE_TOOL.or(WITH_HATCHET_TOOL);
 	public static final LootCondition.Builder WITHOUT_CHOPPING_TOOL = WITH_CHOPPING_TOOL.invert();
 	public static final LootCondition.Builder WITH_CHOPPING_TOOL_OR_SILK_TOUCH = WITH_CHOPPING_TOOL.or(WITH_SILK_TOUCH);
 	public static final LootCondition.Builder WITH_SHOVEL_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.SHOVELS));
@@ -227,6 +227,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addBasicItemDrop(ModBlocks.SKORSAND_BLOCK, ModItems.SKORSAND_PILE, 8);
 		//endregion
 		
+		//# Metal & Wooden Panes #
+		addItemAOrItemBWithSilkTouchDrop(Blocks.IRON_BARS, Items.IRON_NUGGET, 16, ModItems.IRON_GRAM, 16);
+		
 		//region ## Various Vanilla Overrides ##
 		// Beds
 		addBedOfPigmentDrop(Blocks.BLACK_BED, Blocks.BLACK_CARPET);
@@ -276,9 +279,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 						)
 				)
 		);
-		// Coarse Dirt
-		addCoarseDirtDrop(Blocks.COARSE_DIRT, ModItems.DIRT_PILE, ModItems.GRAVEL_PILE, Items.FLINT);
-		// Dirt & Dirt Variants
+		// Cobweb Block
+		addDrop(Blocks.COBWEB, LootTable.builder()
+				.pool(makeDoubleEntryAlternativePool(
+								makeUniformCountWithConditionItemEntry(WITH_SILK_TOUCH, ModItems.SILK_WAD, 5, 12)
+										.apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(9))),
+								makeUniformCountWithFortuneBonusItemEntry(ModItems.SILK_WAD, 3, 7)
+						)
+				)
+		);
+		// Dirt, Coarse Dirt, Gravel, & Dirt Variants
 		addBasicItemDrop(Blocks.DIRT, ModItems.DIRT_PILE,8);
 		addBasicItemDrop(Blocks.DIRT_PATH, ModItems.DIRT_PILE,8);
 		addBasicItemDrop(Blocks.FARMLAND, ModItems.DIRT_PILE,8);
@@ -287,6 +297,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addBasicDoubleItemDrop(Blocks.ROOTED_DIRT, ModItems.DIRT_PILE,8, Items.STICK, 1);
 		addRyeGrassyDirtDrop(Blocks.GRASS_BLOCK, ModItems.DIRT_PILE, ModItems.GRASS_TUFT, Items.WHEAT_SEEDS);
 		addMyceliumGrassyDirtDrop(Blocks.MYCELIUM, ModItems.DIRT_PILE, Blocks.BROWN_MUSHROOM, Blocks.RED_MUSHROOM);
+		addCoarseDirtDrop(Blocks.COARSE_DIRT, ModItems.DIRT_PILE, ModItems.GRAVEL_PILE, Items.FLINT);
+		addGravelDrop(Blocks.GRAVEL, ModItems.GRAVEL_PILE, Items.FLINT);
 		// Fire
 		addFireDrop(Blocks.FIRE, Items.BLAZE_POWDER);
 		addFireDrop(Blocks.SOUL_FIRE, Items.BLAZE_POWDER);
@@ -343,11 +355,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addItemOrBlockWithSilkTouchDrop(Blocks.YELLOW_STAINED_GLASS_PANE, ModItems.GLASS_SHARD, 1);
 		// Grass
 		addShortGrassAndTallGrassDrops(Blocks.SHORT_GRASS, Blocks.TALL_GRASS);
-		// Gravel
-		addGravelDrop(Blocks.GRAVEL, ModItems.GRAVEL_PILE, Items.FLINT);
 		// Iron
-		addLegacyDoorItemAOrItemBWithSilkTouchDrop(Blocks.IRON_DOOR, Items.RAW_IRON, 6, Items.IRON_INGOT, 6);
-		addItemAOrItemBWithSilkTouchDrop(Blocks.IRON_TRAPDOOR, Items.RAW_IRON, 3, Items.IRON_INGOT, 3);
+		addLegacyDoorItemAOrItemBWithSilkTouchDrop(Blocks.IRON_DOOR, ModItems.IRON_GRAM, 36, Items.IRON_INGOT, 6);
+		addItemAOrItemBWithSilkTouchDrop(Blocks.IRON_TRAPDOOR, ModItems.IRON_GRAM, 18, Items.IRON_INGOT, 3);
 		// Moss
 		addBasicItemDrop(Blocks.MOSS_BLOCK, Blocks.MOSS_CARPET, 8);
 		// Obsidian
@@ -359,12 +369,21 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addPowderSnowBlockDrop(Blocks.POWDER_SNOW, Items.SNOWBALL, ModItems.FREEZE_POWDER_PILE);
 		addSnowBlockDrop(Blocks.SNOW_BLOCK, Items.SNOWBALL, ModItems.FREEZE_POWDER_PILE);
 		addSnowMoundDrop(Blocks.SNOW, Items.SNOWBALL, ModItems.FREEZE_POWDER_PILE);
-		// Spawner
+		// Spawn Cage
 		addDrop(Blocks.SPAWNER, LootTable.builder()
-				.pool(
-						LootPool.builder() // Newest; just having an empty spawner drop. Spawn eggs could be craftable in survival via the Miniwizard.
-								.with(ItemEntry.builder(Blocks.SPAWNER)
-								)
+				.pool(makeDoubleEntryAlternativePool(
+						ItemEntry.builder(Blocks.SPAWNER)
+								.conditionally(WITH_SILK_TOUCH),
+						makeConstantCountItemEntry(Items.IRON_NUGGET, 96)
+				))
+				.pool(LootPool.builder()
+						.with(makeConstantCountWithConditionItemEntry(
+								WITHOUT_SILK_TOUCH, Items.REDSTONE, 4))
+				));
+//				.pool(
+//						LootPool.builder() // Newest; just having an empty spawner drop. Spawn eggs could be craftable in survival via the Miniwizard.
+//								.with(ItemEntry.builder(Blocks.SPAWNER)
+//								)
 //						LootPool.builder() // New.
 //								.with(ItemEntry.builder(Blocks.SPAWNER)
 //										.apply(CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY)
@@ -374,7 +393,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 //								.with(ItemEntry.builder(Blocks.SPAWNER)
 //										.apply(CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY))
 //								)
-				));
+//				));
 		// Wool
 		addBasicItemDrop(Blocks.BLACK_WOOL, Blocks.BLACK_CARPET, 8);
 		addBasicItemDrop(Blocks.BLUE_WOOL, Blocks.BLUE_CARPET, 8);
@@ -394,8 +413,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addBasicItemDrop(Blocks.YELLOW_WOOL, Blocks.YELLOW_CARPET, 8);
 		//endregion
 		
-		//region ## Joke & Unserious ##
-		// Cheese
+		//region ### Joke & Unserious ###
+		//## Crops & Foliage ##
+		//# Miscellaneous #
+		addDrop(ModBlocks.STARCHCAP_MUSHROOM);
+		//## Miscellaneous ##
+		//# Cheese #
 		addDrop(ModBlocks.BLUE_CHEESE_BLOCK, LootTable.builder()
 				.pool(
 						LootPool.builder()
@@ -450,7 +473,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 								.conditionally(WITH_SILK_TOUCH)
 								.with(ItemEntry.builder(ModItems.SILKY_SMOOTH_CHEESE_WEDGE))
 				));
-		// Miscellaneous
+		//# Miscellaneous #
 		addItemOrBlockWithSilkTouchDrop(ModBlocks.HYPERSMOOTH_CREAMSTONE, ModBlocks.ULTRASMOOTH_STONE, 1);
 		addItemOrBlockWithSilkTouchDrop(ModBlocks.ULTRASMOOTH_STONE, Blocks.SMOOTH_STONE, 1);
 		//endregion
@@ -465,14 +488,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	
 	private void addLogAndTrunkDrops(Block log, Block trunk) {
 		addDrop(log, makeLogLootTable(log));
-		// TODO: Make this loot table link to the corresponding log loot table directly, dropping everything the log drops.
-		//  - Same technique as sheep color variants.
-		addDrop(trunk, makeLogLootTable(log).pool(LootPool.builder().with(
-						ItemEntry.builder(Items.STICK)
-								.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))
-								.apply(ApplyBonusLootFunction.uniformBonusCount(Enchantments.FORTUNE))
-				)
-		));
+		addDrop(trunk, makeTrunkLootTable(trunk, log));
 	}
 	
 	
@@ -1151,6 +1167,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 				);
 	}
 	
+	
 	private static LootTable.Builder makeItemOrBlockWithSilkTouchLootTable(
 			ItemConvertible block, ItemConvertible item, int itemCount
 	) {
@@ -1168,6 +1185,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 				);
 	}
 	
+	
 	private static LootTable.Builder makeItemWithSecondaryItemOrBlockWithSilkTouchLootTable(
 			ItemConvertible block,
 			ItemConvertible primaryItem, int primaryAmount,
@@ -1183,21 +1201,51 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 				);
 	}
 	
+	
 	private static LootTable.Builder makeLogLootTable(ItemConvertible log) {
 		return LootTable.builder()
-				.pool( // Drop self if mined with a chopping tool.
-						LootPool.builder()
-								.conditionally(WITH_CHOPPING_TOOL)
-								.with(ItemEntry.builder(log))
+				.pool(LootPool.builder()
+						// Drop self if mined with a chopping tool or Silk Touch.
+						.conditionally(WITH_CHOPPING_TOOL.or(WITH_SILK_TOUCH))
+						.with(ItemEntry.builder(log))
 				)
-				.pool( // Drop 12 to 14 sticks if mined without a chopping tool (plank potential is converted to sticks).
-						// NOTE: 6 planks from log via workbench crafting, 7 planks via sawmill crafting.
-						LootPool.builder()
-								.conditionally(WITH_CHOPPING_TOOL.invert())
-								.with(ItemEntry.builder(Items.STICK)
-										.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(12.0F, 14.0F)))
-								)
+				.pool(LootPool.builder()
+						// Drop Sticks if mined without chopping tool nor Silk Touch.
+						//  - Stick drop amount is roughly derived from plank potential.
+						.conditionally(WITHOUT_CHOPPING_TOOL.and(WITHOUT_SILK_TOUCH))
+						.with(ItemEntry.builder(Items.STICK)
+								.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(12.0F, 14.0F)))
+						)
 				);
+	}
+	
+	
+	private static LootTable.Builder makeTrunkLootTable(ItemConvertible trunk, ItemConvertible log) {
+		return LootTable.builder()
+				.pool(LootPool.builder()
+						// Drop self if mined with a Silk Touch chopping tool.
+						.conditionally(WITH_CHOPPING_TOOL.and(WITH_SILK_TOUCH))
+						.with(ItemEntry.builder(trunk))
+				)
+				.pool(LootPool.builder()
+						// Drop log if mined with either a chopping tool or a Silk Touch non-chopping tool.
+						.conditionally(WITHOUT_CHOPPING_TOOL.or(WITHOUT_SILK_TOUCH))
+						.conditionally(WITH_CHOPPING_TOOL.or(WITH_SILK_TOUCH))
+						.with(ItemEntry.builder(log))
+				)
+				.pool(LootPool.builder().with(AlternativeEntry.builder(
+						// Drop Sticks.
+						//  - Some are always dropped to represent the tree bark.
+						//  - Plank potential is roughly converted into sticks if mined without chopping tool nor Silk Touch.
+						ItemEntry.builder(Items.STICK)
+								.conditionally(WITHOUT_CHOPPING_TOOL.and(WITHOUT_SILK_TOUCH))
+								.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(13.0F, 15.0F)))
+								.apply(ApplyBonusLootFunction.uniformBonusCount(Enchantments.FORTUNE)),
+						ItemEntry.builder(Items.STICK)
+								.conditionally(WITHOUT_CHOPPING_TOOL.or(WITHOUT_SILK_TOUCH))
+								.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))
+								.apply(ApplyBonusLootFunction.uniformBonusCount(Enchantments.FORTUNE))
+				)));
 	}
 	
 	

@@ -1,21 +1,14 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "redstone",
-  "key": {
-    "H": {
-      "item": "minecraft:hay_block"
-    },
-    "R": {
-      "item": "minecraft:redstone"
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "vanilla_override_placeholder",
+  "ingredients": [
+    {
+      "item": "minecraft:bedrock"
     }
-  },
-  "pattern": [
-    " R ",
-    "RHR",
-    " R "
   ],
   "result": {
-    "count": 1,
-    "id": "minecraft:target"
-  }
+    "id": "minecraft:enchanted_golden_apple"
+  },
+  "show_notification": false
 }

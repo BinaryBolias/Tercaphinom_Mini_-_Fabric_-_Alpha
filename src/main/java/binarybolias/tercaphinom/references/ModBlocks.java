@@ -1,6 +1,5 @@
 package binarybolias.tercaphinom.references;
 
-import binarybolias.tercaphinom.block.CustomDoorBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -12,6 +11,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.ColorCode;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 import static binarybolias.tercaphinom.references.Reference.*;
 
@@ -53,7 +53,7 @@ public class ModBlocks {
 			new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)
 					.mapColor(MapColor.PALE_GREEN)
 					.velocityMultiplier(0.96875F))); // TODO: Make unique.
-	public static final Block VERDAK_TRUNK = registerBlockWithItem("verdak_trunk",
+	public static final Block VERDAK_TRUNK = registerBlock("verdak_trunk",
 			new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)
 					.mapColor(state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ?
 							MapColor.PALE_GREEN : /* top color */
@@ -160,7 +160,7 @@ public class ModBlocks {
 	
 	//region  ## Miscellaneous ##
 	//# Miscellaneous #
-	public static final Block ETERNALITH = registerBlockWithItem("eternalith", // Rename to "eternalith_block"?
+	public static final Block ETERNALITH_BLOCK = registerBlockWithItem("eternalith_block",
 			new Block(
 					AbstractBlock.Settings.create()
 							.mapColor(MapColor.GRAY)
@@ -169,12 +169,25 @@ public class ModBlocks {
 							.dropsNothing()
 							.allowsSpawning(Blocks::never)
 			)
-//			new Block(AbstractBlock.Settings.copy(Blocks.BEDROCK))
-	); // TODO: Make unique.
+	);
 	//endregion
 	
-	//region  ## Joke & Unserious ##
-	//# Cheese #
+	//region  ### Joke & Unserious Blocks ###
+	//## (J&U) Crops & Foliage ##
+	public static final Block STARCHCAP_MUSHROOM = registerBlock("starchcap_mushroom",
+			new MushroomPlantBlock(
+					TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
+					AbstractBlock.Settings.create()
+							.mapColor(MapColor.OAK_TAN)
+							.noCollision()
+							.ticksRandomly()
+							.strength(0.8F, 3.0F)
+							.sounds(BlockSoundGroup.GRASS)
+							.postProcess(Blocks::always)
+							.pistonBehavior(PistonBehavior.DESTROY)
+			));
+	//## (J&U) Elemental ##
+	//# Miscellaneous (cheese) #
 	public static final Block BLUE_CHEESE_BLOCK = registerBlockWithItem("blue_cheese_block",
 			new Block(AbstractBlock.Settings.create()
 					.mapColor(MapColor.STONE_GRAY)
@@ -190,20 +203,20 @@ public class ModBlocks {
 					.mapColor(MapColor.STONE_GRAY)
 					.instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F)
 					.slipperiness(0.725F)));
-	//# Miscellaneous #
+	//# Miscellaneous (miscellaneous) #
 	public static final Block HYPERSMOOTH_CREAMSTONE = registerBlockWithItem("hypersmooth_creamstone",
 			new Block(AbstractBlock.Settings.create()
 					.mapColor(MapColor.STONE_GRAY)
 					.instrument(Instrument.BASEDRUM).strength(3.6F, 8.0F)
 					.luminance(state -> 2)
-					.strength(1.5F, 6.0F)
+					.strength(4.5F, 9.0F)
 					.pistonBehavior(PistonBehavior.PUSH_ONLY)
 					.slipperiness(1.0375F))); // Note: Slipperiness of Blue Ice is 0.989.
 	public static final Block ULTRASMOOTH_STONE = registerBlockWithItem("ultrasmooth_stone",
 			new Block(AbstractBlock.Settings.create()
 					.mapColor(MapColor.STONE_GRAY)
 					.instrument(Instrument.BASEDRUM).strength(2.4F, 6.0F)
-					.strength(1.5F, 6.0F)
+					.strength(3.0F, 7.0F)
 					.pistonBehavior(PistonBehavior.PUSH_ONLY)
 					.slipperiness(0.98F))); // Note: Same slipperiness as ice, packed ice, and frosted ice.
 	//endregion

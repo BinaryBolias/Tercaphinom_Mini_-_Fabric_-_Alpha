@@ -1,21 +1,14 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "X": {
-      "item": "minecraft:diamond"
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "vanilla_override_placeholder",
+  "ingredients": [
+    {
+      "item": "minecraft:bedrock"
     }
-  },
-  "pattern": [
-    "XX",
-    "X#",
-    " #"
   ],
   "result": {
-    "count": 1,
-    "id": "minecraft:diamond_axe"
-  }
+    "id": "minecraft:enchanted_golden_apple"
+  },
+  "show_notification": false
 }

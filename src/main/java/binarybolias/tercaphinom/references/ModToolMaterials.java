@@ -20,20 +20,22 @@ public enum ModToolMaterials implements ToolMaterial {
 	WOODEN_STICK(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 7, 2.0F, 0.0F, 0,
 			() -> Ingredient.ofItems(Items.STICK)),
 	//WOODEN_PLANK
-	FLINT(BlockTags.INCORRECT_FOR_STONE_TOOL, 120, 3.0F, 2.0F, 5,
+	FLINT(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 120, 3.0F, 2.0F, 5,
 			() -> Ingredient.ofItems(Items.FLINT)),
-	GLASS(BlockTags.INCORRECT_FOR_STONE_TOOL, 108, 4.0F, 2.0F, 0,
+	GLASS(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 108, 4.0F, 2.0F, 0,
 			() -> Ingredient.ofItems(ModItems.GLASS_SHARD)),
-	OBSIDIAN(BlockTags.INCORRECT_FOR_STONE_TOOL, 96, 5.0F, 2.0F, 7,
-			() -> Ingredient.ofItems(ModItems.OBSIDIAN_SHARD));
-//	COPPER(BlockTags.INCORRECT_FOR_IRON_TOOL, 228, 6.0F, 2.0F, 15,
-//			() -> Ingredient.ofItems(Items.COPPER_INGOT)),
+	OBSIDIAN(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 96, 5.0F, 2.0F, 7,
+			() -> Ingredient.ofItems(ModItems.OBSIDIAN_SHARD)),
+	COPPER(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 228, 6.0F, 2.0F, 15,
+			() -> Ingredient.ofItems(Items.COPPER_INGOT)),
 	//GOLD
 	//IRON
-//	BRASS(BlockTags.INCORRECT_FOR_IRON_TOOL, 276, 5.0F, 2.0F, 15,
-//			() -> Ingredient.ofItems(Items.COPPER_INGOT));
+	BRASS(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 276, 5.0F, 2.0F, 14,
+			() -> Ingredient.ofItems(ModItems.BRASS_INGOT)),
 	//EIDURIL
 	//NETHERITE (placeholder name)
+	NUTRILLARN(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 96, 12.0F, 7.0F, 0,
+			() -> Ingredient.ofItems(ModItems.NUTRILLARN_INGOT));
 	
 	private final TagKey<Block> inverseTag;
 	private final int itemDurability;

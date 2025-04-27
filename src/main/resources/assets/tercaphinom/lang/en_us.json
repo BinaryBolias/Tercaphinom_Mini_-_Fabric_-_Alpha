@@ -31,7 +31,7 @@
 	"block.tercaphinom.verdak_plank_slab": "Verdak Plank Slab",
 	"block.tercaphinom.verdak_plank_stair": "Verdak Plank Stair",
 	
-	"block.tercaphinom.eternalith": "Eternalith Block",
+	"block.tercaphinom.eternalith_block": "Eternalith Block",
 	
 	"block.tercaphinom.blue_cheese_block": "Blue Cheese Block",
 	"block.tercaphinom.silky_smooth_cheese_block": "Silky Smooth Cheese Block",
@@ -63,12 +63,16 @@
 	
 	"item.tercaphinom.stiefane_cobblestone": "Stiefane Cobblestone",
 	
+	"item.tercaphinom.brass_gram": "Brass Gram",
+	"item.tercaphinom.brass_ingot": "Brass Ingot",
 	"item.tercaphinom.copper_gram": "Copper Gram",
 	"item.tercaphinom.gold_gram": "Gold Gram",
 	"item.tercaphinom.iron_gram": "Iron Gram",
 	
 	"item.tercaphinom.verdak_log": "Verdak Log",
 	
+	"item.tercaphinom.raw_brass_lump": "Raw Brass Lump",
+	"item.tercaphinom.raw_brass_nugget": "Raw Brass Nugget",
 	"item.tercaphinom.raw_copper_nugget": "Raw Copper Nugget",
 	"item.tercaphinom.sulphur_lump": "Sulphur Lump",
 	
@@ -122,10 +126,52 @@
 	"item.tercaphinom.obsidian_hoe": "Obsidian Hoe",
 	"item.tercaphinom.obsidian_spear": "Obsidian Spear",
 	
+	"item.tercaphinom.brass_boot_pair": "Pair of Brass Boots",
+	"item.tercaphinom.brass_chestplate": "Brass Chestplate",
+	"item.tercaphinom.brass_helmet": "Brass Helmet",
+	"item.tercaphinom.brass_legging_pair": "Pair of Brass Leggings",
+	
+	"item.tercaphinom.brass_axe": "Brass Axe",
+	"item.tercaphinom.brass_dagger": "Brass Dagger",
+	"item.tercaphinom.brass_hatchet": "Brass Hatchet",
+	"item.tercaphinom.brass_hoe": "Brass Hoe",
+	"item.tercaphinom.brass_mallet": "Brass Mallet",
+	"item.tercaphinom.brass_pickaxe": "Brass Pickaxe",
+	"item.tercaphinom.brass_shovel": "Brass Shovel",
+	"item.tercaphinom.brass_spear": "Brass Spear",
+	"item.tercaphinom.brass_sword": "Brass Sword",
+	
+	"item.tercaphinom.copper_boot_pair": "Pair of Copper Boots",
+	"item.tercaphinom.copper_chestplate": "Copper Chestplate",
+	"item.tercaphinom.copper_helmet": "Copper Helmet",
+	"item.tercaphinom.copper_legging_pair": "Pair of Copper Leggings",
+	
+	"item.tercaphinom.copper_axe": "Copper Axe",
+	"item.tercaphinom.copper_dagger": "Copper Dagger",
+	"item.tercaphinom.copper_hatchet": "Copper Hatchet",
+	"item.tercaphinom.copper_hoe": "Copper Hoe",
+	"item.tercaphinom.copper_mallet": "Copper Mallet",
+	"item.tercaphinom.copper_pickaxe": "Copper Pickaxe",
+	"item.tercaphinom.copper_shovel": "Copper Shovel",
+	"item.tercaphinom.copper_spear": "Copper Spear",
+	"item.tercaphinom.copper_sword": "Copper Sword",
+	
+	"item.tercaphinom.cherry_jellyball": "Cherry Jellyball",
+	
+	"item.tercaphinom.nutrillarn_gram": "Nutrillarn Gram",
+	"item.tercaphinom.nutrillarn_ingot": "Nutrillarn Ingot",
+	
+	"item.tercaphinom.raw_nutrillarn_lump": "Raw Nutrillarn Lump",
+	"item.tercaphinom.raw_nutrillarn_nugget": "Raw Nutrillarn Nugget",
+	
+	"item.tercaphinom.milkleaf_pile": "Milkleaf Pile",
+	
 	"item.tercaphinom.blue_cheese_wedge": "Blue Cheese Wedge",
 	"item.tercaphinom.silky_smooth_cheese_wedge": "Silky Smooth Cheese Wedge",
 	"item.tercaphinom.yellow_cheese_wedge": "Yellow Cheese Wedge",
 	
+	"item.tercaphinom.chulk_berry": "Chulk Berry",
 	"item.tercaphinom.enchanted_brick": "Enchanted Brick",
-	"item.tercaphinom.miniwizard": "Miniwizard"
+	"item.tercaphinom.miniwizard": "Miniwizard",
+	"block.tercaphinom.starchcap_mushroom": "Starchcap Mushroom"
 }

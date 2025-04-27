@@ -26,13 +26,13 @@ public class ModItemGroups {
 	public static final ItemGroup BLOCKS = Registry.register(Registries.ITEM_GROUP,
 			identifier(ModID + "_blocks_group"),
 			FabricItemGroup.builder().displayName(displayName("blocks"))
-					.icon(() -> new ItemStack(ModBlocks.ETERNALITH))
+					.icon(() -> new ItemStack(ModBlocks.ETERNALITH_BLOCK))
 					.entries(((displayContext, entries) -> {
 						// ## Crops & Foliage ##
 						//# Leaf #
 						//# Log & Trunk #
 						entries.add(ModItems.VERDAK_LOG);
-						entries.add(ModBlocks.VERDAK_TRUNK);
+						entries.add(ModItems.VERDAK_TRUNK);
 						//# Miscellaneous #
 						
 						// ## Elemental ##
@@ -81,7 +81,7 @@ public class ModItemGroups {
 						//# Torch #
 						
 						//## Miscellaneous ##
-						entries.add(ModBlocks.ETERNALITH);
+						entries.add(ModBlocks.ETERNALITH_BLOCK);
 						//# Miscellaneous #
 						
 						// ## Joke & Unserious ##
@@ -117,9 +117,38 @@ public class ModItemGroups {
 						entries.add(ModItems.OBSIDIAN_HATCHET);
 						entries.add(ModItems.OBSIDIAN_HOE);
 						entries.add(ModItems.OBSIDIAN_SPEAR);
-						//# [Tier 3] Brass #
-						//# [Tier 3] Copper #
-						//# [Tier 3] Eiduril #
+						//# [Tier 3] Brass (armor) #
+						entries.add(ModItems.BRASS_BOOT_PAIR);
+						entries.add(ModItems.BRASS_CHESTPLATE);
+						entries.add(ModItems.BRASS_HELMET);
+						entries.add(ModItems.BRASS_LEGGING_PAIR);
+						//# [Tier 3] Brass (tools) #
+						entries.add(ModItems.BRASS_AXE);
+						entries.add(ModItems.BRASS_DAGGER);
+						entries.add(ModItems.BRASS_HATCHET);
+						entries.add(ModItems.BRASS_HOE);
+						entries.add(ModItems.BRASS_MALLET);
+						entries.add(ModItems.BRASS_PICKAXE);
+						entries.add(ModItems.BRASS_SHOVEL);
+						entries.add(ModItems.BRASS_SPEAR);
+						entries.add(ModItems.BRASS_SWORD);
+						//# [Tier 3] Copper (armor) #
+						entries.add(ModItems.COPPER_BOOT_PAIR);
+						entries.add(ModItems.COPPER_CHESTPLATE);
+						entries.add(ModItems.COPPER_HELMET);
+						entries.add(ModItems.COPPER_LEGGING_PAIR);
+						//# [Tier 3] Copper (tools) #
+						entries.add(ModItems.COPPER_AXE);
+						entries.add(ModItems.COPPER_DAGGER);
+						entries.add(ModItems.COPPER_HATCHET);
+						entries.add(ModItems.COPPER_HOE);
+						entries.add(ModItems.COPPER_MALLET);
+						entries.add(ModItems.COPPER_PICKAXE);
+						entries.add(ModItems.COPPER_SHOVEL);
+						entries.add(ModItems.COPPER_SPEAR);
+						entries.add(ModItems.COPPER_SWORD);
+						//# [Tier 3] Eiduril (armor) #
+						//# [Tier 3] Eiduril (tools) #
 						//# [Tier 3] Gold #
 						//# [Tier 3] Iron #
 					})).build());
@@ -128,7 +157,7 @@ public class ModItemGroups {
 			FabricItemGroup.builder().displayName(displayName("ingredients"))
 					.icon(() -> new ItemStack(ModItems.OAK_PLANK))
 					.entries(((displayContext, entries) -> {
-						// ## Basic Resources ##
+						//region ## Basic Resources ##
 						//# Ball (yarn) #
 						entries.add(ModItems.WHITE_YARNBALL);
 						entries.add(ModItems.LIGHT_GRAY_YARNBALL);
@@ -153,10 +182,14 @@ public class ModItemGroups {
 						//# Cobblestone #
 						entries.add(ModItems.STIEFANE_COBBLESTONE);
 						//# Gram & Ingot #
+						entries.add(ModItems.BRASS_GRAM);
+						entries.add(ModItems.BRASS_INGOT);
 						entries.add(ModItems.COPPER_GRAM);
 						entries.add(ModItems.GOLD_GRAM);
 						entries.add(ModItems.IRON_GRAM);
 						//# Lump & Nugget #
+						entries.add(ModItems.RAW_BRASS_LUMP);
+						entries.add(ModItems.RAW_BRASS_NUGGET);
 						entries.add(ModItems.RAW_COPPER_NUGGET);
 						entries.add(ModItems.SULPHUR_LUMP);
 						//# Pile (miscellaneous) #
@@ -192,14 +225,33 @@ public class ModItemGroups {
 						entries.add(ModItems.GRASS_TUFT);
 						entries.add(ModItems.SILK_WAD);
 						entries.add(ModItems.STONE_PEBBLE);
+						//endregion
 						
-						//## Joke & Unserious ##
-						//# Cheese #
+						
+						//region ### Joke & Unserious ###
+						
+						//## (J&U) Basic Resources ##
+						//* Ball *
+						entries.add(ModItems.CHERRY_JELLYBALL);
+						//* Gram & Ingot *
+						entries.add(ModItems.NUTRILLARN_GRAM);
+						entries.add(ModItems.NUTRILLARN_INGOT);
+						//* Lump & Nugget *
+						entries.add(ModItems.RAW_NUTRILLARN_LUMP);
+						entries.add(ModItems.RAW_NUTRILLARN_NUGGET);
+						//# Pile (seed) #
+						//# Pile (miscellaneous) #
+						entries.add(ModItems.MILKLEAF_PILE);
+						//# Miscellaneous (cheese) #
 						entries.add(ModItems.BLUE_CHEESE_WEDGE);
 						entries.add(ModItems.SILKY_SMOOTH_CHEESE_WEDGE);
 						entries.add(ModItems.YELLOW_CHEESE_WEDGE);
-						//# Miscellaneous #
+						//# Miscellaneous (miscellaneous) #
+						entries.add(ModItems.CHULK_BERRY);
 						entries.add(ModItems.ENCHANTED_BRICK);
 						entries.add(ModItems.MINIWIZARD);
+						entries.add(ModItems.STARCHCAP_MUSHROOM);
+						
+						//endregion
 					})).build());
 }

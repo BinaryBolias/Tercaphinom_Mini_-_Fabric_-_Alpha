@@ -93,12 +93,13 @@ public class Reference {
 			public static final TagKey<Item> ALL_MUSHROOMS = of("all_mushrooms");
 			public static final TagKey<Item> ALL_PLANKS = of("all_planks");
 			public static final TagKey<Item> ALL_YARNBALLS = of("all_yarnballs");
-			public static final TagKey<Item> ALL_YARNBALLS_EXCEPT_WHITE = of("all_yarnballs_except_white");
+			public static final TagKey<Item> ALL_YARNBALLS_WHICH_DYE_TO_BLACK = of("all_yarnballs_which_dye_to_black");
+			public static final TagKey<Item> ALL_YARNBALLS_WHICH_DYE_TO_LIGHT_GRAY = of("all_yarnballs_which_dye_to_light_gray");
 			public static final TagKey<Item> ARROWHEAD_MATERIALS = of("arrowhead_materials");
 			public static final TagKey<Item> BASIC_FLAME_MATERIALS = of("basic_flame_materials");
 			public static final TagKey<Item> SPIRIT_FLAME_MATERIALS = of("spirit_flame_materials");
 			//# Equipment #
-			public static final TagKey<Item> ALL_HATCHETS = of("all_hatchets");
+			public static final TagKey<Item> ALL_CHOPPING_TOOLS = of("all_chopping_tools");
 			
 			private static TagKey<Item> of(String id) {
 				return TagKey.of(RegistryKeys.ITEM, new Identifier(id));

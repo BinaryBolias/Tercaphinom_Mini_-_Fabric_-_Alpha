@@ -1,18 +1,14 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "X": {
-      "item": "minecraft:diamond"
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "vanilla_override_placeholder",
+  "ingredients": [
+    {
+      "item": "minecraft:bedrock"
     }
-  },
-  "pattern": [
-    "XXX",
-    "X X",
-    "X X"
   ],
   "result": {
-    "count": 1,
-    "id": "minecraft:diamond_leggings"
-  }
+    "id": "minecraft:enchanted_golden_apple"
+  },
+  "show_notification": false
 }

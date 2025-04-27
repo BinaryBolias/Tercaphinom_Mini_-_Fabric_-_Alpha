@@ -1,38 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "building",
-  "group": "concrete_powder",
+  "category": "misc",
+  "group": "vanilla_override_placeholder",
   "ingredients": [
     {
-      "item": "minecraft:orange_dye"
-    },
-    {
-      "item": "minecraft:sand"
-    },
-    {
-      "item": "minecraft:sand"
-    },
-    {
-      "item": "minecraft:sand"
-    },
-    {
-      "item": "minecraft:sand"
-    },
-    {
-      "item": "minecraft:gravel"
-    },
-    {
-      "item": "minecraft:gravel"
-    },
-    {
-      "item": "minecraft:gravel"
-    },
-    {
-      "item": "minecraft:gravel"
+      "item": "minecraft:bedrock"
     }
   ],
   "result": {
-    "count": 8,
-    "id": "minecraft:orange_concrete_powder"
-  }
+    "id": "minecraft:enchanted_golden_apple"
+  },
+  "show_notification": false
 }
