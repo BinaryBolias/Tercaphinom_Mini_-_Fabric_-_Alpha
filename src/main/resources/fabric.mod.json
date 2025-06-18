@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "tercaphinom",
 	"version": "${version}",
-	"name": "Tercaphinom Mini - Fabric Edition",
+	"name": "Tercaphinom Mini",
 	"description": "Tercaphinom is an overhaul mod for Minecraft. This is a significantly smaller version for experimenting and practice.",
 	"authors": [
 		"BinaryBolias"
@@ -29,5 +29,21 @@
 		"fabricloader": ">=${loader_version}",
 		"fabric": "*",
 		"minecraft": "${minecraft_version}"
+	},
+	"suggests": {
+		"modmenu-badges-lib": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"update_checker": true
+		},
+		"mcb": [
+			{
+				"name": "Overhaul",
+				"labelColor": -1,
+				"fillColor": -16777216,
+				"outlineColor": -5592406
+			}
+		]
 	}
 }

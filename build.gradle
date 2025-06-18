@@ -50,10 +50,10 @@ repositories {
 //            includeGroupByRegex 'io\\.github\\.onyxstudios.*'
 //        }
 //    }
-//    maven {
-//        name = 'TerraformersMC'
-//        url = 'https://maven.terraformersmc.com/'
-//    }
+    maven {
+        name = 'TerraformersMC'
+        url = 'https://maven.terraformersmc.com/'
+    }
 //    maven { url = 'https://maven.minecraftforge.net/' }
 //    maven { url = "https://maven.kyrptonaught.dev" }
 //
@@ -71,15 +71,23 @@ repositories {
 //    }
 //    mavenCentral()
 //    maven { url 'https://repo.repsy.io/mvn/jiraiyah/jilibs' }
+
+    maven { url = "https://api.modrinth.com/maven" }
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
+    // To change dependency versions, see the 'gradle.properties' file.
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // Mod Menu
+    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+
+    // Mod Menu Badges Lib
+    include(modImplementation("maven.modrinth:modmenu-badges-lib:${badges_lib_version}"))
 }
 
 processResources {
