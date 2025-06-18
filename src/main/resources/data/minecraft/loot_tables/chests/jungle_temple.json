@@ -1,0 +1,358 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:emerald",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:diamond",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:copper_ingot",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_ingot",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_ingot",
+					"weight": 18
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:saddle",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_horse_armor",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_horse_armor",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_horse_armor",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": 30.0,
+							"treasure": true
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 9
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 4.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bamboo",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": 4.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bone",
+					"weight": 24
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:rotten_flesh",
+					"weight": 18
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:brown_mushroom",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:red_mushroom",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:redstone",
+					"weight": 17
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:stick",
+					"weight": 14
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 7.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:emerald",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:diamond",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:wild_armor_trim_smithing_template",
+					"weight": 8
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:chests/jungle_temple"
+}

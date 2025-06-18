@@ -1,0 +1,446 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:lodestone"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.5,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:crossbow",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 20.0,
+								"min": 12.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:spectral_arrow",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 12.0,
+								"min": 8.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gilded_blackstone",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 3.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:crying_obsidian",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_ingot",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:gold_gram",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_ingot",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:iron_gram",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_axe",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:golden_axe",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_dagger",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "tercaphinom:golden_dagger",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_hatchet",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "tercaphinom:golden_hatchet",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_spear",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "tercaphinom:golden_spear",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_sword",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:golden_sword",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:golden_boots",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:golden_chestplate",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:golden_helmet",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:golden_leggings",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:string",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:leather",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 17.0,
+								"min": 5.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:arrow",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_nugget",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_nugget",
+					"weight": 3
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 4.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:snout_armor_trim_smithing_template",
+					"weight": 1
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 13
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:netherite_upgrade_smithing_template",
+					"weight": 3
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:chests/bastion_bridge"
+}

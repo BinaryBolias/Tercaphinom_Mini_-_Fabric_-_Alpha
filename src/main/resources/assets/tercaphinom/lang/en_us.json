@@ -6,6 +6,11 @@
 	"block.tercaphinom.verdak_log": "Verdak Log",
 	"block.tercaphinom.verdak_trunk": "Verdak Trunk",
 	
+	"block.tercaphinom.raw_brass_block": "Raw Brass Block",
+	"block.tercaphinom.raw_eiduril_block": "Raw Eiduril Block",
+	"block.tercaphinom.refined_brass_block": "Refined Brass Block",
+	"block.tercaphinom.refined_eiduril_block": "Refined Eiduril Block",
+	
 	"block.tercaphinom.verdak_plank_block": "Verdak Plank Block",
 	"block.tercaphinom.stiefane_brick_block": "Stiefane Brick Block",
 	"block.tercaphinom.cobbled_stiefane_block": "Cobbled Stiefane Block",
@@ -32,6 +37,9 @@
 	"block.tercaphinom.verdak_plank_stair": "Verdak Plank Stair",
 	
 	"block.tercaphinom.eternalith_block": "Eternalith Block",
+	
+	"block.tercaphinom.raw_nutrillarn_block": "Raw Nutrillarn Block",
+	"block.tercaphinom.refined_nutrillarn_block": "Refined Nutrillarn Block",
 	
 	"block.tercaphinom.blue_cheese_block": "Blue Cheese Block",
 	"block.tercaphinom.silky_smooth_cheese_block": "Silky Smooth Cheese Block",
@@ -66,6 +74,8 @@
 	"item.tercaphinom.brass_gram": "Brass Gram",
 	"item.tercaphinom.brass_ingot": "Brass Ingot",
 	"item.tercaphinom.copper_gram": "Copper Gram",
+	"item.tercaphinom.eiduril_gram": "Eiduril Gram",
+	"item.tercaphinom.eiduril_ingot": "Eiduril Ingot",
 	"item.tercaphinom.gold_gram": "Gold Gram",
 	"item.tercaphinom.iron_gram": "Iron Gram",
 	
@@ -74,6 +84,8 @@
 	"item.tercaphinom.raw_brass_lump": "Raw Brass Lump",
 	"item.tercaphinom.raw_brass_nugget": "Raw Brass Nugget",
 	"item.tercaphinom.raw_copper_nugget": "Raw Copper Nugget",
+	"item.tercaphinom.raw_eiduril_lump": "Raw Eiduril Lump",
+	"item.tercaphinom.raw_eiduril_nugget": "Raw Eiduril Nugget",
 	"item.tercaphinom.sulphur_lump": "Sulphur Lump",
 	
 	"item.tercaphinom.ash_pile": "Ash Pile",
@@ -111,6 +123,12 @@
 	
 	"item.tercaphinom.sharp_wooden_stick": "Sharp Wooden Stick",
 	
+	"item.tercaphinom.wooden_dagger": "Wooden Dagger",
+	"item.tercaphinom.wooden_mallet": "Wooden Mallet",
+	"item.tercaphinom.wooden_shovel": "Wooden Shovel",
+	"item.tercaphinom.wooden_spear": "Wooden Spear",
+	"item.tercaphinom.wooden_sword": "Wooden Sword",
+	
 	"item.tercaphinom.flint_dagger": "Flint Dagger",
 	"item.tercaphinom.flint_hatchet": "Flint Hatchet",
 	"item.tercaphinom.flint_hoe": "Flint Hoe",
@@ -129,6 +147,7 @@
 	"item.tercaphinom.brass_boot_pair": "Pair of Brass Boots",
 	"item.tercaphinom.brass_chestplate": "Brass Chestplate",
 	"item.tercaphinom.brass_helmet": "Brass Helmet",
+	"item.tercaphinom.brass_horse_armor": "Brass Horse Armor",
 	"item.tercaphinom.brass_legging_pair": "Pair of Brass Leggings",
 	
 	"item.tercaphinom.brass_axe": "Brass Axe",
@@ -144,6 +163,7 @@
 	"item.tercaphinom.copper_boot_pair": "Pair of Copper Boots",
 	"item.tercaphinom.copper_chestplate": "Copper Chestplate",
 	"item.tercaphinom.copper_helmet": "Copper Helmet",
+	"item.tercaphinom.copper_horse_armor": "Copper Horse Armor",
 	"item.tercaphinom.copper_legging_pair": "Pair of Copper Leggings",
 	
 	"item.tercaphinom.copper_axe": "Copper Axe",
@@ -155,6 +175,32 @@
 	"item.tercaphinom.copper_shovel": "Copper Shovel",
 	"item.tercaphinom.copper_spear": "Copper Spear",
 	"item.tercaphinom.copper_sword": "Copper Sword",
+	
+	"item.tercaphinom.eiduril_boot_pair": "Pair of Eiduril Boots",
+	"item.tercaphinom.eiduril_chestplate": "Eiduril Chestplate",
+	"item.tercaphinom.eiduril_helmet": "Eiduril Helmet",
+	"item.tercaphinom.eiduril_horse_armor": "Eiduril Horse Armor",
+	"item.tercaphinom.eiduril_legging_pair": "Pair of Eiduril Leggings",
+	
+	"item.tercaphinom.eiduril_axe": "Eiduril Axe",
+	"item.tercaphinom.eiduril_dagger": "Eiduril Dagger",
+	"item.tercaphinom.eiduril_hatchet": "Eiduril Hatchet",
+	"item.tercaphinom.eiduril_hoe": "Eiduril Hoe",
+	"item.tercaphinom.eiduril_mallet": "Eiduril Mallet",
+	"item.tercaphinom.eiduril_pickaxe": "Eiduril Pickaxe",
+	"item.tercaphinom.eiduril_shovel": "Eiduril Shovel",
+	"item.tercaphinom.eiduril_spear": "Eiduril Spear",
+	"item.tercaphinom.eiduril_sword": "Eiduril Sword",
+	
+	"item.tercaphinom.golden_dagger": "Golden Dagger",
+	"item.tercaphinom.golden_hatchet": "Golden Hatchet",
+	"item.tercaphinom.golden_mallet": "Golden Mallet",
+	"item.tercaphinom.golden_spear": "Golden Spear",
+	
+	"item.tercaphinom.iron_dagger": "Iron Dagger",
+	"item.tercaphinom.iron_hatchet": "Iron Hatchet",
+	"item.tercaphinom.iron_mallet": "Iron Mallet",
+	"item.tercaphinom.iron_spear": "Iron Spear",
 	
 	"item.tercaphinom.cherry_jellyball": "Cherry Jellyball",
 	
@@ -173,5 +219,21 @@
 	"item.tercaphinom.chulk_berry": "Chulk Berry",
 	"item.tercaphinom.enchanted_brick": "Enchanted Brick",
 	"item.tercaphinom.miniwizard": "Miniwizard",
-	"block.tercaphinom.starchcap_mushroom": "Starchcap Mushroom"
+	"block.tercaphinom.starchcap_mushroom": "Starchcap Mushroom",
+	
+	"item.tercaphinom.nutrillarn_boot_pair": "Pair of Nutrillarn Boots",
+	"item.tercaphinom.nutrillarn_chestplate": "Nutrillarn Chestplate",
+	"item.tercaphinom.nutrillarn_helmet": "Nutrillarn Helmet",
+	"item.tercaphinom.nutrillarn_horse_armor": "Nutrillarn Horse Armor",
+	"item.tercaphinom.nutrillarn_legging_pair": "Pair of Nutrillarn Leggings",
+	
+	"item.tercaphinom.nutrillarn_axe": "Nutrillarn Axe",
+	"item.tercaphinom.nutrillarn_dagger": "Nutrillarn Dagger",
+	"item.tercaphinom.nutrillarn_hatchet": "Nutrillarn Hatchet",
+	"item.tercaphinom.nutrillarn_hoe": "Nutrillarn Hoe",
+	"item.tercaphinom.nutrillarn_mallet": "Nutrillarn Mallet",
+	"item.tercaphinom.nutrillarn_pickaxe": "Nutrillarn Pickaxe",
+	"item.tercaphinom.nutrillarn_shovel": "Nutrillarn Shovel",
+	"item.tercaphinom.nutrillarn_spear": "Nutrillarn Spear",
+	"item.tercaphinom.nutrillarn_sword": "Nutrillarn Sword"
 }

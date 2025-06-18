@@ -1,0 +1,250 @@
+{
+	"type": "minecraft:fishing",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:lily_pad",
+					"weight": 30
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:grass_tuft",
+					"weight": 18
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:kelp",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:black_yarnball",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:blue_yarnball",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brown_yarnball",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:cyan_yarnball",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:gray_yarnball",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:green_yarnball",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:light_blue_yarnball",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:light_gray_yarnball",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:lime_yarnball",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:magenta_yarnball",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:orange_yarnball",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:pink_yarnball",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:purple_yarnball",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:red_yarnball",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:white_yarnball",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:yellow_yarnball",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.0
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:leather_boots",
+					"weight": 27
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.0
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:leather_helmet",
+					"weight": 27
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather",
+					"weight": 30
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bone_meal",
+					"weight": 28
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bone",
+					"weight": 28
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:rotten_flesh",
+					"weight": 29
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_potion",
+							"id": "minecraft:water"
+						}
+					],
+					"name": "minecraft:potion",
+					"weight": 20
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:string",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.0
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:fishing_rod",
+					"weight": 18
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bowl",
+					"weight": 28
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:stick",
+					"weight": 30
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": 10.0,
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:ink_sac",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:tripwire_hook",
+					"weight": 24
+				},
+				{
+					"type": "minecraft:item",
+					"conditions": [
+						{
+							"condition": "minecraft:location_check",
+							"predicate": {
+								"biomes": [
+									"minecraft:jungle",
+									"minecraft:sparse_jungle",
+									"minecraft:bamboo_jungle"
+								]
+							}
+						}
+					],
+					"name": "minecraft:bamboo",
+					"weight": 30
+				},
+				{
+					"type": "minecraft:item",
+					"conditions": [
+						{
+							"condition": "minecraft:location_check",
+							"predicate": {
+								"biomes": [
+									"minecraft:bamboo_jungle"
+								]
+							}
+						}
+					],
+					"name": "minecraft:bamboo",
+					"weight": 15
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:gameplay/fishing/junk"
+}

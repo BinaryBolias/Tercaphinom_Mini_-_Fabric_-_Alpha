@@ -19,7 +19,8 @@ import java.util.function.Supplier;
 public enum ModToolMaterials implements ToolMaterial {
 	WOODEN_STICK(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 7, 2.0F, 0.0F, 0,
 			() -> Ingredient.ofItems(Items.STICK)),
-	//WOODEN_PLANK
+	WOOD(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 59, 2.0F, 1.0F, 15,
+			() -> Ingredient.ofItems(Items.STICK)),
 	FLINT(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 120, 3.0F, 2.0F, 5,
 			() -> Ingredient.ofItems(Items.FLINT)),
 	GLASS(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 108, 4.0F, 2.0F, 0,
@@ -28,12 +29,18 @@ public enum ModToolMaterials implements ToolMaterial {
 			() -> Ingredient.ofItems(ModItems.OBSIDIAN_SHARD)),
 	COPPER(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 228, 6.0F, 2.0F, 15,
 			() -> Ingredient.ofItems(Items.COPPER_INGOT)),
-	//GOLD
-	//IRON
+	// (gold and iron here are presently just quick references for vanilla)
+	//GOLD(BlockTags.INCORRECT_FOR_WOODEN_TOOL,  32, 12.0F, 0.0F, 22,
+	//			() -> Ingredient.ofItems(ModItems.NUTRILLARN_INGOT));
+	//IRON(BlockTags.INCORRECT_FOR_WOODEN_TOOL,  250, 6.0F, 2.0F, 14,
+	//			() -> Ingredient.ofItems(ModItems.NUTRILLARN_INGOT));
 	BRASS(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 276, 5.0F, 2.0F, 14,
 			() -> Ingredient.ofItems(ModItems.BRASS_INGOT)),
-	//EIDURIL
-	//NETHERITE (placeholder name)
+	EIDURIL(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 1561, 8.0F, 3.0F, 12,
+			() -> Ingredient.ofItems(ModItems.EIDURIL_INGOT)),
+	// ("Netherite" as placeholder name)
+	//NETHERITE(BlockTags.INCORRECT_FOR_WOODEN_TOOL,  2031, 9.0F, 4.0F, 15,
+	//			() -> Ingredient.ofItems(ModItems.NUTRILLARN_INGOT));
 	NUTRILLARN(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 96, 12.0F, 7.0F, 0,
 			() -> Ingredient.ofItems(ModItems.NUTRILLARN_INGOT));
 	

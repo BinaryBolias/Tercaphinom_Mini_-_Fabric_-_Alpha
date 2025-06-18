@@ -37,6 +37,7 @@ Enhanced!
 Envision! Create! Share!
 Euclidean!
 Exists in all possible states until it is observed!
+Explore the temples!
 Falling off cliffs!
 Feed the chickens!
 Feed the cows!
@@ -45,12 +46,10 @@ Feed the sheep!
 Find the temples!
 Freezing chill!
 Full of stars!
-Get on with it!
 Give us Godot!
 Groundbreaking!
 Hatchets for everyone!
 Haunted!
-He could be any one of us!
 Hide!
 Hoes for everyone!
 Homeomorphic to a 3-sphere!
@@ -61,13 +60,11 @@ idspispopd!
 if not ok: return
 Indev!
 Indie!
-Infinite in every direction!
 Ingots!
 Insinuating a keen sense of despair!
 It is old! Its is evil! And it is NOT free!
 It's a game!
 Iterating upon game theory!
-Java 16 + 1 + 4 = 21!
 Json! Json! Json!
 Keyboard compatible!
 Macroscopic!
@@ -80,7 +77,6 @@ Menger sponge!
 Mischievous machinations!
 Modded!
 Monster infighting!
-Net neutrality!
 Node Graph out of Date. Rebuilding...
 Non-hyperbolic!
 Not placing traps!
@@ -94,57 +90,52 @@ Now with bonus oddities!
 Now with bonus stuff!
 Now with bonus things!
 Now with cobblestones!
-Now with difficulty!
 Now with extra stuff!
 Now with extra things!
 Now with greater difficulty!
+Now with more gameplay progression!
 Now with silk!
 Now with smaller ingots!
 Now with some actual difficulty!
 Now with planks!
-Now you're thinking with pistons!
-Now you're thinking with portals!
 §kOBFUSCATED TEXT
-Phobos anomaly!
 Pickaxes for everyone!
 Piles of ash!
 Piles of dirt!
 Piles of gravel!
 Piles of sand!
-Pining for the fjords!
-Pining for the Fnords!
-Pixels!
+Pixels everywhere!
 Plant a tree!
 Pneumatic!
 Prepare for the worst!
+Pseudo-infinite in every direction!
 Randomized splash texts!
 Reference implementation!
-Removed Herobrine!
 Reticulating pines!
 Reticulating splines!
 Ride the pig!
 Run!
 Scary!
+Secrets!
 Shovels for everyone!
 Sinister schemes!
+Slimy barrels!
 Spears for everyone!
 Spiders everywhere!
 Spooky!
 Stay a while, stay forever!
 Survive!
 Swords for everyone!
-Synecdoche!
-Tercaphinom!
 Terrestrial!
 The sky is the limit!
 The sum of its parts!
 Thematic!
+Thinking with pistons!
+Thinking with portals!
 This message will never appear on the splash screen, isn't that weird?
-This parrot is no more! It has ceased to be!
-This spy has already breached our defenses!
+Trees everywhere!
 Try the mushroom stew!
 Turing complete!
-Une baguette!
 Unnatural beauty!
 Verlet integration!
 Welcome to your Doom!

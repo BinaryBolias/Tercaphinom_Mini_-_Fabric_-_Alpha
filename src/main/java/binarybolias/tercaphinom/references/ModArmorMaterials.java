@@ -34,7 +34,8 @@ public class ModArmorMaterials {
 				map.put(ArmorItem.Type.BODY, 5);
 			}),
 			10, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F,
-			() -> Ingredient.ofItems(Items.COPPER_INGOT));
+			() -> Ingredient.ofItems(Items.COPPER_INGOT)
+	);
 	public static final RegistryEntry<ArmorMaterial> BRASS = register("brass",
 			Util.make(new EnumMap(ArmorItem.Type.class), map -> {
 				map.put(ArmorItem.Type.BOOTS, 2);
@@ -44,8 +45,9 @@ public class ModArmorMaterials {
 				map.put(ArmorItem.Type.BODY, 5);
 			}),
 			9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F,
-			() -> Ingredient.ofItems(ModItems.BRASS_INGOT));
-	public static final RegistryEntry<ArmorMaterial> NUTRILLARN = register("nutrillarn",
+			() -> Ingredient.ofItems(ModItems.BRASS_INGOT)
+	);
+	public static final RegistryEntry<ArmorMaterial> EIDURIL = register("eiduril",
 			Util.make(new EnumMap(ArmorItem.Type.class), map -> {
 				map.put(ArmorItem.Type.BOOTS, 3);
 				map.put(ArmorItem.Type.LEGGINGS, 6);
@@ -53,8 +55,20 @@ public class ModArmorMaterials {
 				map.put(ArmorItem.Type.HELMET, 3);
 				map.put(ArmorItem.Type.BODY, 11);
 			}),
+			10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F,
+			() -> Ingredient.ofItems(ModItems.EIDURIL_INGOT)
+	);
+	public static final RegistryEntry<ArmorMaterial> NUTRILLARN = register("nutrillarn",
+			Util.make(new EnumMap(ArmorItem.Type.class), map -> {
+				map.put(ArmorItem.Type.BOOTS, 4);
+				map.put(ArmorItem.Type.LEGGINGS, 7);
+				map.put(ArmorItem.Type.CHESTPLATE, 9);
+				map.put(ArmorItem.Type.HELMET, 4);
+				map.put(ArmorItem.Type.BODY, 11);
+			}),
 			0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F,
-			() -> Ingredient.ofItems(ModItems.NUTRILLARN_INGOT));
+			() -> Ingredient.ofItems(ModItems.NUTRILLARN_INGOT)
+	);
 	
 	
 	private static RegistryEntry<ArmorMaterial> register(

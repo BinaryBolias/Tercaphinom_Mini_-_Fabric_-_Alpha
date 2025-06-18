@@ -1,0 +1,160 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:emerald",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:clay_ball",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:flower_pot",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:andesite",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:diorite",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:granite",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:stone",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:polished_andesite",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:polished_diorite",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:polished_granite",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:stone_bricks",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:smooth_stone",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 4
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 5.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:emerald",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:clay_ball",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:flower_pot",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:yellow_dye",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 1.0
+			}
+		}
+	],
+	"random_sequence": "minecraft:chests/village/village_mason"
+}

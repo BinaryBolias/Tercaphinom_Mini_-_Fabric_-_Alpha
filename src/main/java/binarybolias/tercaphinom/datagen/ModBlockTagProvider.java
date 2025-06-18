@@ -48,6 +48,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		// - Allows for ordinary mining speed, and for the block to drop loot, when mined with a PickaxeItem.
 		//  - Does not seem to have relation to the "pickaxes" item tag.
 		getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+				//# Stone (stiefane) #
 				.add(ModBlocks.STIEFANE_BRICK_BLOCK)
 				.add(ModBlocks.COBBLED_STIEFANE_BLOCK)
 				.add(ModBlocks.STIEFANE_BLOCK)
@@ -58,7 +59,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.STIEFANE_BRICK_WALL_POST)
 				.add(ModBlocks.STIEFANE_BRICK_SLAB)
 				.add(ModBlocks.STIEFANE_BRICK_STAIR)
+				//# Metal #
+				.add(ModBlocks.RAW_BRASS_BLOCK)
+				.add(ModBlocks.RAW_EIDURIL_BLOCK)
+				.add(ModBlocks.REFINED_BRASS_BLOCK)
+				.add(ModBlocks.REFINED_EIDURIL_BLOCK)
+				//## Joke & Unserious ##
+				//# (J&U) Metal #
+				.add(ModBlocks.RAW_NUTRILLARN_BLOCK)
+				.add(ModBlocks.REFINED_NUTRILLARN_BLOCK)
+				//# (J&U) Miscellaneous #
 				.add(ModBlocks.ULTRASMOOTH_STONE);
+		
 		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
 				.add(ModBlocks.ASH_BLOCK)
 				.add(ModBlocks.SKORSAND_BLOCK)
@@ -66,6 +78,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.BLUE_CHEESE_BLOCK)
 				.add(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK)
 				.add(ModBlocks.YELLOW_CHEESE_BLOCK);
+		
 		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
 				.add(ModBlocks.VERDAK_LOG)
 				.add(ModBlocks.VERDAK_TRUNK)
@@ -78,7 +91,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.VERDAK_FENCE_POST)
 				.add(ModBlocks.VERDAK_PLANK_SLAB)
 				.add(ModBlocks.VERDAK_PLANK_STAIR);
+		
 		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE);
+		
 		// NOTE: I don't appreciate the vanilla functionality of the "needs X tool" tags;
 		//  linear material tiers of tools for mining/harvesting feels inelegant to me.
 		// BlockTags.NEEDS_STONE_TOOL: (I think) The blocks within this tag only drop loot if mined with a tool of

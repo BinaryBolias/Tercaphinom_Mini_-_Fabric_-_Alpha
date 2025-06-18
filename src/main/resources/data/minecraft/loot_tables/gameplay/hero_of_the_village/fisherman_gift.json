@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:gift",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:cod",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:salmon",
+					"weight": 1
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:gameplay/hero_of_the_village/fisherman_gift"
+}

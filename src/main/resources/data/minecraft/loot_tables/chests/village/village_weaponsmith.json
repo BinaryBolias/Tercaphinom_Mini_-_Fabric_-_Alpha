@@ -1,0 +1,646 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:emerald",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:diamond",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:flint_and_steel",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:brass_ingot",
+					"weight": 11
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:copper_ingot",
+					"weight": 11
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_ingot",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_ingot",
+					"weight": 11
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:apple",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:golden_apple",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:flint",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:obsidian_shard",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_dagger",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_dagger",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_dagger",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_dagger",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_spear",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_spear",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_spear",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_spear",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_sword",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_sword",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_sword",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_sword",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:stick",
+					"weight": 14
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 8.0,
+				"min": 3.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:emerald",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:flint_and_steel",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:diamond",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_axe",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_axe",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_axe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_axe",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_dagger",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_dagger",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_dagger",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_dagger",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_hatchet",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_hatchet",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_hatchet",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_hatchet",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_mallet",
+					"weight": 11
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_mallet",
+					"weight": 11
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_mallet",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_mallet",
+					"weight": 11
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_pickaxe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_pickaxe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_pickaxe",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_pickaxe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_spear",
+					"weight": 14
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_spear",
+					"weight": 14
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:golden_spear",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_spear",
+					"weight": 14
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_sword",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_sword",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_sword",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_sword",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_boot_pair",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_boot_pair",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_boots",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_boots",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_chestplate",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_chestplate",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_chestplate",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_chestplate",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_helmet",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_helmet",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_helmet",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_helmet",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_legging_pair",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_legging_pair",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_leggings",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_leggings",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:saddle",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_horse_armor",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_horse_armor",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_horse_armor",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_horse_armor",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 1.0
+			}
+		}
+	],
+	"random_sequence": "minecraft:chests/village/village_weaponsmith"
+}

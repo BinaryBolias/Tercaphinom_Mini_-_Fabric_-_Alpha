@@ -44,6 +44,10 @@ public class ModBlocks {
 				new BlockItem(block, new Item.Settings()));
 	}
 	
+	
+	private static final float BASE_SLIPPERINESS = 0.6F;
+	
+	
 	//### Blocks ###
 	//region  ## Crops & Foliage ##
 	//# Leaf #
@@ -64,17 +68,46 @@ public class ModBlocks {
 	//endregion
 	
 	//region  ## Elemental ##
+	//# Bale #
+	//# Metal #
+	public static final Block RAW_BRASS_BLOCK = registerBlockWithItem("raw_brass_block",
+			newBlock(blockSettings().strength(6.0F, 8.0F)
+					.mapColor(MapColor.DIRT_BROWN)
+					.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
+					.velocityMultiplier(0.96875F) // 31/32
+					.sounds(BlockSoundGroup.STONE).instrument(Instrument.IRON_XYLOPHONE)));
+	public static final Block RAW_EIDURIL_BLOCK = registerBlockWithItem("raw_eiduril_block",
+			newBlock(blockSettings().strength(6.0F, 8.0F)
+					.mapColor(MapColor.DARK_AQUA)
+					.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
+					.velocityMultiplier(0.96875F) // 31/32
+					.sounds(BlockSoundGroup.STONE).instrument(Instrument.IRON_XYLOPHONE)));
+	public static final Block REFINED_BRASS_BLOCK = registerBlockWithItem("refined_brass_block",
+			newBlock(blockSettings().strength(6.0F, 8.0F)
+					.mapColor(MapColor.OAK_TAN)
+					.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
+					.velocityMultiplier(0.96875F) // 31/32
+					.sounds(BlockSoundGroup.METAL).instrument(Instrument.BASEDRUM)));
+	public static final Block REFINED_EIDURIL_BLOCK = registerBlockWithItem("refined_eiduril_block",
+			newBlock(blockSettings().strength(6.0F, 8.0F)
+					.mapColor(MapColor.DARK_AQUA)
+					.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
+					.velocityMultiplier(0.96875F) // 31/32
+					.sounds(BlockSoundGroup.METAL).instrument(Instrument.BASEDRUM)));
+	
 	//# Mosaic & Plank #
 	public static final Block VERDAK_PLANK_BLOCK = registerBlockWithItem("verdak_plank_block",
 			new Block(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS))); // TODO: Make unique.
 	
 	//# Stone (brick) #
 	public static final Block STIEFANE_BRICK_BLOCK = registerBlockWithItem("stiefane_brick_block",
-			new Block(AbstractBlock.Settings.copy(Blocks.STONE_BRICKS))); // TODO: Make unique.
+			newBlock(blockSettings().strength(1.5F, 6.0F)
+					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)));
 	
 	//# Stone (cobbled) #
 	public static final Block COBBLED_STIEFANE_BLOCK = registerBlockWithItem("cobbled_stiefane_block",
-			new Block(AbstractBlock.Settings.copy(Blocks.COBBLESTONE))); // TODO: Make unique.
+			newBlock(blockSettings().strength(2.0F, 6.0F)
+					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)));
 	
 	//# Stone (natural) #
 	public static final Block STIEFANE_BLOCK = registerBlockWithItem("stiefane_block",
@@ -86,17 +119,20 @@ public class ModBlocks {
 	
 	//# Miscellaneous #
 	public static final Block ASH_BLOCK = registerBlockWithItem("ash_block",
-			new Block(AbstractBlock.Settings.create()
-					.mapColor(MapColor.STONE_GRAY).strength(1.0F).sounds(BlockSoundGroup.SNOW)
-					.slipperiness(0.6625F)
-					.velocityMultiplier(0.96875F))); // 31/32
+			new Block(blockSettings().strength(1.0F, 6.0F)
+					.mapColor(MapColor.STONE_GRAY)
+					.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
+					.velocityMultiplier(0.96875F) // 31/32
+					.sounds(BlockSoundGroup.SNOW).instrument(Instrument.HARP)
+			)); // 31/32
 	public static final Block SKORSAND_BLOCK = registerBlockWithItem("skorsand_block",
 			new ColoredFallingBlock(
 					new ColorCode(11098145),
-					AbstractBlock.Settings.create().mapColor(MapColor.GRAY)
-							.instrument(Instrument.SNARE).strength(0.5F).sounds(BlockSoundGroup.SAND)
-							.slipperiness(0.6625F)
+					blockSettings().strength(0.5F, 6.0F)
+							.mapColor(MapColor.GRAY)
+							.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
 							.velocityMultiplier(0.96875F) // 31/32
+							.sounds(BlockSoundGroup.SAND).instrument(Instrument.SNARE)
 			));
 	//endregion
 	
@@ -187,7 +223,7 @@ public class ModBlocks {
 							.pistonBehavior(PistonBehavior.DESTROY)
 			));
 	//## (J&U) Elemental ##
-	//# Miscellaneous (cheese) #
+	//# Cheese #
 	public static final Block BLUE_CHEESE_BLOCK = registerBlockWithItem("blue_cheese_block",
 			new Block(AbstractBlock.Settings.create()
 					.mapColor(MapColor.STONE_GRAY)
@@ -203,7 +239,20 @@ public class ModBlocks {
 					.mapColor(MapColor.STONE_GRAY)
 					.instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F)
 					.slipperiness(0.725F)));
-	//# Miscellaneous (miscellaneous) #
+	//# Metal(?) #
+	public static final Block RAW_NUTRILLARN_BLOCK = registerBlockWithItem("raw_nutrillarn_block",
+			newBlock(blockSettings()
+					.mapColor(MapColor.RAW_IRON_PINK)
+					.instrument(Instrument.HARP)
+					.strength(6.0F, 8.0F)
+					.sounds(BlockSoundGroup.MUD)));
+	public static final Block REFINED_NUTRILLARN_BLOCK = registerBlockWithItem("refined_nutrillarn_block",
+			newBlock(blockSettings()
+					.mapColor(MapColor.DIRT_BROWN)
+					.instrument(Instrument.BASEDRUM)
+					.strength(6.0F, 8.0F)
+					.sounds(BlockSoundGroup.STONE)));
+	//# Miscellaneous #
 	public static final Block HYPERSMOOTH_CREAMSTONE = registerBlockWithItem("hypersmooth_creamstone",
 			new Block(AbstractBlock.Settings.create()
 					.mapColor(MapColor.STONE_GRAY)
@@ -220,4 +269,18 @@ public class ModBlocks {
 					.pistonBehavior(PistonBehavior.PUSH_ONLY)
 					.slipperiness(0.98F))); // Note: Same slipperiness as ice, packed ice, and frosted ice.
 	//endregion
+	
+	
+	private static Block newBlock(AbstractBlock.Settings settings) {
+		return new Block(settings);
+	}
+	
+	private static Block newMetalBlock(AbstractBlock.Settings settings) {
+		return new Block(settings.sounds(BlockSoundGroup.METAL));
+	}
+	
+	
+	private static AbstractBlock.Settings blockSettings() {
+		return AbstractBlock.Settings.create();
+	}
 }

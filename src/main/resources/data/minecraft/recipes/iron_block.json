@@ -1,18 +1,14 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": {
-      "item": "minecraft:iron_ingot"
-    }
-  },
-  "pattern": [
-    "###",
-    "###",
-    "###"
-  ],
-  "result": {
-    "count": 1,
-    "id": "minecraft:iron_block"
-  }
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+	"group": "vanilla_override_placeholder",
+	"ingredients": [
+		{
+			"item": "minecraft:bedrock"
+		}
+	],
+	"result": {
+		"id": "minecraft:enchanted_golden_apple"
+	},
+	"show_notification": false
 }

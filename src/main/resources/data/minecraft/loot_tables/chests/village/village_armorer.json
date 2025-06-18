@@ -1,0 +1,404 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:emerald",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:diamond",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:flint_and_steel",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:brass_ingot",
+					"weight": 17
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:copper_ingot",
+					"weight": 23
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_ingot",
+					"weight": 17
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_ingot",
+					"weight": 19
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_boots",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_boot_pair",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_boot_pair",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_boots",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:chainmail_boots",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_chestplate",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_chestplate",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_chestplate",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_chestplate",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:chainmail_chestplate",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_helmet",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_helmet",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_helmet",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_helmet",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:chainmail_helmet",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_leggings",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_legging_pair",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_legging_pair",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_leggings",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:chainmail_leggings",
+					"weight": 2
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 5.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:emerald",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_boots",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_boot_pair",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_boot_pair",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_boots",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_boots",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:chainmail_boots",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_chestplate",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_chestplate",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_chestplate",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_chestplate",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_chestplate",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:chainmail_chestplate",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_helmet",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_helmet",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_helmet",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_helmet",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_helmet",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:chainmail_helmet",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:leather_leggings",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_legging_pair",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_legging_pair",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_leggings",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_leggings",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:chainmail_leggings",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:saddle",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:brass_horse_armor",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_horse_armor",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_horse_armor",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_horse_armor",
+					"weight": 2
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 1.0
+			}
+		}
+	],
+	"random_sequence": "minecraft:chests/village/village_armorer"
+}

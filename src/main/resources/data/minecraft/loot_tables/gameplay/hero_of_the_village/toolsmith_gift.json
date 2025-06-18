@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:gift",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_axe",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_hoe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_pickaxe",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_shovel",
+					"weight": 5
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:gameplay/hero_of_the_village/toolsmith_gift"
+}

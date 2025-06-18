@@ -22,7 +22,7 @@ public class ModItemGroups {
 	private static Text displayName(String groupIdentifier) {
 		return translate("item_group." + groupIdentifier);
 	}
-	// NOTE: There has to be a better way! TODO: Find a way to create item groups more easily.
+	
 	public static final ItemGroup BLOCKS = Registry.register(Registries.ITEM_GROUP,
 			identifier(ModID + "_blocks_group"),
 			FabricItemGroup.builder().displayName(displayName("blocks"))
@@ -36,6 +36,11 @@ public class ModItemGroups {
 						//# Miscellaneous #
 						
 						// ## Elemental ##
+						//# Metal #
+						entries.add(ModBlocks.RAW_BRASS_BLOCK);
+						entries.add(ModBlocks.RAW_EIDURIL_BLOCK);
+						entries.add(ModBlocks.REFINED_BRASS_BLOCK);
+						entries.add(ModBlocks.REFINED_EIDURIL_BLOCK);
 						//# Mosaic & Plank #
 						entries.add(ModBlocks.VERDAK_PLANK_BLOCK);
 						//# Stone (brick) #
@@ -84,15 +89,18 @@ public class ModItemGroups {
 						entries.add(ModBlocks.ETERNALITH_BLOCK);
 						//# Miscellaneous #
 						
-						// ## Joke & Unserious ##
+						//### Joke & Unserious ###
+						//## (J&U) Elemental #
 						//# Cheese #
 						entries.add(ModBlocks.BLUE_CHEESE_BLOCK);
 						entries.add(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK);
 						entries.add(ModBlocks.YELLOW_CHEESE_BLOCK);
+						//# Metal #
+						entries.add(ModBlocks.RAW_NUTRILLARN_BLOCK);
+						entries.add(ModBlocks.REFINED_NUTRILLARN_BLOCK);
 						//# Miscellaneous #
 						entries.add(ModBlocks.HYPERSMOOTH_CREAMSTONE);
 						entries.add(ModBlocks.ULTRASMOOTH_STONE);
-						
 					})).build());
 	public static final ItemGroup EQUIPMENT = Registry.register(Registries.ITEM_GROUP,
 			identifier(ModID + "equipment_group"),
@@ -102,6 +110,11 @@ public class ModItemGroups {
 						//# [Tier 0] Wooden Stick #
 						entries.add(ModItems.SHARP_WOODEN_STICK);
 						//# [Tier 1] Wood #
+						entries.add(ModItems.WOODEN_DAGGER);
+						entries.add(ModItems.WOODEN_MALLET);
+						entries.add(ModItems.WOODEN_SHOVEL);
+						entries.add(ModItems.WOODEN_SPEAR);
+						entries.add(ModItems.WOODEN_SWORD);
 						//# [Tier 2] Flint #
 						entries.add(ModItems.FLINT_DAGGER);
 						entries.add(ModItems.FLINT_HATCHET);
@@ -121,6 +134,7 @@ public class ModItemGroups {
 						entries.add(ModItems.BRASS_BOOT_PAIR);
 						entries.add(ModItems.BRASS_CHESTPLATE);
 						entries.add(ModItems.BRASS_HELMET);
+						entries.add(ModItems.BRASS_HORSE_ARMOR);
 						entries.add(ModItems.BRASS_LEGGING_PAIR);
 						//# [Tier 3] Brass (tools) #
 						entries.add(ModItems.BRASS_AXE);
@@ -136,6 +150,7 @@ public class ModItemGroups {
 						entries.add(ModItems.COPPER_BOOT_PAIR);
 						entries.add(ModItems.COPPER_CHESTPLATE);
 						entries.add(ModItems.COPPER_HELMET);
+						entries.add(ModItems.COPPER_HORSE_ARMOR);
 						entries.add(ModItems.COPPER_LEGGING_PAIR);
 						//# [Tier 3] Copper (tools) #
 						entries.add(ModItems.COPPER_AXE);
@@ -148,9 +163,49 @@ public class ModItemGroups {
 						entries.add(ModItems.COPPER_SPEAR);
 						entries.add(ModItems.COPPER_SWORD);
 						//# [Tier 3] Eiduril (armor) #
+						entries.add(ModItems.EIDURIL_BOOT_PAIR);
+						entries.add(ModItems.EIDURIL_CHESTPLATE);
+						entries.add(ModItems.EIDURIL_HELMET);
+						entries.add(ModItems.EIDURIL_HORSE_ARMOR);
+						entries.add(ModItems.EIDURIL_LEGGING_PAIR);
 						//# [Tier 3] Eiduril (tools) #
-						//# [Tier 3] Gold #
-						//# [Tier 3] Iron #
+						entries.add(ModItems.EIDURIL_AXE);
+						entries.add(ModItems.EIDURIL_DAGGER);
+						entries.add(ModItems.EIDURIL_HATCHET);
+						entries.add(ModItems.EIDURIL_HOE);
+						entries.add(ModItems.EIDURIL_MALLET);
+						entries.add(ModItems.EIDURIL_PICKAXE);
+						entries.add(ModItems.EIDURIL_SHOVEL);
+						entries.add(ModItems.EIDURIL_SPEAR);
+						entries.add(ModItems.EIDURIL_SWORD);
+						//# [Tier 3] Gold (armor) #
+						//# [Tier 3] Gold (tools) #
+						entries.add(ModItems.GOLDEN_DAGGER);
+						entries.add(ModItems.GOLDEN_HATCHET);
+						entries.add(ModItems.GOLDEN_MALLET);
+						entries.add(ModItems.GOLDEN_SPEAR);
+						//# [Tier 3] Iron (armor) #
+						//# [Tier 3] Iron (tools) #
+						entries.add(ModItems.IRON_DAGGER);
+						entries.add(ModItems.IRON_HATCHET);
+						entries.add(ModItems.IRON_MALLET);
+						entries.add(ModItems.IRON_SPEAR);
+						//# [Tier J] Nutrillarn (armor) #
+						entries.add(ModItems.NUTRILLARN_BOOT_PAIR);
+						entries.add(ModItems.NUTRILLARN_CHESTPLATE);
+						entries.add(ModItems.NUTRILLARN_HELMET);
+						entries.add(ModItems.NUTRILLARN_HORSE_ARMOR);
+						entries.add(ModItems.NUTRILLARN_LEGGING_PAIR);
+						//# [Tier J] Nutrillarn (tools) #
+						entries.add(ModItems.NUTRILLARN_AXE);
+						entries.add(ModItems.NUTRILLARN_DAGGER);
+						entries.add(ModItems.NUTRILLARN_HATCHET);
+						entries.add(ModItems.NUTRILLARN_HOE);
+						entries.add(ModItems.NUTRILLARN_MALLET);
+						entries.add(ModItems.NUTRILLARN_PICKAXE);
+						entries.add(ModItems.NUTRILLARN_SHOVEL);
+						entries.add(ModItems.NUTRILLARN_SPEAR);
+						entries.add(ModItems.NUTRILLARN_SWORD);
 					})).build());
 	public static final ItemGroup INGREDIENTS = Registry.register(Registries.ITEM_GROUP,
 			identifier(ModID + "_ingredients_group"),
@@ -185,12 +240,16 @@ public class ModItemGroups {
 						entries.add(ModItems.BRASS_GRAM);
 						entries.add(ModItems.BRASS_INGOT);
 						entries.add(ModItems.COPPER_GRAM);
+						entries.add(ModItems.EIDURIL_GRAM);
+						entries.add(ModItems.EIDURIL_INGOT);
 						entries.add(ModItems.GOLD_GRAM);
 						entries.add(ModItems.IRON_GRAM);
 						//# Lump & Nugget #
 						entries.add(ModItems.RAW_BRASS_LUMP);
 						entries.add(ModItems.RAW_BRASS_NUGGET);
 						entries.add(ModItems.RAW_COPPER_NUGGET);
+						entries.add(ModItems.RAW_EIDURIL_LUMP);
+						entries.add(ModItems.RAW_EIDURIL_NUGGET);
 						entries.add(ModItems.SULPHUR_LUMP);
 						//# Pile (miscellaneous) #
 						entries.add(ModItems.ASH_PILE);

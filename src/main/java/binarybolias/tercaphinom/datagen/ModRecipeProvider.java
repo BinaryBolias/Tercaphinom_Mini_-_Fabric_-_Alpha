@@ -9,10 +9,10 @@ import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
-import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -153,7 +153,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//region ## Container Recipes (handheld) ##
 		//# Bowl #
 		offerBowlRecipe(exporter,
-				RecipeCategory.MISC, Items.BOWL, 2, ModTags.Items.ALL_PLANKS,
+				RecipeCategory.MISC, Items.BOWL, 2, Tags.Item.ALL_PLANKS,
 				"has_any_plank", "", null);
 		//# Bucket #
 		offerBowlRecipe(exporter,
@@ -166,17 +166,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//region ## Container Recipes (placed) ##
 		//# Barrel #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.BARREL)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', ModItems.WOODEN_STICK_BUNDLE)
+				.input('O', Items.SLIME_BALL)
 				.pattern("#X#")
-				.pattern("# #")
+				.pattern("#O#")
 				.pattern("#X#")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
+				.criterion(hasItem(Items.SLIME_BALL), conditionsFromItem(Items.SLIME_BALL))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.BARREL)));
 		//# Chest #
 		offerEightAroundOneRecipe(exporter,
-				RecipeCategory.MISC, Blocks.CHEST, 1, ModItems.IRON_GRAM, ModTags.Items.ALL_PLANKS,
+				RecipeCategory.MISC, Blocks.CHEST, 1, Items.IRON_INGOT, Tags.Item.ALL_PLANKS,
 				"has_any_plank", "", null);
 		//# Ender Chest #
 		offerEightAroundOneRecipe(exporter,
@@ -191,11 +193,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.offerTo(exporter, new Identifier(getRecipeName(ModItems.SHARP_WOODEN_STICK)));
 		//# [tier 1] Wood #
-//		offerBasicDaggerRecipe(exporter, ModItems.WOODEN_DAGGER, ModTags.Items.ALL_PLANKS, "has_any_plank", "");
-//		offerBasicMalletRecipe(exporter, ModItems.WOODEN_MALLET, ModTags.Items.ALL_PLANKS, "has_any_plank", "");
-		offerBasicShovelRecipe(exporter, Items.WOODEN_SHOVEL, ModTags.Items.ALL_PLANKS, "has_any_plank", "");
-//		offerBasicSpearRecipe(exporter, ModItems.WOODEN_SPEAR, ModTags.Items.ALL_PLANKS, "has_any_plank", "");
-		offerBasicSwordRecipe(exporter, Items.WOODEN_SWORD, ModTags.Items.ALL_PLANKS, "has_any_plank", "");
+		offerBasicDaggerRecipe(exporter, ModItems.WOODEN_DAGGER, Tags.Item.ALL_PLANKS, "has_any_plank", "");
+		offerBasicMalletRecipe(exporter, ModItems.WOODEN_MALLET, Tags.Item.ALL_PLANKS, "has_any_plank", "");
+		offerBasicShovelRecipe(exporter, ModItems.WOODEN_SHOVEL, Tags.Item.ALL_PLANKS, "has_any_plank", "");
+		offerBasicSpearRecipe(exporter, ModItems.WOODEN_SPEAR, Tags.Item.ALL_PLANKS, "has_any_plank", "");
+		offerBasicSwordRecipe(exporter, ModItems.WOODEN_SWORD, Tags.Item.ALL_PLANKS, "has_any_plank", "");
 		//# [tier 2] Flint #
 		offerPrimitiveShaftedToolRecipeSet(exporter, Items.FLINT,
 				ModItems.FLINT_DAGGER, ModItems.FLINT_HATCHET, ModItems.FLINT_HOE, ModItems.FLINT_SPEAR);
@@ -205,103 +207,88 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//# [tier 2] Obsidian #
 		offerPrimitiveShaftedToolRecipeSet(exporter, ModItems.OBSIDIAN_SHARD,
 				ModItems.OBSIDIAN_DAGGER, ModItems.OBSIDIAN_HATCHET, ModItems.OBSIDIAN_HOE, ModItems.OBSIDIAN_SPEAR);
-		//# [tier 3] Brass (armor) #
-		offerMetalArmorRecipeSet(exporter, ModItems.BRASS_INGOT,
-				ModItems.BRASS_BOOT_PAIR, ModItems.BRASS_CHESTPLATE, ModItems.BRASS_HELMET, ModItems.BRASS_LEGGING_PAIR);
-		//# [tier 3] Brass (tools) #
-		offerStandardShaftedToolRecipeSet(exporter, ModItems.BRASS_INGOT,
+		//# [tier 3] Brass #
+		offerMetalEquipmentRecipeSet(exporter, ModItems.BRASS_INGOT, ModItems.RAW_BRASS_NUGGET, "brass",
+				ModItems.BRASS_BOOT_PAIR, ModItems.BRASS_CHESTPLATE,
+				ModItems.BRASS_HELMET, ModItems.BRASS_LEGGING_PAIR,
+				ModItems.BRASS_HORSE_ARMOR,
 				ModItems.BRASS_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET,
 				ModItems.BRASS_HOE, ModItems.BRASS_MALLET, ModItems.BRASS_PICKAXE,
 				ModItems.BRASS_SHOVEL, ModItems.BRASS_SPEAR, ModItems.BRASS_SWORD);
-		//# [tier 3] Copper (armor) #
-		offerMetalArmorRecipeSet(exporter, Items.COPPER_INGOT,
-				ModItems.COPPER_BOOT_PAIR, ModItems.COPPER_CHESTPLATE, ModItems.COPPER_HELMET, ModItems.COPPER_LEGGING_PAIR);
-		//# [tier 3] Copper (tools) #
-		offerStandardShaftedToolRecipeSet(exporter, Items.COPPER_INGOT,
+		//# [tier 3] Copper #
+		offerMetalEquipmentRecipeSet(exporter, Items.COPPER_INGOT, ModItems.RAW_COPPER_NUGGET, "copper",
+				ModItems.COPPER_BOOT_PAIR, ModItems.COPPER_CHESTPLATE,
+				ModItems.COPPER_HELMET, ModItems.COPPER_LEGGING_PAIR,
+				ModItems.COPPER_HORSE_ARMOR,
 				ModItems.COPPER_AXE, ModItems.COPPER_DAGGER, ModItems.COPPER_HATCHET,
 				ModItems.COPPER_HOE, ModItems.COPPER_MALLET, ModItems.COPPER_PICKAXE,
 				ModItems.COPPER_SHOVEL, ModItems.COPPER_SPEAR, ModItems.COPPER_SWORD);
-		//# [tier 3] Eiduril (armor) #
-		offerMetalArmorRecipeSet(exporter, Items.DIAMOND,
-				Items.DIAMOND_BOOTS, Items.DIAMOND_CHESTPLATE, Items.DIAMOND_HELMET, Items.DIAMOND_LEGGINGS);
-		//# [tier 3] Eiduril (tools) #
-		offerStandardShaftedToolRecipeSet(exporter, Items.DIAMOND, // TODO: Add Eiduril Ingot.
-				Items.DIAMOND_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET, // TODO: Add Eiduril Dagger, Hatchet, Mallet, and Spear.
-				Items.DIAMOND_HOE, ModItems.BRASS_MALLET, Items.DIAMOND_PICKAXE,
-				Items.DIAMOND_SHOVEL, ModItems.BRASS_SPEAR, Items.DIAMOND_SWORD);
-		//# [tier 3] Gold (armor) #
-		offerMetalArmorRecipeSet(exporter, Items.GOLD_INGOT,
-				Items.GOLDEN_BOOTS, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_HELMET, Items.GOLDEN_LEGGINGS);
-		//# [tier 3] Gold (tools) #
-		offerStandardShaftedToolRecipeSet(exporter, Items.GOLD_INGOT,
-				Items.GOLDEN_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET, // TODO: Add Golden Dagger, Hatchet, Mallet, and Spear.
-				Items.GOLDEN_HOE, ModItems.BRASS_MALLET, Items.GOLDEN_PICKAXE,
-				Items.GOLDEN_SHOVEL, ModItems.BRASS_SPEAR, Items.GOLDEN_SWORD);
-		//# [tier 3] Iron (armor) #
-		offerMetalArmorRecipeSet(exporter, Items.IRON_INGOT,
-				Items.IRON_BOOTS, Items.IRON_CHESTPLATE, Items.IRON_HELMET, Items.IRON_LEGGINGS);
-		//# [tier 3] Iron (tools) #
-		offerStandardShaftedToolRecipeSet(exporter, Items.IRON_INGOT,
-				Items.IRON_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET, // TODO: Add Iron Dagger, Hatchet, Mallet, and Spear.
-				Items.IRON_HOE, ModItems.BRASS_MALLET, Items.IRON_PICKAXE,
-				Items.IRON_SHOVEL, ModItems.BRASS_SPEAR, Items.IRON_SWORD);
-		//# Miscellaneous Tools #
+		//# [tier 3] Eiduril #
+		offerMetalEquipmentRecipeSet(exporter, ModItems.EIDURIL_INGOT, ModItems.RAW_EIDURIL_NUGGET, "eiduril",
+				ModItems.EIDURIL_BOOT_PAIR, ModItems.EIDURIL_CHESTPLATE,
+				ModItems.EIDURIL_HELMET, ModItems.EIDURIL_LEGGING_PAIR,
+				ModItems.EIDURIL_HORSE_ARMOR,
+				ModItems.EIDURIL_AXE, ModItems.EIDURIL_DAGGER, ModItems.EIDURIL_HATCHET,
+				ModItems.EIDURIL_HOE, ModItems.EIDURIL_MALLET, ModItems.EIDURIL_PICKAXE,
+				ModItems.EIDURIL_SHOVEL, ModItems.EIDURIL_SPEAR, ModItems.EIDURIL_SWORD);
+		//# [tier 3] Gold #
+		offerMetalEquipmentRecipeSet(exporter, Items.GOLD_INGOT, Items.GOLD_NUGGET, "gold",
+				Items.GOLDEN_BOOTS, Items.GOLDEN_CHESTPLATE,
+				Items.GOLDEN_HELMET, Items.GOLDEN_LEGGINGS,
+				Items.GOLDEN_HORSE_ARMOR,
+				Items.GOLDEN_AXE, ModItems.GOLDEN_DAGGER, ModItems.GOLDEN_HATCHET,
+				Items.GOLDEN_HOE, ModItems.GOLDEN_MALLET, Items.GOLDEN_PICKAXE,
+				Items.GOLDEN_SHOVEL, ModItems.GOLDEN_SPEAR, Items.GOLDEN_SWORD);
+		//# [tier 3] Iron
+		offerMetalEquipmentRecipeSet(exporter, Items.IRON_INGOT, Items.IRON_NUGGET, "iron",
+				Items.IRON_BOOTS, Items.IRON_CHESTPLATE,
+				Items.IRON_HELMET, Items.IRON_LEGGINGS,
+				Items.IRON_HORSE_ARMOR,
+				Items.IRON_AXE, ModItems.IRON_DAGGER, ModItems.IRON_HATCHET,
+				Items.IRON_HOE, ModItems.IRON_MALLET, Items.IRON_PICKAXE,
+				Items.IRON_SHOVEL, ModItems.IRON_SPEAR, Items.IRON_SWORD);
+		//# [tier 3] Chainmail Recycling #
+		offerMetalHumanoidArmorRecyclingRecipeSet(exporter, Items.IRON_NUGGET, "chainmail",
+				Items.CHAINMAIL_BOOTS, Items.CHAINMAIL_CHESTPLATE,
+				Items.CHAINMAIL_HELMET, Items.CHAINMAIL_LEGGINGS);
+		//# Miscellaneous Armor & Tools #
 		offerBrushRecipe(exporter, Items.BRUSH);
 		// Fishing Rod
 		offerFishingRodRecipe(exporter, Items.FISHING_ROD);
+		// Leather Horse Armor
+		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Items.LEATHER_HORSE_ARMOR)
+				.input('#', Items.LEATHER)
+				.input('X', ItemTags.WOOL_CARPETS)
+				.input('O', Tags.Item.ALL_YARNBALLS)
+				.pattern("#X#")
+				.pattern("###")
+				.pattern("#O#")
+				.criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
+				.criterion("has_any_carpet", conditionsFromTag(ItemTags.WOOL_CARPETS))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
+				.offerTo(exporter, new Identifier(getRecipeName(Items.LEATHER_HORSE_ARMOR)));
 		// Pair of Shears
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Items.SHEARS)
-				.input('#', ModItems.BRASS_INGOT)
-				.input('X', Items.IRON_INGOT)
-				.pattern(" X")
-				.pattern("# ")
-				.criterion(hasItem(ModItems.BRASS_INGOT), conditionsFromItem(ModItems.BRASS_INGOT))
-				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+				.input('#', ModItems.BRASS_GRAM)
+				.input('X', ModItems.IRON_GRAM)
+				.pattern("X X")
+				.pattern("X#X")
+				.pattern("###")
+				.criterion(hasItem(ModItems.BRASS_GRAM), conditionsFromItem(ModItems.BRASS_GRAM))
+				.criterion(hasItem(ModItems.IRON_GRAM), conditionsFromItem(ModItems.IRON_GRAM))
 				.offerTo(exporter, new Identifier(getRecipeName(Items.SHEARS)));
-		//endregion
-		
-		//region ## Equipment Recycling Recipes ##
-		//# [tier 3] Brass #
-		offerMetalEquipmentRecyclingRecipeSet(exporter, ModItems.RAW_BRASS_NUGGET, "brass",
-				ModItems.BRASS_BOOT_PAIR, ModItems.BRASS_CHESTPLATE,
-				ModItems.BRASS_HELMET, ModItems.BRASS_LEGGING_PAIR,
-				ModItems.BRASS_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET,
-				ModItems.BRASS_HOE, ModItems.BRASS_MALLET, ModItems.BRASS_PICKAXE,
-				ModItems.BRASS_SHOVEL, ModItems.BRASS_SPEAR, ModItems.BRASS_SWORD, false);
-		//# [tier 3] Copper #
-		offerMetalEquipmentRecyclingRecipeSet(exporter, ModItems.RAW_COPPER_NUGGET, "copper",
-				ModItems.COPPER_BOOT_PAIR, ModItems.COPPER_CHESTPLATE,
-				ModItems.COPPER_HELMET, ModItems.COPPER_LEGGING_PAIR,
-				ModItems.COPPER_AXE, ModItems.COPPER_DAGGER, ModItems.COPPER_HATCHET,
-				ModItems.COPPER_HOE, ModItems.COPPER_MALLET, ModItems.COPPER_PICKAXE,
-				ModItems.COPPER_SHOVEL, ModItems.COPPER_SPEAR, ModItems.COPPER_SWORD, false);
-		//# [tier 3] Eiduril #
-		// TODO: Add Eiduril Dagger, Hatchet, Mallet, and Spear.
-		offerMetalEquipmentRecyclingRecipeSet(exporter, Items.DIAMOND, "eiduril",
-				Items.DIAMOND_BOOTS, Items.DIAMOND_CHESTPLATE,
-				Items.DIAMOND_HELMET, Items.DIAMOND_LEGGINGS,
-				Items.DIAMOND_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET,
-				Items.DIAMOND_HOE, ModItems.BRASS_MALLET, Items.DIAMOND_PICKAXE,
-				Items.DIAMOND_SHOVEL, ModItems.BRASS_SPEAR, Items.DIAMOND_SWORD, true);
-		//# [tier 3] Gold #
-		// TODO: Add Golden Dagger, Hatchet, Mallet, and Spear.
-		offerMetalEquipmentRecyclingRecipeSet(exporter, Items.GOLD_NUGGET, "gold",
-				Items.GOLDEN_BOOTS, Items.GOLDEN_CHESTPLATE,
-				Items.GOLDEN_HELMET, Items.GOLDEN_LEGGINGS,
-				Items.GOLDEN_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET,
-				Items.GOLDEN_HOE, ModItems.BRASS_MALLET, Items.GOLDEN_PICKAXE,
-				Items.GOLDEN_SHOVEL, ModItems.BRASS_SPEAR, Items.GOLDEN_SWORD, true);
-		//# [tier 3] Iron #
-		// TODO: Add Iron Dagger, Hatchet, Mallet, and Spear.
-		offerMetalEquipmentRecyclingRecipeSet(exporter, Items.IRON_NUGGET, "iron",
-				Items.IRON_BOOTS, Items.IRON_CHESTPLATE,
-				Items.IRON_HELMET, Items.IRON_LEGGINGS,
-				Items.IRON_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET,
-				Items.IRON_HOE, ModItems.BRASS_MALLET, Items.IRON_PICKAXE,
-				Items.IRON_SHOVEL, ModItems.BRASS_SPEAR, Items.IRON_SWORD, true);
-		//# [tier J] Nutrillarn #
-		// TODO: Add Nutrillarn armor and tools.
-		//  - Decompose into grams instead of nuggets.
+		// Saddle
+		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.SADDLE)
+				.input('#', Items.LEATHER)
+				.input('X', Items.IRON_INGOT)
+				.input('O', Items.LEAD)
+				.pattern("###")
+				.pattern("#O#")
+				.pattern("OXO")
+				.criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
+				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+				.criterion(hasItem(Items.LEAD), conditionsFromItem(Items.LEAD))
+				.offerTo(exporter, new Identifier(getRecipeName(Items.SADDLE)));
 		//endregion
 		
 		//region ## Food Recipes ##
@@ -324,51 +311,51 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//region ## Workstation Recipes (cooking) ##
 		//# Blast Furnace #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.BLAST_FURNACE)
-				.input('#', ModTags.Items.ALL_BRICKS)
+				.input('#', Tags.Item.ALL_BRICKS)
 				.input('X', Items.IRON_INGOT)
 				.input('@', ModItems.ASH_PILE)
 				.pattern("XXX")
 				.pattern("X@X")
 				.pattern("###")
-				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_BRICKS))
+				.criterion("has_any_brick", conditionsFromTag(Tags.Item.ALL_BRICKS))
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.criterion(hasItem(ModItems.ASH_PILE), conditionsFromItem(ModItems.ASH_PILE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.BLAST_FURNACE)));
 		//# Campfire (basic) #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.CAMPFIRE)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', ModItems.WOODEN_STICK_BUNDLE)
-				.input('@', ModTags.Items.BASIC_FLAME_MATERIALS)
+				.input('@', Tags.Item.BASIC_FLAME_MATERIALS)
 				.pattern("#X#")
 				.pattern("#@#")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
-				.criterion("has_basic_flame_material", conditionsFromTag(ModTags.Items.BASIC_FLAME_MATERIALS))
+				.criterion("has_basic_flame_material", conditionsFromTag(Tags.Item.BASIC_FLAME_MATERIALS))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.CAMPFIRE)));
 		//# Campfire (spirit) #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.SOUL_CAMPFIRE)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', ModItems.WOODEN_STICK_BUNDLE)
-				.input('@', ModTags.Items.SPIRIT_FLAME_MATERIALS)
+				.input('@', Tags.Item.SPIRIT_FLAME_MATERIALS)
 				.pattern("#X#")
 				.pattern("#@#")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
-				.criterion("has_basic_flame_material", conditionsFromTag(ModTags.Items.SPIRIT_FLAME_MATERIALS))
+				.criterion("has_basic_flame_material", conditionsFromTag(Tags.Item.SPIRIT_FLAME_MATERIALS))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.SOUL_CAMPFIRE)));
 		//# Furnace #
 		offerEightAroundOneRecipe(exporter,
-				RecipeCategory.MISC, Blocks.FURNACE, 1, ModItems.ASH_PILE, ModTags.Items.ALL_COBBLESTONES,
+				RecipeCategory.MISC, Blocks.FURNACE, 1, ModItems.ASH_PILE, Tags.Item.ALL_COBBLESTONES,
 				"has_any_cobblestone", "", null);
 		//# Smoker #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.SMOKER)
-				.input('#', ModTags.Items.ALL_COBBLESTONES)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
 				.input('X', ModItems.WOODEN_STICK_BUNDLE)
 				.input('@', ModItems.ASH_PILE)
 				.pattern("X#X")
 				.pattern("#@#")
 				.pattern("X#X")
-				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_COBBLESTONES))
+				.criterion("has_any_brick", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
 				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
 				.criterion(hasItem(ModItems.ASH_PILE), conditionsFromItem(ModItems.ASH_PILE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.SMOKER)));
@@ -385,37 +372,37 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.ANVIL)));
 		//# Brewing Stand #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.BREWING_STAND)
-				.input('#', ModTags.Items.ALL_COBBLESTONES)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
 				.input('/', Items.BLAZE_ROD)
 				.input('X', Items.IRON_INGOT)
 				.input('O', Blocks.GLASS_PANE)
 				.pattern("OXO")
 				.pattern("X/X")
 				.pattern("###")
-				.criterion("has_any_cobblestone", conditionsFromTag(ModTags.Items.ALL_COBBLESTONES))
+				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
 				.criterion(hasItem(Items.BLAZE_ROD), conditionsFromItem(Items.BLAZE_ROD))
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.criterion(hasItem(Blocks.GLASS_PANE), conditionsFromItem(Blocks.GLASS_PANE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.BREWING_STAND)));
 		//# Cartography Table #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.CARTOGRAPHY_TABLE)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', Items.PAPER)
 				.input('@', Items.COMPASS)
 				.pattern("X@X")
 				.pattern("###")
 				.pattern("###")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.PAPER), conditionsFromItem(Items.PAPER))
 				.criterion(hasItem(Items.COMPASS), conditionsFromItem(Items.COMPASS))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.CARTOGRAPHY_TABLE)));
 		//# Crafting Table #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.CRAFTING_TABLE)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', ModItems.WOODEN_STICK_BUNDLE)
 				.pattern("##")
 				.pattern("XX")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.CRAFTING_TABLE)));
 		//# Enchanting Table #
@@ -432,72 +419,72 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.ENCHANTING_TABLE)));
 		//# Fletching Table #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.FLETCHING_TABLE)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', Items.STRING)
 				.input('@', Items.ARROW)
 				.pattern("X@X")
 				.pattern("###")
 				.pattern("###")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
 				.criterion(hasItem(Items.ARROW), conditionsFromItem(Items.ARROW))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.FLETCHING_TABLE)));
 		//# Grindstone #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.GRINDSTONE)
-				.input('#', ModTags.Items.ALL_BRICKS)
-				.input('X', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_BRICKS)
+				.input('X', Tags.Item.ALL_PLANKS)
 				.input('@', Items.DIAMOND)
 				.pattern(" @ ")
 				.pattern("X#X")
 				.pattern("X@X")
-				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_BRICKS))
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_brick", conditionsFromTag(Tags.Item.ALL_BRICKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.GRINDSTONE)));
 		//# Lectern #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.LECTERN)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', Items.BOOK)
 				.pattern("###")
 				.pattern(" X ")
 				.pattern("###")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.LECTERN)));
 		//# Loom #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.LOOM)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', ModItems.WOODEN_STICK_BUNDLE)
-				.input('@', ModTags.Items.ALL_YARNBALLS)
+				.input('@', Tags.Item.ALL_YARNBALLS)
 				.pattern("#@#")
 				.pattern("X@X")
 				.pattern("###")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
-				.criterion("has_any_yarnball", conditionsFromTag(ModTags.Items.ALL_YARNBALLS))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.LOOM)));
 		//# Sawmill #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.STONECUTTER)
-				.input('#', ModTags.Items.ALL_BRICKS)
-				.input('X', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_BRICKS)
+				.input('X', Tags.Item.ALL_PLANKS)
 				.input('I', Items.IRON_INGOT)
 				.input('@', Items.DIAMOND)
 				.pattern(" @ ")
 				.pattern("XIX")
 				.pattern("###")
-				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_BRICKS))
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_brick", conditionsFromTag(Tags.Item.ALL_BRICKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.STONECUTTER)));
 		//# Smithing Table #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.SMITHING_TABLE)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', Items.IRON_INGOT)
 				.pattern("XXX")
 				.pattern("###")
 				.pattern("###")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.SMITHING_TABLE)));
 		//endregion
@@ -542,7 +529,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				Blocks.DIRT, Items.WHEAT_SEEDS, "", "grassy_dirt_blocks");
 		offerEightAroundOneRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.MYCELIUM, 1,
-				Blocks.DIRT, ModTags.Items.ALL_MUSHROOMS, "has_any_mushroom",
+				Blocks.DIRT, Tags.Item.ALL_MUSHROOMS, "has_any_mushroom",
 				"", "grassy_dirt_blocks");
 		//# Nutrillarn (basic) #
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RAW_NUTRILLARN_LUMP)
@@ -564,17 +551,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerReversibleDoubleRowRecipes(exporter,
 				RecipeCategory.MISC, ModItems.NUTRILLARN_INGOT, "_from_gram", "gram_merging",
 				RecipeCategory.MISC, ModItems.NUTRILLARN_GRAM, "_from_ingot", "ingot_splitting");
-		//# Nutrillarn (equipment - armor) #
-		// TODO: Add Nutrillarn armor.
-		//# Nutrillarn (equipment - armor recycling) #
-		// TODO: Add Nutrillarn armor.
-		//# Nutrillarn (equipment - tools) #
-		offerStandardShaftedToolRecipeSet(exporter, ModItems.NUTRILLARN_INGOT,
-				ModItems.BRASS_AXE, ModItems.BRASS_DAGGER, ModItems.BRASS_HATCHET, // TODO: Add Nutrillarn tools.
-				ModItems.BRASS_HOE, ModItems.BRASS_MALLET, ModItems.BRASS_PICKAXE,
-				ModItems.BRASS_SHOVEL, ModItems.BRASS_SPEAR, ModItems.BRASS_SWORD);
-		//# Nutrillarn (equipment - tool recycling) #
-		// TODO: Add Nutrillarn tools.
+		offerCompactingEightRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_NUTRILLARN_BLOCK, 1,
+				ModItems.RAW_NUTRILLARN_LUMP,"", null);
+		offerCompactingEightRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, ModBlocks.REFINED_NUTRILLARN_BLOCK, 1,
+				ModItems.NUTRILLARN_INGOT,"", null);
+		//# Nutrillarn (equipment) #
+		offerMetalEquipmentRecipeSet(exporter, ModItems.NUTRILLARN_INGOT, ModItems.NUTRILLARN_GRAM, "nutrillarn",
+				ModItems.NUTRILLARN_BOOT_PAIR, ModItems.NUTRILLARN_CHESTPLATE,
+				ModItems.NUTRILLARN_HELMET, ModItems.NUTRILLARN_LEGGING_PAIR,
+				ModItems.NUTRILLARN_HORSE_ARMOR,
+				ModItems.NUTRILLARN_AXE, ModItems.NUTRILLARN_DAGGER, ModItems.NUTRILLARN_HATCHET,
+				ModItems.NUTRILLARN_HOE, ModItems.NUTRILLARN_MALLET, ModItems.NUTRILLARN_PICKAXE,
+				ModItems.NUTRILLARN_SHOVEL, ModItems.NUTRILLARN_SPEAR, ModItems.NUTRILLARN_SWORD);
 		//# Smoothest Stones #
 		// Hypersmooth Creamstone
 		ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HYPERSMOOTH_CREAMSTONE)
@@ -598,27 +588,43 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//# Armor Stand #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.ARMOR_STAND)
-				.input('#', ModTags.Items.ALL_BRICKS)
+				.input('#', Tags.Item.ALL_BRICKS)
 				.input('X', ModItems.WOODEN_STICK_BUNDLE)
 				.pattern(" X ")
 				.pattern("XXX")
 				.pattern(" # ")
-				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_BRICKS))
+				.criterion("has_any_brick", conditionsFromTag(Tags.Item.ALL_BRICKS))
 				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
 				.offerTo(exporter, new Identifier(getRecipeName(Items.ARMOR_STAND)));
 		
-		//# Arrow #
+		//# Arrow (basic) #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Items.ARROW)
-				.input('#', ModTags.Items.ARROWHEAD_MATERIALS)
+				.input('#', Tags.Item.ARROWHEAD_MATERIALS)
 				.input('/', Items.STICK)
 				.input('X', Items.FEATHER)
 				.pattern("#")
 				.pattern("/")
 				.pattern("X")
-				.criterion("has_arrowhead_material", conditionsFromTag(ModTags.Items.ARROWHEAD_MATERIALS))
+				.criterion("has_arrowhead_material", conditionsFromTag(Tags.Item.ARROWHEAD_MATERIALS))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.criterion(hasItem(Items.FEATHER), conditionsFromItem(Items.FEATHER))
 				.offerTo(exporter, new Identifier(getRecipeName(Items.ARROW)));
+		//# Arrow (spectral) #
+		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Items.SPECTRAL_ARROW, 2)
+				.input('#', ModItems.GOLD_GRAM)
+				.input('/', Items.STICK)
+				.input('X', Items.FEATHER)
+				.input('O', Items.GLOWSTONE_DUST)
+				.input('@', Items.GHAST_TEAR)
+				.pattern("O#O")
+				.pattern("/@/")
+				.pattern("XOX")
+				.criterion(hasItem(ModItems.GOLD_GRAM), conditionsFromItem(ModItems.GOLD_GRAM))
+				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+				.criterion(hasItem(Items.FEATHER), conditionsFromItem(Items.FEATHER))
+				.criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
+				.criterion(hasItem(Items.GHAST_TEAR), conditionsFromItem(Items.GHAST_TEAR))
+				.offerTo(exporter, new Identifier(getRecipeName(Items.SPECTRAL_ARROW)));
 		
 		//# Ash Pile from cooking #
 		offerSmeltingAndBlastingRecipes(exporter,
@@ -626,14 +632,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				ModItems.WOODEN_STICK_BUNDLE, 0.125F);
 		offerSmeltingAndBlastingRecipes(exporter,
 				RecipeCategory.MISC, ModItems.ASH_PILE, 50,
-				ModTags.Items.ALL_YARNBALLS, "has_any_yarnball", "_from_yarnball",
+				Tags.Item.ALL_YARNBALLS, "has_any_yarnball", "_from_yarnball",
 				0.125F);
 		
 		//# Balls #
-		// Cobweb Ball
+		// (balls) Cobweb Ball
 		offerEightAroundOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.COBWEB_BALL, 1, Items.GUNPOWDER, ModItems.SILK_WAD, "", null);
-		// Magma Cream
+		// (balls) Magma Cream
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.MAGMA_CREAM, 2)
 				.input(Items.BLAZE_ROD).input(Items.SLIME_BALL)
 				.input(Items.SLIME_BALL).input(ModItems.SULPHUR_LUMP)
@@ -641,13 +647,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Items.SLIME_BALL), conditionsFromItem(Items.SLIME_BALL))
 				.criterion(hasItem(ModItems.SULPHUR_LUMP), conditionsFromItem(ModItems.SULPHUR_LUMP))
 				.offerTo(exporter, new Identifier(getRecipeName(Items.MAGMA_CREAM)));
-		// Yarnballs (dying)
+		// (balls) Yarnballs (dying)
 		// TODO: Figure out how to use an arbitrary list as a recipe criterion,
 		//  then remove the yarnball dying item tags, and refine this set of recipes.
 		//  - .criterion("has_yarnball_which_dyes_to_black", conditionsFromItemPredicates(new ItemPredicate()))
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.BLACK_YARNBALL, 1,
-				ModTags.Items.ALL_YARNBALLS_WHICH_DYE_TO_BLACK, "has_any_yarnball_which_dyes_to_black",
+				Tags.Item.ALL_YARNBALLS_WHICH_DYE_TO_BLACK, "has_any_yarnball_which_dyes_to_black",
 				Items.BLACK_DYE, "", "yarnball_dying");
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.BLUE_YARNBALL, 1,
@@ -663,7 +669,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				ModItems.WHITE_YARNBALL, Items.GRAY_DYE, "", "yarnball_dying");
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.GRAY_YARNBALL, 1,
-				ModItems.BLACK_YARNBALL, Items.WHITE_DYE, "", "yarnball_dying");
+				ModItems.BLACK_YARNBALL, Items.WHITE_DYE, "_from_black_yarnball", "yarnball_dying");
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.GREEN_YARNBALL, 1,
 				ModItems.WHITE_YARNBALL, Items.GREEN_DYE, "", "yarnball_dying");
@@ -675,8 +681,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				ModItems.WHITE_YARNBALL, Items.LIGHT_GRAY_DYE, "", "yarnball_dying");
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.LIGHT_GRAY_YARNBALL, 1,
-				ModTags.Items.ALL_YARNBALLS_WHICH_DYE_TO_LIGHT_GRAY, "has_any_yarnball_which_dyes_to_light_gray",
-				Items.LIGHT_GRAY_DYE, "", "yarnball_dying");
+				Tags.Item.ALL_YARNBALLS_WHICH_DYE_TO_LIGHT_GRAY, "has_any_yarnball_which_dyes_to_light_gray",
+				Items.WHITE_DYE, "_from_yarnballs_which_lighten_to_light_gray", "yarnball_dying");
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.LIME_YARNBALL, 1,
 				ModItems.WHITE_YARNBALL, Items.LIME_DYE, "", "yarnball_dying");
@@ -701,15 +707,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.YELLOW_YARNBALL, 1,
 				ModItems.WHITE_YARNBALL, Items.YELLOW_DYE, "", "yarnball_dying");
-		// Yarnballs (miscellaneous) - Also string from silk.
+		// (balls) Yarnballs (miscellaneous) - Also string from silk.
 		offerDoubleRowRecipe(exporter,
 				RecipeCategory.MISC, ModItems.WHITE_YARNBALL, 1, Items.STRING, "_from_string", null);
 		offerOneToOneRecipe(exporter,
 				RecipeCategory.MISC, Items.STRING, 4,
-				ModTags.Items.ALL_YARNBALLS, "has_any_yarnball", "_from_yarnball", "string");
+				Tags.Item.ALL_YARNBALLS, "has_any_yarnball", "_from_yarnball", null);
 		offerSmallSquareRecipe(exporter,
 				RecipeCategory.MISC, Items.STRING, 1,
-				ModItems.SILK_WAD, "_from_silk", "string");
+				ModItems.SILK_WAD, "_from_silk", null);
 		
 		//# Beacon #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.BEACON)
@@ -765,7 +771,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//# Charcoal #
 		offerSmeltingRecipe(exporter, RecipeCategory.MISC, Items.CHARCOAL, 400,
-				ModTags.Items.ALL_PLANKS, "has_any_plank", "_from_plank", 0.125F);
+				Tags.Item.ALL_PLANKS, "has_any_plank", "_from_plank", 0.125F);
 		
 		//# Cheese #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHEESE_WHEEL)
@@ -778,7 +784,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Items.MILK_BUCKET), conditionsFromItem(Items.MILK_BUCKET))
 				.criterion(hasItem(Items.BLAZE_POWDER), conditionsFromItem(Items.BLAZE_POWDER))
 				.offerTo(exporter, new Identifier(getRecipeName(ModItems.CHEESE_WHEEL)));
-		// NOTE: Won't work; bucket gets consumed, not leaving behind an Empty Bucket:
+		// NOTE: Doesn't work; bucket gets consumed, not leaving behind an Empty Bucket:
 //		offerSmeltingRecipe(exporter,
 //				RecipeCategory.FOOD, ModItems.CHEESE_WHEEL, 400,
 //				Items.MILK_BUCKET, 0.125F, null);
@@ -789,12 +795,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//# Compost Bin #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.COMPOSTER)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', ModItems.WOODEN_STICK_BUNDLE)
 				.pattern("# #")
 				.pattern("#X#")
 				.pattern("###")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.COMPOSTER)));
 		
@@ -821,47 +827,47 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				Items.NETHER_WART, 0.125F, null); // Perhaps a "dyes_from_smelting" group?
 		
 		//# Dynamite #
-		// Block.
+		// (dynamite) Block
 		offerReversibleSmallSquareRecipes(exporter,
 				RecipeCategory.REDSTONE, Blocks.TNT,
 				"", "dynamite_packing",
 				RecipeCategory.MISC, ModItems.DYNAMITE_BUNDLE,
 				"_from_block", "dynamite_packing");
-		// Bundle.
+		// (dynamite) Bundle
 		offerReversibleSmallSquareRecipes(exporter,
 				RecipeCategory.MISC, ModItems.DYNAMITE_BUNDLE,
 				"_from_stick", "dynamite_packing",
 				RecipeCategory.MISC, ModItems.DYNAMITE_STICK,
 				"_from_bundle", "dynamite_packing");
-		// Stick.
+		// (dynamite) Stick
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DYNAMITE_STICK)
-				.input(ModTags.Items.ALL_YARNBALLS)
+				.input(Tags.Item.ALL_YARNBALLS)
 				.input(Items.PAPER).input(Items.PAPER)
 				.input(Items.GUNPOWDER)
 				.group("dynamite_stick")
-				.criterion("has_any_yarnball", conditionsFromTag(ModTags.Items.ALL_YARNBALLS))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.criterion(hasItem(Items.PAPER), conditionsFromItem(Items.PAPER))
 				.criterion(hasItem(Items.GUNPOWDER), conditionsFromItem(Items.GUNPOWDER))
 				.offerTo(exporter, new Identifier(getRecipeName(ModItems.DYNAMITE_STICK) + "_from_paper"));
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DYNAMITE_STICK)
-				.input(ModTags.Items.ALL_YARNBALLS)
+				.input(Tags.Item.ALL_YARNBALLS)
 				.input(Blocks.BAMBOO)
 				.input(Items.GUNPOWDER)
 				.group("dynamite_stick")
-				.criterion("has_any_yarnball", conditionsFromTag(ModTags.Items.ALL_YARNBALLS))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.criterion(hasItem(Blocks.BAMBOO), conditionsFromItem(Blocks.BAMBOO))
 				.criterion(hasItem(Items.GUNPOWDER), conditionsFromItem(Items.GUNPOWDER))
 				.offerTo(exporter, new Identifier(getRecipeName(ModItems.DYNAMITE_STICK) + "_from_bamboo"));
 		
 		//# Elemental Blocks #
-		// Ash
+		// (EB) Ash
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, ModBlocks.ASH_BLOCK, 1, ModItems.ASH_PILE, "", null);
 		
-		// Bone
+		// (EB) Bone
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.BONE_BLOCK, 1, Items.BONE, "", null);
-		// Obsidian
+		// (EB) Obsidian
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.OBSIDIAN, 1, ModItems.OBSIDIAN_SHARD, "", null);
 		
@@ -876,9 +882,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//# Glass Shard #
 		offerSmeltingAndBlastingRecipes(exporter,
 				RecipeCategory.MISC, ModItems.GLASS_SHARD, 200,
-				ModTags.Items.ALL_GLASSY_SAND_PILES, "has_glassy_sand_pile",
+				Tags.Item.ALL_GLASSY_SAND_PILES, "has_glassy_sand_pile",
 				"_from_glassy_sand_pile", 0.125F);
-		// Bottle recycling
+		// (glass shard) Bottle recycling
 		offerOneToOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.GLASS_SHARD, 1, Items.GLASS_BOTTLE, "_from_bottle", null);
 		
@@ -1007,62 +1013,57 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				Items.CARROT, ModItems.GOLD_GRAM, "", null);
 		
 		//# Gravel, Sands, & Soils #
-		// Coarse Dirt
+		// (GS&S) Coarse Dirt
 		offerCompactingFourAndFourRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.COARSE_DIRT, 1,
 				ModItems.DIRT_PILE, ModItems.GRAVEL_PILE, "", null);
-		// Dirt
+		// (GS&S) Dirt
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.DIRT, 1,
 				ModItems.DIRT_PILE, "", null);
-		// Gravel
+		// (GS&S) Gravel
 		offerOneToOneRecipe(exporter,
-				RecipeCategory.MISC, ModItems.GRAVEL_PILE, 1, ModTags.Items.ALL_COBBLESTONES,
+				RecipeCategory.MISC, ModItems.GRAVEL_PILE, 1, Tags.Item.ALL_COBBLESTONES,
 				"has_any_cobblestone", "_from_cobblestone" , null);
-//		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GRAVEL_PILE)
-//				.input(Ingredient.fromTag(ModTags.Items.ALL_COBBLESTONES))
-//				.criterion("has_any_cobblestone", conditionsFromTag(ModTags.Items.ALL_COBBLESTONES))
-//				.offerTo(exporter, new Identifier(getRecipeName(ModItems.GRAVEL_PILE) + "_from_cobblestone"));
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.GRAVEL, 1,
 				ModItems.GRAVEL_PILE, "", null);
 		offerReversibleSmallSquareRecipes(exporter,
 				RecipeCategory.MISC, ModItems.GRAVEL_PILE, "_from_stone_pebble", null,
 				RecipeCategory.MISC, ModItems.STONE_PEBBLE, "_from_gravel_pile", null);
-		// Sand (feldsand)
+		// (GS&S) Sand (feldsand)
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.SAND, 1,
 				ModItems.FELDSAND_PILE, "", "sand_blocks");
-		// Sand (ferrosand)
+		// (GS&S) Sand (ferrosand)
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.RED_SAND, 1,
 				ModItems.FERROSAND_PILE, "", "sand_blocks");
-		// Sand (skorsand)
+		// (GS&S) Sand (skorsand)
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, ModBlocks.SKORSAND_BLOCK, 1,
 				ModItems.SKORSAND_PILE, "", "sand_blocks");
 		
 		//# Ice #
-		// Packed
+		// (ice) Packed
 		offerSmallSquareRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.PACKED_ICE, 1,
 				Blocks.ICE, "", null);
-		// Blue
+		// (ice) Blue
 		offerShapelessFourIntoOneRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.BLUE_ICE, 1,
 				Blocks.PACKED_ICE, Blocks.PACKED_ICE, Blocks.PACKED_ICE, Blocks.LAPIS_BLOCK,
 				"", null);
 		
-		//# Iron Door & Hatch #
-		// Door
-		offerDoubleColumnRecipe(exporter,
-				RecipeCategory.REDSTONE, Blocks.IRON_DOOR, 1, Items.IRON_INGOT, "", null);
-		// Hatch
-		offerLargeRowRecipe(exporter,
-				RecipeCategory.REDSTONE, Blocks.IRON_TRAPDOOR, 1, Items.IRON_INGOT, "", null);
+		//# Metal Door & Hatch #
+		// TODO: Enable copper door and hatch recipes after updating MC version.
+//		offerDoorAndHatchRecipeSet(exporter, Blocks.COPPER_DOOR, Blocks.COPPER_TRAPDOOR, Items.COPPER_INGOT,
+//				"", "", "metal_doors", "metal_hatches");
+		offerDoorAndHatchRecipeSet(exporter, Blocks.IRON_DOOR, Blocks.IRON_TRAPDOOR, Items.IRON_INGOT,
+				"", "", "metal_doors", "metal_hatches");
 		
-		//# Lanterns #
-		// Basic Lantern
+		//# Lantern #
+		// (lantern) Basic
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.LANTERN)
 				.input('#', Items.IRON_INGOT)
 				.input('X', ModItems.IRON_GRAM)
@@ -1076,23 +1077,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Blocks.GLASS_PANE), conditionsFromItem(Blocks.GLASS_PANE))
 				.criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.LANTERN)));
-		// Spirit Lantern
+		// (lantern) Spirit
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.SOUL_LANTERN)
 				.input('#', Items.IRON_INGOT)
 				.input('X', ModItems.IRON_GRAM)
 				.input('O', Blocks.GLASS_PANE)
-				.input('@', ModTags.Items.SPIRIT_FLAME_MATERIALS)
+				.input('@', Tags.Item.SPIRIT_FLAME_MATERIALS)
 				.pattern(" X ")
 				.pattern("O@O")
 				.pattern("X#X")
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.criterion(hasItem(ModItems.IRON_GRAM), conditionsFromItem(ModItems.IRON_GRAM))
 				.criterion(hasItem(Blocks.GLASS_PANE), conditionsFromItem(Blocks.GLASS_PANE))
-				.criterion("has_spirit_flame_material", conditionsFromTag(ModTags.Items.SPIRIT_FLAME_MATERIALS))
+				.criterion("has_spirit_flame_material", conditionsFromTag(Tags.Item.SPIRIT_FLAME_MATERIALS))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.SOUL_LANTERN)));
 		
 		//# Ladders #
-		// Wooden
+		// (ladders) Wooden
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Blocks.LADDER)
 				.input('#', Items.STICK)
 				.input('X', Items.STRING)
@@ -1102,78 +1103,64 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.LADDER)));
+		// (ladders) Brass
+		// (ladders) Copper
+		// (ladders) Eiduril
+		// (ladders) Gold
+		// (ladders) Iron
+		// (ladders) Netherite
 		
 		//# Leash #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Items.LEAD)
-				.input('#', Ingredient.fromTag(ModTags.Items.ALL_YARNBALLS))
+				.input('#', Ingredient.fromTag(Tags.Item.ALL_YARNBALLS))
 				.input('X', Items.SLIME_BALL)
 				.pattern("## ")
 				.pattern("#X ")
 				.pattern("  #")
-				.criterion("has_any_yarnball", conditionsFromTag(ModTags.Items.ALL_YARNBALLS))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.criterion(hasItem(Items.SLIME_BALL), conditionsFromItem(Items.SLIME_BALL))
 				.offerTo(exporter, new Identifier(getRecipeName(Items.LEAD)));
 		
 		//# Leather #
-		offerSmokingAndCampfireRecipes(exporter,
-				RecipeCategory.MISC, Items.LEATHER, 400, Items.ROTTEN_FLESH, 0.125F);
+		offerSmokingAndCampfireRecipes(exporter, RecipeCategory.MISC, Items.LEATHER,
+				400, Items.ROTTEN_FLESH, 0.125F);
 		
 		//# Lumithite #
-		// Powder
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, Items.GLOWSTONE_DUST, 400, Items.GLOW_BERRIES, 0.125F);
+		// (lumithite) Chunk
+		// (lumithite) Powder Pile
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, Items.GLOWSTONE_DUST,
+				400, Items.GLOW_BERRIES, 0.125F);
 		
 		//# Magma Block #
-		offerCheckeredRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.MAGMA_BLOCK, 1,
-				Items.MAGMA_CREAM, ModTags.Items.ALL_COBBLESTONES, "has_any_cobblestone",
+		offerCheckeredRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.MAGMA_BLOCK, 1,
+				Items.MAGMA_CREAM, Tags.Item.ALL_COBBLESTONES, "has_any_cobblestone",
 				"", null);
 		
 		//# Melon #
-		offerEightAroundOneRecipe(exporter,
-				RecipeCategory.MISC, Blocks.MELON, 1, Items.SUGAR, Items.MELON_SLICE,"", "");
+		offerEightAroundOneRecipe(exporter, RecipeCategory.MISC, Blocks.MELON, 1,
+				Items.SUGAR, Items.MELON_SLICE,"", "");
 		
-		//# Metals #
-		// Cooking Grams and Ingots
-		offerSmeltingAndBlastingForMetalRecipes(exporter,
-				ModItems.BRASS_GRAM, ModItems.BRASS_INGOT, 100,
-				ModItems.RAW_BRASS_NUGGET, ModItems.RAW_BRASS_LUMP, 0.375F);
-		offerSmeltingAndBlastingForMetalRecipes(exporter,
-				ModItems.COPPER_GRAM, Items.COPPER_INGOT, 100,
-				ModItems.RAW_COPPER_NUGGET, Items.RAW_COPPER, 0.25F);
-		offerSmeltingAndBlastingForMetalRecipes(exporter,
-				ModItems.GOLD_GRAM, Items.GOLD_INGOT, 100,
-				Items.GOLD_NUGGET, Items.RAW_GOLD, 0.25F);
-		offerSmeltingAndBlastingForMetalRecipes(exporter,
-				ModItems.IRON_GRAM, Items.IRON_INGOT, 100,
-				Items.IRON_NUGGET, Items.RAW_IRON, 0.25F);
-		// Merging and Splitting (raw metal)
-		offerReversibleDoubleRowRecipes(exporter,
-				RecipeCategory.MISC, ModItems.RAW_BRASS_LUMP, "_from_nugget", "nugget_merging",
-				RecipeCategory.MISC, ModItems.RAW_BRASS_NUGGET, "_from_lump", "lump_splitting");
-		offerReversibleDoubleRowRecipes(exporter,
-				RecipeCategory.MISC, Items.RAW_COPPER, "_from_nugget", "nugget_merging",
-				RecipeCategory.MISC, ModItems.RAW_COPPER_NUGGET, "_from_lump", "lump_splitting");
-		offerReversibleDoubleRowRecipes(exporter,
-				RecipeCategory.MISC, Items.RAW_GOLD, "_from_nugget", "nugget_merging",
-				RecipeCategory.MISC, Items.GOLD_NUGGET, "_from_lump", "lump_splitting");
-		offerReversibleDoubleRowRecipes(exporter,
-				RecipeCategory.MISC, Items.RAW_IRON, "_from_nugget", "nugget_merging",
-				RecipeCategory.MISC, Items.IRON_NUGGET, "_from_lump", "lump_splitting");
-		// Merging and Splitting (refined metal)
-		offerReversibleDoubleRowRecipes(exporter,
-				RecipeCategory.MISC, ModItems.BRASS_INGOT, "_from_gram", "gram_merging",
-				RecipeCategory.MISC, ModItems.BRASS_GRAM, "_from_ingot", "ingot_splitting");
-		offerReversibleDoubleRowRecipes(exporter,
-				RecipeCategory.MISC, Items.COPPER_INGOT, "_from_gram", "gram_merging",
-				RecipeCategory.MISC, ModItems.COPPER_GRAM, "_from_ingot", "ingot_splitting");
-		offerReversibleDoubleRowRecipes(exporter,
-				RecipeCategory.MISC, Items.GOLD_INGOT, "_from_gram", "gram_merging",
-				RecipeCategory.MISC, ModItems.GOLD_GRAM, "_from_ingot", "ingot_splitting");
-		offerReversibleDoubleRowRecipes(exporter,
-				RecipeCategory.MISC, Items.IRON_INGOT, "_from_gram", "gram_merging",
-				RecipeCategory.MISC, ModItems.IRON_GRAM, "_from_ingot", "ingot_splitting");
-		// Metal Production
+		//# Metal (brass) #
+		offerStandardMetalRecipeSet(exporter, ModItems.BRASS_GRAM, ModItems.BRASS_INGOT,
+				ModItems.RAW_BRASS_LUMP, ModItems.RAW_BRASS_NUGGET, 100, 0.375F,
+				ModBlocks.RAW_BRASS_BLOCK, ModBlocks.REFINED_BRASS_BLOCK);
+		//# Metal (copper) #
+		offerStandardMetalRecipeSet(exporter, ModItems.COPPER_GRAM, Items.COPPER_INGOT,
+				Items.RAW_COPPER, ModItems.RAW_COPPER_NUGGET, 100, 0.25F,
+				Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_BLOCK);
+		//# Metal (eiduril) #
+		offerStandardMetalRecipeSet(exporter, ModItems.EIDURIL_GRAM, ModItems.EIDURIL_INGOT,
+				ModItems.RAW_EIDURIL_LUMP, ModItems.RAW_EIDURIL_NUGGET, 150, 0.5F,
+				ModBlocks.RAW_EIDURIL_BLOCK, ModBlocks.REFINED_EIDURIL_BLOCK);
+		//# Metal (gold) #
+		offerStandardMetalRecipeSet(exporter, ModItems.GOLD_GRAM, Items.GOLD_INGOT,
+				Items.RAW_GOLD, Items.GOLD_NUGGET, 100, 0.25F,
+				Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_BLOCK);
+		//# Metal (iron) #
+		offerStandardMetalRecipeSet(exporter, ModItems.IRON_GRAM, Items.IRON_INGOT,
+				Items.RAW_IRON, Items.IRON_NUGGET, 100, 0.25F,
+				Blocks.RAW_IRON_BLOCK, Blocks.IRON_BLOCK);
+		// Metal Production (brass)
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RAW_BRASS_LUMP, 1)
 				.input(ModItems.COPPER_GRAM).input(Items.BLAZE_POWDER)
 				.input(ModItems.COPPER_GRAM).input(Items.BLAZE_POWDER)
@@ -1184,9 +1171,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(ModItems.IRON_GRAM), conditionsFromItem(ModItems.IRON_GRAM))
 				.criterion(hasItem(Items.BLAZE_POWDER), conditionsFromItem(Items.BLAZE_POWDER))
 				.offerTo(exporter, new Identifier(getRecipeName(ModItems.RAW_BRASS_LUMP)));
+		// Metal Production (eiduril)
+		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RAW_EIDURIL_LUMP, 1)
+				.input(Items.DIAMOND).input(ModItems.COPPER_GRAM).input(Items.LAPIS_LAZULI)
+				.input(ModItems.COPPER_GRAM).input(ModItems.COPPER_GRAM).input(ModItems.COPPER_GRAM)
+				.input(Items.LAPIS_LAZULI).input(ModItems.COPPER_GRAM).input(Items.REDSTONE)
+				.criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
+				.criterion(hasItem(ModItems.COPPER_GRAM), conditionsFromItem(ModItems.COPPER_GRAM))
+				.criterion(hasItem(Items.LAPIS_LAZULI), conditionsFromItem(Items.LAPIS_LAZULI))
+				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+				.offerTo(exporter, new Identifier(getRecipeName(ModItems.RAW_EIDURIL_LUMP)));
 		
 		//# Metal & Wooden Panes #
-		// Iron Pane
+		// (M&WP) Metal (brass)
+		// (M&WP) Metal (copper)
+		// (M&WP) Metal (eiduril)
+		// (M&WP) Metal (gold)
+		// (M&WP) Metal (iron)
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.IRON_BARS, 1)
 				.input('#', Items.IRON_INGOT)
 				.input('X', ModItems.IRON_GRAM)
@@ -1195,141 +1196,143 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.criterion(hasItem(ModItems.IRON_GRAM), conditionsFromItem(ModItems.IRON_GRAM))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.IRON_BARS)));
+		// (M&WP) Metal (netherite)
+		// (M&WP) Wooden
 		
 		//# Miniwizard #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MINIWIZARD, 2)
 				.input('#', ModItems.MINIWIZARD)
-				.input('O', ModTags.Items.ALL_YARNBALLS)
+				.input('O', Tags.Item.ALL_YARNBALLS)
 				.input('X', Items.ROTTEN_FLESH)
 				.input('@', Items.ENCHANTED_GOLDEN_APPLE)
 				.pattern("O@O")
 				.pattern("X#X")
 				.pattern("OXO")
 				.criterion(hasItem(ModItems.MINIWIZARD), conditionsFromItem(ModItems.MINIWIZARD))
-				.criterion("has_any_yarnball", conditionsFromTag(ModTags.Items.ALL_YARNBALLS))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.criterion(hasItem(Items.ROTTEN_FLESH), conditionsFromItem(Items.ROTTEN_FLESH))
 				.criterion(hasItem(Items.ENCHANTED_GOLDEN_APPLE), conditionsFromItem(Items.ENCHANTED_GOLDEN_APPLE))
 				.offerTo(exporter, new Identifier(getRecipeName(ModItems.MINIWIZARD) + "_duplication"));
 		
 		//# Miscellaneous Redstone Devices #
-		// Daylight Detector
+		// (MRD) Daylight Detector
 		ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.DAYLIGHT_DETECTOR)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', Items.QUARTZ)
 				.input('O', Blocks.GLASS_PANE)
 				.pattern("OOO")
 				.pattern("XXX")
 				.pattern("###")
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.QUARTZ), conditionsFromItem(Items.QUARTZ))
 				.criterion(hasItem(Blocks.GLASS_PANE), conditionsFromItem(Blocks.GLASS_PANE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.DAYLIGHT_DETECTOR)));
-		// Dispenser
+		// (MRD) Dispenser
 		ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.DISPENSER)
-				.input('#', ModTags.Items.ALL_COBBLESTONES)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
 				.input('X', Items.CROSSBOW)
 				.input('@', Items.REDSTONE)
 				.pattern("###")
 				.pattern("#X#")
 				.pattern("#@#")
-				.criterion("has_any_cobblestone", conditionsFromTag(ModTags.Items.ALL_COBBLESTONES))
+				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
 				.criterion(hasItem(Items.BOW), conditionsFromItem(Items.BOW))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.DISPENSER)));
-		// Dropper
+		// (MRD) Dropper
 		ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.DROPPER)
-				.input('#', ModTags.Items.ALL_COBBLESTONES)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
 				.input('X', Items.BOW)
 				.input('@', Items.REDSTONE)
 				.pattern("###")
 				.pattern("#X#")
 				.pattern("#@#")
-				.criterion("has_any_cobblestone", conditionsFromTag(ModTags.Items.ALL_COBBLESTONES))
+				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
 				.criterion(hasItem(Items.BOW), conditionsFromItem(Items.BOW))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.DROPPER)));
-		// Lever
+		// (MRD) Lever
 		ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.LEVER)
 				.input('|', Items.STICK)
-				.input('#', ModTags.Items.ALL_COBBLESTONES)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
 				.input('@', Items.REDSTONE)
 				.pattern("|")
 				.pattern("#")
 				.pattern("@")
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-				.criterion("has_any_cobblestone", conditionsFromTag(ModTags.Items.ALL_COBBLESTONES))
+				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.LEVER)));
-		// Piston
+		// (MRD) Piston
 		ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.PISTON)
-				.input('#', ModTags.Items.ALL_COBBLESTONES)
-				.input('X', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
+				.input('X', Tags.Item.ALL_PLANKS)
 				.input('@', Items.REDSTONE)
 				.input('O', Items.IRON_INGOT)
 				.pattern("XXX")
 				.pattern("#O#")
 				.pattern("#@#")
-				.criterion("has_any_cobblestone", conditionsFromTag(ModTags.Items.ALL_COBBLESTONES))
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.PISTON)));
-		// Redstone Lamp
+		// (MRD) Redstone Lamp
 		// TODO: Replace glowstone block in recipe with Lumithite Chunk.
 		offerFourAndFourCheckeredAroundOneRecipe(exporter,
 				RecipeCategory.REDSTONE, Blocks.REDSTONE_LAMP, 1,
 				Blocks.GLOWSTONE, Items.REDSTONE, Items.IRON_INGOT, "", null);
-		// Redstone Signal Comparator
+		// (MRD) Redstone Signal Comparator
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.COMPARATOR)
-				.input('#', ModTags.Items.ALL_BRICKS)
+				.input('#', Tags.Item.ALL_BRICKS)
 				.input('/', Blocks.REDSTONE_TORCH)
 				.input('O', Items.REDSTONE)
 				.input('X', Items.QUARTZ)
 				.pattern(" / ")
 				.pattern("/X/")
 				.pattern("#O#")
-				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_BRICKS))
+				.criterion("has_any_brick", conditionsFromTag(Tags.Item.ALL_BRICKS))
 				.criterion(hasItem(Blocks.REDSTONE_TORCH), conditionsFromItem(Blocks.REDSTONE_TORCH))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.criterion(hasItem(Items.QUARTZ), conditionsFromItem(Items.QUARTZ))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.COMPARATOR)));
-		// Redstone Signal Repeater
+		// (MRD) Redstone Signal Repeater
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.REPEATER)
-				.input('#', ModTags.Items.ALL_BRICKS)
+				.input('#', Tags.Item.ALL_BRICKS)
 				.input('/', Blocks.REDSTONE_TORCH)
 				.input('O', Items.REDSTONE)
 				.pattern("/O/")
 				.pattern("#O#")
-				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_BRICKS))
+				.criterion("has_any_brick", conditionsFromTag(Tags.Item.ALL_BRICKS))
 				.criterion(hasItem(Blocks.REDSTONE_TORCH), conditionsFromItem(Blocks.REDSTONE_TORCH))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.REPEATER)));
-		// Target Block
+		// (MRD) Target Block
 		offerFourAndFourCheckeredAroundOneRecipe(exporter,
 				RecipeCategory.REDSTONE, Blocks.TARGET, 1, Blocks.HAY_BLOCK,
 				Items.REDSTONE, Items.WHITE_DYE, "", null);
-		// Tripwire Hook
+		// (MRD) Tripwire Hook
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Blocks.TRIPWIRE_HOOK)
 				.input('/', Items.STICK)
-				.input('#', ModTags.Items.ALL_COBBLESTONES)
-				.input('X', ModTags.Items.ALL_METAL_GRAMS)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
+				.input('X', Tags.Item.ALL_METAL_GRAMS)
 				.input('@', Items.REDSTONE)
 				.pattern("/X")
 				.pattern("# ")
 				.pattern("@ ")
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-				.criterion("has_any_cobblestone", conditionsFromTag(ModTags.Items.ALL_COBBLESTONES))
-				.criterion("has_any_metal_gram", conditionsFromTag(ModTags.Items.ALL_METAL_GRAMS))
+				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
+				.criterion("has_any_metal_gram", conditionsFromTag(Tags.Item.ALL_METAL_GRAMS))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.TRIPWIRE_HOOK)));
-		// Weighted Pressure Plate (Heavy)
+		// (MRD) Weighted Pressure Plate (Heavy)
 		offerRedstonePressurePlateRecipe(exporter,
-				RecipeCategory.REDSTONE, Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE, 1, Items.IRON_INGOT, "", null);
-		// Weighted Pressure Plate (Light)
+				RecipeCategory.REDSTONE, Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE, Items.IRON_INGOT, "", null);
+		// (MRD) Weighted Pressure Plate (Light)
 		offerRedstonePressurePlateRecipe(exporter,
-				RecipeCategory.REDSTONE, Blocks.LIGHT_WEIGHTED_PRESSURE_PLATE, 1, Items.GOLD_INGOT, "", null);
+				RecipeCategory.REDSTONE, Blocks.LIGHT_WEIGHTED_PRESSURE_PLATE, Items.GOLD_INGOT, "", null);
 		
-		// Moss Block
+		//# Moss Block #
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.MOSS_BLOCK, 1,
 				Blocks.MOSS_CARPET, "", null);
@@ -1355,7 +1358,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerShapelessFourIntoOneRecipe(exporter,
 				RecipeCategory.MISC, Items.GUNPOWDER, 3,
 				ModItems.ASH_PILE, ModItems.SULPHUR_LUMP, Items.CHARCOAL,
-				ModTags.Items.ALL_GLASSY_SAND_PILES, "has_any_glassy_sand_pile", "", null);
+				Tags.Item.ALL_GLASSY_SAND_PILES, "has_any_glassy_sand_pile", "", null);
 		// Freeze Powder
 		offerOneToOneRecipe(exporter,
 				RecipeCategory.MISC, ModItems.FREEZE_POWDER_PILE, 2, ModItems.FREEZE_ROD, "", null);
@@ -1374,13 +1377,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		// Detector
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.DETECTOR_RAIL)
 				.input('#', Blocks.RAIL)
-				.input('X', ModTags.Items.ALL_BRICKS)
+				.input('X', Tags.Item.ALL_BRICKS)
 				.input('@', Items.REDSTONE)
 				.pattern("X")
 				.pattern("#")
 				.pattern("@")
 				.criterion(hasItem(Blocks.RAIL), conditionsFromItem(Blocks.RAIL))
-				.criterion("has_any_brick", conditionsFromTag(ModTags.Items.ALL_BRICKS))
+				.criterion("has_any_brick", conditionsFromTag(Tags.Item.ALL_BRICKS))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.DETECTOR_RAIL)));
 		// Powered
@@ -1396,12 +1399,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.offerTo(exporter, new Identifier(getRecipeName(Blocks.POWERED_RAIL)));
 		
+		//# Scaffolding *
+		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.SCAFFOLDING)
+				.input('#', Blocks.BAMBOO)
+				.input('O', Tags.Item.ALL_YARNBALLS)
+				.pattern("###")
+				.pattern("#O#")
+				.pattern("# #")
+				.criterion(hasItem(Blocks.BAMBOO), conditionsFromItem(Blocks.BAMBOO))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
+				.offerTo(exporter, new Identifier(getRecipeName(Blocks.SCAFFOLDING)));
+		
 		//# Snow #
-		// Block
+		// (snow) Block
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.SNOW_BLOCK, 1,
 				Blocks.SNOW, "", null);
-		// Pile // Note: The canonical Block corresponding to the Snow Pile would be the "Snow Mound".
+		// (snow) Pile // Note: The canonical Block corresponding to the Snow Pile would be the "Snow Mound".
 		offerReversibleSmallSquareRecipes(exporter,
 				RecipeCategory.MISC, Blocks.SNOW, "", null,
 				RecipeCategory.MISC, Items.SNOWBALL, "_from_pile", null);
@@ -1409,8 +1423,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//# Sticks #
 		// Stick from any plank
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STICK, 2)
-				.input(Ingredient.fromTag(ModTags.Items.ALL_PLANKS))
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.input(Ingredient.fromTag(Tags.Item.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.offerTo(exporter, new Identifier(getRecipeName(Items.STICK) + "_from_plank"));
 		// Wooden Stick Bundle
 		offerReversibleSmallSquareRecipes(exporter,
@@ -1425,7 +1439,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		// Basic Torch
 		offerTorchRecipe(exporter,
 				RecipeCategory.TOOLS, Items.TORCH, 1,
-				Items.STICK, ModTags.Items.BASIC_FLAME_MATERIALS, "has_basic_flame_material",
+				Items.STICK, Tags.Item.BASIC_FLAME_MATERIALS, "has_basic_flame_material",
 				"", null);
 		// Erythrite Torch
 		offerTorchRecipe(exporter,
@@ -1434,7 +1448,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		// Spirit Torch
 		offerTorchRecipe(exporter,
 				RecipeCategory.TOOLS, Items.SOUL_TORCH, 1,
-				Items.STICK, ModTags.Items.SPIRIT_FLAME_MATERIALS, "has_spirit_flame_material",
+				Items.STICK, Tags.Item.SPIRIT_FLAME_MATERIALS, "has_spirit_flame_material",
 				"", null);
 		
 		//# Yarn #
@@ -1574,6 +1588,42 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	
 	//region ## Recipe Set Offers ##
+	public static void offerDoorAndHatchRecipeSet(
+			RecipeExporter exporter, ItemConvertible doorItem, ItemConvertible hatchItem,
+			ItemConvertible materialItem, String doorIdSuffix, String hatchIdSuffix,
+			@Nullable String doorGroup, @Nullable String hatchGroup
+	) {
+		offerDoorRecipe(exporter, doorItem, materialItem, doorIdSuffix, doorGroup);
+		offerHatchRecipe(exporter, hatchItem, materialItem, hatchIdSuffix, hatchGroup);
+	}
+	
+	
+	public static void offerStandardMetalRecipeSet(
+			RecipeExporter exporter,
+			ItemConvertible gramItem, ItemConvertible ingotItem,
+			ItemConvertible rawLumpItem, ItemConvertible rawNuggetItem,
+			int baseCookingTime, float baseCookingExperience,
+			ItemConvertible rawBlock, ItemConvertible refinedBlock
+	) {
+		// Block (raw)
+		offerCompactingEightRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, rawBlock, 1, rawLumpItem,"", null);
+		// Block (refined)
+		offerCompactingEightRecipe(exporter,
+				RecipeCategory.BUILDING_BLOCKS, refinedBlock, 1, ingotItem,"", null);
+		// Cooking Grams and Ingots
+		offerSmeltingAndBlastingForMetalRecipes(exporter, gramItem, ingotItem,
+				baseCookingTime, rawNuggetItem, rawLumpItem, baseCookingExperience);
+		// Merging and Splitting (raw)
+		offerReversibleDoubleRowRecipes(exporter,
+				RecipeCategory.MISC, rawLumpItem, "_from_nugget", "nugget_merging",
+				RecipeCategory.MISC, rawNuggetItem, "_from_lump", "lump_splitting");
+		// Merging and Splitting (refined)
+		offerReversibleDoubleRowRecipes(exporter,
+				RecipeCategory.MISC, ingotItem, "_from_gram", "gram_merging",
+				RecipeCategory.MISC, gramItem, "_from_ingot", "ingot_splitting");
+	}
+	
 	public static void offerStandardPlankRecipeSet(
 			RecipeExporter exporter,
 			ItemConvertible woodenLog, // NOTE: Planks are not to be craftable from trunks.
@@ -1592,61 +1642,27 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		// Plank Block
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, plankBlock, 1, plankItem, "", "plank_blocks");
-//		offerReversibleCompactingEightRecipes(exporter,
-//				RecipeCategory.MISC, plankItem, "_from_block", "plank_recycling",
-//				RecipeCategory.BUILDING_BLOCKS, plankBlock, "", "plank_blocks");
 		// Button
 		offerRedstoneButtonRecipe(exporter,
-				RecipeCategory.REDSTONE, button, 1, plankItem, "", "wooden_buttons");
-//		offerSemiReversibleButtonRecipes(exporter,
-//				RecipeCategory.MISC, plankItem, "_from_button", "plank_recycling",
-//				RecipeCategory.REDSTONE, button, "", "plank_buttons");
+				RecipeCategory.REDSTONE, button, plankItem, "", "wooden_buttons");
 		// Pressure Plate
 		offerRedstonePressurePlateRecipe(exporter,
-				RecipeCategory.REDSTONE, pressurePlate, 1, plankItem, "", "wooden_pressure_plates");
-//		offerSemiReversiblePressurePlateRecipes(exporter,
-//				RecipeCategory.MISC, plankItem, "_from_pressure_plate", "plank_recycling",
-//				RecipeCategory.REDSTONE, pressurePlate, "", "plank_pressure_plates");
-		// Door
-		offerDoubleColumnRecipe(exporter,
-				RecipeCategory.REDSTONE, door, 1, plankItem, "", "wooden_doors");
-//		offerReversibleDoubleColumnRecipes(exporter,
-//				RecipeCategory.REDSTONE, door, "", "wooden_doors",
-//				RecipeCategory.MISC, plankItem, "_from_door", "plank_recycling"
-//		);
-		// Hatch
-		offerLargeRowRecipe(exporter,
-				RecipeCategory.REDSTONE, hatch, 1, plankItem, "", "wooden_hatches");
-//		offerReversibleLargeRowRecipes(exporter,
-//				RecipeCategory.REDSTONE, hatch, "", "wooden_hatches",
-//				RecipeCategory.MISC, plankItem, "_from_hatch", "plank_recycling"
-//		);
+				RecipeCategory.REDSTONE, pressurePlate, plankItem, "", "wooden_pressure_plates");
+		// Door & Hatch
+		offerDoorAndHatchRecipeSet(exporter, door, hatch, plankItem,
+				"", "","wooden_doors", "wooden_hatches");
 		// Fence Gate
 		offerWoodenFenceGateRecipe(exporter,
 				RecipeCategory.REDSTONE, fenceGate, 1, plankItem, "", "wooden_fence_gates");
-//		offerSemiReversibleFenceGateRecipes(exporter,
-//				RecipeCategory.MISC, plankItem, "_from_fence_gate", "plank_recycling",
-//				RecipeCategory.REDSTONE, fenceGate, "", "fence_gates");
 		// Fence Post
 		offerSmallColumnRecipe(exporter,
 				RecipeCategory.DECORATIONS, fencePost, 1, plankItem, "", "wooden_fence_posts");
-//		offerReversibleSmallColumnRecipes(exporter,
-//				RecipeCategory.DECORATIONS, fencePost, "", "wooden_fence_posts",
-//				RecipeCategory.MISC, plankItem, "_from_fence_post", "plank_recycling"
-//		);
 		// Plank Slab
 		offerSmallSquareRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, plankSlab, 1, plankItem, "", "wooden_slabs");
-//		offerReversibleSmallSquareRecipes(exporter,
-//				RecipeCategory.BUILDING_BLOCKS, plankSlab, "", "plank_slabs",
-//				RecipeCategory.MISC, plankItem, "_from_slab", "plank_recycling");
 		// Plank Stair
 		offerLargeStairRecipe(exporter,
 				RecipeCategory.DECORATIONS, plankStair, 1, plankItem, "", "wooden_stairs");
-//		offerReversibleLargeStairRecipes(exporter,
-//				RecipeCategory.BUILDING_BLOCKS, plankStair, "", "wooden_stairs",
-//				RecipeCategory.MISC, plankItem, "_from_stair", "plank_recycling"
-//		);
 	}
 	
 	
@@ -1665,53 +1681,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, cobblestoneBlock, 1,
 				cobblestoneItem, "", "cobbled_stone_blocks");
-//		offerReversibleCompactingEightRecipes(exporter,
-//				RecipeCategory.MISC, cobblestoneItem, "_from_block", "cobblestone_recycling",
-//				RecipeCategory.BUILDING_BLOCKS, cobblestoneBlock, "", "cobblestone_blocks");
 		// Brick Block
 		offerSmallSquareRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, brickBlock, 1, brickItem, "", "brick_blocks");
-//		offerReversibleSmallSquareRecipes(exporter,
-//				RecipeCategory.BUILDING_BLOCKS, brickBlock, "", "brick_blocks",
-//				RecipeCategory.MISC, brickItem, "_from_block", "brick_recycling"
-//		);
 		// Polished Block
 		offerFourOrthogonallyAroundOneRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, polishedBlock, 1,
 				Items.BLAZE_POWDER, brickItem, "", "stone_polishing");
 		// Button
 		offerRedstoneButtonRecipe(exporter,
-				RecipeCategory.REDSTONE, button, 1, brickItem, "", "stone_buttons");
-//		offerSemiReversibleButtonRecipes(exporter,
-//				RecipeCategory.MISC, brickItem, "_from_button", "brick_recycling",
-//				RecipeCategory.REDSTONE, button, "", "stone_buttons");
+				RecipeCategory.REDSTONE, button, brickItem, "", "stone_buttons");
 		// Pressure Plate
 		offerRedstonePressurePlateRecipe(exporter,
-				RecipeCategory.REDSTONE, pressurePlate, 1, brickItem, "", "stone_pressure_plates");
-//		offerSemiReversiblePressurePlateRecipes(exporter,
-//				RecipeCategory.MISC, brickItem, "_from_pressure_plate", "brick_recycling",
-//				RecipeCategory.REDSTONE, pressurePlate, "", "stone_pressure_plates");
+				RecipeCategory.REDSTONE, pressurePlate, brickItem, "", "stone_pressure_plates");
 		// Brick Wall Post
 		offerSmallColumnRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, brickWallPost, 1, brickItem, "", "brick_wall_posts");
-//		offerReversibleSmallColumnRecipes(exporter,
-//				RecipeCategory.BUILDING_BLOCKS, brickWallPost, "", "brick_wall_posts",
-//				RecipeCategory.MISC, brickItem, "_from_wall_post", "brick_recycling"
-//		);
 		// Brick Slab
 		offerSmallRowRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, brickSlab, 1, brickItem, "", "brick_slabs");
-//		offerReversibleSmallRowRecipes(exporter,
-//				RecipeCategory.BUILDING_BLOCKS, brickSlab, "", "brick_slabs",
-//				RecipeCategory.MISC, brickItem, "_from_slab", "brick_recycling"
-//		);
 		// Brick Stair
 		offerSmallStairRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, brickStair, 1, brickItem, "", "brick_stairs");
-//		offerReversibleSmallStairRecipes(exporter,
-//				RecipeCategory.BUILDING_BLOCKS, brickStair, "", "brick_stairs",
-//				RecipeCategory.MISC, brickItem, "_from_stair", "brick_recycling"
-//		);
 	}
 	
 	
@@ -1720,10 +1711,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			ItemConvertible daggerItem, ItemConvertible hatchetItem,
 			ItemConvertible hoeItem, ItemConvertible spearItem
 	) {
-		offerStringedDaggerRecipe(exporter, daggerItem, shardItem, "");
-		offerStringedHatchetRecipe(exporter, hatchetItem, shardItem, "");
-		offerStringedHoeRecipe(exporter, hoeItem, shardItem, "");
-		offerStringedSpearRecipe(exporter, spearItem, shardItem, "");
+		offerStringedDaggerRecipe(exporter, daggerItem, shardItem, "", "shard_daggers");
+		offerStringedHatchetRecipe(exporter, hatchetItem, shardItem, "", "shard_hatchets");
+		offerStringedHoeRecipe(exporter, hoeItem, shardItem, "", "shard_hoes");
+		offerStringedSpearRecipe(exporter, spearItem, shardItem, "", "shard_spears");
 	}
 	
 	
@@ -1733,34 +1724,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			ItemConvertible hoeItem, ItemConvertible malletItem, ItemConvertible pickaxeItem,
 			ItemConvertible shovelItem, ItemConvertible spearItem, ItemConvertible swordItem
 	) {
-		// Temporary; uses unique suffix per ingot material.
-		offerBasicAxeRecipe(exporter, axeItem, ingotItem, fromItem(ingotItem));
-		offerBasicDaggerRecipe(exporter, daggerItem, ingotItem, fromItem(ingotItem));
-		offerBasicHatchetRecipe(exporter, hatchetItem, ingotItem, fromItem(ingotItem));
-		offerBasicHoeRecipe(exporter, hoeItem, ingotItem, fromItem(ingotItem));
-		offerBasicMalletRecipe(exporter, malletItem, ingotItem, fromItem(ingotItem));
-		offerBasicPickaxeRecipe(exporter, pickaxeItem, ingotItem, fromItem(ingotItem));
-		offerBasicShovelRecipe(exporter, shovelItem, ingotItem, fromItem(ingotItem));
-		offerBasicSpearRecipe(exporter, spearItem, ingotItem, fromItem(ingotItem));
-		offerBasicSwordRecipe(exporter, swordItem, ingotItem, fromItem(ingotItem));
-		
-		// TODO: Use this instead when no longer using brass as a placeholder for missing daggers, hatchets, mallets, and spears.
-//		offerBasicAxeRecipe(exporter, axeItem, ingotItem, "");
-//		offerBasicDaggerRecipe(exporter, daggerItem, ingotItem, "");
-//		offerBasicHatchetRecipe(exporter, hatchetItem, ingotItem, "");
-//		offerBasicHoeRecipe(exporter, hoeItem, ingotItem, "");
-//		offerBasicMalletRecipe(exporter, malletItem, ingotItem, "");
-//		offerBasicPickaxeRecipe(exporter, pickaxeItem, ingotItem, "");
-//		offerBasicShovelRecipe(exporter, shovelItem, ingotItem, "");
-//		offerBasicSpearRecipe(exporter, spearItem, ingotItem, "");
-//		offerBasicSwordRecipe(exporter, swordItem, ingotItem, "");
+		offerBasicAxeRecipe(exporter, axeItem, ingotItem, "");
+		offerBasicDaggerRecipe(exporter, daggerItem, ingotItem, "");
+		offerBasicHatchetRecipe(exporter, hatchetItem, ingotItem, "");
+		offerBasicHoeRecipe(exporter, hoeItem, ingotItem, "");
+		offerBasicMalletRecipe(exporter, malletItem, ingotItem, "");
+		offerBasicPickaxeRecipe(exporter, pickaxeItem, ingotItem, "");
+		offerBasicShovelRecipe(exporter, shovelItem, ingotItem, "");
+		offerBasicSpearRecipe(exporter, spearItem, ingotItem, "");
+		offerBasicSwordRecipe(exporter, swordItem, ingotItem, "");
 	}
 	
 	
 	public static void offerMetalArmorRecipeSet(
 			RecipeExporter exporter, ItemConvertible ingotItem,
 			ItemConvertible bootPairItem, ItemConvertible chestplateItem,
-			ItemConvertible helmetItem, ItemConvertible leggingPairItem
+			ItemConvertible helmetItem, ItemConvertible leggingPairItem,
+			ItemConvertible horseArmorItem
 	) {
 		offerFourOrthogonallyAroundOneRecipe(exporter, RecipeCategory.TOOLS, bootPairItem, 1,
 				Items.LEATHER_BOOTS, ingotItem, "", null);
@@ -1770,53 +1750,87 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				Items.LEATHER_HELMET, ingotItem, "", null);
 		offerEightAroundOneRecipe(exporter, RecipeCategory.TOOLS, leggingPairItem, 1,
 				Items.LEATHER_LEGGINGS, ingotItem, "", null);
+		offerEightAroundOneRecipe(exporter, RecipeCategory.TOOLS, horseArmorItem, 1,
+				Items.LEATHER_HORSE_ARMOR, ingotItem, "", null);
+	}
+	
+	
+	public static void offerMetalEquipmentRecipeSet(
+			RecipeExporter exporter, ItemConvertible ingotItem, ItemConvertible refundItem, String materialName,
+			ItemConvertible bootPairItem, ItemConvertible chestplateItem,
+			ItemConvertible helmetItem, ItemConvertible leggingPairItem,
+			ItemConvertible horseArmorItem,
+			ItemConvertible axeItem, ItemConvertible daggerItem, ItemConvertible hatchetItem,
+			ItemConvertible hoeItem, ItemConvertible malletItem, ItemConvertible pickaxeItem,
+			ItemConvertible shovelItem, ItemConvertible spearItem, ItemConvertible swordItem
+	) {
+		offerMetalArmorRecipeSet(exporter, ingotItem,
+				bootPairItem, chestplateItem, helmetItem, leggingPairItem, horseArmorItem);
+		offerStandardShaftedToolRecipeSet(exporter, ingotItem,
+				axeItem, daggerItem, hatchetItem, hoeItem, malletItem, pickaxeItem, shovelItem,spearItem, swordItem);
+		offerMetalEquipmentRecyclingRecipeSet(exporter, refundItem, materialName,
+				bootPairItem, chestplateItem, helmetItem, leggingPairItem, horseArmorItem,
+				axeItem, daggerItem, hatchetItem, hoeItem, malletItem, pickaxeItem, shovelItem, spearItem,swordItem);
 	}
 	
 	
 	public static void offerMetalEquipmentRecyclingRecipeSet(
-			RecipeExporter exporter, ItemConvertible nuggetItem, String materialName,
+			RecipeExporter exporter, ItemConvertible refundItem, String materialName,
 			ItemConvertible bootPairItem, ItemConvertible chestplateItem,
 			ItemConvertible helmetItem, ItemConvertible leggingPairItem,
+			ItemConvertible horseArmorItem,
 			ItemConvertible axeItem, ItemConvertible daggerItem, ItemConvertible hatchetItem,
 			ItemConvertible hoeItem, ItemConvertible malletItem, ItemConvertible pickaxeItem,
-			ItemConvertible shovelItem, ItemConvertible spearItem, ItemConvertible swordItem, boolean legacy
+			ItemConvertible shovelItem, ItemConvertible spearItem, ItemConvertible swordItem
 	) {
-		// TODO: Remove the 'legacy' boolean when Eiduril, Iron, and Gold variants of dagger, hatchet, mallet, and hoe are added.
 		String group = materialName + "_equipment_recycling";
 		// Armor
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 4,
-				bootPairItem, "_from_boot_pair_recycling", group);
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 8,
-				chestplateItem, "_from_chestplate_recycling", group);
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 4,
-				helmetItem, "_from_helmet_recycling", group);
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 8,
-				leggingPairItem, "_from_legging_pair_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 4,
+				bootPairItem, fromItem(bootPairItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 8,
+				chestplateItem, fromItem(chestplateItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 4,
+				helmetItem, fromItem(helmetItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 8,
+				leggingPairItem, fromItem(leggingPairItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 8,
+				horseArmorItem, fromItem(horseArmorItem) + "_recycling", group);
 		// Tools
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 2,
-				axeItem, "_from_axe_recycling", group);
-		if (!legacy) {
-			offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 1,
-					daggerItem, "_from_dagger_recycling", group);
-			offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 1,
-					hatchetItem, "_from_hatchet_recycling", group);
-		}
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 1,
-				hoeItem, "_from_hoe_recycling", group);
-		if (!legacy) {
-			offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 2,
-					malletItem, "_from_mallet_recycling", group);
-		}
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 2,
-				pickaxeItem, "_from_pickaxe_recycling", group);
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 1,
-				shovelItem, "_from_shovel_recycling", group);
-		if (!legacy) {
-			offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 1,
-					spearItem, "_from_spear_recycling", group);
-		}
-		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 2,
-				swordItem, "_from_sword_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 2,
+				axeItem, fromItem(axeItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 1,
+				daggerItem, fromItem(daggerItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 1,
+				hatchetItem, fromItem(hatchetItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 1,
+				hoeItem, fromItem(hoeItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 2,
+				malletItem, fromItem(malletItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 2,
+				pickaxeItem, fromItem(pickaxeItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 1,
+				shovelItem, fromItem(shovelItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 1,
+				spearItem, fromItem(spearItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, refundItem, 2,
+				swordItem, fromItem(swordItem) + "_recycling", group);
+	}
+	
+	
+	public static void offerMetalHumanoidArmorRecyclingRecipeSet(
+			RecipeExporter exporter, ItemConvertible nuggetItem, String materialName,
+			ItemConvertible bootPairItem, ItemConvertible chestplateItem,
+			ItemConvertible helmetItem, ItemConvertible leggingPairItem
+	) {
+		String group = materialName + "_equipment_recycling";
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 4,
+				bootPairItem, fromItem(bootPairItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 8,
+				chestplateItem, fromItem(chestplateItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 4,
+				helmetItem, fromItem(helmetItem) + "_recycling", group);
+		offerOneToOneRecipe(exporter, RecipeCategory.TOOLS, nuggetItem, 8,
+				leggingPairItem, fromItem(leggingPairItem) + "_recycling", group);
 	}
 	
 	
@@ -1968,6 +1982,65 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		createSmallStairFormat(category, resultItem, count, Ingredient.ofItems(inputItem))
 				.group(group)
 				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
+				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
+	}
+	//endregion
+	
+	
+	//region ## Recipe Offers - Decoration & Utility ##
+	public static void offerDoorRecipe(
+			RecipeExporter exporter, ItemConvertible resultItem,
+			ItemConvertible inputItem, String idSuffix, @Nullable String group
+	) {
+		ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, resultItem)
+				.input('#', inputItem)
+				.input('O', ModItems.IRON_GRAM)
+				.pattern("O##")
+				.pattern("O##")
+				.pattern("O##")
+				.group(group)
+				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
+				.criterion(hasItem(ModItems.IRON_GRAM), conditionsFromItem(ModItems.IRON_GRAM))
+				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
+	}
+	
+	
+	public static void offerHatchRecipe(
+			RecipeExporter exporter, ItemConvertible resultItem,
+			ItemConvertible inputItem, String idSuffix, @Nullable String group
+	) {
+		ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, resultItem)
+				.input('#', inputItem)
+				.input('O', ModItems.IRON_GRAM)
+				.pattern("O O")
+				.pattern("###")
+				.group(group)
+				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
+				.criterion(hasItem(ModItems.IRON_GRAM), conditionsFromItem(ModItems.IRON_GRAM))
+				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
+	}
+	
+	
+	public static void offerRedstoneButtonRecipe(
+			RecipeExporter exporter, RecipeCategory category, ItemConvertible resultItem,
+			ItemConvertible inputItem, String idSuffix, @Nullable String group
+	) {
+		createRedstoneButtonFormat(category, resultItem, 1, Ingredient.ofItems(inputItem))
+				.group(group)
+				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
+				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
+	}
+	
+	
+	public static void offerRedstonePressurePlateRecipe(
+			RecipeExporter exporter, RecipeCategory category, ItemConvertible resultItem,
+			ItemConvertible inputItem, String idSuffix, @Nullable String group
+	) {
+		createRedstonePressurePlateFormat(category, resultItem, 1, Ingredient.ofItems(inputItem))
+				.group(group)
+				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
+				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
 				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
 	}
 	//endregion
@@ -2227,20 +2300,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', Items.STICK)
 				.input('X', Items.STRING)
-				.input('@', ModTags.Items.ALL_METAL_GRAMS)
+				.input('@', Tags.Item.ALL_METAL_GRAMS)
 				.pattern("  X")
 				.pattern(" #X")
 				.pattern("# @")
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
-				.criterion("has_any_metal_gram", conditionsFromTag(ModTags.Items.ALL_METAL_GRAMS))
+				.criterion("has_any_metal_gram", conditionsFromTag(Tags.Item.ALL_METAL_GRAMS))
 				.offerTo(exporter, new Identifier(getRecipeName(resultItem)));
 	}
 	
 	
 	public static void offerStringedDaggerRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			ItemConvertible baseItem, String idSuffix
+			ItemConvertible baseItem, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItem)
@@ -2248,6 +2321,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.input('@', Items.STRING)
 				.pattern("# ")
 				.pattern("X@")
+				.group(group)
 				.criterion(hasItem(baseItem), conditionsFromItem(baseItem))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
@@ -2257,7 +2331,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerStringedHatchetRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			ItemConvertible baseItem, String idSuffix
+			ItemConvertible baseItem, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItem)
@@ -2265,6 +2339,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.input('@', Items.STRING)
 				.pattern("#X")
 				.pattern("@X")
+				.group(group)
 				.criterion(hasItem(baseItem), conditionsFromItem(baseItem))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
@@ -2274,7 +2349,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerStringedHoeRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			ItemConvertible baseItem, String idSuffix
+			ItemConvertible baseItem, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItem)
@@ -2283,6 +2358,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("#X")
 				.pattern("@X")
 				.pattern(" X")
+				.group(group)
 				.criterion(hasItem(baseItem), conditionsFromItem(baseItem))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
@@ -2310,7 +2386,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerStringedSpearRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			ItemConvertible baseItem, String idSuffix
+			ItemConvertible baseItem, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItem)
@@ -2319,6 +2395,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("  #")
 				.pattern(" X@")
 				.pattern("X  ")
+				.group(group)
 				.criterion(hasItem(baseItem), conditionsFromItem(baseItem))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
@@ -2817,14 +2894,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			ItemConvertible pigmentedCarpetItem, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, bedResult)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', Blocks.WHITE_CARPET)
 				.input('O', pigmentedCarpetItem)
 				.pattern("OOX")
 				.pattern("XXX")
 				.pattern("###")
 				.group(group)
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Blocks.WHITE_CARPET), conditionsFromItem(Blocks.WHITE_CARPET))
 				.criterion(hasItem(pigmentedCarpetItem), conditionsFromItem(pigmentedCarpetItem))
 				.offerTo(exporter, new Identifier(getRecipeName(bedResult) + idSuffix));
@@ -2835,13 +2912,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			RecipeExporter exporter, ItemConvertible bedResult, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, bedResult)
-				.input('#', ModTags.Items.ALL_PLANKS)
+				.input('#', Tags.Item.ALL_PLANKS)
 				.input('X', Blocks.WHITE_CARPET)
 				.pattern("XXX")
 				.pattern("XXX")
 				.pattern("###")
 				.group(group)
-				.criterion("has_any_plank", conditionsFromTag(ModTags.Items.ALL_PLANKS))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Blocks.WHITE_CARPET), conditionsFromItem(Blocks.WHITE_CARPET))
 				.offerTo(exporter, new Identifier(getRecipeName(bedResult) + idSuffix));
 	}
@@ -2939,7 +3016,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	public static void offerConcretePowderBlockRecipe(
 			RecipeExporter exporter, ItemConvertible concretePowderBlock, ItemConvertible dyeItem
 	) {
-		TagKey<Item> sandItemTag = ModTags.Items.ALL_GLASSY_SAND_PILES;
+		TagKey<Item> sandItemTag = Tags.Item.ALL_GLASSY_SAND_PILES;
 		ItemConvertible gravelItem = ModItems.GRAVEL_PILE;
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, concretePowderBlock)
 				.input(gravelItem).input(sandItemTag).input(gravelItem)
@@ -3060,30 +3137,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	}
 	
 	
-	public static void offerRedstoneButtonRecipe(
-			RecipeExporter exporter, RecipeCategory category, ItemConvertible resultItem, int count,
-			ItemConvertible inputItem, String idSuffix, @Nullable String group
-	) {
-		createRedstoneButtonFormat(category, resultItem, count, Ingredient.ofItems(inputItem))
-				.group(group)
-				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
-				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
-				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
-	}
-	
-	
-	public static void offerRedstonePressurePlateRecipe(
-			RecipeExporter exporter, RecipeCategory category, ItemConvertible resultItem, int count,
-			ItemConvertible inputItem, String idSuffix, @Nullable String group
-	) {
-		createRedstonePressurePlateFormat(category, resultItem, count, Ingredient.ofItems(inputItem))
-				.group(group)
-				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
-				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
-				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
-	}
-	
-	
 	public static void offerTorchRecipe(
 			RecipeExporter exporter, RecipeCategory category, ItemConvertible resultItem, int count,
 			ItemConvertible shaftInputItem, TagKey<Item> flammableInputItemTag, String hasTagString,
@@ -3094,7 +3147,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.group(group)
 				.criterion(hasItem(shaftInputItem), conditionsFromItem(shaftInputItem))
 				.criterion(hasTagString, conditionsFromTag(flammableInputItemTag))
-				.criterion("has_any_yarnball", conditionsFromTag(ModTags.Items.ALL_YARNBALLS))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
 	}
 	
@@ -3107,7 +3160,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.group(group)
 				.criterion(hasItem(shaftInputItem), conditionsFromItem(shaftInputItem))
 				.criterion(hasItem(flammableInputItem), conditionsFromItem(flammableInputItem))
-				.criterion("has_any_yarnball", conditionsFromTag(ModTags.Items.ALL_YARNBALLS))
+				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.offerTo(exporter, new Identifier(getRecipeName(resultItem) + idSuffix));
 	}
 	
@@ -3396,7 +3449,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	) {
 		return ShapedRecipeJsonBuilder.create(category, output, count)
 				.input('/', shaftIngredient)
-				.input('@', Ingredient.fromTag(ModTags.Items.ALL_YARNBALLS))
+				.input('@', Ingredient.fromTag(Tags.Item.ALL_YARNBALLS))
 				.input('X', flammableIngredient)
 				.pattern("@X")
 				.pattern("/ ");

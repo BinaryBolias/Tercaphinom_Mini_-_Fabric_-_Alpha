@@ -1,6 +1,8 @@
 package binarybolias.tercaphinom.references;
 
 import binarybolias.tercaphinom.Main;
+import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -10,6 +12,8 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.naming.Name;
 
 public class Reference {
 	// The namespace used for the entire mod.
@@ -73,40 +77,65 @@ public class Reference {
 		return Text.translatable(ModID + "." + key, params);
 	}
 	
-	public static class ModTags {
+	public static class Tags {
 		// NOTE: Tags allow for the grouping of block, entity, and item types.
 		// This is useful for implementing logic based on the qualities of blocks, entities, and items,
 		//  rather than have the logic be hardcoded to particular types.
 		// E.g:
 		// - Crafting recipes which can use one of multiple item types interchangeably, such as planks to make sticks.
 		
-		public static class Blocks {
-		}
-		
-		public static class Items {
-			// TODO: make these be generated in the "tercaphinom" namespace, rather than the "minecraft" namespace.
-			//# Basic Materials #
-			public static final TagKey<Item> ALL_COBBLESTONES = of("all_cobblestones");
-			public static final TagKey<Item> ALL_BRICKS = of("all_bricks");
-			public static final TagKey<Item> ALL_GLASSY_SAND_PILES = of("all_glassy_sand_piles");
-			public static final TagKey<Item> ALL_METAL_GRAMS = of("all_metal_grams");
-			public static final TagKey<Item> ALL_MUSHROOMS = of("all_mushrooms");
-			public static final TagKey<Item> ALL_PLANKS = of("all_planks");
-			public static final TagKey<Item> ALL_YARNBALLS = of("all_yarnballs");
-			public static final TagKey<Item> ALL_YARNBALLS_WHICH_DYE_TO_BLACK = of("all_yarnballs_which_dye_to_black");
-			public static final TagKey<Item> ALL_YARNBALLS_WHICH_DYE_TO_LIGHT_GRAY = of("all_yarnballs_which_dye_to_light_gray");
-			public static final TagKey<Item> ARROWHEAD_MATERIALS = of("arrowhead_materials");
-			public static final TagKey<Item> BASIC_FLAME_MATERIALS = of("basic_flame_materials");
-			public static final TagKey<Item> SPIRIT_FLAME_MATERIALS = of("spirit_flame_materials");
-			//# Equipment #
-			public static final TagKey<Item> ALL_CHOPPING_TOOLS = of("all_chopping_tools");
+		public static class Block {
+//			public static final TagKey<net.minecraft.block.Block> REFERENCE_PLACEHOLDER = of("reference_placeholder");
 			
-			private static TagKey<Item> of(String id) {
-				return TagKey.of(RegistryKeys.ITEM, new Identifier(id));
+			
+			private static TagKey<net.minecraft.block.Block> of(String id) {
+				return TagKey.of(RegistryKeys.BLOCK, identifier(id));
+			}
+			
+			private static TagKey<net.minecraft.block.Block> ofCommon(String id) {
+				return TagKey.of(RegistryKeys.BLOCK, new Identifier("c", id));
 			}
 		}
 		
-		public static class Entities {
+		public static class Entity {
+			public static final TagKey<EntityType<?>> ALL_NECROMANTOIDS = of("all_necromantoids");
+			
+			
+			private static TagKey<EntityType<?>> of(String id) {
+				return TagKey.of(RegistryKeys.ENTITY_TYPE, identifier(id));
+			}
+			
+			private static TagKey<EntityType<?>> ofCommon(String id) {
+				return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier("c", id));
+			}
+		}
+		
+		public static class Item {
+			//# Basic Materials #
+			public static final TagKey<net.minecraft.item.Item> ALL_BRICKS = of("all_bricks");
+			public static final TagKey<net.minecraft.item.Item> ALL_COBBLESTONES = of("all_cobblestones");
+			public static final TagKey<net.minecraft.item.Item> ALL_GLASSY_SAND_PILES = of("all_glassy_sand_piles");
+			public static final TagKey<net.minecraft.item.Item> ALL_METAL_GRAMS = of("all_metal_grams");
+			public static final TagKey<net.minecraft.item.Item> ALL_MUSHROOMS = of("all_mushrooms");
+			public static final TagKey<net.minecraft.item.Item> ALL_PLANKS = of("all_planks");
+			public static final TagKey<net.minecraft.item.Item> ALL_YARNBALLS = of("all_yarnballs");
+			public static final TagKey<net.minecraft.item.Item> ALL_YARNBALLS_WHICH_DYE_TO_BLACK = of("all_yarnballs_which_dye_to_black");
+			public static final TagKey<net.minecraft.item.Item> ALL_YARNBALLS_WHICH_DYE_TO_LIGHT_GRAY = of("all_yarnballs_which_dye_to_light_gray");
+			public static final TagKey<net.minecraft.item.Item> ARROWHEAD_MATERIALS = of("arrowhead_materials");
+			public static final TagKey<net.minecraft.item.Item> BASIC_FLAME_MATERIALS = of("basic_flame_materials");
+			public static final TagKey<net.minecraft.item.Item> SPIRIT_FLAME_MATERIALS = of("spirit_flame_materials");
+			//# Equipment #
+			public static final TagKey<net.minecraft.item.Item> ALL_CHOPPING_TOOLS = of("all_chopping_tools");
+			public static final TagKey<net.minecraft.item.Item> ALL_POUNDING_TOOLS = of("all_pounding_tools");
+			
+			
+			private static TagKey<net.minecraft.item.Item> of(String id) {
+				return TagKey.of(RegistryKeys.ITEM, identifier(id));
+			}
+			
+			private static TagKey<net.minecraft.item.Item> ofCommon(String id) {
+				return TagKey.of(RegistryKeys.ITEM, new Identifier("c", id));
+			}
 		}
 	}
 	

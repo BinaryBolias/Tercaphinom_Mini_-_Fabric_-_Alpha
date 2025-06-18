@@ -59,7 +59,15 @@ public class ModModelProvider extends FabricModelProvider {
 		
 		
 		//region## Elemental ##
+		//# Metal #
+		bSMG.registerSimpleCubeAll(ModBlocks.RAW_BRASS_BLOCK);
+		bSMG.registerSimpleCubeAll(ModBlocks.RAW_EIDURIL_BLOCK);
+		bSMG.registerSimpleCubeAll(ModBlocks.REFINED_BRASS_BLOCK);
+		bSMG.registerSimpleCubeAll(ModBlocks.REFINED_EIDURIL_BLOCK);
 		//# Mosaic & Plank #
+		// TODO: For using the new (non-cube-all) model, the corresponding block texture pool needs to be removed.
+		//  This requires the corresponding button, pressure plate, stair, slab, fence post, and fence gate to have separate model registration methods.
+//		bSMG.registerSingleton(ModBlocks.VERDAK_PLANK_BLOCK, TexturedModel.CUBE_TOP);
 		//# Stone (brick) #
 		//# Stone (cobbled) #
 		bSMG.registerSimpleCubeAll(ModBlocks.COBBLED_STIEFANE_BLOCK);
@@ -109,13 +117,17 @@ public class ModModelProvider extends FabricModelProvider {
 		//endregion
 		
 		//### Joke & Unserious ###
-		//## Crops & Foliage ##
+		//## (J&U) Crops & Foliage ##
 		//# Miscellaneous #
 		bSMG.registerTintableCross(ModBlocks.STARCHCAP_MUSHROOM, BlockStateModelGenerator.TintType.NOT_TINTED);
+		//## (J&U) Elemental ##
 		//# Cheese #
 		bSMG.registerSimpleCubeAll(ModBlocks.BLUE_CHEESE_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.YELLOW_CHEESE_BLOCK);
+		//# Metal #
+		bSMG.registerSimpleCubeAll(ModBlocks.RAW_NUTRILLARN_BLOCK);
+		bSMG.registerSimpleCubeAll(ModBlocks.REFINED_NUTRILLARN_BLOCK);
 		//# Miscellaneous #
 		bSMG.registerSimpleCubeAll(ModBlocks.HYPERSMOOTH_CREAMSTONE);
 		bSMG.registerSimpleCubeAll(ModBlocks.ULTRASMOOTH_STONE);
@@ -153,6 +165,8 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.BRASS_GRAM, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.BRASS_INGOT, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.COPPER_GRAM, "ingot", Models.GENERATED);
+		genItem(iMG, ModItems.EIDURIL_GRAM, "ingot", Models.GENERATED);
+		genItem(iMG, ModItems.EIDURIL_INGOT, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.GOLD_GRAM, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.IRON_GRAM, "ingot", Models.GENERATED);
 		// # Jewel #
@@ -163,6 +177,8 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.RAW_BRASS_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_BRASS_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_COPPER_NUGGET, "lump", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_EIDURIL_LUMP, "lump", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_EIDURIL_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.SULPHUR_LUMP, "lump", Models.GENERATED);
 		// # Pile (seed) #
 		// # Pile (miscellaneous) #
@@ -204,6 +220,11 @@ public class ModModelProvider extends FabricModelProvider {
 		//# [Tier 0] Wooden Stick #
 		genItem(iMG, ModItems.SHARP_WOODEN_STICK, "equipment", Models.HANDHELD);
 		//# [Tier 1] Wood #
+		genItem(iMG, ModItems.WOODEN_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.WOODEN_MALLET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.WOODEN_SHOVEL, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.WOODEN_SPEAR, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.WOODEN_SWORD, "equipment", Models.HANDHELD);
 		//# [Tier 2] Flint #
 		genItem(iMG, ModItems.FLINT_DAGGER, "equipment", Models.HANDHELD);
 		genItem(iMG, ModItems.FLINT_HATCHET, "equipment", Models.HANDHELD);
@@ -226,6 +247,7 @@ public class ModModelProvider extends FabricModelProvider {
 		iMG.registerArmor((ArmorItem) ModItems.BRASS_BOOT_PAIR);
 		iMG.registerArmor((ArmorItem) ModItems.BRASS_CHESTPLATE);
 		iMG.registerArmor((ArmorItem) ModItems.BRASS_HELMET);
+		genItem(iMG, ModItems.BRASS_HORSE_ARMOR, "equipment", Models.GENERATED);
 		iMG.registerArmor((ArmorItem) ModItems.BRASS_LEGGING_PAIR);
 		//# [Tier 3] Brass (tools) #
 		genItem(iMG, ModItems.BRASS_AXE, "equipment", Models.HANDHELD);
@@ -241,6 +263,7 @@ public class ModModelProvider extends FabricModelProvider {
 		iMG.registerArmor((ArmorItem) ModItems.COPPER_BOOT_PAIR);
 		iMG.registerArmor((ArmorItem) ModItems.COPPER_CHESTPLATE);
 		iMG.registerArmor((ArmorItem) ModItems.COPPER_HELMET);
+		genItem(iMG, ModItems.COPPER_HORSE_ARMOR, "equipment", Models.GENERATED);
 		iMG.registerArmor((ArmorItem) ModItems.COPPER_LEGGING_PAIR);
 		//# [Tier 3] Copper (tools) #
 		genItem(iMG, ModItems.COPPER_AXE, "equipment", Models.HANDHELD);
@@ -252,9 +275,34 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.COPPER_SHOVEL, "equipment", Models.HANDHELD);
 		genItem(iMG, ModItems.COPPER_SPEAR, "equipment", Models.HANDHELD);
 		genItem(iMG, ModItems.COPPER_SWORD, "equipment", Models.HANDHELD);
-		//# [Tier 3] Eiduril #
-		//# [Tier 3] Gold #
-		//# [Tier 3] Iron #
+		//# [Tier 3] Eiduril (armor) #
+		iMG.registerArmor((ArmorItem) ModItems.EIDURIL_BOOT_PAIR);
+		iMG.registerArmor((ArmorItem) ModItems.EIDURIL_CHESTPLATE);
+		iMG.registerArmor((ArmorItem) ModItems.EIDURIL_HELMET);
+		genItem(iMG, ModItems.EIDURIL_HORSE_ARMOR, "equipment", Models.GENERATED);
+		iMG.registerArmor((ArmorItem) ModItems.EIDURIL_LEGGING_PAIR);
+		//# [Tier 3] Eiduril (tools) #
+		genItem(iMG, ModItems.EIDURIL_AXE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.EIDURIL_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.EIDURIL_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.EIDURIL_HOE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.EIDURIL_MALLET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.EIDURIL_PICKAXE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.EIDURIL_SHOVEL, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.EIDURIL_SPEAR, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.EIDURIL_SWORD, "equipment", Models.HANDHELD);
+		//# [Tier 3] Gold (armor) #
+		//# [Tier 3] Gold (tools) #
+		genItem(iMG, ModItems.GOLDEN_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.GOLDEN_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.GOLDEN_MALLET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.GOLDEN_SPEAR, "equipment", Models.HANDHELD);
+		//# [Tier 3] Iron (armor) #
+		//# [Tier 3] Iron (tools) #
+		genItem(iMG, ModItems.IRON_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.IRON_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.IRON_MALLET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.IRON_SPEAR, "equipment", Models.HANDHELD);
 		//endregion
 		
 		
@@ -279,18 +327,33 @@ public class ModModelProvider extends FabricModelProvider {
 		//# Plank #
 		//# Bundle & Rod & Stick #
 		//# Shard #
-		//# Miscellaneous (cheese) #
+		//# Wedge #
 		genItem(iMG, ModItems.BLUE_CHEESE_WEDGE, "unserious", Models.GENERATED);
 		genItem(iMG, ModItems.SILKY_SMOOTH_CHEESE_WEDGE, "unserious", Models.GENERATED);
 		genItem(iMG, ModItems.YELLOW_CHEESE_WEDGE, "unserious", Models.GENERATED);
-		//# Miscellaneous (miscellaneous) #
+		//# Miscellaneous #
 		genItem(iMG, ModItems.CHULK_BERRY, "unserious", Models.GENERATED);
 		genItem(iMG, ModItems.ENCHANTED_BRICK, "unserious", Models.GENERATED);
 		genItem(iMG, ModItems.MINIWIZARD, "unserious", Models.GENERATED);
 //		genItem(iMG, ModItems.STARCHCAP_MUSHROOM, "unserious", Models.GENERATED); // TODO: Use separate item model generation.
 		
 		//## (J&U) Equipment ##
-		//# Nutrillarn #
+		//# Nutrillarn (armor) #
+		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_BOOT_PAIR);
+		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_CHESTPLATE);
+		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_HELMET);
+		genItem(iMG, ModItems.NUTRILLARN_HORSE_ARMOR, "equipment", Models.GENERATED);
+		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_LEGGING_PAIR);
+		//# Nutrillarn (tools) #
+		genItem(iMG, ModItems.NUTRILLARN_AXE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.NUTRILLARN_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.NUTRILLARN_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.NUTRILLARN_HOE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.NUTRILLARN_MALLET, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.NUTRILLARN_PICKAXE, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.NUTRILLARN_SHOVEL, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.NUTRILLARN_SPEAR, "equipment", Models.HANDHELD);
+		genItem(iMG, ModItems.NUTRILLARN_SWORD, "equipment", Models.HANDHELD);
 		//# Miscellaneous #
 		
 		//endregion

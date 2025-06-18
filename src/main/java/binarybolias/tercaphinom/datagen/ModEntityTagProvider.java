@@ -7,6 +7,7 @@ import net.minecraft.registry.tag.EntityTypeTags;
 
 import java.util.concurrent.CompletableFuture;
 
+import static binarybolias.tercaphinom.references.Reference.*;
 import static binarybolias.tercaphinom.references.Reference.log;
 
 public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvider {
@@ -19,6 +20,8 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
 		log("Generating entity tag data");
 		
 		getOrCreateTagBuilder(EntityTypeTags.ARROWS);
-		getOrCreateTagBuilder(EntityTypeTags.UNDEAD); // In tercaphinom, this is replaced with "necromantoids".
+		
+		getOrCreateTagBuilder(EntityTypeTags.UNDEAD).addTag(Tags.Entity.ALL_NECROMANTOIDS); // Note: "necromantoid" to be a replacement term for "undead".
+		getOrCreateTagBuilder(Tags.Entity.ALL_NECROMANTOIDS);
 	}
 }

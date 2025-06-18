@@ -1,82 +1,82 @@
 {
-  "type": "minecraft:entity",
-  "pools": [
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": -1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:poppy"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 48.0,
-                "min": 16.0
-              },
-              "function": "minecraft:set_count"
-            },
-            {
-              "function": "minecraft:limit_count",
-              "limit": {
-                "max": 32.0,
-                "min": 24.0
-              }
-            }
-          ],
-          "name": "minecraft:raw_iron"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 6.0,
-                "min": -1.0
-              },
-              "function": "minecraft:set_count"
-            },
-            {
-              "function": "minecraft:limit_count",
-              "limit": {
-                "max": 5.0
-              }
-            }
-          ],
-          "name": "minecraft:iron_nugget"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:entities/iron_golem"
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": -1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:poppy"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 48.0,
+								"min": 16.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"function": "minecraft:limit_count",
+							"limit": {
+								"max": 32.0,
+								"min": 24.0
+							}
+						}
+					],
+					"name": "minecraft:raw_iron"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": -1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"function": "minecraft:limit_count",
+							"limit": {
+								"max": 5.0
+							}
+						}
+					],
+					"name": "minecraft:iron_nugget"
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:entities/iron_golem"
 }
