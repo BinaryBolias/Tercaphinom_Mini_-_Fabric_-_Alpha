@@ -31,7 +31,12 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:grass_tuft",
+					"name": "tercaphinom:dry_grass_tuft",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:live_grass_tuft",
 					"weight": 12
 				},
 				{

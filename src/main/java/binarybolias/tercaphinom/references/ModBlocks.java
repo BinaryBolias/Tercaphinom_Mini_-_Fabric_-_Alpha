@@ -19,7 +19,6 @@ import static binarybolias.tercaphinom.references.Reference.*;
  * Relevant references:
  * {@link net.minecraft.block.Blocks}
  */
-
 public class ModBlocks {
 	public ModBlocks() {
 		// Disable instantiation.
@@ -50,13 +49,17 @@ public class ModBlocks {
 	
 	//### Blocks ###
 	//region  ## Crops & Foliage ##
+	//# Crop #
+	
 	//# Leaf #
 	
-	//# Log & Trunk #
+	//# Log #
 	public static final Block VERDAK_LOG = registerBlock("verdak_log",
 			new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)
 					.mapColor(MapColor.PALE_GREEN)
 					.velocityMultiplier(0.96875F))); // TODO: Make unique.
+	
+	//# Trunk #
 	public static final Block VERDAK_TRUNK = registerBlock("verdak_trunk",
 			new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)
 					.mapColor(state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ?
@@ -65,10 +68,14 @@ public class ModBlocks {
 					.velocityMultiplier(0.96875F))); // TODO: Make unique.
 	
 	//# Miscellaneous #
+	
 	//endregion
 	
 	//region  ## Elemental ##
 	//# Bale #
+	
+	//# Jewel #
+	
 	//# Metal #
 	public static final Block RAW_BRASS_BLOCK = registerBlockWithItem("raw_brass_block",
 			newBlock(blockSettings().strength(6.0F, 8.0F)
@@ -99,10 +106,30 @@ public class ModBlocks {
 	public static final Block VERDAK_PLANK_BLOCK = registerBlockWithItem("verdak_plank_block",
 			new Block(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS))); // TODO: Make unique.
 	
+	//# Sand & Soil #
+	public static final Block ASH_BLOCK = registerBlockWithItem("ash_block",
+			new Block(blockSettings().strength(1.0F, 6.0F)
+					.mapColor(MapColor.STONE_GRAY)
+					.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
+					.velocityMultiplier(0.96875F) // 31/32
+					.sounds(BlockSoundGroup.SNOW).instrument(Instrument.HARP)
+			));
+	public static final Block SKORSAND_BLOCK = registerBlockWithItem("skorsand_block",
+			new ColoredFallingBlock(
+					new ColorCode(11098145),
+					blockSettings().strength(0.5F, 6.0F)
+							.mapColor(MapColor.GRAY)
+							.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
+							.velocityMultiplier(0.96875F) // 31/32
+							.sounds(BlockSoundGroup.SAND).instrument(Instrument.SNARE)
+			));
+	
 	//# Stone (brick) #
 	public static final Block STIEFANE_BRICK_BLOCK = registerBlockWithItem("stiefane_brick_block",
 			newBlock(blockSettings().strength(1.5F, 6.0F)
 					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)));
+	
+	//# Stone (chiseled) #
 	
 	//# Stone (cobbled) #
 	public static final Block COBBLED_STIEFANE_BLOCK = registerBlockWithItem("cobbled_stiefane_block",
@@ -118,32 +145,19 @@ public class ModBlocks {
 			new Block(AbstractBlock.Settings.copy(Blocks.SMOOTH_STONE))); // TODO: Make unique.
 	
 	//# Miscellaneous #
-	public static final Block ASH_BLOCK = registerBlockWithItem("ash_block",
-			new Block(blockSettings().strength(1.0F, 6.0F)
-					.mapColor(MapColor.STONE_GRAY)
-					.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
-					.velocityMultiplier(0.96875F) // 31/32
-					.sounds(BlockSoundGroup.SNOW).instrument(Instrument.HARP)
-			)); // 31/32
-	public static final Block SKORSAND_BLOCK = registerBlockWithItem("skorsand_block",
-			new ColoredFallingBlock(
-					new ColorCode(11098145),
-					blockSettings().strength(0.5F, 6.0F)
-							.mapColor(MapColor.GRAY)
-							.slipperiness(BASE_SLIPPERINESS + 0.0625F) // 1/16
-							.velocityMultiplier(0.96875F) // 31/32
-							.sounds(BlockSoundGroup.SAND).instrument(Instrument.SNARE)
-			));
+	
 	//endregion
 	
 	//region  ## Modified & Transitional ##
+	//# Grass #
+	
 	//# Ore (netherrack) #
 	
 	//# Ore (stiefane) #
 	public static final Block STIEFANE_LAPIS_ORE = registerBlockWithItem("stiefane_lapis_ore",
 			new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), AbstractBlock.Settings.copy(Blocks.LAPIS_ORE))); // TODO: Make unique.
-	
 	//# Ore (zygolith) #
+	
 	//endregion
 	
 	//region  ## Junction & Utility ##
@@ -170,28 +184,33 @@ public class ModBlocks {
 	//# Fence, Gate, & Wall #
 	public static final Block STIEFANE_BRICK_WALL_POST = registerBlockWithItem("stiefane_brick_wall_post",
 			new WallBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_WALL))); // TODO: Make unique.
-	public static final Block VERDAK_FENCE_GATE = registerBlockWithItem("verdak_fence_gate",
+	public static final Block VERDAK_GATE = registerBlockWithItem("verdak_gate",
 			new FenceGateBlock(WoodType.OAK, AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE))); // TODO: Make unique.
 	public static final Block VERDAK_FENCE_POST = registerBlockWithItem("verdak_fence_post",
 			new FenceBlock(AbstractBlock.Settings.copy(Blocks.OAK_FENCE))); // TODO: Make unique.
 	
 	//# Ladder #
 	
+	//# Lantern & Torch #
+	
 	//# Pane #
 	
 	//# Sign #
 	
-	//# Slab & Stair #
+	//# Slab #
 	public static final Block STIEFANE_BRICK_SLAB = registerBlockWithItem("stiefane_brick_slab",
 			new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_SLAB))); // TODO: Make unique.
-	public static final Block STIEFANE_BRICK_STAIR = registerBlockWithItem("stiefane_brick_stair",
-			new StairsBlock(STIEFANE_BRICK_BLOCK.getDefaultState(), AbstractBlock.Settings.copy(Blocks.STONE_BRICK_STAIRS))); // TODO: Make unique.
 	public static final Block VERDAK_PLANK_SLAB = registerBlockWithItem("verdak_plank_slab",
 			new SlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS))); // TODO: Make unique.
+	
+	//# Stair #
+	public static final Block STIEFANE_BRICK_STAIR = registerBlockWithItem("stiefane_brick_stair",
+			new StairsBlock(STIEFANE_BRICK_BLOCK.getDefaultState(), AbstractBlock.Settings.copy(Blocks.STONE_BRICK_STAIRS))); // TODO: Make unique.
 	public static final Block VERDAK_PLANK_STAIR = registerBlockWithItem("verdak_plank_stair",
 			new StairsBlock(VERDAK_PLANK_BLOCK.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_PLANKS))); // TODO: Make unique.
 	
-	//# Torch #
+	//# Miscellaneous #
+	
 	//endregion
 	
 	//region  ## Miscellaneous ##

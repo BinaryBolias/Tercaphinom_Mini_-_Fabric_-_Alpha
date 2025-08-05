@@ -616,12 +616,12 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:brass_horse_armor",
+					"name": "tercaphinom:brass_horse_harness",
 					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:copper_horse_armor",
+					"name": "tercaphinom:copper_horse_harness",
 					"weight": 1
 				},
 				{

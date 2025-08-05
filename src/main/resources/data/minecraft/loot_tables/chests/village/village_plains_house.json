@@ -28,22 +28,6 @@
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:poppy",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:carrot",
 					"weight": 4
 				},
 				{
@@ -59,8 +43,40 @@
 							"function": "minecraft:set_count"
 						}
 					],
+					"name": "minecraft:beetroot",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:carrot",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
 					"name": "minecraft:potato",
-					"weight": 11
+					"weight": 14
 				},
 				{
 					"type": "minecraft:item",
@@ -73,10 +89,19 @@
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
 						}
 					],
 					"name": "minecraft:bread",
-					"weight": 14
+					"weight": 24
 				},
 				{
 					"type": "minecraft:item",
@@ -85,24 +110,38 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 5.0,
+								"max": 4.0,
 								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
 					"name": "minecraft:apple",
-					"weight": 11
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:apple_pie",
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:book",
-					"weight": 1
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:feather",
-					"weight": 1
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
@@ -143,6 +182,22 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:beetroot_seeds",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
 								"max": 3.0,
 								"min": 1.0
 							},
@@ -150,7 +205,7 @@
 						}
 					],
 					"name": "minecraft:wheat_seeds",
-					"weight": 3
+					"weight": 6
 				},
 				{
 					"type": "minecraft:item",
@@ -174,8 +229,49 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:grass_tuft",
+					"name": "tercaphinom:dry_grass_tuft",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:live_grass_tuft",
 					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:oak_plank",
+					"weight": 10
 				}
 			],
 			"rolls": {
@@ -393,8 +489,33 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:grass_tuft",
-					"weight": 19
+					"name": "tercaphinom:dry_grass_tuft",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:live_grass_tuft",
+					"weight": 7
 				}
 			],
 			"rolls": {

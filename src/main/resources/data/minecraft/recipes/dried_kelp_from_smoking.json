@@ -1,12 +1,7 @@
 {
-	"type": "minecraft:smoking",
-	"category": "food",
-	"cookingtime": 100,
-	"experience": 0.1,
-	"ingredient": {
-		"item": "minecraft:kelp"
-	},
-	"result": {
-		"id": "minecraft:dried_kelp"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

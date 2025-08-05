@@ -1,0 +1,125 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:entity/bones/humanoid-covered"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:entity/meat/humanoid-rotten_flesh"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"conditions": [
+				{
+					"condition": "minecraft:killed_by_player"
+				},
+				{
+					"chance": 0.015625,
+					"condition": "minecraft:random_chance_with_looting",
+					"looting_multiplier": 0.03125
+				}
+			],
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:copper_ingot",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"conditions": [
+								{
+									"condition": "minecraft:entity_properties",
+									"entity": "this",
+									"predicate": {
+										"flags": {
+											"is_on_fire": true
+										}
+									}
+								}
+							],
+							"function": "minecraft:furnace_smelt"
+						}
+					],
+					"name": "minecraft:carrot",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"conditions": [
+								{
+									"condition": "minecraft:entity_properties",
+									"entity": "this",
+									"predicate": {
+										"flags": {
+											"is_on_fire": true
+										}
+									}
+								}
+							],
+							"function": "minecraft:furnace_smelt"
+						}
+					],
+					"name": "minecraft:potato",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"conditions": [
+								{
+									"condition": "minecraft:entity_properties",
+									"entity": "this",
+									"predicate": {
+										"flags": {
+											"is_on_fire": true
+										}
+									}
+								}
+							],
+							"function": "minecraft:furnace_smelt"
+						}
+					],
+					"name": "minecraft:beetroot",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:beetroot_seeds",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:melon_seeds",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:pumpkin_seeds",
+					"weight": 1
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:entities/drowned"
+}

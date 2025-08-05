@@ -1,17 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"group": "dyed_candle",
-	"ingredients": [
-		{
-			"item": "minecraft:candle"
-		},
-		{
-			"item": "minecraft:magenta_dye"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:magenta_candle"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

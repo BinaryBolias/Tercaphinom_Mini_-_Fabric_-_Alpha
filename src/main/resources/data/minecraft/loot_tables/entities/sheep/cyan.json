@@ -5,6 +5,16 @@
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
+					"type": "minecraft:loot_table",
+					"value": "minecraft:entities/sheep"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
 					"type": "minecraft:item",
 					"functions": [
 						{
@@ -23,19 +33,15 @@
 								"min": 0.0
 							},
 							"function": "minecraft:looting_enchant"
+						},
+						{
+							"function": "minecraft:limit_count",
+							"limit": {
+								"max": 4.0
+							}
 						}
 					],
 					"name": "tercaphinom:cyan_yarnball"
-				}
-			],
-			"rolls": 1.0
-		},
-		{
-			"bonus_rolls": 0.0,
-			"entries": [
-				{
-					"type": "minecraft:loot_table",
-					"value": "minecraft:entities/sheep"
 				}
 			],
 			"rolls": 1.0

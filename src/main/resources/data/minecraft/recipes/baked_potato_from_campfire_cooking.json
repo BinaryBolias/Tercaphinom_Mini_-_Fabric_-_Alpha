@@ -1,12 +1,7 @@
 {
 	"type": "minecraft:campfire_cooking",
-	"category": "food",
-	"cookingtime": 600,
-	"experience": 0.35,
-	"ingredient": {
-		"item": "minecraft:potato"
-	},
-	"result": {
-		"id": "minecraft:baked_potato"
-	}
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

@@ -155,12 +155,12 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:brass_horse_armor",
+					"name": "tercaphinom:brass_horse_harness",
 					"weight": 14
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:copper_horse_armor",
+					"name": "tercaphinom:copper_horse_harness",
 					"weight": 14
 				},
 				{
@@ -360,6 +360,16 @@
 				}
 			],
 			"rolls": 5.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chests/special_dungeon_loot"
+				}
+			],
+			"rolls": 1.0
 		},
 		{
 			"bonus_rolls": 0.0,

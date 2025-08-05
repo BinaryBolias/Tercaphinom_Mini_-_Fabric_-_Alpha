@@ -19,11 +19,10 @@ import java.util.function.Supplier;
 
 import static binarybolias.tercaphinom.references.Reference.*;
 
-/**
- * Relevant references:
- * {@link net.minecraft.item.ArmorMaterials}
- */
 
+/**
+ * @see net.minecraft.item.ArmorMaterials
+ */
 public class ModArmorMaterials {
 	public static final RegistryEntry<ArmorMaterial> COPPER = register("copper",
 			Util.make(new EnumMap(ArmorItem.Type.class), map -> {

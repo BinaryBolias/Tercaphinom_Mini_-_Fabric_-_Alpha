@@ -1,21 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "equipment",
-	"key": {
-		"C": {
-			"item": "minecraft:compass"
-		},
-		"S": {
-			"item": "minecraft:echo_shard"
-		}
-	},
-	"pattern": [
-		"SSS",
-		"SCS",
-		"SSS"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:recovery_compass"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

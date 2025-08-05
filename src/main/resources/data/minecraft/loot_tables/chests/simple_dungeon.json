@@ -103,12 +103,12 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:brass_horse_armor",
+					"name": "tercaphinom:brass_horse_harness",
 					"weight": 12
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:copper_horse_armor",
+					"name": "tercaphinom:copper_horse_harness",
 					"weight": 9
 				},
 				{
@@ -123,7 +123,7 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_horse_armor",
+					"name": "tercaphinom:eiduril_horse_harness",
 					"weight": 1
 				},
 				{
@@ -834,6 +834,16 @@
 				"max": 7.0,
 				"min": 3.0
 			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chests/special_dungeon_loot"
+				}
+			],
+			"rolls": 1.0
 		}
 	],
 	"random_sequence": "minecraft:chests/simple_dungeon"

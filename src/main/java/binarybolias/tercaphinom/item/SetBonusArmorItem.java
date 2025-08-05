@@ -19,7 +19,7 @@ import java.util.Map;
 // Note: Only one piece of each applicable armor set should use this class;
 //  each armor item of this type checks all armor slots,
 //   so multiple pieces of the set sharing this class would result in superfluous checks every tick while in inventory.
-public class ModSetBonusArmorItem extends ArmorItem {
+public class SetBonusArmorItem extends ArmorItem {
 	private static final Map<RegistryEntry<ArmorMaterial>, ArrayList<StatusEffectInstance>> MATERIAL_TO_EFFECT;
 	private static final int MIN_DURATION_UNTIL_RESET = 205;
 	private static final int REFRESH_DURATION = MIN_DURATION_UNTIL_RESET + 5;
@@ -33,7 +33,7 @@ public class ModSetBonusArmorItem extends ArmorItem {
 		addValue(ModArmorMaterials.NUTRILLARN, StatusEffects.STRENGTH, 1);
 	}
 	
-	public ModSetBonusArmorItem(RegistryEntry<ArmorMaterial> material, Type type, Settings settings) {
+	public SetBonusArmorItem(RegistryEntry<ArmorMaterial> material, Type type, Settings settings) {
 		super(material, type, settings);
 	}
 	

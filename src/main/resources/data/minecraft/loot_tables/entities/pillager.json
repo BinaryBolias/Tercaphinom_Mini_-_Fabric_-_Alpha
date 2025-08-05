@@ -1,0 +1,41 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:entity/bones/humanoid-covered"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:entity/meat/humanoid-raw_meat_morsel"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:totem_of_undying",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:empty",
+					"weight": 4095
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:entities/pillager"
+}

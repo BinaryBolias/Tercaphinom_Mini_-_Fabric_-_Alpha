@@ -1,18 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "redstone",
-	"key": {
-		"#": {
-			"item": "minecraft:slime_ball"
-		}
-	},
-	"pattern": [
-		"###",
-		"###",
-		"###"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:slime_block"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }
