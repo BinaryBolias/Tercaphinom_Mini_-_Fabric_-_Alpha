@@ -5,62 +5,8 @@
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 2.0,
-								"min": -1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 1.0,
-								"min": 0.0
-							},
-							"function": "minecraft:looting_enchant"
-						}
-					],
-					"name": "minecraft:arrow"
-				}
-			],
-			"rolls": 1.0
-		},
-		{
-			"bonus_rolls": 0.0,
-			"entries": [
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 2.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 2.0,
-								"min": 1.0
-							},
-							"function": "minecraft:looting_enchant"
-						},
-						{
-							"function": "minecraft:limit_count",
-							"limit": {
-								"max": 6.0
-							}
-						}
-					],
-					"name": "minecraft:bone"
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:entity/bones/humanoid-bare"
 				}
 			],
 			"rolls": 1.0
@@ -81,7 +27,7 @@
 							"count": {
 								"type": "minecraft:uniform",
 								"max": 1.0,
-								"min": 0.0
+								"min": -2.0
 							},
 							"function": "minecraft:set_count"
 						},
@@ -92,7 +38,7 @@
 								"min": 0.0
 							},
 							"function": "minecraft:looting_enchant",
-							"limit": 1
+							"limit": 2
 						},
 						{
 							"function": "minecraft:set_potion",

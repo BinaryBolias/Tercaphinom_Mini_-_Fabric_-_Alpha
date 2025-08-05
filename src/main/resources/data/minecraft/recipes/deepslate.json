@@ -1,12 +1,7 @@
 {
-	"type": "minecraft:smelting",
-	"category": "blocks",
-	"cookingtime": 200,
-	"experience": 0.1,
-	"ingredient": {
-		"item": "minecraft:cobbled_deepslate"
-	},
-	"result": {
-		"id": "minecraft:deepslate"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

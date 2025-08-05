@@ -1,20 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "misc",
-	"key": {
-		"H": {
-			"item": "minecraft:honeycomb"
-		},
-		"S": {
-			"item": "minecraft:string"
-		}
-	},
-	"pattern": [
-		"S",
-		"H"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:candle"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

@@ -1,14 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"group": "black_dye",
-	"ingredients": [
-		{
-			"item": "minecraft:ink_sac"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:black_dye"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

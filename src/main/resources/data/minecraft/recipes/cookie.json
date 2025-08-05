@@ -1,19 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "misc",
-	"key": {
-		"#": {
-			"item": "minecraft:wheat"
-		},
-		"X": {
-			"item": "minecraft:cocoa_beans"
-		}
-	},
-	"pattern": [
-		"#X#"
-	],
-	"result": {
-		"count": 8,
-		"id": "minecraft:cookie"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

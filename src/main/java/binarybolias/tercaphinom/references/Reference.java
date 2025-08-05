@@ -36,6 +36,12 @@ public class Reference {
 		LOGGER.info(ANSI__BRIGHT_MAGENTA + "{}" + ANSI_RESET, message);
 	}
 	
+	
+	private static void printWarning(String message) {
+		LOGGER.warn(message);
+	}
+	
+	
 	private static void printError(String message) {
 		LOGGER.error(message);
 	}
@@ -49,6 +55,14 @@ public class Reference {
 			printInfo(">>> " + message);
 		}
 	}
+	
+	
+	public static void logWarning(String message) {
+		if (Main.DEBUG) {
+			printWarning(">>> " + message);
+		}
+	}
+	
 	
 	public static void logError(String message) {
 		if (Main.DEBUG) {
@@ -85,7 +99,7 @@ public class Reference {
 		// - Crafting recipes which can use one of multiple item types interchangeably, such as planks to make sticks.
 		
 		public static class Block {
-//			public static final TagKey<net.minecraft.block.Block> REFERENCE_PLACEHOLDER = of("reference_placeholder");
+			public static final TagKey<net.minecraft.block.Block> NIL = of("nil"); // Intentionally empty.
 			
 			
 			private static TagKey<net.minecraft.block.Block> of(String id) {
@@ -99,6 +113,7 @@ public class Reference {
 		
 		public static class Entity {
 			public static final TagKey<EntityType<?>> ALL_NECROMANTOIDS = of("all_necromantoids");
+			public static final TagKey<EntityType<?>> BLACKLISTED_FOR_TARGET_TELEPORTER_ITEM = of("blacklisted_for_target_teleporter_item");
 			
 			
 			private static TagKey<EntityType<?>> of(String id) {
@@ -119,14 +134,32 @@ public class Reference {
 			public static final TagKey<net.minecraft.item.Item> ALL_MUSHROOMS = of("all_mushrooms");
 			public static final TagKey<net.minecraft.item.Item> ALL_PLANKS = of("all_planks");
 			public static final TagKey<net.minecraft.item.Item> ALL_YARNBALLS = of("all_yarnballs");
-			public static final TagKey<net.minecraft.item.Item> ALL_YARNBALLS_WHICH_DYE_TO_BLACK = of("all_yarnballs_which_dye_to_black");
-			public static final TagKey<net.minecraft.item.Item> ALL_YARNBALLS_WHICH_DYE_TO_LIGHT_GRAY = of("all_yarnballs_which_dye_to_light_gray");
 			public static final TagKey<net.minecraft.item.Item> ARROWHEAD_MATERIALS = of("arrowhead_materials");
-			public static final TagKey<net.minecraft.item.Item> BASIC_FLAME_MATERIALS = of("basic_flame_materials");
-			public static final TagKey<net.minecraft.item.Item> SPIRIT_FLAME_MATERIALS = of("spirit_flame_materials");
+			public static final TagKey<net.minecraft.item.Item> BROOM_MATERIALS = of("broom_materials");
+			public static final TagKey<net.minecraft.item.Item> COOKABLE_EGGS = of("cookable_eggs");
+			public static final TagKey<net.minecraft.item.Item> RAW_CAKE_BERRIES = of("raw_cake_berries");
+			//# Decomposable Materials #
+			public static final TagKey<net.minecraft.item.Item> DECOMPOSABLE_MATERIALS = of("decomposable_materials");
+			//# Rottable Meats #
+			public static final TagKey<net.minecraft.item.Item> SMALL_ROTTABLE_MEATS = of("small_rottable_meats");
+			public static final TagKey<net.minecraft.item.Item> LARGE_ROTTABLE_MEATS = of("large_rottable_meats");
+			//# Spawn Eggs #
+			public static final TagKey<net.minecraft.item.Item> SPAWN_EGGS = of("spawn_eggs");
+			//# Containers #
+			public static final TagKey<net.minecraft.item.Item> SMALL_CONTAINERS_OF_BRIMWATER = of("small_containers_of_brimwater");
+			public static final TagKey<net.minecraft.item.Item> SMALL_CONTAINERS_OF_FREEZEWATER = of("small_containers_of_freezewater");
+			public static final TagKey<net.minecraft.item.Item> SMALL_CONTAINERS_OF_HONEY = of("small_containers_of_honey");
+			public static final TagKey<net.minecraft.item.Item> SMALL_CONTAINERS_OF_MILK = of("small_containers_of_milk");
+			public static final TagKey<net.minecraft.item.Item> SMALL_CONTAINERS_OF_STEAMING_WATER = of("small_containers_of_steaming_water");
+			public static final TagKey<net.minecraft.item.Item> SMALL_CONTAINERS_OF_WATER = of("small_containers_of_water");
 			//# Equipment #
 			public static final TagKey<net.minecraft.item.Item> ALL_CHOPPING_TOOLS = of("all_chopping_tools");
 			public static final TagKey<net.minecraft.item.Item> ALL_POUNDING_TOOLS = of("all_pounding_tools");
+			//# Flame & Torch Materials #
+			public static final TagKey<net.minecraft.item.Item> BASIC_FLAME_MATERIALS = of("basic_flame_materials");
+			public static final TagKey<net.minecraft.item.Item> SPIRIT_FLAME_MATERIALS = of("spirit_flame_materials");
+			public static final TagKey<net.minecraft.item.Item> STRONG_TORCH_BINDERS = of("strong_torch_binders");
+			public static final TagKey<net.minecraft.item.Item> WEAK_TORCH_BINDERS = of("weak_torch_binders");
 			
 			
 			private static TagKey<net.minecraft.item.Item> of(String id) {

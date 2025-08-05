@@ -1,31 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"ingredients": [
-		{
-			"item": "minecraft:bowl"
-		},
-		{
-			"item": "minecraft:beetroot"
-		},
-		{
-			"item": "minecraft:beetroot"
-		},
-		{
-			"item": "minecraft:beetroot"
-		},
-		{
-			"item": "minecraft:beetroot"
-		},
-		{
-			"item": "minecraft:beetroot"
-		},
-		{
-			"item": "minecraft:beetroot"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:beetroot_soup"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

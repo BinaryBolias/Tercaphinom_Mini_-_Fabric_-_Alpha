@@ -1,6 +1,7 @@
 package binarybolias.tercaphinom.datagen;
 
 import binarybolias.tercaphinom.references.ModBlocks;
+import binarybolias.tercaphinom.references.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
@@ -12,6 +13,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
+import static binarybolias.tercaphinom.references.Reference.*;
 import static binarybolias.tercaphinom.references.Reference.log;
 
 public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
@@ -28,6 +30,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		*
 		* NOTE: For an overhaul of Minecraft which uses only custom aspects (dimensions, block, items, entities, etc.), these (vanilla) tags are inappropriate; only custom tags would be used instead.
 		 */
+		
+		getOrCreateTagBuilder(Tags.Block.NIL); // Intentionally empty.
 		
 		getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(ModBlocks.ETERNALITH_BLOCK);
 		getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE).add(ModBlocks.ETERNALITH_BLOCK);
@@ -87,7 +91,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.VERDAK_PRESSURE_PLATE)
 				.add(ModBlocks.VERDAK_DOOR)
 				.add(ModBlocks.VERDAK_HATCH)
-				.add(ModBlocks.VERDAK_FENCE_GATE)
+				.add(ModBlocks.VERDAK_GATE)
 				.add(ModBlocks.VERDAK_FENCE_POST)
 				.add(ModBlocks.VERDAK_PLANK_SLAB)
 				.add(ModBlocks.VERDAK_PLANK_STAIR);
@@ -121,7 +125,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		getOrCreateTagBuilder(BlockTags.FENCES)
 				.add(ModBlocks.VERDAK_FENCE_POST);
 		getOrCreateTagBuilder(BlockTags.FENCE_GATES)
-				.add(ModBlocks.VERDAK_FENCE_GATE);
+				.add(ModBlocks.VERDAK_GATE);
 		getOrCreateTagBuilder(BlockTags.STAIRS);
 		getOrCreateTagBuilder(BlockTags.DOORS);
 		getOrCreateTagBuilder(BlockTags.TRAPDOORS);

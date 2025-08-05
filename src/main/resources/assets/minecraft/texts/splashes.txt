@@ -1,3 +1,6 @@
+§kA SECRET IS REVEALED
+§kERROR: ERROR NOT FOUND
+§kOBFUSCATED TEXT
 ...!
 /give @a hugs 96
 10100 GOTO 1010!
@@ -11,6 +14,7 @@ Axes for everyone!
 Balls of Yarn!
 Beware the mushroom stew!
 Beware the temples!
+Bones everywhere!
 Blazing heat!
 Buckets of lava!
 Buckets of water!
@@ -73,6 +77,7 @@ Mallets for everyone!
 May contain bees!
 May contain polygons!
 May contain salt!
+Meat everywhere!
 Menger sponge!
 Mischievous machinations!
 Modded!
@@ -98,7 +103,6 @@ Now with silk!
 Now with smaller ingots!
 Now with some actual difficulty!
 Now with planks!
-§kOBFUSCATED TEXT
 Pickaxes for everyone!
 Piles of ash!
 Piles of dirt!

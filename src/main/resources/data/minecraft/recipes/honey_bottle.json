@@ -1,25 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"ingredients": [
-		{
-			"item": "minecraft:honey_block"
-		},
-		{
-			"item": "minecraft:glass_bottle"
-		},
-		{
-			"item": "minecraft:glass_bottle"
-		},
-		{
-			"item": "minecraft:glass_bottle"
-		},
-		{
-			"item": "minecraft:glass_bottle"
-		}
-	],
-	"result": {
-		"count": 4,
-		"id": "minecraft:honey_bottle"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

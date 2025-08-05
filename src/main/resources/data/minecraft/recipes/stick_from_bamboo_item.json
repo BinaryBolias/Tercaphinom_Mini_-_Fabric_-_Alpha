@@ -1,17 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "misc",
-	"group": "sticks",
-	"key": {
-		"#": {
-			"item": "minecraft:bamboo"
-		}
-	},
-	"pattern": [
-		"#",
-		"#"
-	],
-	"result": {
-		"id": "minecraft:stick"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

@@ -1,26 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"group": "rabbit_stew",
-	"ingredients": [
-		{
-			"item": "minecraft:baked_potato"
-		},
-		{
-			"item": "minecraft:cooked_rabbit"
-		},
-		{
-			"item": "minecraft:bowl"
-		},
-		{
-			"item": "minecraft:carrot"
-		},
-		{
-			"item": "minecraft:brown_mushroom"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:rabbit_stew"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

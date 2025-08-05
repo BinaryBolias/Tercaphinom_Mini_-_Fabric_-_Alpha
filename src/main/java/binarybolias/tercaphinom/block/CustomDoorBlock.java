@@ -286,10 +286,10 @@ public class CustomDoorBlock extends Block {
 		return mirror == BlockMirror.NONE ? state : state.rotate(mirror.getRotation(state.get(FACING))).cycle(HINGE);
 	}
 	
-	@Override
-	protected long getRenderingSeed(BlockState state, BlockPos pos) {
-		return MathHelper.hashCode(pos.getX(), pos.down(state.get(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
-	}
+//	@Override
+//	protected long getRenderingSeed(BlockState state, BlockPos pos) {
+//		return MathHelper.hashCode(pos.getX(), pos.down(state.get(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
+//	}
 	
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

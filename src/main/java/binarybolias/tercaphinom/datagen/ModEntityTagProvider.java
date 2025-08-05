@@ -2,6 +2,7 @@ package binarybolias.tercaphinom.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.entity.EntityType;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.EntityTypeTags;
 
@@ -23,5 +24,8 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
 		
 		getOrCreateTagBuilder(EntityTypeTags.UNDEAD).addTag(Tags.Entity.ALL_NECROMANTOIDS); // Note: "necromantoid" to be a replacement term for "undead".
 		getOrCreateTagBuilder(Tags.Entity.ALL_NECROMANTOIDS);
+		
+		getOrCreateTagBuilder(Tags.Entity.BLACKLISTED_FOR_TARGET_TELEPORTER_ITEM)
+				.add(EntityType.ENDER_DRAGON);
 	}
 }

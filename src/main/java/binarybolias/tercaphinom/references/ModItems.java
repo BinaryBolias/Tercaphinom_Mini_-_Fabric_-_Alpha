@@ -1,14 +1,18 @@
 package binarybolias.tercaphinom.references;
 
-import binarybolias.tercaphinom.item.ModSetBonusArmorItem;
-import net.minecraft.block.DoorBlock;
+import binarybolias.tercaphinom.item.*;
+import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.FoodComponents;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Rarity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static binarybolias.tercaphinom.references.Reference.identifier;
 import static binarybolias.tercaphinom.references.Reference.log;
@@ -18,8 +22,40 @@ import static binarybolias.tercaphinom.references.Reference.log;
  * Relevant references:
  * {@link net.minecraft.item.Items}
  */
-
 public class ModItems {
+	private static final ArrayList<RegistryEntry<StatusEffect>> honeyCureStatusEffectList = newStatusEffectList(
+			StatusEffects.BLINDNESS,
+			StatusEffects.HUNGER,
+			StatusEffects.MINING_FATIGUE,
+			StatusEffects.NAUSEA,
+			StatusEffects.POISON,
+			StatusEffects.WITHER);
+	private static final ArrayList<RegistryEntry<StatusEffect>> milkCureStatusEffectList = newStatusEffectList(
+			StatusEffects.ABSORPTION,
+			StatusEffects.BLINDNESS,
+			StatusEffects.FIRE_RESISTANCE,
+			StatusEffects.GLOWING,
+			StatusEffects.HUNGER,
+			StatusEffects.INFESTED,
+			StatusEffects.INVISIBILITY,
+			StatusEffects.JUMP_BOOST,
+			StatusEffects.LEVITATION,
+			StatusEffects.MINING_FATIGUE,
+			StatusEffects.NAUSEA,
+			StatusEffects.NIGHT_VISION,
+			StatusEffects.OOZING,
+			StatusEffects.POISON,
+			StatusEffects.REGENERATION,
+			StatusEffects.RESISTANCE,
+			StatusEffects.SLOW_FALLING,
+			StatusEffects.SLOWNESS,
+			StatusEffects.SPEED,
+			StatusEffects.STRENGTH,
+			StatusEffects.WATER_BREATHING,
+			StatusEffects.WEAVING,
+			StatusEffects.WIND_CHARGED,
+			StatusEffects.WITHER);
+	
 	public ModItems() {
 		// Disable instantiation.
 		throw new AssertionError();
@@ -36,7 +72,7 @@ public class ModItems {
 	
 	//### Items ###
 	//region ## Basic Resources ##
-	// # Ball (yarn) #
+	//# Ball (yarn) #
 	public static final Item BLACK_YARNBALL = registerItem("black_yarnball", newItem(64));
 	public static final Item BLUE_YARNBALL = registerItem("blue_yarnball", newItem(64));
 	public static final Item BROWN_YARNBALL = registerItem("brown_yarnball", newItem(64));
@@ -53,13 +89,25 @@ public class ModItems {
 	public static final Item RED_YARNBALL = registerItem("red_yarnball", newItem(64));
 	public static final Item WHITE_YARNBALL = registerItem("white_yarnball", newItem(64));
 	public static final Item YELLOW_YARNBALL = registerItem("yellow_yarnball", newItem(64));
-	// # Ball (miscellaneous) #
+	//# Ball (miscellaneous) #
 	public static final Item COBWEB_BALL = registerItem("cobweb_ball", newItem(64)); // TODO: Add projectile.
-	// # Brick #
+	public static final Item RAW_COOKIE_BALL = registerItem("raw_cookie_ball", newItem(96,
+			itemSettings().food(FoodComponents.RAW_COOKIE_BALL)));
+	public static final Item RAW_HONEYBUN_BALL = registerItem("raw_honeybun_ball", newItem(96,
+			itemSettings().food(FoodComponents.RAW_HONEYBUN_BALL)));
+	public static final Item RAW_MAGMABUN_BALL = registerItem("raw_magmabun_ball", newItem(96,
+			itemSettings().food(FoodComponents.RAW_MAGMABUN_BALL)));
+	public static final Item RAW_SLIMEBUN_BALL = registerItem("raw_slimebun_ball", newItem(96,
+			itemSettings().food(FoodComponents.RAW_SLIMEBUN_BALL)));
+	//# Brick #
 	public static final Item STIEFANE_BRICK = registerItem("stiefane_brick", newItem(brickSettings()));
-	// # Cobblestone #
+	//# Chunk (ice) #
+	//# Chunk (miscellaneous) #
+	public static final Item WARPED_FLESH_CHUNK = registerItem("warped_flesh_chunk",
+			new WarpedFleshChunkItem(itemSettings(64).food(FoodComponents.WARPED_FLESH_CHUNK)));
+	//# Cobblestone #
 	public static final Item STIEFANE_COBBLESTONE = registerItem("stiefane_cobblestone", newItem(cobblestoneSettings()));
-	// # Gram & Ingot #
+	//# Gram & Ingot #
 	public static final Item BRASS_GRAM = registerItem("brass_gram", newFireproofItem(96));
 	public static final Item BRASS_INGOT = registerItem("brass_ingot", newFireproofItem(64));
 	public static final Item COPPER_GRAM = registerItem("copper_gram", newFireproofItem(96));
@@ -67,29 +115,56 @@ public class ModItems {
 	public static final Item EIDURIL_INGOT = registerItem("eiduril_ingot", newFireproofItem(64));
 	public static final Item GOLD_GRAM = registerItem("gold_gram", newFireproofItem(96));
 	public static final Item IRON_GRAM = registerItem("iron_gram", newFireproofItem(96));
-	// # Jewel #
-	// # Log & Trunk #
+	//# Jewel #
+	//# Log & Trunk #
 	public static final Item VERDAK_LOG = registerItem("verdak_log", new BlockItem(ModBlocks.VERDAK_LOG,
 			new Item.Settings().maxCount(12)));
 	public static final Item VERDAK_TRUNK = registerItem("verdak_trunk", new BlockItem(ModBlocks.VERDAK_TRUNK,
 			new Item.Settings().maxCount(12)));
-	// # Lump & Nugget #
+	//# Lump & Nugget (metal) #
 	public static final Item RAW_BRASS_LUMP = registerItem("raw_brass_lump", newFireproofItem(64));
 	public static final Item RAW_BRASS_NUGGET = registerItem("raw_brass_nugget", newFireproofItem(96));
 	public static final Item RAW_COPPER_NUGGET = registerItem("raw_copper_nugget", newFireproofItem(96));
 	public static final Item RAW_EIDURIL_LUMP = registerItem("raw_eiduril_lump", newFireproofItem(64));
 	public static final Item RAW_EIDURIL_NUGGET = registerItem("raw_eiduril_nugget", newFireproofItem(96));
+	//# Lump & Nugget (miscellaneous) #
+	public static final Item INFERNOCOAL_LUMP = registerItem("infernocoal_lump", newFireproofItem(64));
+	public static final Item RAW_DOUGH_LUMP = registerItem("raw_dough_lump", newItem(64,
+			itemSettings().food(FoodComponents.RAW_DOUGH_LUMP)));
 	public static final Item SULPHUR_LUMP = registerItem("sulphur_lump", newFireproofItem(64));
-	// # Pile (seed) #
-	// # Pile (miscellaneous) #
+	//# Pie (cooked) #
+	public static final Item APPLE_PIE = registerItem("apple_pie", newItem(16,
+			itemSettings().food(FoodComponents.APPLE_PIE)));
+	public static final Item CHERRY_PIE = registerItem("cherry_pie", newItem(16,
+			itemSettings().food(FoodComponents.CHERRY_PIE)));
+	public static final Item GLOWBERRY_PIE = registerItem("glowberry_pie", newItem(16,
+			itemSettings().food(FoodComponents.GLOWBERRY_PIE)));
+	public static final Item PUMPKIN_PIE = registerItem("pumpkin_pie", newItem(16,
+			itemSettings().food(FoodComponents.PUMPKIN_PIE)));
+	public static final Item SWEETBERRY_PIE = registerItem("sweetberry_pie", newItem(16,
+			itemSettings().food(FoodComponents.SWEETBERRY_PIE)));
+	//# Pie (raw) #
+	public static final Item RAW_APPLE_PIE = registerItem("raw_apple_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_APPLE_PIE)));
+	public static final Item RAW_CHERRY_PIE = registerItem("raw_cherry_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_CHERRY_PIE)));
+	public static final Item RAW_GLOWBERRY_PIE = registerItem("raw_glowberry_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_GLOWBERRY_PIE)));
+	public static final Item RAW_PUMPKIN_PIE = registerItem("raw_pumpkin_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_PUMPKIN_PIE)));
+	public static final Item RAW_SWEETBERRY_PIE = registerItem("raw_sweetberry_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_SWEETBERRY_PIE)));
+	//# Pile (seed) #
+	//# Pile (miscellaneous) #
 	public static final Item ASH_PILE = registerItem("ash_pile", new BoneMealItem(itemSettings().maxCount(96).fireproof()));
 	public static final Item DIRT_PILE = registerItem("dirt_pile", newFireproofItem(64));
 	public static final Item FELDSAND_PILE = registerItem("feldsand_pile", newFireproofItem(64));
 	public static final Item FERROSAND_PILE = registerItem("ferrosand_pile", newFireproofItem(64));
 	public static final Item FREEZE_POWDER_PILE = registerItem("freeze_powder_pile", newItem(96));
 	public static final Item GRAVEL_PILE = registerItem("gravel_pile", newFireproofItem(64));
+	public static final Item LEAF_PILE = registerItem("leaf_pile", newItem(96));
 	public static final Item SKORSAND_PILE = registerItem("skorsand_pile", newFireproofItem(64));
-	// # Plank #
+	//# Plank #
 	public static final Item ACACIA_PLANK = registerItem("acacia_plank", newItem(plankSettings()));
 	public static final Item BIRCH_PLANK = registerItem("birch_plank", newItem(plankSettings()));
 	public static final Item CHERRY_PLANK = registerItem("cherry_plank", newItem(plankSettings()));
@@ -101,28 +176,138 @@ public class ModItems {
 	public static final Item SPRUCE_PLANK = registerItem("spruce_plank", newItem(plankSettings()));
 	public static final Item VERDAK_PLANK = registerItem("verdak_plank", newItem(plankSettings()));
 	public static final Item WARPED_PLANK = registerItem("warped_plank", newItem(plankSettings()));
-	// # Bundle & Rod & Stick #
+	//# Bundle & Rod & Stick #
 	public static final Item DYNAMITE_BUNDLE = registerItem("dynamite_bundle", newItem(64));
 	public static final Item DYNAMITE_STICK = registerItem("dynamite_stick", newItem(96));
 	public static final Item FREEZE_ROD = registerItem("freeze_rod", newItem(64));
 	public static final Item WOODEN_STICK_BUNDLE = registerItem("wooden_stick_bundle", newItem(64));
-	// # Shard #
+	//# Shard #
 	public static final Item GLASS_SHARD = registerItem("glass_shard", newFireproofItem(96));
 	public static final Item OBSIDIAN_SHARD = registerItem("obsidian_shard", newFireproofItem(96));
-	// # Miscellaneous #
-	public static final Item CHEESE_WHEEL = registerItem("cheese_wheel", newItem(itemSettings().maxCount(24).food(FoodComponents.BREAD))); // TODO: Make unique food component.
-	public static final Item GRASS_TUFT = registerItem("grass_tuft", newItem(itemSettings().maxCount(96).food(FoodComponents.DRIED_KELP))); // TODO: Make unique food component.
+	//# Miscellaneous #
+	public static final Item BAKED_CARROT = registerItem("baked_carrot", newItem(64,
+			itemSettings().food(FoodComponents.BAKED_CARROT)));
+	public static final Item BAKED_MUSHROOM = registerItem("baked_mushroom", newItem(64,
+			itemSettings().food(FoodComponents.BAKED_MUSHROOM)));
+	public static final Item BAKED_RADISH = registerItem("baked_radish", newItem(64,
+			itemSettings().food(FoodComponents.BAKED_RADISH)));
+	public static final Item CHEESE_WHEEL = registerItem("cheese_wheel", newItem(16,
+			itemSettings().food(FoodComponents.CHEESE_WHEEL)));
+	public static final Item CHERRY_BUNCH = registerItem("cherry_bunch", newItem(96,
+			itemSettings().food(FoodComponents.CHERRY_BUNCH)));
+	public static final Item COOKED_BUGMEAT_STEAK = registerItem("cooked_bugmeat_steak", newItem(64,
+			itemSettings().food(FoodComponents.COOKED_BUGMEAT_STEAK)));
+	public static final Item COOKED_MEAT_MORSEL = registerItem("cooked_meat_morsel", newItem(96,
+			itemSettings().food(FoodComponents.COOKED_MEAT_MORSEL)));
+	public static final Item DRY_GRASS_TUFT = registerItem("dry_grass_tuft", newItem(itemSettings().maxCount(96)));
+	public static final Item DRY_KELP_BUNDLE = registerItem("dry_kelp_bundle", newItem(64,
+			itemSettings().food(FoodComponents.DRY_KELP_BUNDLE)));
+	public static final Item FRIED_EGG = registerItem("fried_egg", newItem(16,
+			itemSettings().food(FoodComponents.FRIED_EGG)));
+	public static final Item HONEYBUN = registerItem("honeybun",
+			new StatusEffectCureFoodItem(honeyCureStatusEffectList,
+					itemSettings(64).food(FoodComponents.HONEYBUN)));
+	public static final Item LIVE_GRASS_TUFT = registerItem("live_grass_tuft", newItem(96,
+			itemSettings().food(FoodComponents.LIVE_GRASS_TUFT)));
+	public static final Item MAGMABUN = registerItem("magmabun", newItem(64,
+			itemSettings().food(FoodComponents.MAGMABUN)));
+	public static final Item PINECONE = registerItem("pinecone",
+			new AliasedBlockItem(Blocks.SPRUCE_SAPLING, itemSettings(64)));
+	public static final Item RAW_BUGMEAT_STEAK = registerItem("raw_bugmeat_steak", newItem(64,
+			itemSettings().food(FoodComponents.RAW_BUGMEAT_STEAK)));
+	public static final Item RAW_CAKE = registerItem("raw_cake", newItem(1,
+			itemSettings().food(FoodComponents.RAW_CAKE)));
+	public static final Item RAW_MEAT_MORSEL = registerItem("raw_meat_morsel", newItem(96,
+			itemSettings().food(FoodComponents.RAW_MEAT_MORSEL)));
 	public static final Item SILK_WAD = registerItem("silk_wad", newItem(96));
+	public static final Item SLIMEBUN = registerItem("slimebun", newItem(64,
+			itemSettings().food(FoodComponents.SLIMEBUN)));
 	public static final Item STONE_PEBBLE = registerItem("stone_pebble", newFireproofItem(96));
 	//endregion
 	
 	//region ## Containers ##
-	//# Bottle #
-	//# Bowl #
-	//# Bucket #
+	//# Bottle (empty) #
+	//# Bottle (filled) #
+	public static final Item BOTTLE_OF_BRIMWATER = registerItem("bottle_of_brimwater",
+			newBottleBeverageItem(itemSettings().food(FoodComponents.BOTTLE_OF_BRIMWATER)));
+	public static final Item BOTTLE_OF_FREEZEWATER = registerItem("bottle_of_freezewater",
+			newBottleBeverageItem(itemSettings().food(FoodComponents.BOTTLE_OF_FREEZEWATER)));
+	public static final Item BOTTLE_OF_MILK = registerItem("bottle_of_milk",
+			newBottleStatusEffectCureBeverageItem(milkCureStatusEffectList, itemSettings()));
+	public static final Item BOTTLE_OF_STEAMING_WATER = registerItem("bottle_of_steaming_water",
+			newBottleStatusEffectCureBeverageItem(
+					newStatusEffectList(StatusEffects.SLOWNESS), // TODO: Cure a "Freezing" status effect (upon implementation).
+					itemSettings().food(FoodComponents.BOTTLE_OF_STEAMING_WATER)));
+	//# Bowl (empty) #
+	//# Bowl (filled - soup) #
+	public static final Item BOWL_OF_CARROT_SOUP = registerItem("bowl_of_carrot_soup",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_CARROT_SOUP)));
+	public static final Item BOWL_OF_KELP_SOUP = registerItem("bowl_of_kelp_soup",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_KELP_SOUP)));
+	public static final Item BOWL_OF_MUSHROOM_SOUP = registerItem("bowl_of_mushroom_soup",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_MUSHROOM_SOUP)));
+	public static final Item BOWL_OF_POISONOUS_POTATO_SOUP = registerItem("bowl_of_poisonous_potato_soup",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_POISONOUS_POTATO_SOUP)));
+	public static final Item BOWL_OF_PORRIDGE = registerItem("bowl_of_porridge",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_PORRIDGE)));
+	public static final Item BOWL_OF_POTATO_SOUP = registerItem("bowl_of_potato_soup",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_POTATO_SOUP)));
+	public static final Item BOWL_OF_PUMPKIN_SOUP = registerItem("bowl_of_pumpkin_soup",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_PUMPKIN_SOUP)));
+	public static final Item BOWL_OF_RADISH_SOUP = registerItem("bowl_of_radish_soup",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_RADISH_SOUP)));
+	//# Bowl (filled - stew) #
+	public static final Item BOWL_OF_BEEF_STEW = registerItem("bowl_of_beef_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_BEEF_STEW)));
+	public static final Item BOWL_OF_BUGMEAT_STEW = registerItem("bowl_of_bugmeat_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_BUGMEAT_STEW)));
+	public static final Item BOWL_OF_CHICKEN_STEW = registerItem("bowl_of_chicken_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_CHICKEN_STEW)));
+	public static final Item BOWL_OF_COD_STEW = registerItem("bowl_of_cod_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_COD_STEW)));
+	public static final Item BOWL_OF_MORSEL_STEW = registerItem("bowl_of_morsel_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_MORSEL_STEW)));
+	public static final Item BOWL_OF_MUTTON_STEW = registerItem("bowl_of_mutton_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_MUTTON_STEW)));
+	public static final Item BOWL_OF_PORK_STEW = registerItem("bowl_of_pork_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_PORK_STEW)));
+	public static final Item BOWL_OF_RABBIT_STEW = registerItem("bowl_of_rabbit_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_RABBIT_STEW)));
+	public static final Item BOWL_OF_SALMON_STEW = registerItem("bowl_of_salmon_stew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_SALMON_STEW)));
+	//# Bowl (filled - miscellaneous) #
+	public static final Item BOWL_OF_BRIMWATER = registerItem("bowl_of_brimwater",
+			newBowlBeverageItem(itemSettings().food(FoodComponents.BOWL_OF_BRIMWATER)));
+	public static final Item BOWL_OF_FREEZEWATER = registerItem("bowl_of_freezewater",
+			newBowlBeverageItem(itemSettings().food(FoodComponents.BOWL_OF_FREEZEWATER)));
+	public static final Item BOWL_OF_HONEY = registerItem("bowl_of_honey",
+			newBowlBeverageItem(itemSettings().food(FoodComponents.BOWL_OF_HONEY)));
+	public static final Item BOWL_OF_MILK = registerItem("bowl_of_milk",
+			newBowlStatusEffectCureBeverageItem(milkCureStatusEffectList, itemSettings()));
+	public static final Item BOWL_OF_STEAMING_WATER = registerItem("bowl_of_steaming_water",
+			newBowlStatusEffectCureBeverageItem(
+					newStatusEffectList(StatusEffects.SLOWNESS), // TODO: Cure a "Freezing" status effect (upon implementation).
+					itemSettings().food(FoodComponents.BOWL_OF_STEAMING_WATER)));
+	public static final Item BOWL_OF_WATER = registerItem("bowl_of_water",
+			newBowlBeverageItem(itemSettings().food(FoodComponents.BOWL_OF_WATER)));
+	//# Bucket (empty) #
+	//# Bucket (filled) #
+	public static final Item BUCKET_OF_BRIMWATER = registerItem("bucket_of_brimwater",
+			newBucketBeverageItem(itemSettings().food(FoodComponents.BUCKET_OF_BRIMWATER)));
+	public static final Item BUCKET_OF_FERTILIZER = registerItem("bucket_of_fertilizer",
+			new BucketOfFertilizerItem(itemSettings().maxDamage(15).recipeRemainder(Items.BUCKET)));
+	public static final Item BUCKET_OF_FREEZEWATER = registerItem("bucket_of_freezewater",
+			newBucketBeverageItem(itemSettings().food(FoodComponents.BUCKET_OF_FREEZEWATER)));
+	public static final Item BUCKET_OF_HONEY = registerItem("bucket_of_honey",
+			newBucketBeverageItem(itemSettings().food(FoodComponents.BUCKET_OF_HONEY)));
+	public static final Item BUCKET_OF_STEAMING_WATER = registerItem("bucket_of_steaming_water",
+			newBucketStatusEffectCureBeverageItem(
+					newStatusEffectList(StatusEffects.SLOWNESS), // TODO: Cure a "Freezing" status effect (upon implementation).
+					itemSettings().food(FoodComponents.BUCKET_OF_STEAMING_WATER)));
 	//endregion
 	
 	//region  ## Equipment ##
+	//# Arrow #
 	// Equipment notes:
 	//  - Tools have a base 4 attack speed.
 	//   E.g, a -2.0F attach speed as a tool attribute modifier would reduce the tool's attack speed to half of default.
@@ -174,29 +359,29 @@ public class ModItems {
 			newChestplateItem(ModArmorMaterials.BRASS, 16, itemSettings().fireproof()));
 	public static final Item BRASS_HELMET = registerItem("brass_helmet",
 			newHelmetItem(ModArmorMaterials.BRASS, 16, itemSettings().fireproof()));
-	public static final Item BRASS_HORSE_ARMOR = registerItem("brass_horse_armor",
+	public static final Item BRASS_HORSE_HARNESS = registerItem("brass_horse_harness",
 			newHorseArmorItem(ModArmorMaterials.BRASS, itemSettings().fireproof()));
 	public static final Item BRASS_LEGGING_PAIR = registerItem("brass_legging_pair",
 			newLeggingPairItem(ModArmorMaterials.BRASS, 16, itemSettings().fireproof()));
 	//# [Tier 3] Brass (tools) #
 	public static final Item BRASS_AXE = registerItem("brass_axe",
-			newAxeItem(ModToolMaterials.COPPER, 6, -2.9F, itemSettings().fireproof()));
+			newAxeItem(ModToolMaterials.BRASS, 6, -2.9F, itemSettings().fireproof()));
 	public static final Item BRASS_DAGGER = registerItem("brass_dagger",
-			newDaggerItem(ModToolMaterials.COPPER, 3, -1.4F, itemSettings().fireproof()));
+			newDaggerItem(ModToolMaterials.BRASS, 3, -1.4F, itemSettings().fireproof()));
 	public static final Item BRASS_HATCHET = registerItem("brass_hatchet",
-			newHatchetItem(ModToolMaterials.COPPER, 5, -2.1F, itemSettings().fireproof()));
+			newHatchetItem(ModToolMaterials.BRASS, 5, -2.1F, itemSettings().fireproof()));
 	public static final Item BRASS_HOE = registerItem("brass_hoe",
-			newHoeItem(ModToolMaterials.COPPER, 2, -2.6F, itemSettings().fireproof()));
+			newHoeItem(ModToolMaterials.BRASS, 2, -2.6F, itemSettings().fireproof()));
 	public static final Item BRASS_MALLET = registerItem("brass_mallet",
-			newMalletItem(ModToolMaterials.COPPER, 3, -3.0F, itemSettings().fireproof()));
+			newMalletItem(ModToolMaterials.BRASS, 3, -3.0F, itemSettings().fireproof()));
 	public static final Item BRASS_PICKAXE = registerItem("brass_pickaxe",
-			newPickaxeItem(ModToolMaterials.COPPER, 3, -3.0F, itemSettings().fireproof()));
+			newPickaxeItem(ModToolMaterials.BRASS, 3, -3.0F, itemSettings().fireproof()));
 	public static final Item BRASS_SHOVEL = registerItem("brass_shovel",
-			newShovelItem(ModToolMaterials.COPPER, 2, -2.8F, itemSettings().fireproof()));
+			newShovelItem(ModToolMaterials.BRASS, 2, -2.8F, itemSettings().fireproof()));
 	public static final Item BRASS_SPEAR = registerItem("brass_spear",
-			newSpearItem(ModToolMaterials.COPPER, 5, -2.3F, itemSettings().fireproof()));
+			newSpearItem(ModToolMaterials.BRASS, 5, -2.3F, itemSettings().fireproof()));
 	public static final Item BRASS_SWORD = registerItem("brass_sword",
-			newSwordItem(ModToolMaterials.COPPER, 4, -2.2F, itemSettings().fireproof()));
+			newSwordItem(ModToolMaterials.BRASS, 4, -2.2F, itemSettings().fireproof()));
 	//# [Tier 3] Copper (armor) #
 	public static final Item COPPER_BOOT_PAIR = registerItem("copper_boot_pair",
 			newBootPairItem(ModArmorMaterials.COPPER, 14, itemSettings().fireproof()));
@@ -204,7 +389,7 @@ public class ModItems {
 			newChestplateItem(ModArmorMaterials.COPPER, 14, itemSettings().fireproof()));
 	public static final Item COPPER_HELMET = registerItem("copper_helmet",
 			newHelmetItem(ModArmorMaterials.COPPER, 14, itemSettings().fireproof()));
-	public static final Item COPPER_HORSE_ARMOR = registerItem("copper_horse_armor",
+	public static final Item COPPER_HORSE_HARNESS = registerItem("copper_horse_harness",
 			newHorseArmorItem(ModArmorMaterials.COPPER, itemSettings().fireproof()));
 	public static final Item COPPER_LEGGING_PAIR = registerItem("copper_legging_pair",
 			newLeggingPairItem(ModArmorMaterials.COPPER, 14, itemSettings().fireproof()));
@@ -234,7 +419,7 @@ public class ModItems {
 			newChestplateItem(ModArmorMaterials.EIDURIL, 31, itemSettings().fireproof()));
 	public static final Item EIDURIL_HELMET = registerItem("eiduril_helmet",
 			newHelmetItem(ModArmorMaterials.EIDURIL, 31, itemSettings().fireproof()));
-	public static final Item EIDURIL_HORSE_ARMOR = registerItem("eiduril_horse_armor",
+	public static final Item EIDURIL_HORSE_HARNESS = registerItem("eiduril_horse_harness",
 			newHorseArmorItem(ModArmorMaterials.EIDURIL, itemSettings().fireproof()));
 	public static final Item EIDURIL_LEGGING_PAIR = registerItem("eiduril_legging_pair",
 			newSetBonusLeggingPairItem(ModArmorMaterials.EIDURIL, 31, itemSettings().fireproof()));
@@ -278,6 +463,10 @@ public class ModItems {
 	public static final Item IRON_SPEAR = registerItem("iron_spear",
 			newSwordItem(ToolMaterials.IRON, 5, -2.5F, itemSettings().fireproof()));
 	//# Miscellaneous #
+	public static final Item SPATIAL_RECALL_STONE = registerItem("spatial_recall_stone",
+			new SelfTeleporterItem(itemSettings().fireproof().rarity(Rarity.RARE).maxDamage(7)));
+	public static final Item TARGET_TELEPORTATION_TUNER = registerItem("target_teleportation_tuner",
+			new TargetTeleporterItem(itemSettings().fireproof().rarity(Rarity.RARE).maxDamage(60)));
 	//endregion
 	
 	
@@ -286,48 +475,60 @@ public class ModItems {
 	//## (J&U) Basic Resources ##
 	//# Ball #
 	public static final Item CHERRY_JELLYBALL = registerItem("cherry_jellyball",
-			newItem(new Item.Settings().maxCount(64).food(FoodComponents.SWEET_BERRIES))); // TODO: Make unique food component.
+			newItem(new Item.Settings().maxCount(64).food(FoodComponents.CHERRY_JELLYBALL)));
 	//# Brick #
+	//# Chunk #
 	//# Cobblestone #
 	//# Gram & Ingot #
-	// TODO: Add unique food components for nutrillarn gram and ingot.
 	public static final Item NUTRILLARN_GRAM = registerItem("nutrillarn_gram",
-			newFireproofItem(itemSettings().maxCount(96).food(FoodComponents.SWEET_BERRIES)));
+			newFireproofItem(itemSettings().maxCount(96).food(FoodComponents.NUTRILLARN_GRAM)));
 	public static final Item NUTRILLARN_INGOT = registerItem("nutrillarn_ingot",
-			newFireproofItem(itemSettings().maxCount(64).food(FoodComponents.COOKED_BEEF)));
+			newFireproofItem(itemSettings().maxCount(64).food(FoodComponents.NUTRILLARN_INGOT)));
 	//# Jewel #
 	//# Log & Trunk #
 	//# Lump & Nugget #
-	// TODO: Add unique food components for nutrillarn lump and nugget.
 	public static final Item RAW_NUTRILLARN_LUMP = registerItem("raw_nutrillarn_lump",
-			newFireproofItem(itemSettings().maxCount(64).food(FoodComponents.COOKED_CHICKEN)));
+			newFireproofItem(itemSettings().maxCount(64).food(FoodComponents.RAW_NUTRILLARN_LUMP)));
 	public static final Item RAW_NUTRILLARN_NUGGET = registerItem("raw_nutrillarn_nugget",
-			newFireproofItem(itemSettings().maxCount(96).food(FoodComponents.DRIED_KELP)));
+			newFireproofItem(itemSettings().maxCount(96).food(FoodComponents.RAW_NUTRILLARN_NUGGET)));
 	//# Pile (seed) #
 	//# Pile (miscellaneous) #
 	public static final Item MILKLEAF_PILE = registerItem("milkleaf_pile",
-			newItem(new Item.Settings().maxCount(64).food(FoodComponents.DRIED_KELP))); // TODO: Make unique food component.
+			newItem(new Item.Settings().maxCount(64).food(FoodComponents.MILKLEAF_PILE)));
 	//# Plank #
 	//# Bundle & Rod & Stick #
 	//# Shard #
 	//# Miscellaneous (cheese) #
 	public static final Item BLUE_CHEESE_WEDGE = registerItem("blue_cheese_wedge",
-			newItem(new Item.Settings().maxCount(64).food(FoodComponents.CARROT))); // TODO: Make unique food component.
+			newItem(new Item.Settings().maxCount(64).food(FoodComponents.BLUE_CHEESE_WEDGE)));
 	public static final Item SILKY_SMOOTH_CHEESE_WEDGE = registerItem("silky_smooth_cheese_wedge",
-			newItem(new Item.Settings().maxCount(64).food(FoodComponents.CARROT))); // TODO: Make unique food component.
+			newItem(new Item.Settings().maxCount(64).food(FoodComponents.SILKY_SMOOTH_CHEESE_WEDGE)));
 	public static final Item YELLOW_CHEESE_WEDGE = registerItem("yellow_cheese_wedge",
-			newItem(new Item.Settings().maxCount(64).food(FoodComponents.CARROT))); // TODO: Make unique food component.
+			newItem(new Item.Settings().maxCount(64).food(FoodComponents.YELLOW_CHEESE_WEDGE)));
 	//# Miscellaneous (miscellaneous) #
-	public static final Item CHULK_BERRY = registerItem("chulk_berry",
-			newItem(new Item.Settings().maxCount(64).food(FoodComponents.GLOW_BERRIES))); // TODO: Make unique food component.
+	public static final Item CHOCOLATE_BAR = registerItem("chocolate_bar",
+			newItem(64, itemSettings().food(FoodComponents.CHOCOLATE_BAR)));
+	public static final Item CHULK_BERRY_BUNCH = registerItem("chulk_berry_bunch",
+			newItem(64, new Item.Settings().food(FoodComponents.CHULK_BERRY_BUNCH)));
 	public static final Item ENCHANTED_BRICK = registerItem("enchanted_brick",
 			new Item(new Item.Settings().maxCount(64).rarity(Rarity.UNCOMMON)
 					.component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
+	public static final Item HONEYPOD = registerItem("honeypod",
+			newItem(64, itemSettings().food(FoodComponents.HONEYPOD)));
 	public static final Item MINIWIZARD = registerItem("miniwizard",
 			new Item(new Item.Settings().maxCount(16).rarity(Rarity.RARE).fireproof()
-					.food(FoodComponents.ENCHANTED_GOLDEN_APPLE))); // TODO: Create a new food type for Miniwizard.
-	public static final Item STARCHCAP_MUSHROOM = registerItem("starchcap_mushroom", // TODO: Make unique food component.
-			new BlockItem(ModBlocks.STARCHCAP_MUSHROOM, itemSettings().maxCount(64).food(FoodComponents.POTATO)));
+					.food(FoodComponents.MINIWIZARD)));
+	public static final Item STARCHCAP_MUSHROOM = registerItem("starchcap_mushroom",
+			new AliasedBlockItem(ModBlocks.STARCHCAP_MUSHROOM, itemSettings().maxCount(64).food(FoodComponents.STARCHCAP_MUSHROOM)));
+	
+	//## (J&U) Containers ##
+	//# Bottle #
+	//# Bowl #
+	public static final Item BOWL_OF_OMNISTEW = registerItem("bowl_of_omnistew",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_OMNISTEW)));
+	public static final Item BOWL_OF_STONE_SOUP = registerItem("bowl_of_stone_soup",
+			newBowlFoodItem(itemSettings().food(FoodComponents.BOWL_OF_STONE_SOUP)));
+	//# Bucket #
 	
 	//## (J&U) Equipment ##
 	//# Nutrillarn (armor) #
@@ -337,8 +538,12 @@ public class ModItems {
 			newChestplateItem(ModArmorMaterials.NUTRILLARN, 3, itemSettings().fireproof()));
 	public static final Item NUTRILLARN_HELMET = registerItem("nutrillarn_helmet",
 			newHelmetItem(ModArmorMaterials.NUTRILLARN, 3, itemSettings().fireproof()));
-	public static final Item NUTRILLARN_HORSE_ARMOR = registerItem("nutrillarn_horse_armor",
+	public static final Item NUTRILLARN_HORSE_HARNESS = registerItem("nutrillarn_horse_harness",
 			newHorseArmorItem(ModArmorMaterials.NUTRILLARN, itemSettings().fireproof()));
+	public static final Item NUTRILLARN_JELLYBOOT_PAIR = registerItem("nutrillarn_jellyboot_pair",
+			new StatusEffectArmorItem(ModArmorMaterials.NUTRILLARN, ArmorItem.Type.BOOTS,
+					StatusEffects.JUMP_BOOST, 1,
+					itemSettings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(3)).fireproof()));
 	public static final Item NUTRILLARN_LEGGING_PAIR = registerItem("nutrillarn_legging_pair",
 			newSetBonusLeggingPairItem(ModArmorMaterials.NUTRILLARN, 3, itemSettings().fireproof()));
 	//# Nutrillarn (tools) #
@@ -351,7 +556,9 @@ public class ModItems {
 	public static final Item NUTRILLARN_HOE = registerItem("nutrillarn_hoe",
 			newHoeItem(ModToolMaterials.NUTRILLARN, 2, -2.6F, itemSettings().fireproof()));
 	public static final Item NUTRILLARN_MALLET = registerItem("nutrillarn_mallet",
-			newMalletItem(ModToolMaterials.NUTRILLARN, 3, -3.0F, itemSettings().fireproof()));
+			new NutrillarnMalletItem(ModToolMaterials.NUTRILLARN, itemSettings().attributeModifiers(
+					NutrillarnMalletItem.createAttributeModifiers(ModToolMaterials.NUTRILLARN, 3, -3.0F)
+			).fireproof()));
 	public static final Item NUTRILLARN_PICKAXE = registerItem("nutrillarn_pickaxe",
 			newPickaxeItem(ModToolMaterials.NUTRILLARN, 3, -3.0F, itemSettings().fireproof()));
 	public static final Item NUTRILLARN_SHOVEL = registerItem("nutrillarn_shovel",
@@ -359,9 +566,20 @@ public class ModItems {
 	public static final Item NUTRILLARN_SPEAR = registerItem("nutrillarn_spear",
 			newSpearItem(ModToolMaterials.NUTRILLARN, 5, -2.3F, itemSettings().fireproof()));
 	public static final Item NUTRILLARN_SWORD = registerItem("nutrillarn_sword",
-			newSwordItem(ModToolMaterials.NUTRILLARN, 4, -2.2F, itemSettings().fireproof()));
+			new NutrillarnSwordItem(ModToolMaterials.NUTRILLARN, itemSettings().attributeModifiers(
+					NutrillarnSwordItem.createAttributeModifiers(ModToolMaterials.NUTRILLARN, 4, -2.2F)
+			).fireproof()));
 	//# Miscellaneous #
-	
+	public static final Item ENCHANTED_CHEESE_WHEEL = registerItem("enchanted_cheese_wheel",
+			new EnchantedCheeseWheelItem(itemSettings()
+					.maxDamage(72).fireproof().rarity(Rarity.UNCOMMON)
+					.component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
+	public static final Item NUTRILLARN_COMPASS = registerItem("nutrillarn_compass",
+			new NutrillarnCompassItem(itemSettings(64).fireproof().food(FoodComponents.NUTRILLARN_COMPASS)));
+	public static final Item ORB_OF_ZOT = registerItem("orb_of_zot",
+			new OrbOfZotItem(itemSettings()
+					.maxCount(1).fireproof().rarity(Rarity.EPIC)
+					.component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
 	//endregion
 	
 	
@@ -404,7 +622,7 @@ public class ModItems {
 			RegistryEntry<ArmorMaterial> armorMaterial, ArmorItem.Type armorType,
 			int maxDamageMultiplier, Item.Settings settings
 	) {
-		return new ModSetBonusArmorItem(armorMaterial, armorType,
+		return new SetBonusArmorItem(armorMaterial, armorType,
 				settings.maxDamage(armorType.getMaxDamage(maxDamageMultiplier)).fireproof()
 		);
 	}
@@ -416,6 +634,59 @@ public class ModItems {
 	private static Item newFireproofItem(Item.Settings settings) {
 		return newItem(settings.fireproof());
 	}
+	
+	//region ## New Container Item Methods ##
+	//# Bottle #
+	private static Item newBottleBeverageItem(Item.Settings settings) {
+		return new BottleBeverageItem(settings.maxCount(16).recipeRemainder(Items.GLASS_BOTTLE).fireproof());
+	}
+	
+	
+	private static Item newBottleStatusEffectCureBeverageItem(
+			ArrayList<RegistryEntry<StatusEffect>> curedStatusEffects, Item.Settings settings
+	) {
+		return new BottleStatusEffectCureBeverageItem(curedStatusEffects,
+				settings.maxCount(16).recipeRemainder(Items.GLASS_BOTTLE).fireproof());
+	}
+	
+	
+	//# Bowl #
+	private static Item newBowlBeverageItem(Item.Settings settings) {
+		return new BowlBeverageItem(settings.maxCount(1).recipeRemainder(Items.BOWL));
+	}
+	
+	
+	private static Item newBowlFoodItem(Item.Settings settings) {
+		return new BowlFoodItem(settings.maxCount(1).recipeRemainder(Items.BOWL));
+	}
+	
+	
+	private static Item newBowlStatusEffectCureBeverageItem(
+			ArrayList<RegistryEntry<StatusEffect>> curedStatusEffects, Item.Settings settings
+	) {
+		return new BowlStatusEffectCureBeverageItem(curedStatusEffects,
+				settings.maxCount(1).recipeRemainder(Items.BOWL));
+	}
+	
+	
+	//# Bucket #
+	private static Item newBucketBeverageItem(Item.Settings settings) {
+		return new BucketBeverageItem(settings.maxCount(1).recipeRemainder(Items.BUCKET).fireproof());
+	}
+	
+	
+	private static Item newBucketFoodItem(Item.Settings settings) {
+		return new BucketFoodItem(settings.maxCount(1).recipeRemainder(Items.BUCKET).fireproof());
+	}
+	
+	
+	private static Item newBucketStatusEffectCureBeverageItem(
+			ArrayList<RegistryEntry<StatusEffect>> curedStatusEffects, Item.Settings settings
+	) {
+		return new BucketStatusEffectCureBeverageItem(curedStatusEffects,
+				settings.maxCount(1).recipeRemainder(Items.BOWL).fireproof());
+	}
+	//endregion
 	
 	//region ## New Equipment Item Methods ##
 	// # Armor #
@@ -520,6 +791,11 @@ public class ModItems {
 		return new Item.Settings();
 	}
 	
+	
+	private static Item.Settings itemSettings(int maxCount) {
+		return new Item.Settings().maxCount(maxCount);
+	}
+	
 	private static Item.Settings brickSettings() {
 		return new Item.Settings().maxCount(32).fireproof();
 	}
@@ -528,5 +804,11 @@ public class ModItems {
 	}
 	private static Item.Settings plankSettings() {
 		return new Item.Settings().maxCount(64);
+	}
+	
+	
+	@SafeVarargs
+	private static ArrayList<RegistryEntry<StatusEffect>> newStatusEffectList(RegistryEntry<StatusEffect>... effects) {
+		return new ArrayList<>(Arrays.asList(effects));
 	}
 }

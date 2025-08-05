@@ -164,8 +164,33 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:grass_tuft",
-					"weight": 17
+					"name": "tercaphinom:dry_grass_tuft",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:live_grass_tuft",
+					"weight": 7
 				}
 			],
 			"rolls": {

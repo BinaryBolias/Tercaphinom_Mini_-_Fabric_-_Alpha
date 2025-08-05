@@ -1,37 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "building",
-	"ingredients": [
-		{
-			"item": "minecraft:nether_wart"
-		},
-		{
-			"item": "minecraft:nether_wart"
-		},
-		{
-			"item": "minecraft:nether_wart"
-		},
-		{
-			"item": "minecraft:nether_wart"
-		},
-		{
-			"item": "minecraft:nether_wart"
-		},
-		{
-			"item": "minecraft:nether_wart"
-		},
-		{
-			"item": "minecraft:nether_wart"
-		},
-		{
-			"item": "minecraft:nether_wart"
-		},
-		{
-			"item": "minecraft:nether_wart"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:nether_wart_block"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

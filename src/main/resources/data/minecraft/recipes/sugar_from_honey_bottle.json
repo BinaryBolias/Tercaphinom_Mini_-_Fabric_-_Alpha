@@ -1,14 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"group": "sugar",
-	"ingredients": [
-		{
-			"item": "minecraft:honey_bottle"
-		}
-	],
-	"result": {
-		"count": 3,
-		"id": "minecraft:sugar"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

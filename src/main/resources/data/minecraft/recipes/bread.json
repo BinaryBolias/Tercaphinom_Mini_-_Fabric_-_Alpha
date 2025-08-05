@@ -1,16 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "misc",
-	"key": {
-		"#": {
-			"item": "minecraft:wheat"
-		}
-	},
-	"pattern": [
-		"###"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:bread"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

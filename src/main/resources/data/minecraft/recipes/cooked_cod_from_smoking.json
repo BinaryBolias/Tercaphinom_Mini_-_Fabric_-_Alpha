@@ -1,12 +1,7 @@
 {
-	"type": "minecraft:smoking",
-	"category": "food",
-	"cookingtime": 100,
-	"experience": 0.35,
-	"ingredient": {
-		"item": "minecraft:cod"
-	},
-	"result": {
-		"id": "minecraft:cooked_cod"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

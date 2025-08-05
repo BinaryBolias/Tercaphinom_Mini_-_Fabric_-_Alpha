@@ -32,7 +32,13 @@
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:wheat_seeds",
-					"weight": 4
+					"weight": 3
+				},
+				{
+					"type": "minecraft:tag",
+					"expand": true,
+					"name": "minecraft:decorated_pot_sherds",
+					"weight": 1
 				}
 			],
 			"rolls": 1.0

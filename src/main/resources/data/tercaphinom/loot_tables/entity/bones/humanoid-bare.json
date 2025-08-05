@@ -1,0 +1,40 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:looting_enchant"
+						},
+						{
+							"function": "minecraft:limit_count",
+							"limit": {
+								"max": 6.0
+							}
+						}
+					],
+					"name": "minecraft:bone"
+				}
+			],
+			"rolls": 1.0
+		}
+	]
+}

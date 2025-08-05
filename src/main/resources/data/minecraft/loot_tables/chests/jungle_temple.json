@@ -118,7 +118,7 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:copper_horse_armor",
+					"name": "tercaphinom:copper_horse_harness",
 					"weight": 2
 				},
 				{
@@ -253,6 +253,31 @@
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:cocoa_beans",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
 						}
 					],
 					"name": "minecraft:redstone",
@@ -323,7 +348,12 @@
 						}
 					],
 					"name": "minecraft:diamond",
-					"weight": 6
+					"weight": 3
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chests/special_dungeon_loot",
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",

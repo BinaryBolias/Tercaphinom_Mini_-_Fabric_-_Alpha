@@ -1,0 +1,36 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "minecraft:entities/llama"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:blue_carpet"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:yellow_yarnball"
+				}
+			],
+			"rolls": 1.0
+		}
+	],
+	"random_sequence": "minecraft:entities/trader_llama"
+}

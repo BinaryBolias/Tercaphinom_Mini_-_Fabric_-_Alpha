@@ -1,19 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"ingredients": [
-		{
-			"item": "minecraft:pumpkin"
-		},
-		{
-			"item": "minecraft:sugar"
-		},
-		{
-			"item": "minecraft:egg"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:pumpkin_pie"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }

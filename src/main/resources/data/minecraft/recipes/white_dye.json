@@ -1,14 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"group": "white_dye",
-	"ingredients": [
-		{
-			"item": "minecraft:bone_meal"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:white_dye"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "minecraft:enchanted_golden_apple"}
 }
