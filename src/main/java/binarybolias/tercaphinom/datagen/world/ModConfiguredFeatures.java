@@ -6,8 +6,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 
-import static binarybolias.tercaphinom.references.Reference.LOGGER;
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModConfiguredFeatures {
 	public ModConfiguredFeatures() {
@@ -16,7 +15,7 @@ public class ModConfiguredFeatures {
 	}
 	
 	public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
-		log("Generating configured feature data");
+		logMainEvent("Generating configured feature data");
 	}
 	
 	private static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> context,

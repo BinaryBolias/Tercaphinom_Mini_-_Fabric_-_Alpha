@@ -1,10 +1,7 @@
 {
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:waxed_copper_block"
-	},
-	"result": {
-		"count": 4,
-		"id": "minecraft:waxed_cut_copper_stairs"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

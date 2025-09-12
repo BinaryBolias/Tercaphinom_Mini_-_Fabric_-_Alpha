@@ -38,9 +38,10 @@ public class BasicGridRecipe implements CraftingRecipe {
 	final DefaultedList<Ingredient> ingredients; // TODO: Replace with an 'IngredientList'.
 	
 	//TODO: Implement remainder override functionality:
-	// - If null, fall back to returning the default remainders for items.
+	// - Allow the remainder override to be set by JSON data.
+	// - If null, fall back to returning the default remainders for items. (IMPLEMENTED)
 	@Nullable
-	final RecipeRemainderOverride remainderOverride = null;
+	final RecipeRemainderOverride remainderOverride;
 	
 	// TODO: Overhaul input handling:
 	//TODO: create an 'GridRecipeInputForm' class:
@@ -79,12 +80,30 @@ public class BasicGridRecipe implements CraftingRecipe {
 	//final byte[] quota;
 	//final byte[][] shapes; // Would this syntax work for defining an array of arrays of bytes?
 	
+	final boolean ignoreInRecipeBook;
 	
-	public BasicGridRecipe(String group, CraftingRecipeCategory category, ItemStack result, DefaultedList<Ingredient> ingredients) {
+	
+	public BasicGridRecipe(
+			String group, CraftingRecipeCategory category, ItemStack result, DefaultedList<Ingredient> ingredients
+	) {
 		this.group = group;
 		this.category = category;
 		this.result = result;
 		this.ingredients = ingredients; // TODO: Use an 'ingredients' variable that can be either shaped or shapeless?
+		this.remainderOverride = null;
+		this.ignoreInRecipeBook = false;
+	}
+	
+	public BasicGridRecipe(
+			String group, CraftingRecipeCategory category, ItemStack result, DefaultedList<Ingredient> ingredients,
+			@Nullable RecipeRemainderOverride remainderOverride, boolean ignoreInRecipeBook
+	) {
+		this.group = group;
+		this.category = category;
+		this.result = result;
+		this.ingredients = ingredients; // TODO: Use an 'ingredients' variable that can be either shaped or shapeless?
+		this.remainderOverride = remainderOverride;
+		this.ignoreInRecipeBook = ignoreInRecipeBook;
 	}
 	
 	
@@ -149,6 +168,12 @@ public class BasicGridRecipe implements CraftingRecipe {
 	@Override
 	public DefaultedList<Ingredient> getIngredients() {
 		return ingredients;
+	}
+	
+	
+	@Override
+	public boolean isIgnoredInRecipeBook() {
+		return ignoreInRecipeBook;
 	}
 	
 	

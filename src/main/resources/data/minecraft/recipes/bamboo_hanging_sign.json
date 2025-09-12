@@ -1,22 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "misc",
-	"group": "hanging_sign",
-	"key": {
-		"#": {
-			"item": "minecraft:stripped_bamboo_block"
-		},
-		"X": {
-			"item": "minecraft:chain"
-		}
-	},
-	"pattern": [
-		"X X",
-		"###",
-		"###"
-	],
-	"result": {
-		"count": 6,
-		"id": "minecraft:bamboo_hanging_sign"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

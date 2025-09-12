@@ -1,17 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "building",
-	"key": {
-		"S": {
-			"item": "minecraft:andesite"
-		}
-	},
-	"pattern": [
-		"SS",
-		"SS"
-	],
-	"result": {
-		"count": 4,
-		"id": "minecraft:polished_andesite"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

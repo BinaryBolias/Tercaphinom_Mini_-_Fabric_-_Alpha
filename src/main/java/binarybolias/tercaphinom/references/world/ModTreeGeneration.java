@@ -1,6 +1,6 @@
 package binarybolias.tercaphinom.references.world;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModTreeGeneration {
 	public ModTreeGeneration() {
@@ -9,6 +9,6 @@ public class ModTreeGeneration {
 	}
 	
 	public static void generate() {
-		log("Registering tree generation data");
+		logMainEvent("Registering tree generation data");
 	}
 }

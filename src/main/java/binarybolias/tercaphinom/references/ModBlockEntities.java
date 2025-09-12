@@ -1,7 +1,6 @@
 package binarybolias.tercaphinom.references;
 
-import static binarybolias.tercaphinom.references.Reference.LOGGER;
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModBlockEntities {
 	public ModBlockEntities() {
@@ -10,6 +9,6 @@ public class ModBlockEntities {
 	}
 	
 	public static void register() {
-		log("Registering block entities");
+		logMainEvent("Registering block entities");
 	}
 }

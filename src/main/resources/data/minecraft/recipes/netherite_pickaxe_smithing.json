@@ -1,16 +1,7 @@
 {
-	"type": "minecraft:smithing_transform",
-	"addition": {
-		"item": "minecraft:netherite_ingot"
-	},
-	"base": {
-		"item": "minecraft:diamond_pickaxe"
-	},
-	"result": {
-		"count": 1,
-		"id": "minecraft:netherite_pickaxe"
-	},
-	"template": {
-		"item": "minecraft:netherite_upgrade_smithing_template"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

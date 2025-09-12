@@ -1,21 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "building",
-	"key": {
-		"#": {
-			"tag": "minecraft:planks"
-		},
-		"X": {
-			"item": "minecraft:book"
-		}
-	},
-	"pattern": [
-		"###",
-		"XXX",
-		"###"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:bookshelf"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

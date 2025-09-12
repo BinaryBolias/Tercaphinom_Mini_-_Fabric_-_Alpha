@@ -1,16 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "building",
-	"ingredients": [
-		{
-			"item": "minecraft:mud"
-		},
-		{
-			"item": "minecraft:wheat"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:packed_mud"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

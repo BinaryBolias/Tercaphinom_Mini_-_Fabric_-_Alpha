@@ -1,12 +1,7 @@
 {
-	"type": "minecraft:smithing_trim",
-	"addition": {
-		"tag": "minecraft:trim_materials"
-	},
-	"base": {
-		"tag": "minecraft:trimmable_armor"
-	},
-	"template": {
-		"item": "minecraft:rib_armor_trim_smithing_template"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

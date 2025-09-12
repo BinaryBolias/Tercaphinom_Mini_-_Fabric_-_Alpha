@@ -25,7 +25,7 @@ public class ModItemGroups {
 	}
 	
 	public static void register() {
-		log("Registering item groups");
+		logMainEvent("Registering item groups");
 	}
 	
 	private static Text displayName(String groupIdentifier) {
@@ -57,7 +57,7 @@ public class ModItemGroups {
 						//# Stone (cobbled) #
 						entries.add(ModBlocks.COBBLED_STIEFANE_BLOCK);
 						//# Stone (natural) #
-						entries.add(ModBlocks.STIEFANE_BLOCK);
+						entries.add(ModBlocks.NATURAL_STIEFANE_BLOCK);
 						//# Stone (polished) #
 						entries.add(ModBlocks.POLISHED_STIEFANE_BLOCK);
 						//# Miscellaneous #
@@ -96,6 +96,7 @@ public class ModItemGroups {
 						
 						//## Miscellaneous ##
 						entries.add(ModBlocks.ETERNALITH_BLOCK);
+						entries.add(ModBlocks.CHISELED_ETERNALITH_BLOCK);
 						//# Miscellaneous #
 						
 						//### Joke & Unserious ###
@@ -108,6 +109,7 @@ public class ModItemGroups {
 						entries.add(ModBlocks.RAW_NUTRILLARN_BLOCK);
 						entries.add(ModBlocks.REFINED_NUTRILLARN_BLOCK);
 						//# Miscellaneous #
+						entries.add(ModBlocks.CHERRY_JELLYBLOCK);
 						entries.add(ModBlocks.HYPERSMOOTH_CREAMSTONE);
 						entries.add(ModBlocks.ULTRASMOOTH_STONE);
 					})).build());
@@ -140,11 +142,11 @@ public class ModItemGroups {
 						entries.add(ModItems.OBSIDIAN_HOE);
 						entries.add(ModItems.OBSIDIAN_SPEAR);
 						//# [Tier 3] Brass (armor) #
-						entries.add(ModItems.BRASS_BOOT_PAIR);
-						entries.add(ModItems.BRASS_CHESTPLATE);
 						entries.add(ModItems.BRASS_HELMET);
-						entries.add(ModItems.BRASS_HORSE_HARNESS);
+						entries.add(ModItems.BRASS_CHESTPLATE);
 						entries.add(ModItems.BRASS_LEGGING_PAIR);
+						entries.add(ModItems.BRASS_BOOT_PAIR);
+						entries.add(ModItems.BRASS_HORSE_HARNESS);
 						//# [Tier 3] Brass (tools) #
 						entries.add(ModItems.BRASS_AXE);
 						entries.add(ModItems.BRASS_DAGGER);
@@ -156,11 +158,11 @@ public class ModItemGroups {
 						entries.add(ModItems.BRASS_SPEAR);
 						entries.add(ModItems.BRASS_SWORD);
 						//# [Tier 3] Copper (armor) #
-						entries.add(ModItems.COPPER_BOOT_PAIR);
-						entries.add(ModItems.COPPER_CHESTPLATE);
 						entries.add(ModItems.COPPER_HELMET);
-						entries.add(ModItems.COPPER_HORSE_HARNESS);
+						entries.add(ModItems.COPPER_CHESTPLATE);
 						entries.add(ModItems.COPPER_LEGGING_PAIR);
+						entries.add(ModItems.COPPER_BOOT_PAIR);
+						entries.add(ModItems.COPPER_HORSE_HARNESS);
 						//# [Tier 3] Copper (tools) #
 						entries.add(ModItems.COPPER_AXE);
 						entries.add(ModItems.COPPER_DAGGER);
@@ -171,12 +173,25 @@ public class ModItemGroups {
 						entries.add(ModItems.COPPER_SHOVEL);
 						entries.add(ModItems.COPPER_SPEAR);
 						entries.add(ModItems.COPPER_SWORD);
+						//# [Tier 3] Dementhum (armor) #
+						// NOTE: No horse harness.
+						entries.add(Items.NETHERITE_HELMET);
+						entries.add(Items.NETHERITE_CHESTPLATE);
+						entries.add(Items.NETHERITE_LEGGINGS);
+						entries.add(Items.NETHERITE_BOOTS);
+						//# [Tier 3] Dementhum (tools) #
+						// NOTE: No custom tool types (dagger, hatchet, mallet, spear).
+						entries.add(Items.NETHERITE_AXE);
+						entries.add(Items.NETHERITE_HOE);
+						entries.add(Items.NETHERITE_PICKAXE);
+						entries.add(Items.NETHERITE_SHOVEL);
+						entries.add(Items.NETHERITE_SWORD);
 						//# [Tier 3] Eiduril (armor) #
-						entries.add(ModItems.EIDURIL_BOOT_PAIR);
-						entries.add(ModItems.EIDURIL_CHESTPLATE);
 						entries.add(ModItems.EIDURIL_HELMET);
-						entries.add(ModItems.EIDURIL_HORSE_HARNESS);
+						entries.add(ModItems.EIDURIL_CHESTPLATE);
 						entries.add(ModItems.EIDURIL_LEGGING_PAIR);
+						entries.add(ModItems.EIDURIL_BOOT_PAIR);
+						entries.add(ModItems.EIDURIL_HORSE_HARNESS);
 						//# [Tier 3] Eiduril (tools) #
 						entries.add(ModItems.EIDURIL_AXE);
 						entries.add(ModItems.EIDURIL_DAGGER);
@@ -188,17 +203,37 @@ public class ModItemGroups {
 						entries.add(ModItems.EIDURIL_SPEAR);
 						entries.add(ModItems.EIDURIL_SWORD);
 						//# [Tier 3] Gold (armor) #
+						entries.add(Items.GOLDEN_HELMET);
+						entries.add(Items.GOLDEN_CHESTPLATE);
+						entries.add(Items.GOLDEN_LEGGINGS);
+						entries.add(Items.GOLDEN_BOOTS);
+						entries.add(Items.GOLDEN_HORSE_ARMOR);
 						//# [Tier 3] Gold (tools) #
+						entries.add(Items.GOLDEN_AXE);
 						entries.add(ModItems.GOLDEN_DAGGER);
 						entries.add(ModItems.GOLDEN_HATCHET);
+						entries.add(Items.GOLDEN_HOE);
 						entries.add(ModItems.GOLDEN_MALLET);
+						entries.add(Items.GOLDEN_PICKAXE);
+						entries.add(Items.GOLDEN_SHOVEL);
 						entries.add(ModItems.GOLDEN_SPEAR);
+						entries.add(Items.GOLDEN_SWORD);
 						//# [Tier 3] Iron (armor) #
+						entries.add(Items.IRON_HELMET);
+						entries.add(Items.IRON_CHESTPLATE);
+						entries.add(Items.IRON_LEGGINGS);
+						entries.add(Items.IRON_BOOTS);
+						entries.add(Items.IRON_HORSE_ARMOR);
 						//# [Tier 3] Iron (tools) #
+						entries.add(Items.IRON_AXE);
 						entries.add(ModItems.IRON_DAGGER);
 						entries.add(ModItems.IRON_HATCHET);
+						entries.add(Items.IRON_HOE);
 						entries.add(ModItems.IRON_MALLET);
+						entries.add(Items.IRON_PICKAXE);
+						entries.add(Items.IRON_SHOVEL);
 						entries.add(ModItems.IRON_SPEAR);
+						entries.add(Items.IRON_SWORD);
 						//# Miscellaneous #
 						entries.add(ModItems.SPATIAL_RECALL_STONE);
 						entries.add(ModItems.TARGET_TELEPORTATION_TUNER);
@@ -206,12 +241,12 @@ public class ModItemGroups {
 						//region ### Joke & Unserious ###
 						//## (J&U) Equipment ##
 						//# Nutrillarn Armor #
-						entries.add(ModItems.NUTRILLARN_BOOT_PAIR);
-						entries.add(ModItems.NUTRILLARN_CHESTPLATE);
 						entries.add(ModItems.NUTRILLARN_HELMET);
-						entries.add(ModItems.NUTRILLARN_HORSE_HARNESS);
-						entries.add(ModItems.NUTRILLARN_JELLYBOOT_PAIR);
+						entries.add(ModItems.NUTRILLARN_CHESTPLATE);
 						entries.add(ModItems.NUTRILLARN_LEGGING_PAIR);
+						entries.add(ModItems.NUTRILLARN_BOOT_PAIR);
+						entries.add(ModItems.NUTRILLARN_JELLYBOOT_PAIR);
+						entries.add(ModItems.NUTRILLARN_HORSE_HARNESS);
 						//# Nutrillarn Tools #
 						entries.add(ModItems.NUTRILLARN_AXE);
 						entries.add(ModItems.NUTRILLARN_DAGGER);
@@ -251,43 +286,53 @@ public class ModItemGroups {
 						entries.add(ModItems.PURPLE_YARNBALL);
 						entries.add(ModItems.MAGENTA_YARNBALL);
 						entries.add(ModItems.PINK_YARNBALL);
-						//# Ball (miscellaneous) #
-						entries.add(ModItems.COBWEB_BALL);
+						//# Ball (food) #
 						entries.add(ModItems.RAW_COOKIE_BALL);
 						entries.add(ModItems.RAW_HONEYBUN_BALL);
 						entries.add(ModItems.RAW_MAGMABUN_BALL);
 						entries.add(ModItems.RAW_SLIMEBUN_BALL);
+						//# Ball (miscellaneous) #
+						entries.add(Items.BONE_MEAL);
+						entries.add(ModItems.COBWEB_BALL);
+						entries.add(ModItems.MUDBALL);
+						entries.add(Items.SLIME_BALL);
 						//# Brick #
+						entries.add(ModItems.NETHERWART_BRICK);
 						entries.add(ModItems.STIEFANE_BRICK);
 						//# Chunk #
 						entries.add(ModItems.WARPED_FLESH_CHUNK);
 						//# Cobblestone #
 						entries.add(ModItems.STIEFANE_COBBLESTONE);
 						//# Gram & Ingot #
-						entries.add(ModItems.BRASS_GRAM);
 						entries.add(ModItems.BRASS_INGOT);
+						entries.add(ModItems.BRASS_GRAM);
+						entries.add(Items.COPPER_INGOT);
 						entries.add(ModItems.COPPER_GRAM);
-						entries.add(ModItems.EIDURIL_GRAM);
+						entries.add(Items.NETHERITE_INGOT);
 						entries.add(ModItems.EIDURIL_INGOT);
+						entries.add(ModItems.EIDURIL_GRAM);
+						entries.add(Items.GOLD_INGOT);
 						entries.add(ModItems.GOLD_GRAM);
+						entries.add(Items.IRON_INGOT);
 						entries.add(ModItems.IRON_GRAM);
 						//# Lump & Nugget (metal) #
 						entries.add(ModItems.RAW_BRASS_LUMP);
 						entries.add(ModItems.RAW_BRASS_NUGGET);
+						entries.add(Items.RAW_COPPER);
 						entries.add(ModItems.RAW_COPPER_NUGGET);
 						entries.add(ModItems.RAW_EIDURIL_LUMP);
 						entries.add(ModItems.RAW_EIDURIL_NUGGET);
+						entries.add(Items.RAW_GOLD);
+						entries.add(Items.GOLD_NUGGET);
+						entries.add(Items.RAW_IRON);
+						entries.add(Items.IRON_NUGGET);
 						//# Lump & Nugget (miscellaneous) #
+						entries.add(Items.COAL);
+						entries.add(Items.CHARCOAL);
 						entries.add(ModItems.INFERNOCOAL_LUMP);
 						entries.add(ModItems.RAW_DOUGH_LUMP);
 						entries.add(ModItems.SULPHUR_LUMP);
-						//# Pie (cooked) #
-						entries.add(ModItems.APPLE_PIE);
-						entries.add(ModItems.CHERRY_PIE);
-						entries.add(ModItems.GLOWBERRY_PIE);
-						entries.add(ModItems.PUMPKIN_PIE);
-						entries.add(ModItems.SWEETBERRY_PIE);
-						//# Pie (raw) #
+						//# Pie #
 						entries.add(ModItems.RAW_APPLE_PIE);
 						entries.add(ModItems.RAW_CHERRY_PIE);
 						entries.add(ModItems.RAW_GLOWBERRY_PIE);
@@ -296,13 +341,14 @@ public class ModItemGroups {
 						//# Pile (seed) #
 						//# Pile (miscellaneous) #
 						entries.add(ModItems.ASH_PILE);
+						entries.add(Items.GUNPOWDER);
 						entries.add(ModItems.DIRT_PILE);
-						entries.add(ModItems.FELDSAND_PILE);
-						entries.add(ModItems.FERROSAND_PILE);
-						entries.add(ModItems.FREEZE_POWDER_PILE);
+						entries.add(Items.REDSTONE);
 						entries.add(ModItems.GRAVEL_PILE);
 						entries.add(ModItems.LEAF_PILE);
-						entries.add(ModItems.SKORSAND_PILE);
+						entries.add(ModItems.FELDSAND_PILE); // Sand
+						entries.add(ModItems.FERROSAND_PILE); // Sand
+						entries.add(ModItems.SKORSAND_PILE); // Sand
 						//# Plank #
 						entries.add(ModItems.ACACIA_PLANK);
 						entries.add(ModItems.BIRCH_PLANK);
@@ -315,63 +361,50 @@ public class ModItemGroups {
 						entries.add(ModItems.SPRUCE_PLANK);
 						entries.add(ModItems.VERDAK_PLANK);
 						entries.add(ModItems.WARPED_PLANK);
+						//# Elemental Rods & Powders #
+						entries.add(Items.BLAZE_ROD);
+						entries.add(Items.BLAZE_POWDER);
+						entries.add(ModItems.FREEZE_ROD);
+						entries.add(ModItems.FREEZE_POWDER_PILE);
 						//# Bundle & Rod & Stick #
+						entries.add(Items.BAMBOO);
 						entries.add(ModItems.DYNAMITE_BUNDLE);
 						entries.add(ModItems.DYNAMITE_STICK);
-						entries.add(ModItems.FREEZE_ROD);
+						entries.add(Items.STICK);
 						entries.add(ModItems.WOODEN_STICK_BUNDLE);
-						//# Shard #
+						//# Miscellaneous Shards #
+						entries.add(Items.FLINT);
 						entries.add(ModItems.GLASS_SHARD);
 						entries.add(ModItems.OBSIDIAN_SHARD);
+						//# Prismarine #
+						entries.add(ModItems.DARK_PRISMARINE_SHARD);
+						entries.add(Items.PRISMARINE_SHARD);
+						entries.add(Items.PRISMARINE_CRYSTALS);
 						//# Miscellaneous #
-						entries.add(ModItems.BAKED_CARROT);
-						entries.add(ModItems.BAKED_MUSHROOM);
-						entries.add(ModItems.BAKED_RADISH);
-						entries.add(ModItems.CHEESE_WHEEL);
-						entries.add(ModItems.CHERRY_BUNCH);
-						entries.add(ModItems.COOKED_BUGMEAT_STEAK);
-						entries.add(ModItems.COOKED_MEAT_MORSEL);
 						entries.add(ModItems.DRY_GRASS_TUFT);
-						entries.add(ModItems.DRY_KELP_BUNDLE);
-						entries.add(ModItems.FRIED_EGG);
-						entries.add(ModItems.HONEYBUN);
 						entries.add(ModItems.LIVE_GRASS_TUFT);
-						entries.add(ModItems.MAGMABUN);
+						entries.add(Items.LEATHER);
+						entries.add(Items.NETHERITE_SCRAP);
+						entries.add(Items.PAPER);
 						entries.add(ModItems.PINECONE);
-						entries.add(ModItems.RAW_BUGMEAT_STEAK);
-						entries.add(ModItems.RAW_CAKE);
-						entries.add(ModItems.RAW_MEAT_MORSEL);
+						entries.add(Items.RABBIT_HIDE);
 						entries.add(ModItems.SILK_WAD);
-						entries.add(ModItems.SLIMEBUN);
+						entries.add(Items.STRING);
 						entries.add(ModItems.STONE_PEBBLE);
 						//endregion
 						
 						//region ## Containers ##
 						//# Bottle (empty) #
+						entries.add(Items.GLASS_BOTTLE);
 						//# Bottle (filled) #
 						entries.add(ModItems.BOTTLE_OF_BRIMWATER);
 						entries.add(ModItems.BOTTLE_OF_FREEZEWATER);
+						entries.add(Items.HONEY_BOTTLE);
 						entries.add(ModItems.BOTTLE_OF_MILK);
 						entries.add(ModItems.BOTTLE_OF_STEAMING_WATER);
+						entries.add(PotionContentsComponent.createStack(Items.POTION, Potions.WATER));
 						//# Bowl (empty) #
-						//# Bowl (filled - soup) #
-						entries.add(ModItems.BOWL_OF_CARROT_SOUP);
-						entries.add(ModItems.BOWL_OF_KELP_SOUP);
-						entries.add(ModItems.BOWL_OF_MUSHROOM_SOUP);
-						entries.add(ModItems.BOWL_OF_POISONOUS_POTATO_SOUP);
-						entries.add(ModItems.BOWL_OF_PORRIDGE);
-						entries.add(ModItems.BOWL_OF_POTATO_SOUP);
-						entries.add(ModItems.BOWL_OF_RADISH_SOUP);
-						//# Bowl (filled - stew) #
-						entries.add(ModItems.BOWL_OF_BEEF_STEW);
-						entries.add(ModItems.BOWL_OF_BUGMEAT_STEW);
-						entries.add(ModItems.BOWL_OF_CHICKEN_STEW);
-						entries.add(ModItems.BOWL_OF_COD_STEW);
-						entries.add(ModItems.BOWL_OF_MORSEL_STEW);
-						entries.add(ModItems.BOWL_OF_MUTTON_STEW);
-						entries.add(ModItems.BOWL_OF_PORK_STEW);
-						entries.add(ModItems.BOWL_OF_RABBIT_STEW);
-						entries.add(ModItems.BOWL_OF_SALMON_STEW);
+						entries.add(Items.BOWL);
 						//# Bowl (filled - miscellaneous) #
 						entries.add(ModItems.BOWL_OF_BRIMWATER);
 						entries.add(ModItems.BOWL_OF_FREEZEWATER);
@@ -380,12 +413,14 @@ public class ModItemGroups {
 						entries.add(ModItems.BOWL_OF_STEAMING_WATER);
 						entries.add(ModItems.BOWL_OF_WATER);
 						//# Bucket (empty) #
+						entries.add(Items.BUCKET);
 						//# Bucket (filled) #
 						entries.add(ModItems.BUCKET_OF_BRIMWATER);
 						entries.add(ModItems.BUCKET_OF_FERTILIZER);
 						entries.add(ModItems.BUCKET_OF_FREEZEWATER);
 						entries.add(ModItems.BUCKET_OF_HONEY);
 						entries.add(ModItems.BUCKET_OF_STEAMING_WATER);
+						entries.add(Items.WATER_BUCKET);
 						//endregion
 						
 						//region ### Joke & Unserious ###

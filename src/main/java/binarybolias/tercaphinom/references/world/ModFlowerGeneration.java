@@ -1,6 +1,6 @@
 package binarybolias.tercaphinom.references.world;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModFlowerGeneration {
 	public ModFlowerGeneration() {
@@ -9,6 +9,6 @@ public class ModFlowerGeneration {
 	}
 	
 	public static void generate() {
-		log("Registering flower generation data");
+		logMainEvent("Registering flower generation data");
 	}
 }

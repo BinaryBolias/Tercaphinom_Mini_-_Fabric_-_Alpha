@@ -1,20 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "redstone",
-	"key": {
-		"P": {
-			"item": "minecraft:piston"
-		},
-		"S": {
-			"item": "minecraft:slime_ball"
-		}
-	},
-	"pattern": [
-		"S",
-		"P"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:sticky_piston"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

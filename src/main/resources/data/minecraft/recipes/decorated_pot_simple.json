@@ -1,18 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "misc",
-	"key": {
-		"#": {
-			"item": "minecraft:brick"
-		}
-	},
-	"pattern": [
-		" # ",
-		"# #",
-		" # "
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:decorated_pot"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

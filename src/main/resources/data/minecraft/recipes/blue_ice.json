@@ -1,37 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "building",
-	"ingredients": [
-		{
-			"item": "minecraft:packed_ice"
-		},
-		{
-			"item": "minecraft:packed_ice"
-		},
-		{
-			"item": "minecraft:packed_ice"
-		},
-		{
-			"item": "minecraft:packed_ice"
-		},
-		{
-			"item": "minecraft:packed_ice"
-		},
-		{
-			"item": "minecraft:packed_ice"
-		},
-		{
-			"item": "minecraft:packed_ice"
-		},
-		{
-			"item": "minecraft:packed_ice"
-		},
-		{
-			"item": "minecraft:packed_ice"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:blue_ice"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

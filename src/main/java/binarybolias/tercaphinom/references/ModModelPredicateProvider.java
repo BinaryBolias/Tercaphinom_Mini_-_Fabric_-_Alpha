@@ -1,7 +1,6 @@
 package binarybolias.tercaphinom.references;
 
-import static binarybolias.tercaphinom.references.Reference.LOGGER;
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModModelPredicateProvider {
 	public ModModelPredicateProvider() {
@@ -13,6 +12,6 @@ public class ModModelPredicateProvider {
 	// - Bow and crossbow animation.
 	
 	public static void register() {
-		log("Registering model predicates");
+		logMainEvent("Registering model predicates");
 	}
 }

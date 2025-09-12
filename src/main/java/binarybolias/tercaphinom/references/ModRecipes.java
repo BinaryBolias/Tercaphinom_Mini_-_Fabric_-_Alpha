@@ -3,6 +3,7 @@ package binarybolias.tercaphinom.references;
 import binarybolias.tercaphinom.recipe.BasicGridRecipe;
 import binarybolias.tercaphinom.recipe.BucketFertilizerTransfer;
 import binarybolias.tercaphinom.recipe.SuspiciousStewRecipe;
+import binarybolias.tercaphinom.recipe.WaterTransferRecipe;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
@@ -26,10 +27,11 @@ public class ModRecipes {
 	public static RecipeSerializer<BasicGridRecipe> BASIC_GRID_RECIPE;
 	public static RecipeSerializer<BucketFertilizerTransfer> BUCKET_FERTILIZER_TRANSFER;
 	public static RecipeSerializer<SuspiciousStewRecipe> SUSPICIOUS_STEW;
+	public static RecipeSerializer<WaterTransferRecipe> WATER_TRANSFER;
 	
 	
 	public static void register() {
-		log("Registering recipes");
+		logMainEvent("Registering recipes");
 		
 		BASIC_GRID_RECIPE = register(
 				"basic_grid_crafting", new BasicGridRecipe.Serializer());
@@ -37,6 +39,8 @@ public class ModRecipes {
 				"crafting_special_bucket_fertilizer_transfer", new SpecialRecipeSerializer<>(BucketFertilizerTransfer::new));
 		SUSPICIOUS_STEW = register(
 				"crafting_special_suspicious_stew", new SpecialRecipeSerializer<>(SuspiciousStewRecipe::new));
+		WATER_TRANSFER = register(
+				"crafting_special_water_transfer", new SpecialRecipeSerializer<>(WaterTransferRecipe::new));
 	}
 	
 	

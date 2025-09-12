@@ -12,6 +12,10 @@ import java.util.concurrent.CompletableFuture;
 
 import static binarybolias.tercaphinom.references.Reference.*;
 
+
+/**
+ * @see net.minecraft.data.server.tag.vanilla.VanillaItemTagProvider
+ */
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 	public ModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
 		super(output, completableFuture);
@@ -19,7 +23,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 	
 	@Override
 	protected void configure(RegistryWrapper.WrapperLookup arg) {
-		log("Generating item tag data");
+		logMainEvent("Generating item tag data");
 		
 		//region ## Basic Materials ##
 		// Arrowhead Materials
@@ -34,14 +38,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		// Cobblestones
 		getOrCreateTagBuilder(Tags.Item.ALL_COBBLESTONES)
 				.add(ModItems.STIEFANE_COBBLESTONE);
-		// Bricks
-		getOrCreateTagBuilder(Tags.Item.ALL_BRICKS)
-				.add(ModItems.STIEFANE_BRICK);
 		// Glassy Sand Piles
 		getOrCreateTagBuilder(Tags.Item.ALL_GLASSY_SAND_PILES)
 				.add(ModItems.FELDSAND_PILE)
 				.add(ModItems.FERROSAND_PILE)
 				.add(ModItems.SKORSAND_PILE);
+		// Large Bricks
+		getOrCreateTagBuilder(Tags.Item.ALL_LARGE_BRICKS)
+				.add(ModItems.STIEFANE_BRICK);
 		// Metal Grams
 		getOrCreateTagBuilder(Tags.Item.ALL_METAL_GRAMS)
 				.add(ModItems.BRASS_GRAM)
@@ -403,7 +407,147 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.add(ModItems.NUTRILLARN_SWORD);
 		//endregion
 		
+		//region Miscellaneous
+		getOrCreateTagBuilder(ItemTags.GOLD_ORES); // Necessary for validating the 'PIGLIN_LOVED' tag.
+		
+		getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).setReplace(true)
+				.addTag(ItemTags.GOLD_ORES)
+				.add(
+						Items.GOLD_INGOT,
+						ModItems.GOLD_GRAM,
+						Items.RAW_GOLD,
+						Items.GOLD_NUGGET,
+						Items.GOLD_BLOCK,
+						Items.RAW_GOLD_BLOCK,
+						Items.GILDED_BLACKSTONE,
+						Items.LIGHT_WEIGHTED_PRESSURE_PLATE,
+						Items.BELL,
+						Items.CLOCK,
+						Items.GOLDEN_CARROT,
+						Items.GLISTERING_MELON_SLICE,
+						Items.GOLDEN_APPLE,
+						Items.ENCHANTED_GOLDEN_APPLE
+				)
+				.add(
+						// Armor
+						Items.GOLDEN_BOOTS,
+						Items.GOLDEN_CHESTPLATE,
+						Items.GOLDEN_HELMET,
+						Items.GOLDEN_HORSE_ARMOR,
+						Items.GOLDEN_LEGGINGS,
+						// Tools
+						Items.GOLDEN_SWORD,
+						Items.GOLDEN_PICKAXE,
+						Items.GOLDEN_SHOVEL,
+						Items.GOLDEN_AXE,
+						Items.GOLDEN_HOE,
+						ModItems.GOLDEN_DAGGER,
+						ModItems.GOLDEN_HATCHET,
+						ModItems.GOLDEN_MALLET,
+						ModItems.GOLDEN_SPEAR
+				);
+		getOrCreateTagBuilder(ItemTags.PIGLIN_FOOD).setReplace(true)
+				.add(Items.BEEF, Items.COOKED_BEEF)
+				.add(Items.CHICKEN, Items.COOKED_CHICKEN)
+				.add(Items.MUTTON, Items.COOKED_MUTTON)
+				.add(Items.PORKCHOP, Items.COOKED_PORKCHOP)
+				.add(Items.RABBIT, Items.COOKED_RABBIT);
+		//endregion
+		
+		getOrCreateTagBuilder(ItemTags.MEAT).setReplace(true)
+				.add(
+						Items.BEEF,
+						Items.CHICKEN,
+						Items.COOKED_BEEF,
+						ModItems.COOKED_BUGMEAT_STEAK,
+						Items.COOKED_CHICKEN,
+						ModItems.COOKED_MEAT_MORSEL,
+						Items.COOKED_MUTTON,
+						Items.COOKED_PORKCHOP,
+						Items.COOKED_RABBIT,
+						Items.MUTTON,
+						Items.PORKCHOP,
+						Items.RABBIT,
+						ModItems.RAW_BUGMEAT_STEAK,
+						ModItems.RAW_MEAT_MORSEL,
+						Items.ROTTEN_FLESH
+				);
+		
+		getOrCreateTagBuilder(ItemTags.ARMADILLO_FOOD).setReplace(true)
+				.add(ModItems.NUTRILLARN_GRAM)
+				.add(Items.SPIDER_EYE);
+		getOrCreateTagBuilder(ItemTags.AXOLOTL_FOOD);
+		getOrCreateTagBuilder(ItemTags.BEE_FOOD);
+		getOrCreateTagBuilder(ItemTags.CAMEL_FOOD);
+		getOrCreateTagBuilder(ItemTags.CAT_FOOD).setReplace(true)
+				.add(ModItems.RAW_MEAT_MORSEL, ModItems.COOKED_MEAT_MORSEL)
+				.add(Items.COD, Items.SALMON, Items.TROPICAL_FISH);
+		getOrCreateTagBuilder(ItemTags.CHICKEN_FOOD);
+		getOrCreateTagBuilder(ItemTags.COW_FOOD).setReplace(true)
+				.add(ModItems.NUTRILLARN_INGOT)
+				.add(Items.WHEAT);
+		getOrCreateTagBuilder(ItemTags.FOX_FOOD);
+		getOrCreateTagBuilder(ItemTags.FROG_FOOD).setReplace(true)
+				.add(ModItems.NUTRILLARN_GRAM)
+				.add(Items.SLIME_BALL);
+		getOrCreateTagBuilder(ItemTags.GOAT_FOOD).setReplace(true)
+				.add(ModItems.NUTRILLARN_INGOT)
+				.add(Items.WHEAT);
+		getOrCreateTagBuilder(ItemTags.HOGLIN_FOOD);
+		getOrCreateTagBuilder(ItemTags.HORSE_FOOD).setReplace(true)
+				.add(
+						Items.APPLE, Items.GOLDEN_APPLE, Items.ENCHANTED_GOLDEN_APPLE,
+						Items.CARROT, Items.GOLDEN_CARROT,
+						Items.SUGAR,
+						Items.WHEAT
+				);
+		getOrCreateTagBuilder(ItemTags.LLAMA_FOOD).setReplace(true)
+				.add(Items.WHEAT);
+		getOrCreateTagBuilder(ItemTags.OCELOT_FOOD).setReplace(true)
+				.add(ModItems.RAW_MEAT_MORSEL, ModItems.COOKED_MEAT_MORSEL)
+				.add(Items.COD, Items.SALMON, Items.TROPICAL_FISH);
+		getOrCreateTagBuilder(ItemTags.PANDA_FOOD);
+		getOrCreateTagBuilder(ItemTags.PARROT_FOOD).setReplace(true)
+				.add(ModItems.NUTRILLARN_GRAM)
+				.add(Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS, Items.TORCHFLOWER_SEEDS, Items.PITCHER_POD);
+		getOrCreateTagBuilder(ItemTags.PARROT_POISONOUS_FOOD);
+		getOrCreateTagBuilder(ItemTags.PIG_FOOD).setReplace(true)
+				.add(ModItems.NUTRILLARN_INGOT)
+				.add(Items.APPLE, Items.BEETROOT, Items.CARROT, Items.POTATO, Items.POISONOUS_POTATO);
+		getOrCreateTagBuilder(ItemTags.RABBIT_FOOD);
+		getOrCreateTagBuilder(ItemTags.SHEEP_FOOD).setReplace(true)
+				.add(ModItems.NUTRILLARN_INGOT)
+				.add(Items.WHEAT);
+		getOrCreateTagBuilder(ItemTags.SNIFFER_FOOD);
+		getOrCreateTagBuilder(ItemTags.STRIDER_FOOD);
+		getOrCreateTagBuilder(ItemTags.TURTLE_FOOD);
+		getOrCreateTagBuilder(ItemTags.WOLF_FOOD);
+		
+		
+		getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
+				.add(ModItems.ORB_OF_ZOT);
+		
+		//TODO: Probably make tags for tool types, rather than (or in addition to) function.
+		getOrCreateTagBuilder(ItemTags.BREAKS_DECORATED_POTS)
+				.addTag(Tags.Item.ALL_POUNDING_TOOLS);
+		getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+				.addTag(Tags.Item.ALL_POUNDING_TOOLS);
+		getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
+				.addTag(Tags.Item.ALL_POUNDING_TOOLS);
+		getOrCreateTagBuilder(ItemTags.MINING_LOOT_ENCHANTABLE)
+				.addTag(Tags.Item.ALL_POUNDING_TOOLS);
+		//TODO: Add tags for all daggers, all hatchets, and all spears.
+//		getOrCreateTagBuilder(ItemTags.BREAKS_DECORATED_POTS)
+//				.addTag(Tags.Item.);
+//		getOrCreateTagBuilder(ItemTags.WEAPON_ENCHANTABLE)
+//				.addTag(Tags.Item.);
+//		getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE)
+//				.addTag(Tags.Item.);
+//		getOrCreateTagBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE)
+//				.addTag(Tags.Item.);
+		
 		// NOTE: These method calls are merely for reference; they effectively do nothing (without any extra "add" method call).
+		getOrCreateTagBuilder(ItemTags.ANVIL);
 		getOrCreateTagBuilder(ItemTags.ARROWS);
 		getOrCreateTagBuilder(ItemTags.BEDS);
 		getOrCreateTagBuilder(ItemTags.BOATS);

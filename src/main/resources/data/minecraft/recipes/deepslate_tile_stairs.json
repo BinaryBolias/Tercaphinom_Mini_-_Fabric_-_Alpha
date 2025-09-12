@@ -1,18 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "building",
-	"key": {
-		"#": {
-			"item": "minecraft:deepslate_tiles"
-		}
-	},
-	"pattern": [
-		"#  ",
-		"## ",
-		"###"
-	],
-	"result": {
-		"count": 4,
-		"id": "minecraft:deepslate_tile_stairs"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

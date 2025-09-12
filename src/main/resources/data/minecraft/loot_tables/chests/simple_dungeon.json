@@ -7,7 +7,7 @@
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:golden_apple",
-					"weight": 19
+					"weight": 24
 				},
 				{
 					"type": "minecraft:item",
@@ -48,12 +48,12 @@
 						}
 					],
 					"name": "minecraft:golden_apple",
-					"weight": 2
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:enchanted_golden_apple",
-					"weight": 5
+					"weight": 7
 				},
 				{
 					"type": "minecraft:item",
@@ -89,7 +89,7 @@
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:name_tag",
-					"weight": 19
+					"weight": 15
 				},
 				{
 					"type": "minecraft:item",
@@ -99,7 +99,7 @@
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:saddle",
-					"weight": 17
+					"weight": 15
 				},
 				{
 					"type": "minecraft:item",
@@ -134,13 +134,445 @@
 						}
 					],
 					"name": "minecraft:book",
-					"weight": 17
+					"weight": 18
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
 				"max": 4.0,
 				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"enchantments": [
+								"minecraft:bane_of_arthropods",
+								"minecraft:looting",
+								"minecraft:sharpness",
+								"minecraft:smite",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "tercaphinom:copper_dagger",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 50.0,
+								"min": 30.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:copper_dagger",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"enchantments": [
+								"minecraft:efficiency",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "tercaphinom:copper_pickaxe",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 50.0,
+								"min": 30.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:copper_pickaxe",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"enchantments": [
+								"minecraft:efficiency",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "tercaphinom:copper_shovel",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 50.0,
+								"min": 30.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:copper_shovel",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"enchantments": [
+								"minecraft:bane_of_arthropods",
+								"minecraft:looting",
+								"minecraft:sharpness",
+								"minecraft:smite",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "tercaphinom:copper_sword",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 50.0,
+								"min": 30.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:copper_sword",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"enchantments": [
+								"minecraft:bane_of_arthropods",
+								"minecraft:looting",
+								"minecraft:sharpness",
+								"minecraft:smite",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "tercaphinom:iron_dagger",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 50.0,
+								"min": 30.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:iron_dagger",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"enchantments": [
+								"minecraft:efficiency",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:iron_pickaxe",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 50.0,
+								"min": 30.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "minecraft:iron_pickaxe",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"enchantments": [
+								"minecraft:efficiency",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:iron_shovel",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 50.0,
+								"min": 30.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "minecraft:iron_shovel",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"enchantments": [
+								"minecraft:bane_of_arthropods",
+								"minecraft:looting",
+								"minecraft:sharpness",
+								"minecraft:smite",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:iron_sword",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 50.0,
+								"min": 30.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "minecraft:iron_sword",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 15
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 0.0
 			}
 		},
 		{

@@ -21,6 +21,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
+
 //TODO:
 // - Use custom projectile;
 //  - Don't spawn endermites.
@@ -71,19 +72,18 @@ public class OrbOfZotItem extends Item {
 			world.spawnEntity(enderPearlEntity);
 		}
 		
-//		itemStack.decrementUnlessCreative(1, user); // TODO: Make a custom projectile which returns the item; until then, just don't decrement the stack.
+		//TODO: Make a custom projectile which returns the item; until then, just don't decrement the stack.
+//		itemStack.decrementUnlessCreative(1, user);
 		return TypedActionResult.success(itemStack, world.isClient());
 	}
 	
 	
 	@Override
-	public ItemStack getDefaultStack() {
-		ItemStack itemStack = super.getDefaultStack();
-		
-		itemStack.set(DataComponentTypes.ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT); // TODO: Does this work?
-		itemStack.addEnchantment(Enchantments.VANISHING_CURSE, 1);
-		
-		return itemStack;
+	public void onCraft(ItemStack stack, World world) {
+		// Eureka! It works!
+		// Trying to apply the Vanishing Curse within the 'getDefaultStack' method didn't work out...
+		// The curse is not applied when an Orb of Zot is obtained from the creative inventory or from commands.
+		stack.addEnchantment(Enchantments.VANISHING_CURSE, 1);
 	}
 	
 	

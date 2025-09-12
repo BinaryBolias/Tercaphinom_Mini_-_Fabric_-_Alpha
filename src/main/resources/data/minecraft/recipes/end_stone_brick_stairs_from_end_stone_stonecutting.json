@@ -1,10 +1,7 @@
 {
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:end_stone"
-	},
-	"result": {
-		"count": 1,
-		"id": "minecraft:end_stone_brick_stairs"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

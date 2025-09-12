@@ -14,14 +14,13 @@ import net.minecraft.util.Identifier;
 
 import java.util.Objects;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 import static binarybolias.tercaphinom.references.Reference.logError;
 
-/**
- * Relevant references:
- * {@link net.minecraft.data.client.BlockStateModelGenerator}
- */
 
+/**
+ * @see net.minecraft.data.client.BlockStateModelGenerator
+ */
 public class ModModelProvider extends FabricModelProvider {
 	public ModModelProvider(FabricDataOutput output) {
 		super(output);
@@ -36,7 +35,7 @@ public class ModModelProvider extends FabricModelProvider {
 	
 	@Override
 	public void generateBlockStateModels(BlockStateModelGenerator bSMG) {
-		log("Generating block state model data");
+		logMainEvent("Generating block state model data");
 		
 		// Texture pools
 		// NOTE: Each of these also provides a model for the block type used as a base.
@@ -56,6 +55,8 @@ public class ModModelProvider extends FabricModelProvider {
 		
 		
 		//region## Elemental ##
+		//# Bale #
+		bSMG.registerSingleton(Blocks.TNT, TexturedModel.CUBE_BOTTOM_TOP);
 		//# Metal #
 		bSMG.registerSimpleCubeAll(ModBlocks.RAW_BRASS_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.RAW_EIDURIL_BLOCK);
@@ -69,7 +70,7 @@ public class ModModelProvider extends FabricModelProvider {
 		//# Stone (cobbled) #
 		bSMG.registerSimpleCubeAll(ModBlocks.COBBLED_STIEFANE_BLOCK);
 		//# Stone (natural) #
-		bSMG.registerSimpleCubeAll(ModBlocks.STIEFANE_BLOCK);
+		bSMG.registerSimpleCubeAll(ModBlocks.NATURAL_STIEFANE_BLOCK);
 		//# Stone (polished) #
 		bSMG.registerSimpleCubeAll(ModBlocks.POLISHED_STIEFANE_BLOCK);
 		//# Miscellaneous #
@@ -110,6 +111,7 @@ public class ModModelProvider extends FabricModelProvider {
 		
 		//region ## Miscellaneous ##
 		//# Miscellaneous #
+		bSMG.registerRotatable(ModBlocks.CHISELED_ETERNALITH_BLOCK);
 		bSMG.registerRotatable(ModBlocks.ETERNALITH_BLOCK);
 		//endregion
 		
@@ -126,6 +128,7 @@ public class ModModelProvider extends FabricModelProvider {
 		bSMG.registerSimpleCubeAll(ModBlocks.RAW_NUTRILLARN_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.REFINED_NUTRILLARN_BLOCK);
 		//# Miscellaneous #
+		bSMG.registerSimpleState(ModBlocks.CHERRY_JELLYBLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.HYPERSMOOTH_CREAMSTONE);
 		bSMG.registerSimpleCubeAll(ModBlocks.ULTRASMOOTH_STONE);
 	}
@@ -157,7 +160,7 @@ public class ModModelProvider extends FabricModelProvider {
 	
 	@Override
 	public void generateItemModels(ItemModelGenerator iMG) {
-		log("Generating item model data data");
+		logMainEvent("Generating item model data data");
 		
 		//region ## Basic Resources ##
 		// # Ball (yarn) #
@@ -179,11 +182,13 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.YELLOW_YARNBALL, "ball", Models.GENERATED);
 		// # Ball (miscellaneous) #
 		genItem(iMG, ModItems.COBWEB_BALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.MUDBALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_COOKIE_BALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_HONEYBUN_BALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_MAGMABUN_BALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_SLIMEBUN_BALL, "ball", Models.GENERATED);
 		// # Brick #
+		genItem(iMG, ModItems.NETHERWART_BRICK, "brick", Models.GENERATED);
 		genItem(iMG, ModItems.STIEFANE_BRICK, "brick", Models.GENERATED);
 		// # Chunk #
 		genItem(iMG, ModItems.WARPED_FLESH_CHUNK, "chunk", Models.GENERATED);
@@ -251,6 +256,7 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.FREEZE_ROD, "rod", Models.GENERATED);
 		iMG.register(ModItems.WOODEN_STICK_BUNDLE, Models.GENERATED);
 		// # Shard #
+		genItem(iMG, ModItems.DARK_PRISMARINE_SHARD, "shard", Models.GENERATED);
 		genItem(iMG, ModItems.GLASS_SHARD, "shard", Models.GENERATED);
 		genItem(iMG, ModItems.OBSIDIAN_SHARD, "shard", Models.GENERATED);
 		// # Miscellaneous #

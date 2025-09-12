@@ -1,34 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"group": "netherite_ingot",
-	"ingredients": [
-		{
-			"item": "minecraft:netherite_scrap"
-		},
-		{
-			"item": "minecraft:netherite_scrap"
-		},
-		{
-			"item": "minecraft:netherite_scrap"
-		},
-		{
-			"item": "minecraft:netherite_scrap"
-		},
-		{
-			"item": "minecraft:gold_ingot"
-		},
-		{
-			"item": "minecraft:gold_ingot"
-		},
-		{
-			"item": "minecraft:gold_ingot"
-		},
-		{
-			"item": "minecraft:gold_ingot"
-		}
-	],
-	"result": {
-		"id": "minecraft:netherite_ingot"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

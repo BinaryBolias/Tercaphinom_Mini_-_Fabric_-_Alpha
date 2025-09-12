@@ -1,21 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "equipment",
-	"key": {
-		"#": {
-			"item": "minecraft:stick"
-		},
-		"X": {
-			"item": "minecraft:string"
-		}
-	},
-	"pattern": [
-		" #X",
-		"# X",
-		" #X"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:bow"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

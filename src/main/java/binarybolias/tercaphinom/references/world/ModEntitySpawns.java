@@ -1,6 +1,6 @@
 package binarybolias.tercaphinom.references.world;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModEntitySpawns {
 	public ModEntitySpawns() {
@@ -9,6 +9,6 @@ public class ModEntitySpawns {
 	}
 	
 	public static void addSpawns() {
-		log("Registering entity spawn data");
+		logMainEvent("Registering entity spawn data");
 	}
 }

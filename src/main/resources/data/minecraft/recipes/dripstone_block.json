@@ -1,17 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "building",
-	"key": {
-		"#": {
-			"item": "minecraft:pointed_dripstone"
-		}
-	},
-	"pattern": [
-		"##",
-		"##"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:dripstone_block"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

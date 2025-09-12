@@ -1,12 +1,7 @@
 {
-	"type": "minecraft:blasting",
-	"category": "misc",
-	"cookingtime": 100,
-	"experience": 2.0,
-	"ingredient": {
-		"item": "minecraft:ancient_debris"
-	},
-	"result": {
-		"id": "minecraft:netherite_scrap"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

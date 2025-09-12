@@ -1,17 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "misc",
-	"key": {
-		"#": {
-			"item": "minecraft:red_sandstone"
-		}
-	},
-	"pattern": [
-		"###",
-		"###"
-	],
-	"result": {
-		"count": 6,
-		"id": "minecraft:red_sandstone_wall"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

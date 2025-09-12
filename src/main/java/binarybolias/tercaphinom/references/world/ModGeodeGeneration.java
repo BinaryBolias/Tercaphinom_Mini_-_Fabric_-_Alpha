@@ -1,6 +1,6 @@
 package binarybolias.tercaphinom.references.world;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModGeodeGeneration {
 	public ModGeodeGeneration() {
@@ -9,6 +9,6 @@ public class ModGeodeGeneration {
 	}
 	
 	public static void generate() {
-		log("Registering geode generation data");
+		logMainEvent("Registering geode generation data");
 	}
 }

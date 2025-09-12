@@ -1,21 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "building",
-	"key": {
-		"I": {
-			"item": "minecraft:black_dye"
-		},
-		"S": {
-			"item": "minecraft:prismarine_shard"
-		}
-	},
-	"pattern": [
-		"SSS",
-		"SIS",
-		"SSS"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:dark_prismarine"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

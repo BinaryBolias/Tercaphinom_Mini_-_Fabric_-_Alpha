@@ -1,6 +1,6 @@
 package binarybolias.tercaphinom.references.world;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModOreGeneration {
 	public ModOreGeneration() {
@@ -9,6 +9,6 @@ public class ModOreGeneration {
 	}
 	
 	public static void generate() {
-		log("Registering ore generation data");
+		logMainEvent("Registering ore generation data");
 	}
 }

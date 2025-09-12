@@ -1,17 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "building",
-	"group": "mossy_stone_bricks",
-	"ingredients": [
-		{
-			"item": "minecraft:stone_bricks"
-		},
-		{
-			"item": "minecraft:moss_block"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:mossy_stone_bricks"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

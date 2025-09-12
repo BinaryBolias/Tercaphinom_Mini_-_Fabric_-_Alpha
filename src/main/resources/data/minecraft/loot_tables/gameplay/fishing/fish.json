@@ -23,6 +23,25 @@
 					"type": "minecraft:item",
 					"name": "minecraft:pufferfish",
 					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"conditions": [
+						{
+							"condition": "minecraft:location_check",
+							"predicate": {
+								"biomes": [
+									"minecraft:the_end",
+									"minecraft:end_highlands",
+									"minecraft:end_midlands",
+									"minecraft:small_end_islands",
+									"minecraft:end_barrens"
+								]
+							}
+						}
+					],
+					"name": "minecraft:phantom_membrane",
+					"weight": 128
 				}
 			],
 			"rolls": 1.0

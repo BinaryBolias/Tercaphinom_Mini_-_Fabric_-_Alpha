@@ -1,12 +1,7 @@
 {
-	"type": "minecraft:smelting",
-	"category": "misc",
-	"cookingtime": 200,
-	"experience": 0.1,
-	"ingredient": {
-		"item": "minecraft:chorus_fruit"
-	},
-	"result": {
-		"id": "minecraft:popped_chorus_fruit"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

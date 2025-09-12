@@ -31,19 +31,22 @@ import net.minecraft.util.collection.DefaultedList;
  * @see net.minecraft.recipe.RawShapedRecipe
  *
  * @see EmptyRemainderOverride
+ * @see ConstantRemainderOverride
+ * @see ItemMapRemainderOverride
  */
 public abstract class RecipeRemainderOverride {
 	public enum Type { //TODO: Implement 'StringIdentifiable'?
 		NONE("none"), // Corresponds to a null value.
-		CONSTANT("constant"), // Corresponds to an "empty" or "constant" remainder override child.
-		INGREDIENT_TYPE("ingredient_type"), // Corresponds to a "type-based" remainder override child.
-		INGREDIENT_INDEX("ingredient_index"); // Corresponds to an "index-based" remainder override child.
-		// Maybe remove 'INGREDIENT_INDEX', rename 'INGREDIENT_TYPE', add 'EMPTY', and require 'CONSTANT' to supply data?
-		
+		EMPTY("empty"), // Corresponds to an override which enforces no items as the remainder.
+		CONSTANT("constant"), // Corresponds to an override which always produces the same remainder.
+		ITEM_TYPE("item_type"); // Corresponds to an override which replaces default remainders per item.
+		//TODO:
+		// - Require 'CONSTANT' and 'ITEM_TYPE' to supply data when reading from JSON.
 		
 		// To be used for interfacing with JSON data.
-		// When reading a JSON file, the expected format of the remainder override object is to be based on the given "type".
-		// No two enum entries here should share the same identifier.
+		// When reading a JSON file, the expected format of the remainder override object is to be based on the given
+		//  "type" parameter (a string), which should correspond to one of these valid identifiers.
+		// Each enum entry should have a unique identifier.
 		final String identifier;
 		
 		
@@ -63,14 +66,14 @@ public abstract class RecipeRemainderOverride {
 	 * string is not recognized as a valid type identifier.
 	 */
 	public static Type getType(String identifier) {
+		if (identifier.equals(Type.EMPTY.identifier)) {
+			return Type.EMPTY;
+		}
 		if (identifier.equals(Type.CONSTANT.identifier)) {
 			return Type.CONSTANT;
 		}
-		if (identifier.equals(Type.INGREDIENT_TYPE.identifier)) {
-			return Type.INGREDIENT_TYPE;
-		}
-		if (identifier.equals(Type.INGREDIENT_INDEX.identifier)) {
-			return Type.INGREDIENT_INDEX;
+		if (identifier.equals(Type.ITEM_TYPE.identifier)) {
+			return Type.ITEM_TYPE;
 		}
 		// Explicitly check for "none" last; assumed to not usually be used in JSON files,
 		//  with the remainder override object simply being made absent instead.

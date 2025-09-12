@@ -8,13 +8,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 
-import static binarybolias.tercaphinom.references.Reference.LOGGER;
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class DataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-		log("Generating data");
+		logMainEvent("Generating data");
 		// The pack for implementing Tercaphinom's assets and JSON files.
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		

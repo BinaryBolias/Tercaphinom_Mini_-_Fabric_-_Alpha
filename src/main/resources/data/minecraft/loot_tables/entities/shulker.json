@@ -6,6 +6,42 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": -2.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:looting_enchant"
+						},
+						{
+							"function": "minecraft:limit_count",
+							"limit": {
+								"max": 2.0,
+								"min": 1.0
+							}
+						}
+					],
+					"name": "minecraft:phantom_membrane"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
 					"name": "minecraft:shulker_shell"
 				}
 			],
@@ -15,9 +51,9 @@
 			"bonus_rolls": 0.0,
 			"conditions": [
 				{
-					"chance": 0.5,
+					"chance": 0.3125,
 					"condition": "minecraft:random_chance_with_looting",
-					"looting_multiplier": 0.125
+					"looting_multiplier": 0.1875
 				}
 			],
 			"entries": [

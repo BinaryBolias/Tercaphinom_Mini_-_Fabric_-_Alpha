@@ -1,12 +1,7 @@
 {
-	"type": "minecraft:smelting",
-	"category": "misc",
-	"cookingtime": 200,
-	"experience": 0.1,
-	"ingredient": {
-		"item": "minecraft:netherrack"
-	},
-	"result": {
-		"id": "minecraft:nether_brick"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

@@ -1,10 +1,7 @@
 {
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:diorite"
-	},
-	"result": {
-		"count": 2,
-		"id": "minecraft:polished_diorite_slab"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

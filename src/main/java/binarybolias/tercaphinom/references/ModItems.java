@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static binarybolias.tercaphinom.references.Reference.identifier;
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 
 /**
@@ -56,14 +56,17 @@ public class ModItems {
 			StatusEffects.WIND_CHARGED,
 			StatusEffects.WITHER);
 	
+	
 	public ModItems() {
 		// Disable instantiation.
 		throw new AssertionError();
 	}
 	
+	
 	public static void register() {
-		log("Registering items");
+		logMainEvent("Registering items");
 	}
+	
 	
 	private static Item registerItem(String name, Item item) {
 		return Registry.register(Registries.ITEM, identifier(name), item);
@@ -91,16 +94,10 @@ public class ModItems {
 	public static final Item YELLOW_YARNBALL = registerItem("yellow_yarnball", newItem(64));
 	//# Ball (miscellaneous) #
 	public static final Item COBWEB_BALL = registerItem("cobweb_ball", newItem(64)); // TODO: Add projectile.
-	public static final Item RAW_COOKIE_BALL = registerItem("raw_cookie_ball", newItem(96,
-			itemSettings().food(FoodComponents.RAW_COOKIE_BALL)));
-	public static final Item RAW_HONEYBUN_BALL = registerItem("raw_honeybun_ball", newItem(96,
-			itemSettings().food(FoodComponents.RAW_HONEYBUN_BALL)));
-	public static final Item RAW_MAGMABUN_BALL = registerItem("raw_magmabun_ball", newItem(96,
-			itemSettings().food(FoodComponents.RAW_MAGMABUN_BALL)));
-	public static final Item RAW_SLIMEBUN_BALL = registerItem("raw_slimebun_ball", newItem(96,
-			itemSettings().food(FoodComponents.RAW_SLIMEBUN_BALL)));
+	public static final Item MUDBALL = registerItem("mudball", newItem(96));
 	//# Brick #
-	public static final Item STIEFANE_BRICK = registerItem("stiefane_brick", newItem(brickSettings()));
+	public static final Item NETHERWART_BRICK = registerItem("netherwart_brick", newItem(smallBrickSettings()));
+	public static final Item STIEFANE_BRICK = registerItem("stiefane_brick", newItem(largeBrickSettings()));
 	//# Chunk (ice) #
 	//# Chunk (miscellaneous) #
 	public static final Item WARPED_FLESH_CHUNK = registerItem("warped_flesh_chunk",
@@ -116,11 +113,14 @@ public class ModItems {
 	public static final Item GOLD_GRAM = registerItem("gold_gram", newFireproofItem(96));
 	public static final Item IRON_GRAM = registerItem("iron_gram", newFireproofItem(96));
 	//# Jewel #
-	//# Log & Trunk #
+	//# Log (wooden log) #
 	public static final Item VERDAK_LOG = registerItem("verdak_log", new BlockItem(ModBlocks.VERDAK_LOG,
 			new Item.Settings().maxCount(12)));
-	public static final Item VERDAK_TRUNK = registerItem("verdak_trunk", new BlockItem(ModBlocks.VERDAK_TRUNK,
+	//# Log (wooden trunk) #
+	public static final Item VERDAK_TRUNK = registerItem("verdak_trunk", new BlockItem(ModBlocks.VERDAK_TRUNK, // TODO: Rename; don't use "verdak" for tree species, only for timber type.
 			new Item.Settings().maxCount(12)));
+	//# Log (miscellaneous) #
+	//TODO: Add "Bone Log", which corresponds to vanilla Bone Block.
 	//# Lump & Nugget (metal) #
 	public static final Item RAW_BRASS_LUMP = registerItem("raw_brass_lump", newFireproofItem(64));
 	public static final Item RAW_BRASS_NUGGET = registerItem("raw_brass_nugget", newFireproofItem(96));
@@ -129,31 +129,7 @@ public class ModItems {
 	public static final Item RAW_EIDURIL_NUGGET = registerItem("raw_eiduril_nugget", newFireproofItem(96));
 	//# Lump & Nugget (miscellaneous) #
 	public static final Item INFERNOCOAL_LUMP = registerItem("infernocoal_lump", newFireproofItem(64));
-	public static final Item RAW_DOUGH_LUMP = registerItem("raw_dough_lump", newItem(64,
-			itemSettings().food(FoodComponents.RAW_DOUGH_LUMP)));
 	public static final Item SULPHUR_LUMP = registerItem("sulphur_lump", newFireproofItem(64));
-	//# Pie (cooked) #
-	public static final Item APPLE_PIE = registerItem("apple_pie", newItem(16,
-			itemSettings().food(FoodComponents.APPLE_PIE)));
-	public static final Item CHERRY_PIE = registerItem("cherry_pie", newItem(16,
-			itemSettings().food(FoodComponents.CHERRY_PIE)));
-	public static final Item GLOWBERRY_PIE = registerItem("glowberry_pie", newItem(16,
-			itemSettings().food(FoodComponents.GLOWBERRY_PIE)));
-	public static final Item PUMPKIN_PIE = registerItem("pumpkin_pie", newItem(16,
-			itemSettings().food(FoodComponents.PUMPKIN_PIE)));
-	public static final Item SWEETBERRY_PIE = registerItem("sweetberry_pie", newItem(16,
-			itemSettings().food(FoodComponents.SWEETBERRY_PIE)));
-	//# Pie (raw) #
-	public static final Item RAW_APPLE_PIE = registerItem("raw_apple_pie", newItem(16,
-			itemSettings().food(FoodComponents.RAW_APPLE_PIE)));
-	public static final Item RAW_CHERRY_PIE = registerItem("raw_cherry_pie", newItem(16,
-			itemSettings().food(FoodComponents.RAW_CHERRY_PIE)));
-	public static final Item RAW_GLOWBERRY_PIE = registerItem("raw_glowberry_pie", newItem(16,
-			itemSettings().food(FoodComponents.RAW_GLOWBERRY_PIE)));
-	public static final Item RAW_PUMPKIN_PIE = registerItem("raw_pumpkin_pie", newItem(16,
-			itemSettings().food(FoodComponents.RAW_PUMPKIN_PIE)));
-	public static final Item RAW_SWEETBERRY_PIE = registerItem("raw_sweetberry_pie", newItem(16,
-			itemSettings().food(FoodComponents.RAW_SWEETBERRY_PIE)));
 	//# Pile (seed) #
 	//# Pile (miscellaneous) #
 	public static final Item ASH_PILE = registerItem("ash_pile", new BoneMealItem(itemSettings().maxCount(96).fireproof()));
@@ -167,7 +143,7 @@ public class ModItems {
 	//# Plank #
 	public static final Item ACACIA_PLANK = registerItem("acacia_plank", newItem(plankSettings()));
 	public static final Item BIRCH_PLANK = registerItem("birch_plank", newItem(plankSettings()));
-	public static final Item CHERRY_PLANK = registerItem("cherry_plank", newItem(plankSettings()));
+	public static final Item CHERRY_PLANK = registerItem("cherry_plank", newItem(plankSettings())); // TODO: Perhaps rename to "ROZAL_PLANK".
 	public static final Item CRIMSON_PLANK = registerItem("crimson_plank", newItem(plankSettings()));
 	public static final Item DARK_OAK_PLANK = registerItem("dark_oak_plank", newItem(plankSettings()));
 	public static final Item MAHOGANY_PLANK = registerItem("mahogany_plank", newItem(plankSettings()));
@@ -182,46 +158,18 @@ public class ModItems {
 	public static final Item FREEZE_ROD = registerItem("freeze_rod", newItem(64));
 	public static final Item WOODEN_STICK_BUNDLE = registerItem("wooden_stick_bundle", newItem(64));
 	//# Shard #
+	public static final Item DARK_PRISMARINE_SHARD = registerItem("dark_prismarine_shard", newFireproofItem(64));
 	public static final Item GLASS_SHARD = registerItem("glass_shard", newFireproofItem(96));
 	public static final Item OBSIDIAN_SHARD = registerItem("obsidian_shard", newFireproofItem(96));
 	//# Miscellaneous #
-	public static final Item BAKED_CARROT = registerItem("baked_carrot", newItem(64,
-			itemSettings().food(FoodComponents.BAKED_CARROT)));
-	public static final Item BAKED_MUSHROOM = registerItem("baked_mushroom", newItem(64,
-			itemSettings().food(FoodComponents.BAKED_MUSHROOM)));
-	public static final Item BAKED_RADISH = registerItem("baked_radish", newItem(64,
-			itemSettings().food(FoodComponents.BAKED_RADISH)));
-	public static final Item CHEESE_WHEEL = registerItem("cheese_wheel", newItem(16,
-			itemSettings().food(FoodComponents.CHEESE_WHEEL)));
-	public static final Item CHERRY_BUNCH = registerItem("cherry_bunch", newItem(96,
-			itemSettings().food(FoodComponents.CHERRY_BUNCH)));
-	public static final Item COOKED_BUGMEAT_STEAK = registerItem("cooked_bugmeat_steak", newItem(64,
-			itemSettings().food(FoodComponents.COOKED_BUGMEAT_STEAK)));
-	public static final Item COOKED_MEAT_MORSEL = registerItem("cooked_meat_morsel", newItem(96,
-			itemSettings().food(FoodComponents.COOKED_MEAT_MORSEL)));
 	public static final Item DRY_GRASS_TUFT = registerItem("dry_grass_tuft", newItem(itemSettings().maxCount(96)));
-	public static final Item DRY_KELP_BUNDLE = registerItem("dry_kelp_bundle", newItem(64,
-			itemSettings().food(FoodComponents.DRY_KELP_BUNDLE)));
-	public static final Item FRIED_EGG = registerItem("fried_egg", newItem(16,
-			itemSettings().food(FoodComponents.FRIED_EGG)));
-	public static final Item HONEYBUN = registerItem("honeybun",
-			new StatusEffectCureFoodItem(honeyCureStatusEffectList,
-					itemSettings(64).food(FoodComponents.HONEYBUN)));
 	public static final Item LIVE_GRASS_TUFT = registerItem("live_grass_tuft", newItem(96,
 			itemSettings().food(FoodComponents.LIVE_GRASS_TUFT)));
-	public static final Item MAGMABUN = registerItem("magmabun", newItem(64,
-			itemSettings().food(FoodComponents.MAGMABUN)));
+	//TODO: Use 'AliasedBlockItem' functionality for adding Live Moss Wad.
+	// - This would naturally allow it to replace Moss Carpet's item form, particularly for dynamically getting the item corresponding to the Moss Carpet block.
 	public static final Item PINECONE = registerItem("pinecone",
-			new AliasedBlockItem(Blocks.SPRUCE_SAPLING, itemSettings(64)));
-	public static final Item RAW_BUGMEAT_STEAK = registerItem("raw_bugmeat_steak", newItem(64,
-			itemSettings().food(FoodComponents.RAW_BUGMEAT_STEAK)));
-	public static final Item RAW_CAKE = registerItem("raw_cake", newItem(1,
-			itemSettings().food(FoodComponents.RAW_CAKE)));
-	public static final Item RAW_MEAT_MORSEL = registerItem("raw_meat_morsel", newItem(96,
-			itemSettings().food(FoodComponents.RAW_MEAT_MORSEL)));
+			new AliasedBlockItem(Blocks.SPRUCE_SAPLING, itemSettings(64))); //TODO: Don't use 'AliasedBlockItem' here; we actually want the sapling to be a separate naturally obtainable item.
 	public static final Item SILK_WAD = registerItem("silk_wad", newItem(96));
-	public static final Item SLIMEBUN = registerItem("slimebun", newItem(64,
-			itemSettings().food(FoodComponents.SLIMEBUN)));
 	public static final Item STONE_PEBBLE = registerItem("stone_pebble", newFireproofItem(96));
 	//endregion
 	
@@ -470,6 +418,81 @@ public class ModItems {
 	//endregion
 	
 	
+	//region ## Foods ##
+	//TODO: Put food items here.
+	// - Not all edible items; only items with special "food" classification.
+	//  - E.g, raw and cooked buns, but NOT Live Grass Tuft.
+	//# Basic (cooked) #
+	public static final Item BAKED_CARROT = registerItem("baked_carrot", newItem(64,
+			itemSettings().food(FoodComponents.BAKED_CARROT)));
+	public static final Item BAKED_MUSHROOM = registerItem("baked_mushroom", newItem(64,
+			itemSettings().food(FoodComponents.BAKED_MUSHROOM)));
+	public static final Item BAKED_RADISH = registerItem("baked_radish", newItem(64,
+			itemSettings().food(FoodComponents.BAKED_RADISH)));
+	public static final Item COOKED_BUGMEAT_STEAK = registerItem("cooked_bugmeat_steak", newItem(64,
+			itemSettings().food(FoodComponents.COOKED_BUGMEAT_STEAK)));
+	public static final Item COOKED_MEAT_MORSEL = registerItem("cooked_meat_morsel", newItem(96,
+			itemSettings().food(FoodComponents.COOKED_MEAT_MORSEL)));
+	//# Basic (raw) #
+	public static final Item RAW_BUGMEAT_STEAK = registerItem("raw_bugmeat_steak", newItem(64,
+			itemSettings().food(FoodComponents.RAW_BUGMEAT_STEAK)));
+	public static final Item RAW_MEAT_MORSEL = registerItem("raw_meat_morsel", newItem(96,
+			itemSettings().food(FoodComponents.RAW_MEAT_MORSEL)));
+	//# Bread, Bun, Cake, & Cookie (cooked) #
+	public static final Item HONEYBUN = registerItem("honeybun",
+			new StatusEffectCureFoodItem(honeyCureStatusEffectList,
+					itemSettings(64).food(FoodComponents.HONEYBUN)));
+	public static final Item MAGMABUN = registerItem("magmabun", newItem(64,
+			itemSettings().food(FoodComponents.MAGMABUN)));
+	public static final Item SLIMEBUN = registerItem("slimebun", newItem(64,
+			itemSettings().food(FoodComponents.SLIMEBUN)));
+	//# Bread, Bun, Cake, & Cookie (raw) #
+	public static final Item RAW_CAKE = registerItem("raw_cake", newItem(1,
+			itemSettings().food(FoodComponents.RAW_CAKE)));
+	public static final Item RAW_COOKIE_BALL = registerItem("raw_cookie_ball", newItem(96,
+			itemSettings().food(FoodComponents.RAW_COOKIE_BALL)));
+	public static final Item RAW_DOUGH_LUMP = registerItem("raw_dough_lump", newItem(64,
+			itemSettings().food(FoodComponents.RAW_DOUGH_LUMP)));
+	public static final Item RAW_HONEYBUN_BALL = registerItem("raw_honeybun_ball", newItem(96,
+			itemSettings().food(FoodComponents.RAW_HONEYBUN_BALL)));
+	public static final Item RAW_MAGMABUN_BALL = registerItem("raw_magmabun_ball", newItem(96,
+			itemSettings().food(FoodComponents.RAW_MAGMABUN_BALL)));
+	public static final Item RAW_SLIMEBUN_BALL = registerItem("raw_slimebun_ball", newItem(96,
+			itemSettings().food(FoodComponents.RAW_SLIMEBUN_BALL)));
+	//# Pie (cooked) #
+	public static final Item APPLE_PIE = registerItem("apple_pie", newItem(16,
+			itemSettings().food(FoodComponents.APPLE_PIE)));
+	public static final Item CHERRY_PIE = registerItem("cherry_pie", newItem(16,
+			itemSettings().food(FoodComponents.CHERRY_PIE)));
+	public static final Item GLOWBERRY_PIE = registerItem("glowberry_pie", newItem(16,
+			itemSettings().food(FoodComponents.GLOWBERRY_PIE)));
+	public static final Item PUMPKIN_PIE = registerItem("pumpkin_pie", newItem(16,
+			itemSettings().food(FoodComponents.PUMPKIN_PIE)));
+	public static final Item SWEETBERRY_PIE = registerItem("sweetberry_pie", newItem(16,
+			itemSettings().food(FoodComponents.SWEETBERRY_PIE)));
+	//# Pie (raw) #
+	public static final Item RAW_APPLE_PIE = registerItem("raw_apple_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_APPLE_PIE)));
+	public static final Item RAW_CHERRY_PIE = registerItem("raw_cherry_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_CHERRY_PIE)));
+	public static final Item RAW_GLOWBERRY_PIE = registerItem("raw_glowberry_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_GLOWBERRY_PIE)));
+	public static final Item RAW_PUMPKIN_PIE = registerItem("raw_pumpkin_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_PUMPKIN_PIE)));
+	public static final Item RAW_SWEETBERRY_PIE = registerItem("raw_sweetberry_pie", newItem(16,
+			itemSettings().food(FoodComponents.RAW_SWEETBERRY_PIE)));
+	//# Miscellaneous #
+	public static final Item CHEESE_WHEEL = registerItem("cheese_wheel", newItem(16,
+			itemSettings().food(FoodComponents.CHEESE_WHEEL)));
+	public static final Item CHERRY_BUNCH = registerItem("cherry_bunch", newItem(96,
+			itemSettings().food(FoodComponents.CHERRY_BUNCH)));
+	public static final Item DRY_KELP_BUNDLE = registerItem("dry_kelp_bundle", newItem(64,
+			itemSettings().food(FoodComponents.DRY_KELP_BUNDLE)));
+	public static final Item FRIED_EGG = registerItem("fried_egg", newItem(16,
+			itemSettings().food(FoodComponents.FRIED_EGG)));
+	//endregion
+	
+	
 	//region  ### Joke & Unserious Items ###
 	
 	//## (J&U) Basic Resources ##
@@ -477,6 +500,9 @@ public class ModItems {
 	public static final Item CHERRY_JELLYBALL = registerItem("cherry_jellyball",
 			newItem(new Item.Settings().maxCount(64).food(FoodComponents.CHERRY_JELLYBALL)));
 	//# Brick #
+	public static final Item ENCHANTED_BRICK = registerItem("enchanted_brick",
+			new Item(new Item.Settings().maxCount(64).rarity(Rarity.UNCOMMON)
+					.component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
 	//# Chunk #
 	//# Cobblestone #
 	//# Gram & Ingot #
@@ -510,9 +536,6 @@ public class ModItems {
 			newItem(64, itemSettings().food(FoodComponents.CHOCOLATE_BAR)));
 	public static final Item CHULK_BERRY_BUNCH = registerItem("chulk_berry_bunch",
 			newItem(64, new Item.Settings().food(FoodComponents.CHULK_BERRY_BUNCH)));
-	public static final Item ENCHANTED_BRICK = registerItem("enchanted_brick",
-			new Item(new Item.Settings().maxCount(64).rarity(Rarity.UNCOMMON)
-					.component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
 	public static final Item HONEYPOD = registerItem("honeypod",
 			newItem(64, itemSettings().food(FoodComponents.HONEYPOD)));
 	public static final Item MINIWIZARD = registerItem("miniwizard",
@@ -796,8 +819,11 @@ public class ModItems {
 		return new Item.Settings().maxCount(maxCount);
 	}
 	
-	private static Item.Settings brickSettings() {
+	private static Item.Settings largeBrickSettings() {
 		return new Item.Settings().maxCount(32).fireproof();
+	}
+	private static Item.Settings smallBrickSettings() {
+		return new Item.Settings().maxCount(64).fireproof();
 	}
 	private static Item.Settings cobblestoneSettings() {
 		return new Item.Settings().maxCount(48).fireproof();

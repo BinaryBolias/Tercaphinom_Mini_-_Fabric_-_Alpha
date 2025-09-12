@@ -28,7 +28,7 @@ public class ModRegistries {
 	 * {@link net.minecraft.block.entity.AbstractFurnaceBlockEntity}
 	 */
 	private static void registerFuels() {
-		log("Registering fuels");
+		logMainEvent("Registering fuels");
 		FuelRegistry registry = FuelRegistry.INSTANCE;
 		
 		//region Vanilla Removal
@@ -126,6 +126,11 @@ public class ModRegistries {
 		registry.add(Items.STRING, 50);
 		registry.add(ModItems.SULPHUR_LUMP, 1600);
 		registry.add(ModItems.WOODEN_STICK_BUNDLE, 400);
+		//# Books #
+		registry.add(Items.BOOK, 900);
+		registry.add(Items.ENCHANTED_BOOK, 1600);
+		registry.add(Items.WRITABLE_BOOK, 1200);
+		registry.add(Items.WRITTEN_BOOK, 1200);
 		//# Containers & Equipment #
 		// NOTE: Items with durability are intended to provide half the sum of their fuel ingredients.
 		registry.add(Items.BOW, 150);
@@ -160,7 +165,7 @@ public class ModRegistries {
 	 * {@link net.minecraft.block.ComposterBlock}
 	 */
 	private static void registerCompostables() {
-		log("Registering compostables");
+		logMainEvent("Registering compostables");
 		CompostingChanceRegistry registry = CompostingChanceRegistry.INSTANCE;
 		
 		//region Vanilla Removal
@@ -385,6 +390,7 @@ public class ModRegistries {
 		//# Miscellaneous #
 		registry.add(Items.AZALEA, 0.625F);
 		registry.add(Items.BIG_DRIPLEAF, 0.625F);
+		registry.add(Items.BOOK, 0.75F);
 		registry.add(Items.CACTUS, 0.5F);
 		registry.add(Items.CARVED_PUMPKIN, 0.5F);
 		registry.add(Items.CHARCOAL, 0.5F);
@@ -420,38 +426,38 @@ public class ModRegistries {
 	}
 	
 	private static void registerCommands() {
-		log("Registering commands");
+		logMainEvent("Registering commands");
 	}
 	
 	private static void registerEvents() {
-		log("Registering events");
+		logMainEvent("Registering events");
 	}
 	
 	private static void registerPotionRecipes() {
-		log("Registering potion recipes");
+		logMainEvent("Registering potion recipes");
 	}
 	
 	private static void registerCustomTrades() {
-		log("Registering trades");
+		logMainEvent("Registering trades");
 	}
 	
 	private static void registerStrippables() {
-		log("Registering strippables");
+		logMainEvent("Registering strippables");
 	}
 	
 	private static void registerFlammables() {
-		log("Registering flammables");
+		logMainEvent("Registering flammables");
 	}
 	
 	private static void registerAttributes() {
-		log("Registering attributes");
+		logMainEvent("Registering attributes");
 	}
 	
 	private static void registerOxidizables() {
-		log("Registering oxidizables");
+		logMainEvent("Registering oxidizables");
 	}
 	
 	private static void registerPortals() {
-		log("Registering portals");
+		logMainEvent("Registering portals");
 	}
 }

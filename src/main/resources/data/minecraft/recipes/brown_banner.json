@@ -1,22 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "misc",
-	"group": "banner",
-	"key": {
-		"#": {
-			"item": "minecraft:brown_wool"
-		},
-		"|": {
-			"item": "minecraft:stick"
-		}
-	},
-	"pattern": [
-		"###",
-		"###",
-		" | "
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:brown_banner"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

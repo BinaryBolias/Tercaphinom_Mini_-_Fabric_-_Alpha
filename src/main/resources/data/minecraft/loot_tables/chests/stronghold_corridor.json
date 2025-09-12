@@ -5,9 +5,13 @@
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
+					"type": "minecraft:empty",
+					"weight": 6
+				},
+				{
 					"type": "minecraft:item",
 					"name": "minecraft:ender_pearl",
-					"weight": 22
+					"weight": 12
 				},
 				{
 					"type": "minecraft:item",
@@ -32,7 +36,7 @@
 						}
 					],
 					"name": "minecraft:ender_pearl",
-					"weight": 14
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -41,7 +45,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 2.0,
+								"max": 4.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -50,7 +54,7 @@
 							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 1.0,
+								"max": 3.0,
 								"min": 0.0
 							},
 							"function": "minecraft:set_count"
@@ -66,7 +70,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 4.0,
+								"max": 8.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -75,88 +79,37 @@
 							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 3.0,
+								"max": 7.0,
 								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:copper_ingot",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:gold_ingot",
-					"weight": 24
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:iron_ingot",
-					"weight": 12
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 9.0,
-								"min": 4.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:redstone",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
 					"name": "minecraft:golden_apple",
 					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
 					"name": "minecraft:enchanted_golden_apple",
 					"weight": 2
 				},
@@ -175,18 +128,43 @@
 						}
 					],
 					"name": "minecraft:book",
-					"weight": 2
+					"weight": 3
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
 				"max": 3.0,
-				"min": 2.0
+				"min": 1.0
 			}
 		},
 		{
 			"bonus_rolls": 0.0,
 			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:copper_ingot",
+					"weight": 11
+				},
 				{
 					"type": "minecraft:item",
 					"functions": [
@@ -209,8 +187,8 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:iron_ingot",
-					"weight": 23
+					"name": "minecraft:diamond",
+					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
@@ -235,7 +213,7 @@
 						}
 					],
 					"name": "tercaphinom:eiduril_ingot",
-					"weight": 18
+					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
@@ -260,142 +238,116 @@
 						}
 					],
 					"name": "tercaphinom:raw_eiduril_lump",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_axe",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:iron_dagger",
-					"weight": 9
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_dagger",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:iron_hatchet",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_hoe",
 					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:iron_mallet",
-					"weight": 9
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_pickaxe",
-					"weight": 9
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_pickaxe",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_ingot",
 					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:iron_shovel",
-					"weight": 9
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:raw_gold",
+					"weight": 8
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:iron_spear",
-					"weight": 9
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:lapis_lazuli",
+					"weight": 7
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_spear",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_sword",
-					"weight": 9
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_sword",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_boots",
-					"weight": 9
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_boot_pair",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_chestplate",
-					"weight": 9
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_chestplate",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_helmet",
-					"weight": 9
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_helmet",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_leggings",
-					"weight": 9
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_legging_pair",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:saddle",
-					"weight": 3
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:brass_horse_harness",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:copper_horse_harness",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_horse_armor",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:golden_horse_armor",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_horse_harness",
-					"weight": 1
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:redstone",
+					"weight": 15
 				}
 			],
 			"rolls": {
@@ -407,6 +359,488 @@
 		{
 			"bonus_rolls": 0.0,
 			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:raw_brass_lump",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:raw_brass_nugget",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:raw_copper",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:raw_copper_nugget",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:diamond",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:dirt_pile",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:emerald",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:flint",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:raw_gold",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_nugget",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:gravel_pile",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:raw_iron",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_nugget",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:lapis_lazuli",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:obsidian_shard",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:redstone",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:sulphur_lump",
+					"weight": 15
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 6.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 8
+				},
 				{
 					"type": "minecraft:item",
 					"functions": [
@@ -429,8 +863,87 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:diamond",
-					"weight": 11
+					"name": "tercaphinom:eiduril_ingot",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_axe",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_dagger",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_hatchet",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_hoe",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_mallet",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_pickaxe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_shovel",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_spear",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_sword",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_boot_pair",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_chestplate",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_helmet",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_legging_pair",
+					"weight": 3
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 6
 				},
 				{
 					"type": "minecraft:item",
@@ -439,7 +952,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 4.0,
+								"max": 8.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -448,65 +961,95 @@
 							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:copper_ingot",
-					"weight": 29
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:gold_ingot",
-					"weight": 40
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
+								"max": 7.0,
 								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
 					"name": "minecraft:iron_ingot",
-					"weight": 23
+					"weight": 25
 				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_axe",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_dagger",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_hatchet",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_hoe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_mallet",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_pickaxe",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_shovel",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:iron_spear",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_sword",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_boots",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_chestplate",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_helmet",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_leggings",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_horse_armor",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
 				{
 					"type": "minecraft:item",
 					"functions": [
@@ -514,14 +1057,14 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 9.0,
-								"min": 4.0
+								"max": 4.0,
+								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:redstone",
-					"weight": 11
+					"name": "minecraft:book",
+					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
@@ -541,11 +1084,51 @@
 				},
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
 					"name": "minecraft:apple",
-					"weight": 7
+					"weight": 9
 				},
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
 					"name": "minecraft:golden_apple",
 					"weight": 15
 				},
@@ -556,14 +1139,133 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 4.0,
+								"max": 8.0,
 								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:book",
-					"weight": 5
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 5.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:stick",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:wooden_stick_bundle",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:charcoal",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
+					"weight": 8
 				}
 			],
 			"rolls": {
@@ -577,10 +1279,80 @@
 			"entries": [
 				{
 					"type": "minecraft:empty",
-					"weight": 13
+					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
 					"name": "minecraft:eye_armor_trim_smithing_template",
 					"weight": 2
 				}

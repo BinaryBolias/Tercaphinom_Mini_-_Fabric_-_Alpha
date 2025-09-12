@@ -1,7 +1,6 @@
 package binarybolias.tercaphinom.references;
 
-import static binarybolias.tercaphinom.references.Reference.LOGGER;
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModCommands {
 	public ModCommands() {
@@ -10,6 +9,6 @@ public class ModCommands {
 	}
 	
 	public static void register() {
-		log("Registering commands");
+		logMainEvent("Registering commands");
 	}
 }

@@ -1,7 +1,6 @@
 package binarybolias.tercaphinom.references;
 
 import binarybolias.tercaphinom.Main;
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
@@ -13,7 +12,6 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.naming.Name;
 
 public class Reference {
 	// The namespace used for the entire mod.
@@ -30,11 +28,17 @@ public class Reference {
 	private static final String ANSI_MAGENTA = "\u001B[35m";
 	private static final String ANSI_CYAN = "\u001B[36m";
 	private static final String ANSI_WHITE = "\u001B[37m";
-	private static final String ANSI__BRIGHT_MAGENTA = "\u001B[95m";
+	private static final String ANSI_BRIGHT_MAGENTA = "\u001B[95m";
 	
-	private static void printInfo(String message) {
-		LOGGER.info(ANSI__BRIGHT_MAGENTA + "{}" + ANSI_RESET, message);
-	}
+	
+//	private static void printInfo(String message) {
+//		LOGGER.info(ANSI_CYAN + "{}" + ANSI_RESET, message);
+//	}
+	
+	
+//	private static void printMainEvent(String message) {
+//		LOGGER.info(ANSI_BRIGHT_MAGENTA + "{}" + ANSI_RESET, message);
+//	}
 	
 	
 	private static void printWarning(String message) {
@@ -45,28 +49,39 @@ public class Reference {
 	private static void printError(String message) {
 		LOGGER.error(message);
 	}
-
-//	private static void logWithColor(String message, String color) {
-//		LOGGER.info("{}{}" + ANSI_RESET, color, message);
-//	}
+	
+	
+	private static void printWithColor(String message, String color) {
+		LOGGER.info("{}{}" + ANSI_RESET, color, message);
+	}
+	
 	
 	public static void log(String message) {
 		if (Main.DEBUG) {
-			printInfo(">>> " + message);
+//			printInfo(message);
+			printWithColor("> " + message, ANSI_CYAN);
+		}
+	}
+	
+	
+	public static void logMainEvent(String message) {
+		if (Main.DEBUG) {
+//			printMainEvent(">>> " + message);
+			printWithColor(">>> " + message, ANSI_BRIGHT_MAGENTA);
 		}
 	}
 	
 	
 	public static void logWarning(String message) {
 		if (Main.DEBUG) {
-			printWarning(">>> " + message);
+			printWarning(message);
 		}
 	}
 	
 	
 	public static void logError(String message) {
 		if (Main.DEBUG) {
-			printError(">>> " + message);
+			printError(message);
 		}
 	}
 	
@@ -87,9 +102,21 @@ public class Reference {
 		return new Identifier(ModID, path);
 	}
 	
+	
 	public static MutableText translate(String key, Object ... params) {
 		return Text.translatable(ModID + "." + key, params);
 	}
+	
+	
+	public static MutableText translate(Item item, String key, Object ... params) {
+		return Text.translatable(item.getTranslationKey() + "." + key, params);
+	}
+	
+	
+	public static MutableText itemTooltip(Item item, String key, Object ... params) {
+		return translate(item, "tooltip." + key, params);
+	}
+	
 	
 	public static class Tags {
 		// NOTE: Tags allow for the grouping of block, entity, and item types.
@@ -99,7 +126,11 @@ public class Reference {
 		// - Crafting recipes which can use one of multiple item types interchangeably, such as planks to make sticks.
 		
 		public static class Block {
-			public static final TagKey<net.minecraft.block.Block> NIL = of("nil"); // Intentionally empty.
+			// This "nil" block tag to be intentionally left empty.
+			// Used for situations where defining a block tag is necessary, but undesired.
+			public static final TagKey<net.minecraft.block.Block> NIL = of("nil");
+			
+			public static final TagKey<net.minecraft.block.Block> ALL_ETERNALITH_BLOCKS = of("all_eternalith_blocks");
 			
 			
 			private static TagKey<net.minecraft.block.Block> of(String id) {
@@ -110,6 +141,7 @@ public class Reference {
 				return TagKey.of(RegistryKeys.BLOCK, new Identifier("c", id));
 			}
 		}
+		
 		
 		public static class Entity {
 			public static final TagKey<EntityType<?>> ALL_NECROMANTOIDS = of("all_necromantoids");
@@ -125,11 +157,12 @@ public class Reference {
 			}
 		}
 		
+		
 		public static class Item {
 			//# Basic Materials #
-			public static final TagKey<net.minecraft.item.Item> ALL_BRICKS = of("all_bricks");
 			public static final TagKey<net.minecraft.item.Item> ALL_COBBLESTONES = of("all_cobblestones");
 			public static final TagKey<net.minecraft.item.Item> ALL_GLASSY_SAND_PILES = of("all_glassy_sand_piles");
+			public static final TagKey<net.minecraft.item.Item> ALL_LARGE_BRICKS = of("all_large_bricks");
 			public static final TagKey<net.minecraft.item.Item> ALL_METAL_GRAMS = of("all_metal_grams");
 			public static final TagKey<net.minecraft.item.Item> ALL_MUSHROOMS = of("all_mushrooms");
 			public static final TagKey<net.minecraft.item.Item> ALL_PLANKS = of("all_planks");

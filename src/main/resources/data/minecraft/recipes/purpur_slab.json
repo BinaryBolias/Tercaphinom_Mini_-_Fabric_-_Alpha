@@ -1,21 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "building",
-	"key": {
-		"#": [
-			{
-				"item": "minecraft:purpur_block"
-			},
-			{
-				"item": "minecraft:purpur_pillar"
-			}
-		]
-	},
-	"pattern": [
-		"###"
-	],
-	"result": {
-		"count": 6,
-		"id": "minecraft:purpur_slab"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

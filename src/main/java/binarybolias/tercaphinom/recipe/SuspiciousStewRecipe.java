@@ -6,6 +6,7 @@ import binarybolias.tercaphinom.references.ModRecipes;
 import net.minecraft.block.SuspiciousStewIngredient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.inventory.RecipeInputInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.RecipeSerializer;
@@ -27,6 +28,8 @@ public class SuspiciousStewRecipe extends SpecialCraftingRecipe {
 		super(category);
 	}
 	
+	private static final Item BAKED_MUSHROOM_ITEM = ModItems.BAKED_MUSHROOM;
+	
 	
 	@Override
 	public boolean matches(RecipeInputInventory inventory, World world) {
@@ -38,9 +41,9 @@ public class SuspiciousStewRecipe extends SpecialCraftingRecipe {
 		for (int i = 0; i < inventory.size(); i++) {
 			ItemStack itemStack = inventory.getStack(i);
 			if (!itemStack.isEmpty()) {
-				if (itemStack.isOf(ModItems.BAKED_MUSHROOM) && !contains_first_mushroom) {
+				if (itemStack.isOf(BAKED_MUSHROOM_ITEM) && !contains_first_mushroom) {
 					contains_first_mushroom = true;
-				} else if (itemStack.isOf(ModItems.BAKED_MUSHROOM) && !contains_second_mushroom) {
+				} else if (itemStack.isOf(BAKED_MUSHROOM_ITEM) && !contains_second_mushroom) {
 					contains_second_mushroom = true;
 				} else if (itemStack.isIn(ItemTags.SMALL_FLOWERS) && !contains_small_flower) {
 					contains_small_flower = true;

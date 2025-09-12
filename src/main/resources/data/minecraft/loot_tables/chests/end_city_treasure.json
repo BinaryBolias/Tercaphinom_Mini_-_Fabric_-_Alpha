@@ -11,106 +11,6 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 1.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:iron_ingot",
-					"weight": 15
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:gold_ingot",
-					"weight": 15
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:eiduril_ingot",
-					"weight": 36
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 10.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:beetroot_seeds",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
 								"max": 8.0,
 								"min": 1.0
 							},
@@ -127,7 +27,32 @@
 						}
 					],
 					"name": "minecraft:chorus_fruit",
-					"weight": 72
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:chorus_fruit",
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -152,83 +77,960 @@
 						}
 					],
 					"name": "minecraft:popped_chorus_fruit",
-					"weight": 60
+					"weight": 9
 				},
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:popped_chorus_fruit",
+					"weight": 4
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 12
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_ingot",
+					"weight": 36
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:iron_axe",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
 					"name": "minecraft:iron_axe",
 					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
 					"name": "tercaphinom:iron_dagger",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:iron_dagger",
 					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
+					"name": "tercaphinom:iron_hatchet",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
 					"name": "tercaphinom:iron_hatchet",
 					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:iron_hoe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "minecraft:iron_hoe",
 					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
+					"name": "tercaphinom:iron_mallet",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
 					"name": "tercaphinom:iron_mallet",
 					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:iron_pickaxe",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "minecraft:iron_pickaxe",
 					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
+					"name": "minecraft:iron_shovel",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
 					"name": "minecraft:iron_shovel",
 					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
 					"name": "tercaphinom:iron_spear",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:iron_spear",
 					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
+					"name": "minecraft:iron_sword",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
 					"name": "minecraft:iron_sword",
 					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:iron_boots",
+					"weight": 21
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "minecraft:iron_boots",
 					"weight": 7
 				},
 				{
 					"type": "minecraft:item",
+					"name": "minecraft:iron_chestplate",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
 					"name": "minecraft:iron_chestplate",
 					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:iron_helmet",
+					"weight": 21
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "minecraft:iron_helmet",
 					"weight": 7
 				},
 				{
 					"type": "minecraft:item",
+					"name": "minecraft:iron_leggings",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
 					"name": "minecraft:iron_leggings",
 					"weight": 5
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 5.0,
-				"min": 3.0
+				"max": 2.0,
+				"min": 1.0
 			}
 		},
 		{
 			"bonus_rolls": 0.0,
 			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 36
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:eiduril_ingot",
+					"weight": 60
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_axe",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_axe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_dagger",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_dagger",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_hatchet",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_hatchet",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_hoe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_hoe",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_mallet",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_mallet",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_pickaxe",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_pickaxe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_shovel",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_shovel",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_spear",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_spear",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_sword",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_sword",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_boot_pair",
+					"weight": 21
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_boot_pair",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_chestplate",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_chestplate",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_helmet",
+					"weight": 21
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_helmet",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:eiduril_legging_pair",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_legging_pair",
+					"weight": 5
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 4.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:eiduril_ingot",
+					"weight": 36
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_axe",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_dagger",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_hatchet",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_hoe",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_mallet",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_pickaxe",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_shovel",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_spear",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_sword",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_boot_pair",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_chestplate",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_helmet",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 39.0,
+								"min": 20.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "tercaphinom:eiduril_legging_pair",
+					"weight": 7
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 0.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:blaze_rod",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:blaze_powder",
+					"weight": 6
+				},
 				{
 					"type": "minecraft:item",
 					"functions": [
@@ -243,7 +1045,7 @@
 						}
 					],
 					"name": "minecraft:emerald",
-					"weight": 2
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -268,41 +1070,7 @@
 						}
 					],
 					"name": "minecraft:diamond",
-					"weight": 1
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 1.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:iron_ingot",
-					"weight": 10
+					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
@@ -327,7 +1095,7 @@
 						}
 					],
 					"name": "minecraft:gold_ingot",
-					"weight": 10
+					"weight": 20
 				},
 				{
 					"type": "minecraft:item",
@@ -336,7 +1104,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 4.0,
+								"max": 16.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -345,54 +1113,13 @@
 							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 3.0,
+								"max": 15.0,
 								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
 					"name": "tercaphinom:eiduril_ingot",
-					"weight": 18
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 10.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:beetroot_seeds",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 8.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:chorus_fruit",
 					"weight": 15
 				},
 				{
@@ -402,7 +1129,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 8.0,
+								"max": 16.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -411,307 +1138,151 @@
 							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 7.0,
+								"max": 15.0,
 								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:popped_chorus_fruit",
-					"weight": 10
+					"name": "tercaphinom:raw_eiduril_lump",
+					"weight": 24
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_axe",
-					"weight": 3
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_dagger",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_hatchet",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_hoe",
-					"weight": 1
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_mallet",
-					"weight": 3
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_pickaxe",
-					"weight": 3
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_shovel",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_spear",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_sword",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_boot_pair",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_chestplate",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_helmet",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_legging_pair",
+					"functions": [
+						{
+							"function": "minecraft:set_potion",
+							"id": "minecraft:regeneration"
+						}
+					],
+					"name": "minecraft:lingering_potion",
 					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
 					"functions": [
 						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
+							"function": "minecraft:set_potion",
+							"id": "minecraft:strong_regeneration"
 						}
 					],
-					"name": "minecraft:iron_axe",
-					"weight": 3
+					"name": "minecraft:lingering_potion",
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
 					"functions": [
 						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
+							"function": "minecraft:set_potion",
+							"id": "minecraft:swiftness"
 						}
 					],
-					"name": "tercaphinom:iron_dagger",
+					"name": "minecraft:lingering_potion",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_potion",
+							"id": "minecraft:regeneration"
+						}
+					],
+					"name": "minecraft:potion",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_potion",
+							"id": "minecraft:slow_falling"
+						}
+					],
+					"name": "minecraft:potion",
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_potion",
+							"id": "minecraft:strong_regeneration"
+						}
+					],
+					"name": "minecraft:potion",
 					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
 					"functions": [
 						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
+							"function": "minecraft:set_potion",
+							"id": "minecraft:swiftness"
 						}
 					],
-					"name": "tercaphinom:iron_hatchet",
-					"weight": 5
+					"name": "minecraft:potion",
+					"weight": 6
 				},
 				{
 					"type": "minecraft:item",
 					"functions": [
 						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
+							"function": "minecraft:set_potion",
+							"id": "minecraft:poison"
+						},
+						{
+							"add": false,
+							"count": {
 								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
+								"max": 8.0,
+								"min": 1.0
 							},
-							"treasure": true
+							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:iron_hoe",
-					"weight": 1
+					"name": "minecraft:tipped_arrow",
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
 					"functions": [
 						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
+							"function": "minecraft:set_potion",
+							"id": "minecraft:slowness"
+						},
+						{
+							"add": false,
+							"count": {
 								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
+								"max": 8.0,
+								"min": 1.0
 							},
-							"treasure": true
+							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:iron_mallet",
-					"weight": 3
+					"name": "minecraft:tipped_arrow",
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
 					"functions": [
 						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "minecraft:iron_pickaxe",
-					"weight": 3
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
+							"function": "minecraft:set_potion",
+							"id": "minecraft:weakness"
+						},
 						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
+							"add": false,
+							"count": {
 								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
+								"max": 8.0,
+								"min": 1.0
 							},
-							"treasure": true
+							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:iron_shovel",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:iron_spear",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "minecraft:iron_sword",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "minecraft:iron_boots",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "minecraft:iron_chestplate",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "minecraft:iron_helmet",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "minecraft:iron_leggings",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:saddle",
-					"weight": 3
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_horse_armor",
-					"weight": 1
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:golden_horse_armor",
-					"weight": 1
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_horse_harness",
-					"weight": 1
+					"name": "minecraft:tipped_arrow",
+					"weight": 4
 				}
 			],
 			"rolls": {
@@ -730,6 +1301,56 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:chorus_fruit",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:popped_chorus_fruit",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
 								"max": 4.0,
 								"min": 1.0
 							},
@@ -745,32 +1366,7 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:eiduril_ingot",
-					"weight": 18
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 8.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:chorus_fruit",
+					"name": "minecraft:dragon_breath",
 					"weight": 5
 				},
 				{
@@ -780,7 +1376,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 8.0,
+								"max": 16.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -789,233 +1385,20 @@
 							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 7.0,
+								"max": 15.0,
 								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:popped_chorus_fruit",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_axe",
+					"name": "minecraft:dragon_breath",
 					"weight": 4
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_dagger",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_hatchet",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_hoe",
-					"weight": 4
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_mallet",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_pickaxe",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_shovel",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_spear",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_sword",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_boot_pair",
-					"weight": 8
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_chestplate",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_helmet",
-					"weight": 8
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"max": 39.0,
-								"min": 20.0
-							},
-							"treasure": true
-						}
-					],
-					"name": "tercaphinom:eiduril_legging_pair",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:eiduril_horse_harness",
-					"weight": 1
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 5.0,
-				"min": 2.0
+				"max": 2.0,
+				"min": 0.0
 			}
 		},
 		{
@@ -1023,10 +1406,55 @@
 			"entries": [
 				{
 					"type": "minecraft:empty",
-					"weight": 13
+					"weight": 11
 				},
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 24.0,
+								"min": 9.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:raw_eiduril_lump",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
 					"name": "minecraft:spire_armor_trim_smithing_template",
 					"weight": 3
 				}

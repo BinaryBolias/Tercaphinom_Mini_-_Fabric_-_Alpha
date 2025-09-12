@@ -19,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class TargetTeleporterItem extends Item {
 		
 		return super.use(world, user, hand);
 	}
+	
 	
 	@Override
 	public ActionResult useOnBlock(ItemUsageContext context) {
@@ -121,15 +123,28 @@ public class TargetTeleporterItem extends Item {
 	
 	@Override
 	public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+		// Push tuned position data (if present) to te front of the tooltip.
 		@Nullable var data = stack.get(DataComponentTypes.CUSTOM_DATA);
 		if (data != null) {
+			//TODO: Figure out how to change the color of text, and make this text gray, rather than white.
+			// - Creative mode tooltip text displaying the item group(s) an item is part of uses a nonstandard color; perhaps investigate that.
+			//  - This seemingly uses the "dark_blue" color (Formatting code: "§1") or the "blue" color (Formatting code: "§9").
+			// - Rarities other than "common" also change text color.
+			//  - "uncommon" rarity seems to use the "yellow" color (Formatting code: "§e").
+			//  - "rare" rarity seems to use the "aqua" color (Formatting code: "§b").
+			//  - "epic" rarity seems to use the "light_purple" color (Formatting code: "§d").
+			// - Note: Color change is already being done via the translation file.
+			//  - Finding a way to set the color through code would be nice.
+			//  - The current color change method (formatting codes) is an outdated feature?
+			//   - Ideally figure out a better method, if any.
 			NbtCompound nbt = data.copyNbt();
+			// Add coordinate text.
 			BlockPos targetPos = NbtHelper.toBlockPos(nbt, "tercaphinom.tuner.pos").get();
-			
+			tooltip.add(itemTooltip(this, "position", targetPos.getX(), targetPos.getY(), targetPos.getZ()));
+			// Add dimension text.
 			String targetDimension = nbt.getString("tercaphinom.tuner.dimension");
 			String dimensionName = makeIdentifierTitleCase(targetDimension);
-			tooltip.add(translate("tuner.tooltip", targetPos.getX(), targetPos.getY(), targetPos.getZ()));
-			tooltip.add(translate("tuner.dimension", dimensionName));
+			tooltip.add(itemTooltip(this, "dimension", dimensionName));
 		}
 		
 		super.appendTooltip(stack, context, tooltip, type);

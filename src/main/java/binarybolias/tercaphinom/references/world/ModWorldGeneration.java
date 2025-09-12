@@ -1,6 +1,6 @@
 package binarybolias.tercaphinom.references.world;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModWorldGeneration {
 	public ModWorldGeneration() {
@@ -9,7 +9,7 @@ public class ModWorldGeneration {
 	}
 	
 	public static void register() {
-		log("Registering world generation");
+		logMainEvent("Registering world generation");
 		// NOTE: These are called in a particular order.
 		// - The purpose ot this ordering is not yet known to me.
 		// - This is apparently (not confirmed for myself) the order vanilla Minecraft uses.

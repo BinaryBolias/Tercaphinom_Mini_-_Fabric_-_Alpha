@@ -1,12 +1,7 @@
 {
-	"type": "minecraft:smelting",
-	"category": "misc",
-	"cookingtime": 200,
-	"experience": 0.3,
-	"ingredient": {
-		"item": "minecraft:clay_ball"
-	},
-	"result": {
-		"id": "minecraft:brick"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

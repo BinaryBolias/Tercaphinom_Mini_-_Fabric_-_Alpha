@@ -1,37 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"ingredients": [
-		{
-			"item": "minecraft:disc_fragment_5"
-		},
-		{
-			"item": "minecraft:disc_fragment_5"
-		},
-		{
-			"item": "minecraft:disc_fragment_5"
-		},
-		{
-			"item": "minecraft:disc_fragment_5"
-		},
-		{
-			"item": "minecraft:disc_fragment_5"
-		},
-		{
-			"item": "minecraft:disc_fragment_5"
-		},
-		{
-			"item": "minecraft:disc_fragment_5"
-		},
-		{
-			"item": "minecraft:disc_fragment_5"
-		},
-		{
-			"item": "minecraft:disc_fragment_5"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:music_disc_5"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

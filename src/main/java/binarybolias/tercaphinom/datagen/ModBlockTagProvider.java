@@ -1,7 +1,6 @@
 package binarybolias.tercaphinom.datagen;
 
 import binarybolias.tercaphinom.references.ModBlocks;
-import binarybolias.tercaphinom.references.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
@@ -14,8 +13,12 @@ import net.minecraft.util.Identifier;
 import java.util.concurrent.CompletableFuture;
 
 import static binarybolias.tercaphinom.references.Reference.*;
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
+
+/**
+ * @see net.minecraft.data.server.tag.vanilla.VanillaBlockTagProvider
+ */
 public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 	public ModBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
 		super(output, registriesFuture);
@@ -23,22 +26,31 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 	
 	@Override
 	protected void configure(RegistryWrapper.WrapperLookup arg) {
-		log("Generating block tag data");
+		logMainEvent("Generating block tag data");
 		
 		/*
-		* NOTE: 'getOrCreateTagBuilder' method calls which do not include an 'add' method call are included merely for reference; these calls effectively do nothing.
+		* Note on 'getOrCreateTagBuilder' method calls:
+		*  - Some may be included merely for reference.
+		*  - It is necessary to call this method for a tag if the tag is used elsewhere in this script.
 		*
-		* NOTE: For an overhaul of Minecraft which uses only custom aspects (dimensions, block, items, entities, etc.), these (vanilla) tags are inappropriate; only custom tags would be used instead.
+		* NOTE: For an overhaul of Minecraft which uses only custom aspects (dimensions, block, items, entities, etc.),
+		*  vanilla tags are inappropriate; only custom tags are to be used instead.
 		 */
 		
 		getOrCreateTagBuilder(Tags.Block.NIL); // Intentionally empty.
 		
-		getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(ModBlocks.ETERNALITH_BLOCK);
-		getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE).add(ModBlocks.ETERNALITH_BLOCK);
-		getOrCreateTagBuilder(BlockTags.GEODE_INVALID_BLOCKS).add(ModBlocks.ETERNALITH_BLOCK);
-		getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE).add(ModBlocks.ETERNALITH_BLOCK);
+		getOrCreateTagBuilder(Tags.Block.ALL_ETERNALITH_BLOCKS)
+				.add(ModBlocks.CHISELED_ETERNALITH_BLOCK, ModBlocks.ETERNALITH_BLOCK);
 		
-		// Remove tool tier elitism.
+		// Eternalith block properties.
+		getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(BlockTags.GEODE_INVALID_BLOCKS).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(BlockTags.INFINIBURN_END).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
+		
+		// Tool tier elitism removal for vanilla tool materials.
 		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL).setReplace(true);
 		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_STONE_TOOL).setReplace(true);
 		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL).setReplace(true);
@@ -55,7 +67,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				//# Stone (stiefane) #
 				.add(ModBlocks.STIEFANE_BRICK_BLOCK)
 				.add(ModBlocks.COBBLED_STIEFANE_BLOCK)
-				.add(ModBlocks.STIEFANE_BLOCK)
+				.add(ModBlocks.NATURAL_STIEFANE_BLOCK)
 				.add(ModBlocks.POLISHED_STIEFANE_BLOCK)
 				.add(ModBlocks.STIEFANE_LAPIS_ORE)
 				.add(ModBlocks.STIEFANE_BUTTON)
@@ -76,12 +88,19 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.ULTRASMOOTH_STONE);
 		
 		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+				//# Stone (cobbled) #
+				.add(ModBlocks.COBBLED_STIEFANE_BLOCK) // TODO: Perhaps make a separate block tag for cobbled stone blocks.
+				//# Sand & Soil #
 				.add(ModBlocks.ASH_BLOCK)
 				.add(ModBlocks.SKORSAND_BLOCK)
-				//# Joke & Unserious #
+				
+				//## Joke & Unserious ##
+				//# (J&U) Cheese #
 				.add(ModBlocks.BLUE_CHEESE_BLOCK)
 				.add(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK)
-				.add(ModBlocks.YELLOW_CHEESE_BLOCK);
+				.add(ModBlocks.YELLOW_CHEESE_BLOCK)
+				//# (J&U) Miscellaneous #
+				.add(ModBlocks.CHERRY_JELLYBLOCK);
 		
 		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
 				.add(ModBlocks.VERDAK_LOG)
@@ -98,28 +117,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		
 		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE);
 		
-		// NOTE: I don't appreciate the vanilla functionality of the "needs X tool" tags;
-		//  linear material tiers of tools for mining/harvesting feels inelegant to me.
-		// BlockTags.NEEDS_STONE_TOOL: (I think) The blocks within this tag only drop loot if mined with a tool of
-		//  stone tier or higher.
-		getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL);
-		// BlockTags.NEEDS_IRON_TOOL: (I think) The blocks within this tag only drop loot if mined with a tool of
-		//  iron tier or higher.
-		getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL);
-		// BlockTags.NEEDS_DIAMOND_TOOL: (I think) The blocks within this tag only drop loot if mined with a tool of
-		//  diamond tier or higher.
-		getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL);
+		// In vanilla, this is copied as an item tag and only used for defining which logs can be cooked into charcoal.
+		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN);
 		
-		// I think this defines a new tag with name "needs_tool_level_4".
-		// This tag would logically be associated with the block requiring a Netherite tool to mine while dropping loot.
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_4")));
-		
-		// BlockTags.LOGS_THAT_BURN: Defines the blocks (intended to be logs) which can be used as fuel.
-		// Probably defines the logs that can be converted into charcoal via smelting?
-		// Does it also affect fire spread at all?
-		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-				.add(ModBlocks.VERDAK_LOG)
-				.add(ModBlocks.VERDAK_TRUNK);
 		getOrCreateTagBuilder(BlockTags.WALLS)
 				.add(ModBlocks.STIEFANE_BRICK_WALL_POST);
 		getOrCreateTagBuilder(BlockTags.FENCES)
@@ -130,16 +130,27 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		getOrCreateTagBuilder(BlockTags.DOORS);
 		getOrCreateTagBuilder(BlockTags.TRAPDOORS);
 		
+		// These are copied as item tags, but don't seem to actually be used for anything.
+		// If these WERE used for something, it would probably just be for smelting ore blocks into resources,
+		//  which in Tercaphinom is not only ILLEGAL, but also impossible (given that the ore blocks are unobtainable in survival)
+		//  and ALSO just plain inefficient, since mining the ore blocks gives a minimum of more than one resource per block anyway.
 		getOrCreateTagBuilder(BlockTags.COAL_ORES);
 		getOrCreateTagBuilder(BlockTags.COPPER_ORES);
 		getOrCreateTagBuilder(BlockTags.DIAMOND_ORES);
 		getOrCreateTagBuilder(BlockTags.EMERALD_ORES);
 		getOrCreateTagBuilder(BlockTags.GOLD_ORES);
-		getOrCreateTagBuilder(BlockTags.LAPIS_ORES)
-				.add(ModBlocks.STIEFANE_LAPIS_ORE);
+		getOrCreateTagBuilder(BlockTags.LAPIS_ORES);
+		
+		// Used for transparent blocks which are intended to be solid.
+		// Only includes glass blocks (clear, stained, and tinted) in vanilla (as of MC 1.20.6).
+		getOrCreateTagBuilder(BlockTags.IMPERMEABLE);
 		
 		getOrCreateTagBuilder(BlockTags.SAPLINGS);
 		getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS);
+		
+		// Everything Endermen can hold!
+		// Notably, Enderman block holding mechanics do NOT respect wall torches;
+		//  according to some testing, wall torches simply vanish when the Enderman attempts to place them.
 		getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE)
 				.setReplace(true)
 				//# Tags #
@@ -149,6 +160,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				// Bales
 				.add(Blocks.DRIED_KELP_BLOCK)
 				.add(Blocks.HAY_BLOCK)
+				// Bushes & Ferns
+				.add(Blocks.DEAD_BUSH)
+				.add(Blocks.FERN)
+				.add(Blocks.SWEET_BERRY_BUSH)
+				// Edible Blocks
+				.add(Blocks.CAKE)
+				// Gourds
+				.add(Blocks.CARVED_PUMPKIN)
+				.add(Blocks.MELON)
+				.add(Blocks.PUMPKIN)
 				// Grass Crops
 				.add(Blocks.CRIMSON_ROOTS)
 				.add(Blocks.SHORT_GRASS)
@@ -159,29 +180,25 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(Blocks.RED_MUSHROOM)
 				.add(ModBlocks.STARCHCAP_MUSHROOM)
 				.add(Blocks.WARPED_FUNGUS)
+				// Wall Flora
+				.add(Blocks.GLOW_LICHEN)
+				.add(Blocks.VINE)
 				// Miscellaneous
 				.add(Blocks.AMETHYST_CLUSTER)
-				.add(Blocks.ANCIENT_DEBRIS)
+				.add(Blocks.ANCIENT_DEBRIS) // Ha.
 				.add(Blocks.BAMBOO_SAPLING)
 				.add(Blocks.CACTUS)
-				.add(Blocks.CAKE)
-				.add(Blocks.CARVED_PUMPKIN)
 				.add(Blocks.COBWEB)
 				.add(Blocks.COCOA)
-				.add(Blocks.DEAD_BUSH)
-				.add(Blocks.FERN)
-				.add(Blocks.GLOW_LICHEN)
-				.add(Blocks.LILY_PAD)
-				.add(Blocks.MELON)
-				.add(Blocks.PUMPKIN)
-				.add(Blocks.SCAFFOLDING)
-				.add(Blocks.SUGAR_CANE)
-				.add(Blocks.SWEET_BERRY_BUSH)
-				.add(Blocks.TNT)
-				.add(Blocks.TORCH) // Note: Cannot pick up wall torches.
+				.add(Blocks.LILY_PAD) // Maybe not because water?
+				.add(Blocks.SCAFFOLDING) // Tee hee.
+				.add(Blocks.SUGAR_CANE) // Note: This might be finicky due to sugarcane placement restrictions; perhaps replace sugarcane with custom version "Sugarcane Crop" which can be placed without water adjacency.
+				.add(Blocks.TNT) // Excellent.
+				.add(Blocks.TORCH) // Basic Torch. Note: Cannot pick up wall torches; those are a separate block type.
 				// - For Tercaphinom proper, standing torches and wall torches could be merged into a single block type.
 				// - When a torch is supposed to be placed at a position (not through player placement):
 				//  - If there is no solid block beneath the position, the torch will attempt to anchor itself to a wall, instead.
-				.add(Blocks.VINE);
+				//   - There could be a "Torch Bomb" item which attempts to place torches on all valid positions around itself, and wouldn't need to check for both torch types!
+				;
 	}
 }

@@ -7,18 +7,25 @@
 A puzzle, wrapped in an enigma, shrouded in riddles, lovingly sprinkled with intrigue!
 A riddle, wrapped in a mystery!
 A skeleton popped out!
+Admire the paintings!
 All bundled up!
 Ancient domains of mystery!
 Autonomous!
 Axes for everyone!
-Balls of Yarn!
+Bake the mushrooms!
+Bake the pies!
+Balls of mud!
+Balls of yarn!
 Beware the mushroom stew!
 Beware the temples!
 Bones everywhere!
+Bowls of soup!
+Bowls of stew!
 Blazing heat!
 Buckets of lava!
 Buckets of water!
 Ceci n'est pas une title screen!
+Chop a tree!
 Chopping wood!
 Cogito ergo sum!
 §1C§2o§3l§4o§5r§6m§7a§8t§9i§ac
@@ -57,7 +64,6 @@ Haunted!
 Hide!
 Hoes for everyone!
 Homeomorphic to a 3-sphere!
-Hotter than the sun!
 I have a suggestion.
 I need more context.
 idspispopd!
@@ -66,6 +72,7 @@ Indev!
 Indie!
 Ingots!
 Insinuating a keen sense of despair!
+Interpret many worlds!
 It is old! Its is evil! And it is NOT free!
 It's a game!
 Iterating upon game theory!
@@ -87,7 +94,7 @@ Non-hyperbolic!
 Not placing traps!
 Now 100% digital!
 Now in 3D!
-Now in three dimensions!
+Now in three dimensions! §k(oh, it's a pun!)
 Now with additional stuff!
 Now with additional things!
 Now with ash!
@@ -95,20 +102,28 @@ Now with bonus oddities!
 Now with bonus stuff!
 Now with bonus things!
 Now with cobblestones!
+Now with extra curios!
 Now with extra stuff!
 Now with extra things!
 Now with greater difficulty!
 Now with more gameplay progression!
+Now with more stuff!
+Now with more things!
 Now with silk!
 Now with smaller ingots!
 Now with some actual difficulty!
 Now with planks!
+Now without diamond armor!
+Now without diamond tools!
+Observe the paintings!
+Paintings may hold secrets...
 Pickaxes for everyone!
 Piles of ash!
 Piles of dirt!
 Piles of gravel!
 Piles of sand!
 Pixels everywhere!
+Planks everywhere!
 Plant a tree!
 Pneumatic!
 Prepare for the worst!
@@ -120,6 +135,7 @@ Reticulating splines!
 Ride the pig!
 Run!
 Scary!
+Scraps of metal!
 Secrets!
 Shovels for everyone!
 Sinister schemes!
@@ -142,6 +158,8 @@ Try the mushroom stew!
 Turing complete!
 Unnatural beauty!
 Verlet integration!
+Watch your step!
 Welcome to your Doom!
 What do you expect?
+You can eat the grass!
 Zombies everywhere!

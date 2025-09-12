@@ -1,18 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "equipment",
-	"key": {
-		"X": {
-			"item": "minecraft:armadillo_scute"
-		}
-	},
-	"pattern": [
-		"X  ",
-		"XXX",
-		"X X"
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:wolf_armor"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

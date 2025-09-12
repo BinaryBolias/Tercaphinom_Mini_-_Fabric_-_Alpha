@@ -90,6 +90,25 @@
 				}
 			],
 			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"conditions": [
+				{
+					"condition": "minecraft:entity_properties",
+					"entity": "killer",
+					"predicate": {
+						"type": "#minecraft:skeletons"
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:wither_skeleton_skull"
+				}
+			],
+			"rolls": 1.0
 		}
 	],
 	"random_sequence": "minecraft:entities/wither_skeleton"

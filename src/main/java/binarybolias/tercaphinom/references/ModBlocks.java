@@ -1,5 +1,6 @@
 package binarybolias.tercaphinom.references;
 
+import binarybolias.tercaphinom.block.CherryJellyblockBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -26,7 +27,7 @@ public class ModBlocks {
 	}
 	
 	public static void register() {
-		log("Registering blocks");
+		logMainEvent("Registering blocks");
 	}
 	
 	private static Block registerBlock(String name, Block block) {
@@ -137,7 +138,7 @@ public class ModBlocks {
 					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)));
 	
 	//# Stone (natural) #
-	public static final Block STIEFANE_BLOCK = registerBlockWithItem("stiefane_block",
+	public static final Block NATURAL_STIEFANE_BLOCK = registerBlockWithItem("natural_stiefane_block",
 			new Block(AbstractBlock.Settings.copy(Blocks.STONE))); // TODO: Make unique.
 	
 	//# Stone (polished) #
@@ -215,6 +216,16 @@ public class ModBlocks {
 	
 	//region  ## Miscellaneous ##
 	//# Miscellaneous #
+	public static final Block CHISELED_ETERNALITH_BLOCK = registerBlockWithItem("chiseled_eternalith_block",
+			new Block(
+					AbstractBlock.Settings.create()
+							.mapColor(MapColor.GRAY)
+							.instrument(Instrument.BASEDRUM)
+							.strength(-1.0F, 3600000.0F)
+							.dropsNothing()
+							.allowsSpawning(Blocks::never)
+			)
+	);
 	public static final Block ETERNALITH_BLOCK = registerBlockWithItem("eternalith_block",
 			new Block(
 					AbstractBlock.Settings.create()
@@ -233,10 +244,10 @@ public class ModBlocks {
 			new MushroomPlantBlock(
 					TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
 					AbstractBlock.Settings.create()
-							.mapColor(MapColor.OAK_TAN)
+							.mapColor(MapColor.OAK_TAN).instrument(Instrument.HARP)
+							.strength(0.8F, 3.0F).slipperiness(0.6F).velocityMultiplier(1.0F)
 							.noCollision()
 							.ticksRandomly()
-							.strength(0.8F, 3.0F)
 							.sounds(BlockSoundGroup.GRASS)
 							.postProcess(Blocks::always)
 							.pistonBehavior(PistonBehavior.DESTROY)
@@ -245,48 +256,47 @@ public class ModBlocks {
 	//# Cheese #
 	public static final Block BLUE_CHEESE_BLOCK = registerBlockWithItem("blue_cheese_block",
 			new Block(AbstractBlock.Settings.create()
-					.mapColor(MapColor.STONE_GRAY)
-					.instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F)
-					.slipperiness(0.725F)));
+					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)
+					.strength(3.0F, 6.0F).slipperiness(0.725F).velocityMultiplier(0.96875F)));
 	public static final Block SILKY_SMOOTH_CHEESE_BLOCK = registerBlockWithItem("silky_smooth_cheese_block",
 			new Block(AbstractBlock.Settings.create()
-					.mapColor(MapColor.STONE_GRAY)
-					.instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F)
-					.slipperiness(0.85F)));
+					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)
+					.strength(3.0F, 6.0F).slipperiness(0.85F).velocityMultiplier(0.96875F)));
 	public static final Block YELLOW_CHEESE_BLOCK = registerBlockWithItem("yellow_cheese_block",
 			new Block(AbstractBlock.Settings.create()
-					.mapColor(MapColor.STONE_GRAY)
-					.instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F)
-					.slipperiness(0.725F)));
+					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)
+					.strength(3.0F, 6.0F).slipperiness(0.725F).velocityMultiplier(0.96875F)));
 	//# Metal(?) #
 	public static final Block RAW_NUTRILLARN_BLOCK = registerBlockWithItem("raw_nutrillarn_block",
 			newBlock(blockSettings()
-					.mapColor(MapColor.RAW_IRON_PINK)
-					.instrument(Instrument.HARP)
-					.strength(6.0F, 8.0F)
+					.mapColor(MapColor.RAW_IRON_PINK).instrument(Instrument.HARP)
+					.strength(6.0F, 8.0F).slipperiness(0.6F).velocityMultiplier(0.96875F)
 					.sounds(BlockSoundGroup.MUD)));
 	public static final Block REFINED_NUTRILLARN_BLOCK = registerBlockWithItem("refined_nutrillarn_block",
 			newBlock(blockSettings()
-					.mapColor(MapColor.DIRT_BROWN)
-					.instrument(Instrument.BASEDRUM)
-					.strength(6.0F, 8.0F)
+					.mapColor(MapColor.DIRT_BROWN).instrument(Instrument.BASEDRUM)
+					.strength(6.0F, 8.0F).slipperiness(0.6F).velocityMultiplier(1.0F)
 					.sounds(BlockSoundGroup.STONE)));
 	//# Miscellaneous #
+	public static final Block CHERRY_JELLYBLOCK = registerBlockWithItem("cherry_jellyblock",
+			new CherryJellyblockBlock(AbstractBlock.Settings.create()
+					.mapColor(MapColor.RED).instrument(Instrument.BASEDRUM)
+					.strength(2.0F, 8.0F).slipperiness(0.85F).velocityMultiplier(1.0F)
+					.pistonBehavior(PistonBehavior.PUSH_ONLY)
+					.sounds(BlockSoundGroup.SLIME)
+					.jumpVelocityMultiplier(1.5F)
+					.nonOpaque()));
 	public static final Block HYPERSMOOTH_CREAMSTONE = registerBlockWithItem("hypersmooth_creamstone",
 			new Block(AbstractBlock.Settings.create()
-					.mapColor(MapColor.STONE_GRAY)
-					.instrument(Instrument.BASEDRUM).strength(3.6F, 8.0F)
+					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)
+					.strength(4.5F, 9.0F).slipperiness(1.0375F) // Note: Slipperiness of Blue Ice is 0.989.
 					.luminance(state -> 2)
-					.strength(4.5F, 9.0F)
-					.pistonBehavior(PistonBehavior.PUSH_ONLY)
-					.slipperiness(1.0375F))); // Note: Slipperiness of Blue Ice is 0.989.
+					.pistonBehavior(PistonBehavior.PUSH_ONLY)));
 	public static final Block ULTRASMOOTH_STONE = registerBlockWithItem("ultrasmooth_stone",
 			new Block(AbstractBlock.Settings.create()
-					.mapColor(MapColor.STONE_GRAY)
-					.instrument(Instrument.BASEDRUM).strength(2.4F, 6.0F)
-					.strength(3.0F, 7.0F)
-					.pistonBehavior(PistonBehavior.PUSH_ONLY)
-					.slipperiness(0.98F))); // Note: Same slipperiness as ice, packed ice, and frosted ice.
+					.mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM)
+					.strength(3.0F, 7.0F).slipperiness(0.98F) // Note: Slipperiness of ice, packed ice, and frosted ice is 0.98.
+					.pistonBehavior(PistonBehavior.PUSH_ONLY)));
 	//endregion
 	
 	

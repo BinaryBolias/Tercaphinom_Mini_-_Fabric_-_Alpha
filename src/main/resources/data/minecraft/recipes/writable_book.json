@@ -1,19 +1,7 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"category": "misc",
-	"ingredients": [
-		{
-			"item": "minecraft:book"
-		},
-		{
-			"item": "minecraft:ink_sac"
-		},
-		{
-			"item": "minecraft:feather"
-		}
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:writable_book"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

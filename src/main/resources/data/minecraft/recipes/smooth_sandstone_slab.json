@@ -1,16 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "building",
-	"key": {
-		"#": {
-			"item": "minecraft:smooth_sandstone"
-		}
-	},
-	"pattern": [
-		"###"
-	],
-	"result": {
-		"count": 6,
-		"id": "minecraft:smooth_sandstone_slab"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

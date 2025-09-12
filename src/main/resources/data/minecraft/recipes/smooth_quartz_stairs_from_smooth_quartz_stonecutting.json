@@ -1,10 +1,7 @@
 {
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:smooth_quartz"
-	},
-	"result": {
-		"count": 1,
-		"id": "minecraft:smooth_quartz_stairs"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

@@ -12,7 +12,7 @@ public class Main implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
-		log("Initializing Tercaphinom");
+		logMainEvent("Initializing Tercaphinom");
 		// Register vital classes for Tercaphinom content.
 		ModItems.register();
 		ModBlocks.register();

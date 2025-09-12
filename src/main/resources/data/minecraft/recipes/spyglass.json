@@ -1,21 +1,7 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"category": "equipment",
-	"key": {
-		"#": {
-			"item": "minecraft:amethyst_shard"
-		},
-		"X": {
-			"item": "minecraft:copper_ingot"
-		}
-	},
-	"pattern": [
-		" # ",
-		" X ",
-		" X "
-	],
-	"result": {
-		"count": 1,
-		"id": "minecraft:spyglass"
-	}
+	"type": "minecraft:campfire_cooking",
+	"cookingtime": 120,
+	"experience": 0.0,
+	"ingredient": {"item": "minecraft:bedrock"},
+	"result": {"id": "tercaphinom:mudball"}
 }

@@ -19,7 +19,7 @@ public class ModPlacedFeatures {
 	}
 	
 	public static void bootstrap(Registerable<PlacedFeature> context) {
-		log("Generating placed feature data");
+		logMainEvent("Generating placed feature data");
 	}
 	
 	public static RegistryKey<PlacedFeature> getRegistryKey(String name) {

@@ -34,7 +34,7 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.concurrent.CompletableFuture;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 
 /**
@@ -52,8 +52,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	public static final LootCondition.Builder WITH_CHOPPING_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(Reference.Tags.Item.ALL_CHOPPING_TOOLS));
 	public static final LootCondition.Builder WITH_POUNDING_TOOL = MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(Reference.Tags.Item.ALL_POUNDING_TOOLS));
 	
+	public static final LootCondition.Builder WITH_SILK_TOUCH_OR_POUNDING_TOOL = WITH_SILK_TOUCH.or(WITH_POUNDING_TOOL);
+	
 	public static final LootCondition.Builder WITHOUT_POUNDING_TOOL = WITH_POUNDING_TOOL.invert();
 	public static final LootCondition.Builder WITHOUT_CHOPPING_TOOL = WITH_CHOPPING_TOOL.invert();
+	
+	public static final LootCondition.Builder WITHOUT_SILK_TOUCH_NOR_POUNDING_TOOL = WITHOUT_SILK_TOUCH.and(WITHOUT_POUNDING_TOOL);
 	
 	public static final LootCondition.Builder WITH_REFINED_WOOD_HARVESTING_TOOL = WITH_CHOPPING_TOOL.or(WITH_POUNDING_TOOL);
 	
@@ -69,12 +73,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	public static final LootCondition.Builder WITH_CAKE = MatchToolLootCondition.builder(ItemPredicate.Builder.create().items(Items.CAKE));
 	public static final LootCondition.Builder WITH_COOKIE = MatchToolLootCondition.builder(ItemPredicate.Builder.create().items(Items.COOKIE));
 	public static final LootCondition.Builder WITH_EIDURIL_GRAM = MatchToolLootCondition.builder(ItemPredicate.Builder.create().items(ModItems.EIDURIL_GRAM));
+	public static final LootCondition.Builder WITH_ENCHANTED_BRICK = MatchToolLootCondition.builder(ItemPredicate.Builder.create().items(ModItems.ENCHANTED_BRICK)); // TODO: Get something special from breaking clear glass with this?
 	//endregion
 	
 	
 	@Override
 	public void generate() {
-		log("Generating loot table data");
+		logMainEvent("Generating loot table data");
 		
 		//region ## Material Sets - Stone ##
 		//# Deepslate #
@@ -84,7 +89,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addStandardStoneBlockSetDrops(
 				ModItems.STIEFANE_COBBLESTONE, ModItems.STIEFANE_BRICK, ModItems.GRAVEL_PILE,
 				ModBlocks.STIEFANE_BRICK_BLOCK, ModBlocks.COBBLED_STIEFANE_BLOCK,
-				ModBlocks.STIEFANE_BLOCK, ModBlocks.POLISHED_STIEFANE_BLOCK,
+				ModBlocks.NATURAL_STIEFANE_BLOCK, ModBlocks.POLISHED_STIEFANE_BLOCK,
 				ModBlocks.STIEFANE_BUTTON, ModBlocks.STIEFANE_PRESSURE_PLATE,
 				ModBlocks.STIEFANE_BRICK_WALL_POST,
 				ModBlocks.STIEFANE_BRICK_SLAB, ModBlocks.STIEFANE_BRICK_STAIR);
@@ -242,12 +247,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		//  (may also be applicable to other loot tables)
 		addDrop(Blocks.TRAPPED_CHEST, LootTable.builder()
 				.pool(makeAlternativePool(
-						makeConstantCountWithConditionItemEntry(WITH_SILK_TOUCH.or(WITH_POUNDING_TOOL), Items.TRAPPED_CHEST),
+						makeConstantCountWithConditionItemEntry(Items.TRAPPED_CHEST, WITH_SILK_TOUCH_OR_POUNDING_TOOL),
 						makeConstantCountItemEntry(ModItems.WOODEN_STICK_BUNDLE, 4)))
 				.pool(makeSingleEntryPool(
-						makeConstantCountWithConditionItemEntry(WITHOUT_SILK_TOUCH.and(WITHOUT_POUNDING_TOOL), ModItems.IRON_GRAM, 6)))
+						makeConstantCountWithConditionItemEntry(WITHOUT_SILK_TOUCH_NOR_POUNDING_TOOL, ModItems.IRON_GRAM, 6)))
 				.pool(makeSingleEntryPool(
-						makeConstantCountWithConditionItemEntry(WITHOUT_SILK_TOUCH.and(WITHOUT_POUNDING_TOOL), Items.TRIPWIRE_HOOK))));
+						makeConstantCountWithConditionItemEntry(Items.TRIPWIRE_HOOK, WITHOUT_SILK_TOUCH_NOR_POUNDING_TOOL))));
 		//endregion
 		
 		//region ## Workstations ##
@@ -262,29 +267,124 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		//  - (others)
 		//endregion
 		
+		//region ## Miscellaneous Decoration & Utility Blocks ##
+		//# Bookshelf (Chiseled) #
+		addItemPairOrBlockWithSilkTouchOrPoundingToolDrop(Blocks.CHISELED_BOOKSHELF, ModItems.WOODEN_STICK_BUNDLE, 3, Items.STICK, 3);
+		//# Bookshelf (Packed) #
+		addDrop(Blocks.BOOKSHELF, LootTable.builder() // Drop self with Silk touch or pounding tool, else drop crafting ingredients with planks converted to sticks.
+				.pool(makeDoubleEntryAlternativePool(
+						makeConstantCountWithConditionItemEntry(Blocks.BOOKSHELF, WITH_SILK_TOUCH_OR_POUNDING_TOOL),
+						makeConstantCountItemEntry(ModItems.WOODEN_STICK_BUNDLE, 3))
+				)
+				.pool(makeSingleItemConditionalPool(Items.BOOK, 3, WITHOUT_SILK_TOUCH_NOR_POUNDING_TOOL))
+		);
+		//# Ladder (wooden) #
+		addItemPairOrBlockWithSilkTouchOrPoundingToolDrop(Blocks.LADDER, Items.STICK, 7, Items.STRING, 1);
+		//# Lectern #
+		addItemPairOrBlockWithSilkTouchOrPoundingToolDrop(Blocks.LECTERN, ModItems.WOODEN_STICK_BUNDLE, 2, Items.BOOK, 1);
+		//endregion
+		
 		//region ## Miscellaneous Elemental Blocks ##
 		//# Bale #
 		addBasicDoubleItemDrop(Blocks.DRIED_KELP_BLOCK, ModItems.DRY_KELP_BUNDLE, 8, Items.STRING, 1);
 		addBasicDoubleItemDrop(Blocks.HAY_BLOCK, Items.WHEAT, 8, Items.STRING, 1);
-		//# Metal (modded) #
+		//# Crystal & Jewel #
+		addBasicItemDrop(Blocks.AMETHYST_BLOCK, Items.AMETHYST_SHARD, 8);
+		addBasicItemDrop(Blocks.BUDDING_AMETHYST, Items.AMETHYST_SHARD, 12);
+		addBasicItemDrop(Blocks.DIAMOND_BLOCK, Items.DIAMOND, 8);
+		addBasicItemDrop(Blocks.EMERALD_BLOCK, Items.EMERALD, 8);
+		addBasicItemDrop(Blocks.LAPIS_BLOCK, Items.LAPIS_LAZULI, 8);
+		//# Metal (raw) #
 		addBasicItemDrop(ModBlocks.RAW_BRASS_BLOCK, ModItems.RAW_BRASS_LUMP, 8);
-		addBasicItemDrop(ModBlocks.RAW_EIDURIL_BLOCK, ModItems.RAW_EIDURIL_LUMP, 8);
-		addBasicItemDrop(ModBlocks.REFINED_BRASS_BLOCK, ModItems.BRASS_INGOT, 8);
-		addBasicItemDrop(ModBlocks.REFINED_EIDURIL_BLOCK, ModItems.EIDURIL_INGOT, 8);
-		//# Metal (vanilla) #
-		// Copper
-		addBasicItemDrop(Blocks.COPPER_BLOCK, Items.COPPER_INGOT, 8);
-		addBasicItemDrop(Blocks.EXPOSED_COPPER, Items.COPPER_INGOT, 8);
-		addBasicItemDrop(Blocks.OXIDIZED_COPPER, Items.COPPER_INGOT, 8);
-		addBasicItemDrop(Blocks.WEATHERED_COPPER, Items.COPPER_INGOT, 8);
-		// Other
-		addBasicItemDrop(Blocks.GOLD_BLOCK, Items.GOLD_INGOT, 8);
-		addBasicItemDrop(Blocks.IRON_BLOCK, Items.IRON_INGOT, 8);
 		addBasicItemDrop(Blocks.RAW_COPPER_BLOCK, Items.RAW_COPPER, 8);
+		addBasicItemDrop(ModBlocks.RAW_EIDURIL_BLOCK, ModItems.RAW_EIDURIL_LUMP, 8);
 		addBasicItemDrop(Blocks.RAW_GOLD_BLOCK, Items.RAW_GOLD, 8);
 		addBasicItemDrop(Blocks.RAW_IRON_BLOCK, Items.RAW_IRON, 8);
+		//# Metal (refined) #
+		addBasicItemDrop(ModBlocks.REFINED_BRASS_BLOCK, ModItems.BRASS_INGOT, 8);
+		addBasicItemDrop(Blocks.COPPER_BLOCK, Items.COPPER_INGOT, 8); // Note: Other copper blocks are accounted for elsewhere.
+		addBasicItemDrop(ModBlocks.REFINED_EIDURIL_BLOCK, ModItems.EIDURIL_INGOT, 8);
+		addBasicItemDrop(Blocks.GOLD_BLOCK, Items.GOLD_INGOT, 8);
+		addBasicItemDrop(Blocks.IRON_BLOCK, Items.IRON_INGOT, 8);
+		addBasicItemDrop(Blocks.NETHERITE_BLOCK, Items.NETHERITE_INGOT, 8);
+		//# Metal (modified) #
+		//region Copper
+		// -- Basic Block (not including unoxidized unwaxed)
+		addBasicItemDrop(Blocks.EXPOSED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.OXIDIZED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_COPPER_BLOCK, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_EXPOSED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_OXIDIZED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_WEATHERED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WEATHERED_COPPER, Items.COPPER_INGOT, 8);
+		
+		// -- Bulb
+		addBulbDrop(Blocks.COPPER_BULB, Items.COPPER_INGOT);
+		addBulbDrop(Blocks.EXPOSED_COPPER_BULB, Items.COPPER_INGOT);
+		addBulbDrop(Blocks.OXIDIZED_COPPER_BULB, Items.COPPER_INGOT);
+		addBulbDrop(Blocks.WAXED_COPPER_BULB, Items.COPPER_INGOT);
+		addBulbDrop(Blocks.WAXED_EXPOSED_COPPER_BULB, Items.COPPER_INGOT);
+		addBulbDrop(Blocks.WAXED_OXIDIZED_COPPER_BULB, Items.COPPER_INGOT);
+		addBulbDrop(Blocks.WAXED_WEATHERED_COPPER_BULB, Items.COPPER_INGOT);
+		addBulbDrop(Blocks.WEATHERED_COPPER_BULB, Items.COPPER_INGOT);
+		
+		// -- Chiseled Block
+		addBasicItemDrop(Blocks.CHISELED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.EXPOSED_CHISELED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.OXIDIZED_CHISELED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_CHISELED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_EXPOSED_CHISELED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_OXIDIZED_CHISELED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_WEATHERED_CHISELED_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WEATHERED_CHISELED_COPPER, Items.COPPER_INGOT, 8);
+		
+		// -- Cut Block
+		addBasicItemDrop(Blocks.CUT_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.EXPOSED_CUT_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.OXIDIZED_CUT_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_CUT_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_EXPOSED_CUT_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_OXIDIZED_CUT_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WAXED_WEATHERED_CUT_COPPER, Items.COPPER_INGOT, 8);
+		addBasicItemDrop(Blocks.WEATHERED_CUT_COPPER, Items.COPPER_INGOT, 8);
+		
+		// -- Grate
+		addBasicItemDrop(Blocks.COPPER_GRATE, Items.COPPER_INGOT, 5);
+		addBasicItemDrop(Blocks.EXPOSED_COPPER_GRATE, Items.COPPER_INGOT, 5);
+		addBasicItemDrop(Blocks.OXIDIZED_COPPER_GRATE, Items.COPPER_INGOT, 5);
+		addBasicItemDrop(Blocks.WAXED_COPPER_GRATE, Items.COPPER_INGOT, 5);
+		addBasicItemDrop(Blocks.WAXED_EXPOSED_COPPER_GRATE, Items.COPPER_INGOT, 5);
+		addBasicItemDrop(Blocks.WAXED_OXIDIZED_COPPER_GRATE, Items.COPPER_INGOT, 5);
+		addBasicItemDrop(Blocks.WAXED_WEATHERED_COPPER_GRATE, Items.COPPER_INGOT, 5);
+		addBasicItemDrop(Blocks.WEATHERED_COPPER_GRATE, Items.COPPER_INGOT, 5);
+		
+		// -- Slab
+		addSlabItemDrop(Blocks.CUT_COPPER_SLAB, Items.COPPER_INGOT, 4);
+		addSlabItemDrop(Blocks.EXPOSED_CUT_COPPER_SLAB, Items.COPPER_INGOT, 4);
+		addSlabItemDrop(Blocks.OXIDIZED_CUT_COPPER_SLAB, Items.COPPER_INGOT, 4);
+		addSlabItemDrop(Blocks.WAXED_CUT_COPPER_SLAB, Items.COPPER_INGOT, 4);
+		addSlabItemDrop(Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB, Items.COPPER_INGOT, 4);
+		addSlabItemDrop(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB, Items.COPPER_INGOT, 4);
+		addSlabItemDrop(Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB, Items.COPPER_INGOT, 4);
+		addSlabItemDrop(Blocks.WEATHERED_CUT_COPPER_SLAB, Items.COPPER_INGOT, 4);
+		
+		// -- Stair
+		addBasicItemDrop(Blocks.CUT_COPPER_STAIRS, Items.COPPER_INGOT, 6);
+		addBasicItemDrop(Blocks.EXPOSED_CUT_COPPER_STAIRS, Items.COPPER_INGOT, 6);
+		addBasicItemDrop(Blocks.OXIDIZED_CUT_COPPER_STAIRS, Items.COPPER_INGOT, 6);
+		addBasicItemDrop(Blocks.WAXED_CUT_COPPER_STAIRS, Items.COPPER_INGOT, 6);
+		addBasicItemDrop(Blocks.WAXED_EXPOSED_CUT_COPPER_STAIRS, Items.COPPER_INGOT, 6);
+		addBasicItemDrop(Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS, Items.COPPER_INGOT, 6);
+		addBasicItemDrop(Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS, Items.COPPER_INGOT, 6);
+		addBasicItemDrop(Blocks.WEATHERED_CUT_COPPER_STAIRS, Items.COPPER_INGOT, 6);
+		//endregion
+		//region Iron
+		addBulbDrop(Blocks.REDSTONE_LAMP, Items.IRON_INGOT);
+ 		//endregion
 		//# Miscellaneous #
+		addDementhumScrapBlockDrop(Blocks.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP);
 		addBasicItemDrop(ModBlocks.ASH_BLOCK, ModItems.ASH_PILE, 8);
+		addBasicItemDrop(Blocks.REDSTONE_BLOCK, Items.REDSTONE, 8);
 		addBasicItemDrop(ModBlocks.SKORSAND_BLOCK, ModItems.SKORSAND_PILE, 8);
 		addBasicItemDrop(Blocks.SLIME_BLOCK, Items.SLIME_BALL, 8);
 		//endregion
@@ -340,15 +440,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 						makeUniformCountWithConditionItemEntry(WITHOUT_SILK_TOUCH, Items.BONE_MEAL, 4, 6)
 				))
 		);
-		//# (VVO) Brick Block (clay bricks) #
-		addDrop(Blocks.BRICKS, LootTable.builder()
-				.pool(makeSingleEntryPool(
-						makeConstantCountItemEntry(Items.BRICK, 8)
-				))
-				.pool(makeSingleEntryPool(
-						makeConstantCountWithConditionItemEntry(WITH_SILK_TOUCH, Items.CLAY_BALL, 1)
-				))
-		);
+		//# (VVO) Beehive #
+		addItemPairOrBlockWithSilkTouchOrPoundingToolDrop(Blocks.BEEHIVE, ModItems.WOODEN_STICK_BUNDLE, 3, Items.HONEYCOMB, 3);
+		addItemOrBlockWithSilkTouchOrPoundingToolDrop(Blocks.BEE_NEST, Items.HONEYCOMB, 3);
 		//# (VVO) Clay Block #
 		addDrop(Blocks.CLAY, LootTable.builder()
 				.pool(makeDoubleEntryAlternativePool(
@@ -358,7 +452,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 						)
 				)
 		);
-		//# (VVO) Coal Block#
+		//# (VVO) Clay Brick #
+		addBrickAndMortarBlockDrop(Blocks.BRICKS, Items.BRICK, 8, Items.CLAY_BALL);
+		addBrickAndMortarSlabDrop(Blocks.BRICK_SLAB, Items.BRICK, 4, Items.CLAY_BALL);
+		addBrickAndMortarBlockDrop(Blocks.BRICK_STAIRS, Items.BRICK, 6, Items.CLAY_BALL);
+		addBrickAndMortarBlockDrop(Blocks.BRICK_WALL, Items.BRICK, 4, Items.CLAY_BALL);
+		//# (VVO) Coal Block #
 		addBasicItemDrop(Blocks.COAL_BLOCK, Items.COAL, 8);
 		//# (VVO) Cobweb Block #
 		addDrop(Blocks.COBWEB, LootTable.builder()
@@ -461,30 +560,81 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addBasicItemDrop(Blocks.HONEYCOMB_BLOCK, Items.HONEYCOMB, 8);
 		//# (VVO) Mangrove Root Block #
 		addDrop(Blocks.MANGROVE_ROOTS, LootTable.builder()
-				.pool(makeAlternativePool(
-						makeConstantCountWithConditionItemEntry(WITH_SILK_TOUCH_OR_SHEARS, Items.MANGROVE_ROOTS),
+				.pool(makeAlternativePool( //NOTE: Duplicated in Muddy Mangrove Root Block loot table.
+						makeConstantCountWithConditionItemEntry(Items.MANGROVE_ROOTS, WITH_SILK_TOUCH_OR_SHEARS),
 						makeUniformCountItemEntry(Items.STICK, 3, 4))));
-		//# (VVO) Metal #
+		//# (VVO) Metal Doors & Hatches - Copper #
 		addDoorAndHatchDrops(Blocks.COPPER_DOOR, Blocks.COPPER_TRAPDOOR, Items.COPPER_INGOT);
+		addDoorAndHatchDrops(Blocks.EXPOSED_COPPER_DOOR, Blocks.EXPOSED_COPPER_TRAPDOOR, Items.COPPER_INGOT);
+		addDoorAndHatchDrops(Blocks.OXIDIZED_COPPER_DOOR, Blocks.OXIDIZED_COPPER_TRAPDOOR, Items.COPPER_INGOT);
+		addDoorAndHatchDrops(Blocks.WAXED_COPPER_DOOR, Blocks.WAXED_COPPER_TRAPDOOR, Items.COPPER_INGOT);
+		addDoorAndHatchDrops(Blocks.WAXED_EXPOSED_COPPER_DOOR, Blocks.WAXED_EXPOSED_COPPER_TRAPDOOR, Items.COPPER_INGOT);
+		addDoorAndHatchDrops(Blocks.WAXED_OXIDIZED_COPPER_DOOR, Blocks.WAXED_OXIDIZED_COPPER_TRAPDOOR, Items.COPPER_INGOT);
+		addDoorAndHatchDrops(Blocks.WAXED_WEATHERED_COPPER_DOOR, Blocks.WAXED_WEATHERED_COPPER_TRAPDOOR, Items.COPPER_INGOT);
+		addDoorAndHatchDrops(Blocks.WEATHERED_COPPER_DOOR, Blocks.WEATHERED_COPPER_TRAPDOOR, Items.COPPER_INGOT);
+		//# (VVO) Metal Doors & Hatches - Iron #
 		addDoorAndHatchDrops(Blocks.IRON_DOOR, Blocks.IRON_TRAPDOOR, Items.IRON_INGOT);
 		//# (VVO) Moss #
 		addBasicItemDrop(Blocks.MOSS_BLOCK, Blocks.MOSS_CARPET, 8);
 		//# (VVO) Mud Block #
 		// NOTE: Creating a variable as a test. (does work as expected)
-		LootTable.Builder mudBlockLootTable = LootTable.builder() // TODO: Drop 8 Mudballs here instead upon implementation.
-				.pool(makeSingleEntryPool(makeConstantCountItemEntry(Items.MUD)));
-		addDrop(Blocks.MUD, mudBlockLootTable);
+		addDrop(Blocks.MUD, LootTable.builder()
+				.pool(makeSingleEntryPool( //NOTE: Duplicated in Muddy Mangrove Root Block loot table.
+						makeConstantCountItemEntry(ModItems.MUDBALL, 8))));
 		//# (VVO) Muddy Mangrove Root Block #
 		addDrop(Blocks.MUDDY_MANGROVE_ROOTS, LootTable.builder()
-				.pool(makeSingleEntryPool(makeConstantCountItemEntry(Items.MUD))) // TODO: Drop 8 Mudballs here instead upon implementation.
-				.pool(makeAlternativePool(
-						makeConstantCountWithConditionItemEntry(WITH_SILK_TOUCH_OR_SHEARS, Items.MANGROVE_ROOTS),
+				.pool(makeSingleEntryPool( //NOTE: Duplicated in Mud Block loot table.
+						makeConstantCountItemEntry(ModItems.MUDBALL, 8)))
+				.pool(makeAlternativePool( //NOTE: Duplicated in Mangrove Root Block loot table.
+						makeConstantCountWithConditionItemEntry(Items.MANGROVE_ROOTS, WITH_SILK_TOUCH_OR_SHEARS),
 						makeUniformCountItemEntry(Items.STICK, 3, 4))));
+		//# Nether Brick #
+		addBrickAndMortarBlockDrop(Blocks.NETHER_BRICKS, Items.NETHER_BRICK, 8, Items.NETHER_WART);
+		addBrickAndMortarSlabDrop(Blocks.NETHER_BRICK_SLAB, Items.NETHER_BRICK, 4, Items.NETHER_WART);
+		addBrickAndMortarBlockDrop(Blocks.NETHER_BRICK_STAIRS, Items.NETHER_BRICK, 6, Items.NETHER_WART);
+		addBrickAndMortarBlockDrop(Blocks.NETHER_BRICK_FENCE, Items.NETHER_BRICK, 4, Items.NETHER_WART);
+		addBrickAndMortarBlockDrop(Blocks.NETHER_BRICK_WALL, Items.NETHER_BRICK, 4, Items.NETHER_WART);
+		addBrickAndMortarBlockDrop(Blocks.CHISELED_NETHER_BRICKS, Items.NETHER_BRICK, 8, Items.NETHER_WART);
+		addBrickAndMortarBlockDrop(Blocks.CRACKED_NETHER_BRICKS, Items.NETHER_BRICK, 8, Items.NETHER_WART);
+		//# Netherwart Brick #
+		addBrickAndMortarBlockDrop(Blocks.RED_NETHER_BRICKS, ModItems.NETHERWART_BRICK, 8, Items.NETHER_WART);
+		addBrickAndMortarSlabDrop(Blocks.RED_NETHER_BRICK_SLAB, ModItems.NETHERWART_BRICK, 4, Items.NETHER_WART);
+		addBrickAndMortarBlockDrop(Blocks.RED_NETHER_BRICK_STAIRS, ModItems.NETHERWART_BRICK, 6, Items.NETHER_WART);
+		addBrickAndMortarBlockDrop(Blocks.RED_NETHER_BRICK_WALL, ModItems.NETHERWART_BRICK, 4, Items.NETHER_WART);
 		//# (VVO) Obsidian #
 		addBasicItemDrop(Blocks.OBSIDIAN, ModItems.OBSIDIAN_SHARD, 8);
+		//# (VVO) Prismarine (Dark) #
+		addBasicItemDrop(Blocks.DARK_PRISMARINE, ModItems.DARK_PRISMARINE_SHARD, 8);
+		addSlabItemDrop(Blocks.DARK_PRISMARINE_SLAB, ModItems.DARK_PRISMARINE_SHARD, 4);
+		addBasicItemDrop(Blocks.DARK_PRISMARINE_STAIRS, ModItems.DARK_PRISMARINE_SHARD, 6);
+		//# (VVO) Prismarine (Pale) #
+		addBasicItemDrop(Blocks.PRISMARINE, Items.PRISMARINE_SHARD, 8);
+		addSlabItemDrop(Blocks.PRISMARINE_SLAB, Items.PRISMARINE_SHARD, 4);
+		addBasicItemDrop(Blocks.PRISMARINE_STAIRS, Items.PRISMARINE_SHARD, 6);
+		addBasicItemDrop(Blocks.PRISMARINE_WALL, Items.PRISMARINE_SHARD, 4);
+		addBasicItemDrop(Blocks.PRISMARINE_BRICKS, Items.PRISMARINE_SHARD, 8);
+		addSlabItemDrop(Blocks.PRISMARINE_BRICK_SLAB, Items.PRISMARINE_SHARD, 4);
+		addBasicItemDrop(Blocks.PRISMARINE_BRICK_STAIRS, Items.PRISMARINE_SHARD, 6);
+		//# (VVO) Purpur #
+		addBasicItemDrop(Blocks.PURPUR_BLOCK, Items.POPPED_CHORUS_FRUIT, 8);
+		addBasicItemDrop(Blocks.PURPUR_PILLAR, Items.POPPED_CHORUS_FRUIT, 8);
+		addSlabItemDrop(Blocks.PURPUR_SLAB, Items.POPPED_CHORUS_FRUIT, 4);
+		addBasicItemDrop(Blocks.PURPUR_STAIRS, Items.POPPED_CHORUS_FRUIT, 6);
+		//# (VVO) Quartz #
+		addBasicItemDrop(Blocks.QUARTZ_BLOCK, Items.QUARTZ, 8);
+		addSlabItemDrop(Blocks.QUARTZ_SLAB, Items.QUARTZ, 4);
+		addBasicItemDrop(Blocks.QUARTZ_STAIRS, Items.QUARTZ, 6);
+		addBasicItemDrop(Blocks.QUARTZ_BRICKS, Items.QUARTZ, 8);
+		addBasicItemDrop(Blocks.QUARTZ_PILLAR, Items.QUARTZ, 8);
+		addBasicItemDrop(Blocks.CHISELED_QUARTZ_BLOCK, Items.QUARTZ, 8);
+		addBasicItemDrop(Blocks.SMOOTH_QUARTZ, Items.QUARTZ, 8);
+		addSlabItemDrop(Blocks.SMOOTH_QUARTZ_SLAB, Items.QUARTZ, 4);
+		addBasicItemDrop(Blocks.SMOOTH_QUARTZ_STAIRS, Items.QUARTZ, 6);
 		//# (VVO) Sands #
 		addBasicItemDrop(Blocks.SAND, ModItems.FELDSAND_PILE, 8);
 		addBasicItemDrop(Blocks.RED_SAND, ModItems.FERROSAND_PILE, 8);
+		//# (VVO) Sea Lantern #
+		addItemPairOrBlockWithSilkTouchOrPoundingToolDrop(Blocks.SEA_LANTERN, Items.PRISMARINE_SHARD, 4, Items.PRISMARINE_CRYSTALS, 5);
 		//# (VVO) Snow Block & Snow Mound #
 		addPowderSnowBlockDrop(Blocks.POWDER_SNOW, Items.SNOWBALL, ModItems.FREEZE_POWDER_PILE);
 		addSnowBlockDrop(Blocks.SNOW_BLOCK, Items.SNOWBALL, ModItems.FREEZE_POWDER_PILE);
@@ -599,6 +749,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		addBasicItemDrop(ModBlocks.RAW_NUTRILLARN_BLOCK, ModItems.RAW_NUTRILLARN_LUMP, 8);
 		addBasicItemDrop(ModBlocks.REFINED_NUTRILLARN_BLOCK, ModItems.NUTRILLARN_INGOT, 8);
 		//# Miscellaneous #
+		addBasicItemDrop(ModBlocks.CHERRY_JELLYBLOCK, ModItems.CHERRY_JELLYBALL, 8);
 		addItemOrBlockWithSilkTouchDrop(ModBlocks.HYPERSMOOTH_CREAMSTONE, ModBlocks.ULTRASMOOTH_STONE, 1);
 		addItemOrBlockWithSilkTouchDrop(ModBlocks.ULTRASMOOTH_STONE, Blocks.SMOOTH_STONE, 1);
 		//endregion
@@ -652,7 +803,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		// Door & Hatch
 		addDoorAndHatchDrops(door, hatch, plankItem);
 		// Fence Gate
-		addPlankBasedBlockWithSecondaryItemDrop(fenceGate, plankItem, 1, Items.STICK, 4);
+		addPlankBasedBlockWithSecondaryItemDrop(fenceGate, plankItem, 2, ModItems.IRON_GRAM, 2);
 		// Fence Post
 		addBasicPlankBasedDrop(fencePost, plankItem, 2);
 		// Slab
@@ -708,14 +859,17 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	//endregion
 	
 	//region ## Drop Adders (decoration & utility) ##
-	private void addDoorDrop(
-			Block doorBlock, ItemConvertible materialItem) {
+	private void addBulbDrop(Block bulbBlock, ItemConvertible ingotItem) {
+		addDrop(bulbBlock, makeBulbLootTable(ingotItem));
+	}
+	
+	
+	private void addDoorDrop(Block doorBlock, ItemConvertible materialItem) {
 		addDrop(doorBlock, makeDoorLootTable(doorBlock, materialItem));
 	}
 	
 	
-	private void addHatchDrop(
-			Block Block, ItemConvertible materialItem) {
+	private void addHatchDrop(Block Block, ItemConvertible materialItem) {
 		addDrop(Block, makeHatchLootTable(materialItem));
 	}
 	
@@ -871,6 +1025,26 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	}
 	
 	
+	private void addBrickAndMortarBlockDrop(
+			Block block, ItemConvertible brickItem, int brickCount, ItemConvertible mortarItem
+	) {
+		addDrop(block, LootTable.builder()
+				.pool(makeSingleItemPool(brickItem, brickCount))
+				.pool(makeSingleItemConditionalPool(mortarItem, WITH_SILK_TOUCH))
+		);
+	}
+	
+	
+	private void addBrickAndMortarSlabDrop(
+			Block slabBlock, ItemConvertible brickItem, int brickCount, ItemConvertible mortarItem
+	) {
+		addDrop(slabBlock, LootTable.builder()
+				.pool(makeSlabLootPool(slabBlock, brickItem, brickCount))
+				.pool(makeSlabLootPool(slabBlock, mortarItem, WITH_SILK_TOUCH))
+		);
+	}
+	
+	
 	private void addCoarseDirtDrop(
 			Block coarseDirtBlock, ItemConvertible dirtPileItem, ItemConvertible gravelPileItem,
 			ItemConvertible flintItem, ItemConvertible stonePebbleItem
@@ -902,6 +1076,25 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 								.conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE,
 										0.015625F, 0.03125F, 0.0625F, 0.125F, 0.25F))
 								.with(ItemEntry.builder(stonePebbleItem))
+				)
+		);
+	}
+	
+	
+	private void addDementhumScrapBlockDrop(
+			Block dementhumScrapBlock, ItemConvertible dementhumScrapItem
+	) {
+		addDrop(dementhumScrapBlock, LootTable.builder()
+				.pool( // 8-12 items, increased by Fortune and Silk Touch.
+						LootPool.builder()
+								.with(ItemEntry.builder(dementhumScrapItem)
+										.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(5, 12)))
+										.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4), true).conditionally(WITH_SILK_TOUCH))
+										.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1), true).conditionally(WITH_POUNDING_TOOL))
+										.apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.create(8, 12)))
+										.apply(ApplyBonusLootFunction.uniformBonusCount(Enchantments.FORTUNE, 3))
+										.apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(14)))
+								)
 				)
 		);
 	}
@@ -1205,6 +1398,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	//endregion
 	
 	//region ## Loot Table Builders (decoration & utility) ##
+	private static LootTable.Builder makeBulbLootTable(ItemConvertible ingotItem) {
+		return LootTable.builder()
+				.pool(makeSingleItemPool(ingotItem, 4))
+				.pool(makeSingleItemPool(Items.REDSTONE, 4))
+				.pool(LootPool.builder().with(ItemEntry.builder(Blocks.GLOWSTONE))
+						// TODO: Drop a Lumithite Chunk instead upon implementation.
+				);
+	}
+	
+	
 	private static LootTable.Builder makeDoorLootTable(Block doorBlock, ItemConvertible materialItem) {
 		return LootTable.builder()
 				.pool( // Drop 3 material items from each half of the door.
@@ -1568,15 +1771,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	
 	private static LootTable.Builder makeSlabItemDropLootTable(Block slabBlock, ItemConvertible item, int count) {
 		return LootTable.builder()
-				.pool(
-						LootPool.builder()
-								.with(ItemEntry.builder(item)
-										.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(count)))
-										.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(count * 2))
-												.conditionally(BlockStatePropertyLootCondition.builder(slabBlock).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
-										)
-								)
-				);
+				.pool(makeSlabLootPool(slabBlock, item, count));
 	}
 	
 	
@@ -2022,6 +2217,39 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	}
 	
 	
+	private static LootPool.Builder makeSingleEntryConditionalPool(LootPoolEntry.Builder<?> entry, LootCondition.Builder condition) {
+		return LootPool.builder().conditionally(condition).with(entry);
+	}
+	
+	
+	private static LootPool.Builder makeSingleItemPool(ItemConvertible item, int count) {
+		if (count < 2) {
+			return makeSingleItemPool(item);
+		}
+		return LootPool.builder().with(ItemEntry.builder(item)
+				.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(count)))
+		);
+	}
+	
+	private static LootPool.Builder makeSingleItemPool(ItemConvertible item) {
+		return LootPool.builder().with(ItemEntry.builder(item));
+	}
+	
+	
+	private static LootPool.Builder makeSingleItemConditionalPool(ItemConvertible item, int count, LootCondition.Builder condition) {
+		if (count < 2) {
+			return makeSingleItemConditionalPool(item, condition);
+		}
+		return LootPool.builder().conditionally(condition).with(ItemEntry.builder(item)
+				.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(count)))
+		);
+	}
+	
+	private static LootPool.Builder makeSingleItemConditionalPool(ItemConvertible item, LootCondition.Builder condition) {
+		return LootPool.builder().conditionally(condition).with(ItemEntry.builder(item));
+	}
+	
+	
 	private static LootPool.Builder makeDoubleEntryPool(
 			LootPoolEntry.Builder<?> entryA, LootPoolEntry.Builder<?> entryB) {
 		return LootPool.builder().with(entryA).with(entryB);
@@ -2037,6 +2265,48 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	private static LootPool.Builder makeDoubleEntryAlternativePool(
 			LootPoolEntry.Builder<?> entryA, LootPoolEntry.Builder<?> entryB) {
 		return LootPool.builder().with(AlternativeEntry.builder(entryA, entryB));
+	}
+	//endregion
+	
+	//region ## Loot Pool Builders (slab) ##
+	private static LootPool.Builder makeSlabLootPool(Block slabBlock, ItemConvertible item, LootCondition.Builder condition) {
+		return LootPool.builder()
+				.conditionally(condition)
+				.with(ItemEntry.builder(item)
+						.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2))
+								.conditionally(BlockStatePropertyLootCondition.builder(slabBlock).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
+						)
+				);
+	}
+	
+	private static LootPool.Builder makeSlabLootPool(Block slabBlock, ItemConvertible item, int count, LootCondition.Builder condition) {
+		return LootPool.builder()
+				.conditionally(condition)
+				.with(ItemEntry.builder(item)
+						.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(count)))
+						.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(count * 2))
+								.conditionally(BlockStatePropertyLootCondition.builder(slabBlock).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
+						)
+				);
+	}
+	
+	private static LootPool.Builder makeSlabLootPool(Block slabBlock, ItemConvertible item) {
+		return LootPool.builder()
+				.with(ItemEntry.builder(item)
+						.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2))
+								.conditionally(BlockStatePropertyLootCondition.builder(slabBlock).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
+						)
+				);
+	}
+	
+	private static LootPool.Builder makeSlabLootPool(Block slabBlock, ItemConvertible item, int count) {
+		return LootPool.builder()
+				.with(ItemEntry.builder(item)
+						.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(count)))
+						.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(count * 2))
+								.conditionally(BlockStatePropertyLootCondition.builder(slabBlock).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
+						)
+				);
 	}
 	//endregion
 	
@@ -2150,7 +2420,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 	
 	
 	private static LeafEntry.Builder<?> makeConstantCountWithConditionItemEntry(
-			LootCondition.Builder condition, ItemConvertible item
+			ItemConvertible item, LootCondition.Builder condition
 	) {
 		return ItemEntry.builder(item).conditionally(condition);
 	}

@@ -1,6 +1,6 @@
 package binarybolias.tercaphinom.references;
 
-import static binarybolias.tercaphinom.references.Reference.log;
+import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 public class ModScreenHandlers {
 	public ModScreenHandlers() {
@@ -9,6 +9,6 @@ public class ModScreenHandlers {
 	}
 	
 	public static void register() {
-		log("Registering screen handlers");
+		logMainEvent("Registering screen handlers");
 	}
 }
