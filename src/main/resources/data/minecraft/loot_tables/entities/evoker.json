@@ -6,7 +6,52 @@
 			"entries": [
 				{
 					"type": "minecraft:loot_table",
-					"value": "minecraft:entities/pillager"
+					"value": "tercaphinom:entity/bones/humanoid-covered"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:entity/meat/humanoid-raw_meat_morsel"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": -6.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:looting_enchant"
+						},
+						{
+							"function": "minecraft:limit_count",
+							"limit": {
+								"max": 1.0
+							}
+						}
+					],
+					"name": "minecraft:coal"
 				}
 			],
 			"rolls": 1.0

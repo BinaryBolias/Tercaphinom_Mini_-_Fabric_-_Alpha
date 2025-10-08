@@ -5,8 +5,100 @@
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-cold_biome",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-temperate_biome",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-warm_biome",
+					"weight": 2
+				},
+				{
 					"type": "minecraft:item",
-					"name": "minecraft:emerald",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 32.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:white_yarnball",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:white_yarn_roll",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 4.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:shears"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 32.0,
+								"min": 1.0
+							}
+						}
+					],
+					"name": "minecraft:book",
 					"weight": 1
 				},
 				{
@@ -16,78 +108,19 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 8.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:white_yarnball",
-					"weight": 8
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
 								"max": 4.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:black_yarnball",
+					"name": "minecraft:bread",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:shears",
 					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:gray_yarnball",
-					"weight": 4
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:brown_yarnball",
-					"weight": 4
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:light_gray_yarnball",
-					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -103,6 +136,87 @@
 						}
 					],
 					"name": "minecraft:shears",
+					"weight": 2
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:wheat"
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 5.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/generic_small_rocks",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-cold_biome",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-temperate_biome",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-warm_biome",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:emerald",
 					"weight": 3
 				},
 				{
@@ -112,20 +226,93 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 6.0,
+								"max": 16.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
+					"name": "tercaphinom:dry_grass_tuft",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:live_grass_tuft",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:shears",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:stick",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
 					"name": "minecraft:wheat",
-					"weight": 7
+					"weight": 2
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 5.0,
-				"min": 2.0
+				"max": 3.0,
+				"min": 1.0
 			}
 		}
 	],

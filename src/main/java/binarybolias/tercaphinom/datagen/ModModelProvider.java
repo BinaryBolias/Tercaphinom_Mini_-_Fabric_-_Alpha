@@ -9,7 +9,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 import java.util.Objects;
@@ -74,13 +76,17 @@ public class ModModelProvider extends FabricModelProvider {
 		//# Stone (polished) #
 		bSMG.registerSimpleCubeAll(ModBlocks.POLISHED_STIEFANE_BLOCK);
 		//# Miscellaneous #
-		bSMG.registerSimpleCubeAll(ModBlocks.ASH_BLOCK);
+//		bSMG.registerSimpleCubeAll(ModBlocks.ASH_BLOCK);
+		registerAshBlockAndMound(bSMG);
 		bSMG.registerSimpleCubeAll(ModBlocks.SKORSAND_BLOCK);
 		//endregion
 		
 		//region ## Modified & Transitional ##
 		//# Ore (stiefane) #
 		bSMG.registerSimpleCubeAll(ModBlocks.STIEFANE_LAPIS_ORE);
+		//# Reinforced #
+		//# Miscellaneous #
+		registerFullyRandomTextureRotationCube(bSMG, ModBlocks.ASHY_NETHERRACK_BLOCK);
 		//endregion
 		
 		//region## Junction & Utility ##
@@ -110,9 +116,11 @@ public class ModModelProvider extends FabricModelProvider {
 		//endregion
 		
 		//region ## Miscellaneous ##
+		//# Eternalith - Basic #
+		registerFullyRandomTextureRotationCube(bSMG, ModBlocks.ETERNALITH_BLOCK);
+		//# Eternalith - Modified #
+		registerFullyRandomTextureRotationCube(bSMG, ModBlocks.CHISELED_ETERNALITH_BLOCK);
 		//# Miscellaneous #
-		bSMG.registerRotatable(ModBlocks.CHISELED_ETERNALITH_BLOCK);
-		bSMG.registerRotatable(ModBlocks.ETERNALITH_BLOCK);
 		//endregion
 		
 		//### Joke & Unserious ###
@@ -131,11 +139,14 @@ public class ModModelProvider extends FabricModelProvider {
 		bSMG.registerSimpleState(ModBlocks.CHERRY_JELLYBLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.HYPERSMOOTH_CREAMSTONE);
 		bSMG.registerSimpleCubeAll(ModBlocks.ULTRASMOOTH_STONE);
+		//## (J&U) Modified & Transitional ##
+		//# Reinforced #
+		bSMG.registerSingleton(ModBlocks.REINFORCED_STAINED_GLASS_BLOCK, TexturedModel.CUBE_BOTTOM_TOP);
 	}
 	
 	
 	
-	private void registerCubeSideFrontTopBottom(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+	private void registerCubeSideFrontTopBottom(BlockStateModelGenerator bSMG, Block block) {
 		TextureMap textureMap = new TextureMap()
 				.put(TextureKey.PARTICLE, TextureMap.getSubId(block, "_front"))
 				.put(TextureKey.DOWN, TextureMap.getSubId(block, "_bottom"))
@@ -144,9 +155,9 @@ public class ModModelProvider extends FabricModelProvider {
 				.put(TextureKey.SOUTH, TextureMap.getSubId(block, "_front"))
 				.put(TextureKey.EAST, TextureMap.getSubId(block, "_side"))
 				.put(TextureKey.WEST, TextureMap.getSubId(block, "_side"));
-		blockStateModelGenerator.blockStateCollector.accept(
+		bSMG.blockStateCollector.accept(
 				createSingletonBlockState(block, Models.CUBE.upload(
-						block, textureMap, blockStateModelGenerator.modelCollector
+						block, textureMap, bSMG.modelCollector
 				))
 		);
 	}
@@ -157,13 +168,109 @@ public class ModModelProvider extends FabricModelProvider {
 	}
 	
 	
+	private void registerAshBlockAndMound(BlockStateModelGenerator bSMG) {
+		//Note: Parity with VMc snow model generator implementation:
+		// - In vanilla, the Snow Mound is simply named "snow", and is given ownership of a texture map.
+		//  - Because of this, the texture map used for both the mound and block uses "snow" as its identifier.
+		// - Because neither the Ash Mound nor Ash Block are simply named "ash":
+		//  - We would want to artificially inject "ash" as the identifier to use...
+		//  - Or, we use "ash_block" as the identifier, which probably makes the next most sense...
+		//TODO:
+		// - Figure out how these methods actually function.
+		//  - What does defining this 'textureMap' do?
+		//  - What does defining this 'identifier' do?
+		//  - What's the deal with 'blockStateCollector'?
+		// - TO FIX: Models for individual Ash Mound heights not being generated.
+		//  - Block state file is generated, and correctly uses the Ash Block model for height 16.
+		//  - Ehh... Just generating the 7 layer files (heights 2-14) manually; doesn't seem to be an obvious way to generate them programmatically.
+		//   - Perhaps even Mojang typed them out manually? Seems like it might have also been the case for the Honey and Slime blocks...
+		TextureMap textureMap = TextureMap.all(ModBlocks.ASH_BLOCK);
+		Identifier identifier = Models.CUBE_ALL.upload(ModBlocks.ASH_BLOCK, textureMap, bSMG.modelCollector);
+		bSMG.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.ASH_MOUND)
+				.coordinate(BlockStateVariantMap.create(Properties.LAYERS)
+						.register(layers -> BlockStateVariant.create()
+								.put(VariantSettings.MODEL, layers < 8 ? ModelIds.getBlockSubModelId(ModBlocks.ASH_MOUND, "-height_" + layers * 2) : identifier)
+						)
+				)
+		);
+		bSMG.blockStateCollector.accept(createSingletonBlockState(ModBlocks.ASH_BLOCK, identifier));
+	}
+	
+	
+	private void registerFullyRandomTextureRotationCube(BlockStateModelGenerator bSMG, Block block) {
+		Identifier identifier = TexturedModel.CUBE_ALL.upload(block, bSMG.modelCollector);
+		bSMG.blockStateCollector
+				.accept(
+						VariantsBlockStateSupplier.create(
+								block,
+								BlockStateVariant.create() // (0, 0)
+										.put(VariantSettings.MODEL, identifier),
+								BlockStateVariant.create() // (90, 0)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R90),
+								BlockStateVariant.create() // (180, 0)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R180),
+								BlockStateVariant.create() // (270, 0)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R270),
+								BlockStateVariant.create() // (0, 90)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R90),
+								BlockStateVariant.create() // (90, 90)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R90)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R90),
+								BlockStateVariant.create() // (180, 90)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R180)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R90),
+								BlockStateVariant.create() // (270, 90)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R270)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R90),
+								BlockStateVariant.create() // (0, 180)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R180),
+								BlockStateVariant.create() // (90, 180)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R90)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R180),
+								BlockStateVariant.create() // (180, 180)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R180)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R180),
+								BlockStateVariant.create() // (270, 180)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R270)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R180),
+								BlockStateVariant.create() // (0, 270)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R270),
+								BlockStateVariant.create() // (90, 270)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R90)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R270),
+								BlockStateVariant.create() // (180, 270)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R180)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R270),
+								BlockStateVariant.create() // (270, 270)
+										.put(VariantSettings.MODEL, identifier)
+										.put(VariantSettings.X, VariantSettings.Rotation.R270)
+										.put(VariantSettings.Y, VariantSettings.Rotation.R270)
+						)
+				);
+	}
+	
+	
 	
 	@Override
 	public void generateItemModels(ItemModelGenerator iMG) {
 		logMainEvent("Generating item model data data");
 		
 		//region ## Basic Resources ##
-		// # Ball (yarn) #
+		//# Ball (yarn) #
 		genItem(iMG, ModItems.BLACK_YARNBALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.BLUE_YARNBALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.BROWN_YARNBALL, "ball", Models.GENERATED);
@@ -180,21 +287,26 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.RED_YARNBALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.WHITE_YARNBALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.YELLOW_YARNBALL, "ball", Models.GENERATED);
-		// # Ball (miscellaneous) #
+		//# Ball (miscellaneous) #
 		genItem(iMG, ModItems.COBWEB_BALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.MUDBALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_COOKIE_BALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_HONEYBUN_BALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_MAGMABUN_BALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_SLIMEBUN_BALL, "ball", Models.GENERATED);
-		// # Brick #
+		//# Brick #
 		genItem(iMG, ModItems.NETHERWART_BRICK, "brick", Models.GENERATED);
 		genItem(iMG, ModItems.STIEFANE_BRICK, "brick", Models.GENERATED);
-		// # Chunk #
+		//# Bundle & Rod & Stick #
+		iMG.register(ModItems.DYNAMITE_BUNDLE, Models.GENERATED);
+		iMG.register(ModItems.DYNAMITE_STICK, Models.GENERATED);
+		genItem(iMG, ModItems.FREEZE_ROD, "rod", Models.GENERATED);
+		iMG.register(ModItems.WOODEN_STICK_BUNDLE, Models.GENERATED);
+		//# Chunk #
 		genItem(iMG, ModItems.WARPED_FLESH_CHUNK, "chunk", Models.GENERATED);
-		// # Cobblestone #
+		//# Cobblestone #
 		genItem(iMG, ModItems.STIEFANE_COBBLESTONE, "cobblestone", Models.GENERATED);
-		// # Gram & Ingot #
+		//# Gram & Ingot #
 		genItem(iMG, ModItems.BRASS_GRAM, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.BRASS_INGOT, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.COPPER_GRAM, "ingot", Models.GENERATED);
@@ -202,34 +314,55 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.EIDURIL_INGOT, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.GOLD_GRAM, "ingot", Models.GENERATED);
 		genItem(iMG, ModItems.IRON_GRAM, "ingot", Models.GENERATED);
-		// # Jewel #
-		// # Log & Trunk #
+		//# Jewel #
+		//# Log & Trunk #
 		genItem(iMG, ModItems.VERDAK_LOG, "log", Models.GENERATED);
 		genItem(iMG, ModItems.VERDAK_TRUNK, "log", Models.GENERATED);
-		// # Lump & Nugget (metal) #
+		//# Lump & Nugget (metal) #
 		genItem(iMG, ModItems.RAW_BRASS_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_BRASS_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_COPPER_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_EIDURIL_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_EIDURIL_NUGGET, "lump", Models.GENERATED);
-		// # Lump & Nugget (miscellaneous) #
+		//# Lump & Nugget (miscellaneous) #
 		genItem(iMG, ModItems.INFERNOCOAL_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_DOUGH_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.SULPHUR_LUMP, "lump", Models.GENERATED);
-		// # Pie (cooked) #
+		//# Pane (glass - clear) #
+		genItem(iMG, ModItems.CLEAR_GLASS_PANE, "pane", Models.GENERATED);
+		//# Pane (glass - stained) #
+		genItem(iMG, ModItems.BLACK_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.BLUE_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.BROWN_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.CYAN_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.GRAY_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.GREEN_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.LIGHT_BLUE_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.LIGHT_GRAY_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.LIME_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.MAGENTA_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.ORANGE_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.PINK_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.PURPLE_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.RED_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.WHITE_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		genItem(iMG, ModItems.YELLOW_STAINED_GLASS_PANE, "pane", Models.GENERATED);
+		//# Pane (metal) #
+		//# Pane (miscellaneous) #
+		//# Pie (cooked) #
 		genItem(iMG, ModItems.APPLE_PIE, "pie", Models.GENERATED);
 		genItem(iMG, ModItems.CHERRY_PIE, "pie", Models.GENERATED);
 		genItem(iMG, ModItems.GLOWBERRY_PIE, "pie", Models.GENERATED);
 		genItem(iMG, ModItems.PUMPKIN_PIE, "pie", Models.GENERATED);
 		genItem(iMG, ModItems.SWEETBERRY_PIE, "pie", Models.GENERATED);
-		// # Pie (raw) #
+		//# Pie (raw) #
 		genItem(iMG, ModItems.RAW_APPLE_PIE, "pie", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_CHERRY_PIE, "pie", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_GLOWBERRY_PIE, "pie", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_PUMPKIN_PIE, "pie", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_SWEETBERRY_PIE, "pie", Models.GENERATED);
-		// # Pile (seed) #
-		// # Pile (miscellaneous) #
+		//# Pile (seed) #
+		//# Pile (miscellaneous) #
 		genItem(iMG, ModItems.ASH_PILE, "pile", Models.GENERATED);
 		genItem(iMG, ModItems.DIRT_PILE, "pile", Models.GENERATED);
 		genItem(iMG, ModItems.FELDSAND_PILE, "pile", Models.GENERATED);
@@ -238,7 +371,8 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.GRAVEL_PILE, "pile", Models.GENERATED);
 		genItem(iMG, ModItems.LEAF_PILE, "pile", Models.GENERATED);
 		genItem(iMG, ModItems.SKORSAND_PILE, "pile", Models.GENERATED);
-		// # Plank #
+		genItem(iMG, ModItems.SNOW_PILE, "pile", Models.GENERATED);
+		//# Plank #
 		genItem(iMG, ModItems.ACACIA_PLANK, "plank", Models.GENERATED);
 		genItem(iMG, ModItems.BIRCH_PLANK, "plank", Models.GENERATED);
 		genItem(iMG, ModItems.CHERRY_PLANK, "plank", Models.GENERATED);
@@ -250,16 +384,31 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.SPRUCE_PLANK, "plank", Models.GENERATED);
 		genItem(iMG, ModItems.VERDAK_PLANK, "plank", Models.GENERATED);
 		genItem(iMG, ModItems.WARPED_PLANK, "plank", Models.GENERATED);
-		// # Bundle & Rod & Stick #
-		iMG.register(ModItems.DYNAMITE_BUNDLE, Models.GENERATED);
-		iMG.register(ModItems.DYNAMITE_STICK, Models.GENERATED);
-		genItem(iMG, ModItems.FREEZE_ROD, "rod", Models.GENERATED);
-		iMG.register(ModItems.WOODEN_STICK_BUNDLE, Models.GENERATED);
-		// # Shard #
+		//# Roll #
+		genItem(iMG, ModItems.BLACK_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.BLUE_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.BROWN_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.CYAN_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.GRAY_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.GREEN_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.LIGHT_BLUE_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.LIGHT_GRAY_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.LIME_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.MAGENTA_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.ORANGE_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.PINK_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.PURPLE_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.RED_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.WHITE_YARN_ROLL, "roll", Models.GENERATED);
+		genItem(iMG, ModItems.YELLOW_YARN_ROLL, "roll", Models.GENERATED);
+		//# Shard #
 		genItem(iMG, ModItems.DARK_PRISMARINE_SHARD, "shard", Models.GENERATED);
 		genItem(iMG, ModItems.GLASS_SHARD, "shard", Models.GENERATED);
 		genItem(iMG, ModItems.OBSIDIAN_SHARD, "shard", Models.GENERATED);
-		// # Miscellaneous #
+		//# Skull #
+		genItem(iMG, Items.SKELETON_SKULL, "skull", Models.GENERATED);
+		genItem(iMG, Items.WITHER_SKELETON_SKULL, "skull", Models.GENERATED);
+		//# Miscellaneous #
 		iMG.register(ModItems.BAKED_CARROT, Models.GENERATED);
 		iMG.register(ModItems.BAKED_MUSHROOM, Models.GENERATED);
 		iMG.register(ModItems.BAKED_RADISH, Models.GENERATED);

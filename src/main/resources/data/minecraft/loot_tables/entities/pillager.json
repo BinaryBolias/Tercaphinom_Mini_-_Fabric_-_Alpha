@@ -26,6 +26,41 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": -14.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:looting_enchant"
+						},
+						{
+							"function": "minecraft:limit_count",
+							"limit": {
+								"max": 1.0
+							}
+						}
+					],
+					"name": "minecraft:coal"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
 					"name": "minecraft:totem_of_undying",
 					"weight": 1
 				},

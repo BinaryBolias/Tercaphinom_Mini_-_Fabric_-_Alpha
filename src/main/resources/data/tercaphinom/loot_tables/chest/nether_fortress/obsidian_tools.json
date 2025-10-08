@@ -1,0 +1,171 @@
+{
+	"type": "minecraft:chest",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "tercaphinom:obsidian_dagger",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 40.0,
+								"min": 10.0
+							}
+						}
+					],
+					"name": "tercaphinom:obsidian_dagger",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "tercaphinom:obsidian_hatchet",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 40.0,
+								"min": 10.0
+							}
+						}
+					],
+					"name": "tercaphinom:obsidian_hatchet",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "tercaphinom:obsidian_hoe",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 40.0,
+								"min": 10.0
+							}
+						}
+					],
+					"name": "tercaphinom:obsidian_hoe",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "tercaphinom:obsidian_spear",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.75
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 40.0,
+								"min": 10.0
+							}
+						}
+					],
+					"name": "tercaphinom:obsidian_spear",
+					"weight": 5
+				}
+			],
+			"rolls": 1.0
+		}
+	]
+}

@@ -39,7 +39,7 @@ public abstract class RecipeRemainderOverride {
 		NONE("none"), // Corresponds to a null value.
 		EMPTY("empty"), // Corresponds to an override which enforces no items as the remainder.
 		CONSTANT("constant"), // Corresponds to an override which always produces the same remainder.
-		ITEM_TYPE("item_type"); // Corresponds to an override which replaces default remainders per item.
+		ITEM_MAP("item_map"); // Corresponds to an override which replaces default remainders per item.
 		//TODO:
 		// - Require 'CONSTANT' and 'ITEM_TYPE' to supply data when reading from JSON.
 		
@@ -72,8 +72,8 @@ public abstract class RecipeRemainderOverride {
 		if (identifier.equals(Type.CONSTANT.identifier)) {
 			return Type.CONSTANT;
 		}
-		if (identifier.equals(Type.ITEM_TYPE.identifier)) {
-			return Type.ITEM_TYPE;
+		if (identifier.equals(Type.ITEM_MAP.identifier)) {
+			return Type.ITEM_MAP;
 		}
 		// Explicitly check for "none" last; assumed to not usually be used in JSON files,
 		//  with the remainder override object simply being made absent instead.

@@ -106,7 +106,8 @@ public class FoodComponents {
 			.build();
 	public static final FoodComponent FRIED_EGG = foodComponentBuilder(4, 0.5F)
 			.build();
-	public static final FoodComponent LIVE_GRASS_TUFT = foodComponentBuilder(1, 0.125F)
+	public static final FoodComponent LIVE_GRASS_TUFT = foodComponentBuilder(1, 0.25F)
+			.statusEffect(statusEffectInstance(StatusEffects.HUNGER, 100, 0), 0.5F)
 			.build();
 //	public static final FoodComponent ROTTEN_FLESH = new FoodComponent.Builder().nutrition(4).saturationModifier(0.1F)
 //			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 600, 0), 0.8F)
@@ -123,7 +124,9 @@ public class FoodComponents {
 	//region ## Dough & Pastry Food Components ##
 	//# Bun & Cookie - Cooked #
 //	public static final FoodComponent COOKIE = new FoodComponent.Builder().nutrition(2).saturationModifier(0.1F).build();
-	public static final FoodComponent HONEYBUN = foodComponentBuilder(6, 0.5F).build();
+	public static final FoodComponent HONEYBUN = foodComponentBuilder(6, 0.5F)
+			.statusEffect(statusEffectInstance(StatusEffects.REGENERATION, 200, 0), 1.0F)
+			.build();
 	public static final FoodComponent MAGMABUN = foodComponentBuilder(3, 0.375F)
 			.statusEffect(statusEffectInstance(StatusEffects.FIRE_RESISTANCE, 160, 0), 1.0F)
 			.build();

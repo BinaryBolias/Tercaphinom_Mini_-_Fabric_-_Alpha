@@ -1,9 +1,6 @@
 package binarybolias.tercaphinom.references;
 
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.ArmorMaterials;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -21,6 +18,8 @@ import static binarybolias.tercaphinom.references.Reference.*;
 
 
 /**
+ * Provides the default {@link ArmorMaterial}s used by Tercaphinom's armors.
+ * @see ModToolMaterials
  * @see net.minecraft.item.ArmorMaterials
  */
 public class ModArmorMaterials {

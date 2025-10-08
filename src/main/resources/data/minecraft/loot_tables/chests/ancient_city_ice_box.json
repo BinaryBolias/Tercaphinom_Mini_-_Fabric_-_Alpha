@@ -8,7 +8,71 @@
 					"type": "minecraft:item",
 					"functions": [
 						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:snow_pile",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 33.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 31.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:snow_pile",
+					"weight": 3
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
 							"effects": [
+								{
+									"type": "minecraft:blindness",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 7.0,
+										"min": 5.0
+									}
+								},
 								{
 									"type": "minecraft:night_vision",
 									"duration": {
@@ -18,11 +82,27 @@
 									}
 								},
 								{
-									"type": "minecraft:blindness",
+									"type": "minecraft:regeneration",
 									"duration": {
 										"type": "minecraft:uniform",
-										"max": 7.0,
-										"min": 5.0
+										"max": 10.0,
+										"min": 7.0
+									}
+								},
+								{
+									"type": "minecraft:speed",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 10.0,
+										"min": 7.0
+									}
+								},
+								{
+									"type": "minecraft:strength",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 10.0,
+										"min": 7.0
 									}
 								}
 							],
@@ -114,7 +194,71 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 10.0,
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:carrot",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:potato",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:beetroot",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:baked_carrot",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -130,13 +274,107 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 6.0,
-								"min": 2.0
+								"max": 8.0,
+								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:snowball",
+					"name": "tercaphinom:baked_radish",
+					"weight": 3
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:carrot",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:potato",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:beetroot",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:baked_carrot",
 					"weight": 3
 				},
 				{
@@ -146,14 +384,14 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 2.0
+								"max": 8.0,
+								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:ice",
-					"weight": 4
+					"name": "minecraft:baked_potato",
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
@@ -162,36 +400,200 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 2.0
+								"max": 8.0,
+								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:packed_ice",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 2.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:blue_ice",
-					"weight": 2
+					"name": "tercaphinom:baked_radish",
+					"weight": 3
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 9.0,
-				"min": 5.0
+				"max": 3.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"effects": [
+								{
+									"type": "minecraft:blindness",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 7.0,
+										"min": 5.0
+									}
+								},
+								{
+									"type": "minecraft:night_vision",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 10.0,
+										"min": 7.0
+									}
+								},
+								{
+									"type": "minecraft:slowness",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 10.0,
+										"min": 7.0
+									}
+								}
+							],
+							"function": "minecraft:set_stew_effect"
+						}
+					],
+					"name": "minecraft:suspicious_stew",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_carrot_soup",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_kelp_soup",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_mushroom_soup",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_poisonous_potato_soup",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_porridge",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_pumpkin_soup",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_radish_soup",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"effects": [
+								{
+									"type": "minecraft:blindness",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 7.0,
+										"min": 5.0
+									}
+								},
+								{
+									"type": "minecraft:night_vision",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 10.0,
+										"min": 7.0
+									}
+								},
+								{
+									"type": "minecraft:slowness",
+									"duration": {
+										"type": "minecraft:uniform",
+										"max": 10.0,
+										"min": 7.0
+									}
+								}
+							],
+							"function": "minecraft:set_stew_effect"
+						}
+					],
+					"name": "minecraft:suspicious_stew",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_beef_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_bugmeat_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_chicken_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_cod_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_morsel_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_mutton_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_pork_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_rabbit_stew",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:bowl_of_salmon_stew",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 1.0
 			}
 		},
 		{
@@ -204,6 +606,56 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:golden_apple",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:golden_carrot",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
 								"max": 6.0,
 								"min": 2.0
 							},
@@ -212,6 +664,22 @@
 					],
 					"name": "minecraft:snowball",
 					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 64.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:snow_pile",
+					"weight": 15
 				},
 				{
 					"type": "minecraft:item",
@@ -260,6 +728,112 @@
 					],
 					"name": "minecraft:blue_ice",
 					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:bottle_of_freezewater",
+					"weight": 8
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 4.0,
+				"min": 2.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:snow_pile",
+					"weight": 18
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:ice",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:packed_ice",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:blue_ice",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:bottle_of_freezewater",
+					"weight": 1
 				}
 			],
 			"rolls": {

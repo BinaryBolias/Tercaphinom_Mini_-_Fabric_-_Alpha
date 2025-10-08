@@ -1,69 +1,183 @@
+§1C§2o§3l§4o§5r§6m§7a§8t§9i§ac
 §kA SECRET IS REVEALED
 §kERROR: ERROR NOT FOUND
 §kOBFUSCATED TEXT
+§kPLACE A DISPENSER HERE
+§kRIGHT BEHIND YOU
+§lEmboldened!
+...
 ...!
+!!!
+?!?
+/fill ~-2 ~-1 ~-2 ~2 ~3 ~2 oak_planks hollow
+/fill ~-2 ~-3 ~-2 ~2 ~-1 ~2 lava[level=1] replace
+/give @a creeper_spawn_egg
 /give @a hugs 96
+/give @a miniwizard
+/give @a orb_of_zot
+/give @a sloppy_smooches 96
+/tp @a ~ ~-2 ~
+/tp @a ~ ~60 ~
+/give @s sculk_shrieker[minecraft:block_state={can_summon:'true'}]
 10100 GOTO 1010!
+A puzzle, shrouded in riddles!
 A puzzle, wrapped in an enigma, shrouded in riddles, lovingly sprinkled with intrigue!
+A puzzle, wrapped in an enigma!
 A riddle, wrapped in a mystery!
+An enigma, shrouded in riddles!
 A skeleton popped out!
+Absolutely not placing traps...
 Admire the paintings!
+ALERT: Infinite genders accidentally deleted in a freak accident involving 0 lines of code!
 All bundled up!
 Ancient domains of mystery!
+Apparently Minecraft had infinite genders! Now it doesn't I guess!
 Autonomous!
 Axes for everyone!
+Bake the bread!
+Bake the cakes!
+Bake the carrots!
+Bake the cookies!
 Bake the mushrooms!
 Bake the pies!
+Bake the potatoes!
+Bake the radishes!
 Balls of mud!
 Balls of yarn!
-Beware the mushroom stew!
-Beware the temples!
+Beware the ancient ruins!
+Beware the ancient temples!
+Beware the lava!
+Beware the ruins!
+Beware the stew!
+Blobs of dye!
 Bones everywhere!
 Bowls of soup!
 Bowls of stew!
 Blazing heat!
+Blocks everywhere!
+Brewing potions...
+Brewing potions!
+Brushable gravel!
+Brushable sand!
+Brushing the armadillos...
+Brushing the suspicious gravel...
+Brushing the suspicious sand...
+Buckets of fertilizer!
 Buckets of lava!
 Buckets of water!
+Building with scaffolds!
+Bundles of dynamite!
+Bundles of sticks!
 Ceci n'est pas une title screen!
 Chop a tree!
 Chopping wood!
 Cogito ergo sum!
-§1C§2o§3l§4o§5r§6m§7a§8t§9i§ac
+Collectable skulls!
+Collecting skulls...
 Complex cellular automata!
 Conventional!
 Creepy!
+Cubes everywhere!
 Cubic!
+Chop the trees!
+Chopping down trees!
+Chunks of flesh!
+Chunks of flesh! Revolting!
+Chunks of flesh! Tastes like mold!
 Daggers for everyone!
+Dangers in the deep!
+Decorating...
+Decorative!
+Definitely not placing traps...
 Déjà vu!
 Déjà vu!
 Desertification!
 Dig down!
+Dissolving ash with water!
 Doesn't avoid double negatives!
 Double buffered!
 Dozens of colors!
+Dying the yarn rolls...
+Dying the yarnballs...
+Eat the stew!
 Edible grass!
 Elaborate! Concoct! Swindle!
 Emergent gameplay!
+Emptying buckets...
 Enhanced!
 Envision! Create! Share!
 Euclidean!
+Exciting.
+Exciting!
 Exists in all possible states until it is observed!
+Explore ancient temples!
+Explore ancient ruins!
+Explore the ancient ruins!
+Explore the ancient temples!
+Explore the depths!
+Explore the ruins!
 Explore the temples!
+Falling into ravines!
+Falling into traps!
 Falling off cliffs!
+Feed the armadillos!
+Feed the axolotls!
+Feed the bees!
+Feed the camels!
+Feed the cats!
 Feed the chickens!
 Feed the cows!
+Feed the dolphins!
+Feed the donkeys!
+Feed the foxes!
+Feed the frogs!
+Feed the goats!
+Feed the horses!
+Feed the llamas!
+Feed the mules!
+Feed the ocelots!
+Feed the pandas!
+Feed the parrots!
 Feed the pigs!
+Feed the rabbits!
 Feed the sheep!
-Find the temples!
+Feed the turtles!
+Feed the wolves!
+Fertilizing with ash!
+Fertilizing with bonemeal!
+Filling bottles...
+Filling bottles with honey...
+Filling bottles with milk...
+Filling bottles with water...
+Filling buckets with fertilizer...
+Filling buckets with lava...
+Filling buckets with milk...
+Filling buckets with water...
+Filling the world with evil...
+Filling the world with horrors...
+Filling the world with insidious intent...
+Find ancient temples!
+Find the ancient temples!
+Find the loot!
+Find the music discs!
+Flint Firestarter!
 Freezing chill!
+Fry the eggs!
 Full of stars!
+Hardcore gaming!
+"Infinite genders" is almost never an interesting concept!
 Give us Godot!
+Grams!
+Grams and ingots!
 Groundbreaking!
+Growing trees...
 Hatchets for everyone!
 Haunted!
 Hide!
+Hiding the treasures...
 Hoes for everyone!
 Homeomorphic to a 3-sphere!
+I've always been a sucker for mystery!
 I have a suggestion.
 I need more context.
 idspispopd!
@@ -71,95 +185,242 @@ if not ok: return
 Indev!
 Indie!
 Ingots!
+Ingots and grams!
 Insinuating a keen sense of despair!
 Interpret many worlds!
+Intriguingly shrouded in mystery!
+Intriguingly sprinkled with enigmas!
+Intriguingly wrapped in riddles!
 It is old! Its is evil! And it is NOT free!
 It's a game!
 Iterating upon game theory!
 Json! Json! Json!
+Jumping between treetops!
+Jumping from treetops!
+Jumping off cliffs!
 Keyboard compatible!
+Kill a tree!
+Lumps and nuggets!
+Lumps of charcoal!
+Lumps of coal!
+Lumps of raw metal!
+Lumps of sulphur!
+Lurking in the shadows!
 Macroscopic!
+Make dye from flowers!
+Make tools out of brass!
+Make tools out of copper!
+Make tools out of flint!
+Make tools out of glass!
+Make tools out of gold!
+Make tools out of iron!
+Make tools out of obsidian!
 Making the world evil!
 Mallets for everyone!
 May contain bees!
 May contain polygons!
 May contain salt!
+Meat... from bugs!
 Meat everywhere!
 Menger sponge!
+Metallic recycling!
+Milk the cows!
+Milk the goats!
 Mischievous machinations!
 Modded!
 Monster infighting!
+More relevant splash texts than vanilla!
+Morsels of meat!
+Mounds of ash!
+Mounds of snow!
 Node Graph out of Date. Rebuilding...
 Non-hyperbolic!
-Not placing traps!
+Not placing traps...
 Now 100% digital!
+Now contains infinitely fewer genders!.. I guess?
 Now in 3D!
+Now in more than three dimensions! §k(but the extra ones are secret!)
 Now in three dimensions! §k(oh, it's a pun!)
+Now with additional loot!
+Now with additional pies!
+Now with additional soups!
+Now with additional stews!
 Now with additional stuff!
 Now with additional things!
+Now with additional types of pie!
+Now with additional types of soup!
+Now with additional types of stew!
 Now with ash!
+Now with better splash texts!
+Now with better names for things!
 Now with bonus oddities!
 Now with bonus stuff!
 Now with bonus things!
+Now with brass!
 Now with cobblestones!
+Now with colder water!
+Now with cookable water!
+Now with edible bees!
+Now with edible bugs!
+Now with edible eggs!
+Now with edible spiders!
 Now with extra curios!
+Now with extra loot!
 Now with extra stuff!
 Now with extra things!
+Now with fancier glass panes!
+Now with fewer eye colors!
+Now with fewer eyebrows!
+Now with fewer stone tools... And also MORE stone tools!
+Now with fewer stone tools... And also MORE stone tools, somehow!
+Now with fewer stone tools... And MORE stone tools!
+Now with fewer stone tools... And MORE stone tools!... Huh?
+Now with fewer types of stone tools!
+Now with fewer mass nouns and more count nouns!
+Now with fewer wooden tools!
+Now with fewer wooden tools!... And also a few extra!
+Now with fewer wooden tools!... And also a few more!
+Now with fewer wooden tools!... And also a few more!... Uhh, I can explain! §k(but I won't)
+Now with fewer wooden tools!... And also a few more wooden tools!
+Now with geological compacting!
+Now with geological simulation!
 Now with greater difficulty!
+Now with hotter coal!
+Now with individual planks!
+Now with infinitely fewer genders!
+Now with infinitely fewer Herobrines!
+Now with infinitely more mods enabled by default!
+Now with infinitely more mods enabled by default! And infinitely fewer genders?!
+Now with less expressive humanoids!
+Now with less potable water!
+Now with more count nouns and fewer mass nouns!
+Now with more cylindrical carpets!
+Now with more game balance!
+Now with more game balance maybe!
 Now with more gameplay progression!
+Now with more loot!
+Now with more meats!
+Now with more pies!
+Now with more soups!
+Now with more stews!
 Now with more stuff!
 Now with more things!
+Now with more transferable liquids!
+Now with more types of pie!
+Now with more types of soup!
+Now with more types of stew!
+Now with more useful grass!
+Now with more wooden sticks!
+Now with significantly more "Now with"s!
 Now with silk!
 Now with smaller ingots!
 Now with some actual difficulty!
+Now with sulphur!
 Now with planks!
+Now with warmer water!
 Now without diamond armor!
 Now without diamond tools!
+Nuggets and lumps!
+Nuggets of raw metal!
+Observe the new look!
 Observe the paintings!
+Oceans of treasure!
+Optional content!
+Ostensibly modded!
+Our units are under attack!
 Paintings may hold secrets...
+Panes of glass!
 Pickaxes for everyone!
 Piles of ash!
 Piles of dirt!
 Piles of gravel!
+Piles of leaves!
+Piles of powders!
 Piles of sand!
+Piles of seeds!
+Piles of snow!
 Pixels everywhere!
 Planks everywhere!
 Plant a tree!
+Planks!
+Planting flowers...
+Planting trees...
+Potion brewing!
 Pneumatic!
 Prepare for the worst!
 Pseudo-infinite in every direction!
+Quite modded!
 Randomized splash texts!
 Reference implementation!
+Reshuffling loot...
+Resurrecting the dead...
 Reticulating pines!
 Reticulating splines!
 Ride the pig!
+Rolls of yarn!
+Run.
 Run!
 Scary!
 Scraps of metal!
+Search for the loot!
 Secrets!
+Shards of glass!
+Shards of obsidian!
 Shovels for everyone!
 Sinister schemes!
 Slimy barrels!
+Sneaky!
 Spears for everyone!
 Spiders everywhere!
 Spooky!
 Stay a while, stay forever!
+Stone pebbles!
 Survive!
+Suspicious gravel, just waiting to have its hidden loot excavated!
+Suspicious gravel, just waiting to have its secret treasures extracted!
+Suspicious sand, just waiting to have its hidden loot recovered!
+Suspicious sand, just waiting to have its secret treasures revealed!
 Swords for everyone!
 Terrestrial!
 The sky is the limit!
 The sum of its parts!
 Thematic!
+These dynamite sticks are the bomb!
+They are billions!
 Thinking with pistons!
 Thinking with portals!
+This message will appear on the splash screen, isn't that not weird?
 This message will never appear on the splash screen, isn't that weird?
 Trees everywhere!
+Try it before you dye it!
+Try it before you dye it! §k(for making a new map!)
+Try the beef stew!
+Try the carrot soup!
+Try the chicken stew!
+Try the fish stew!
+Try the kelp soup!
+Try the mushroom soup!
 Try the mushroom stew!
+Try the mutton stew!
+Try the porridge!
+Try the potato soup!
+Try the potions!
+Try the pumpkin soup!
+Try the rabbit stew!
+Try the radish soup!
+Tufts of grass!
 Turing complete!
 Unnatural beauty!
+Venture far!
+Venture into the depths!
+Venture into the ruins!
+Venture into the unknown!
+Venture wide!
 Verlet integration!
+Voxels everywhere!
 Watch your step!
 Welcome to your Doom!
 What do you expect?
 You can eat the grass!
+You can even eat the grass!
 Zombies everywhere!

@@ -37,7 +37,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.add(ModItems.OBSIDIAN_SHARD);
 		// Cobblestones
 		getOrCreateTagBuilder(Tags.Item.ALL_COBBLESTONES)
-				.add(ModItems.STIEFANE_COBBLESTONE);
+				.add(ModItems.STIEFANE_COBBLESTONE)
+				// Temporary inclusions for playtesting.
+				.add(Items.COBBLED_DEEPSLATE, Items.COBBLESTONE, Items.MOSSY_COBBLESTONE,
+						Items.BASALT, Items.SMOOTH_BASALT, Items.BLACKSTONE,
+						Items.ANDESITE, Items.DIORITE, Items.GRANITE, Items.DRIPSTONE_BLOCK)
+		;
 		// Glassy Sand Piles
 		getOrCreateTagBuilder(Tags.Item.ALL_GLASSY_SAND_PILES)
 				.add(ModItems.FELDSAND_PILE)
@@ -72,6 +77,42 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.add(ModItems.SPRUCE_PLANK)
 				.add(ModItems.VERDAK_PLANK)
 				.add(ModItems.WARPED_PLANK);
+		// Stained Glass Panes
+		getOrCreateTagBuilder(Tags.Item.ALL_STAINED_GLASS_PANES)
+				.add(ModItems.BLACK_STAINED_GLASS_PANE)
+				.add(ModItems.BLUE_STAINED_GLASS_PANE)
+				.add(ModItems.BROWN_STAINED_GLASS_PANE)
+				.add(ModItems.CYAN_STAINED_GLASS_PANE)
+				.add(ModItems.GRAY_STAINED_GLASS_PANE)
+				.add(ModItems.GREEN_STAINED_GLASS_PANE)
+				.add(ModItems.LIGHT_BLUE_STAINED_GLASS_PANE)
+				.add(ModItems.LIGHT_GRAY_STAINED_GLASS_PANE)
+				.add(ModItems.LIME_STAINED_GLASS_PANE)
+				.add(ModItems.MAGENTA_STAINED_GLASS_PANE)
+				.add(ModItems.ORANGE_STAINED_GLASS_PANE)
+				.add(ModItems.PINK_STAINED_GLASS_PANE)
+				.add(ModItems.PURPLE_STAINED_GLASS_PANE)
+				.add(ModItems.RED_STAINED_GLASS_PANE)
+				.add(ModItems.WHITE_STAINED_GLASS_PANE)
+				.add(ModItems.YELLOW_STAINED_GLASS_PANE);
+		// Yarn Rolls
+		getOrCreateTagBuilder(Tags.Item.ALL_YARN_ROLLS)
+				.add(ModItems.BLACK_YARN_ROLL)
+				.add(ModItems.BLUE_YARN_ROLL)
+				.add(ModItems.BROWN_YARN_ROLL)
+				.add(ModItems.CYAN_YARN_ROLL)
+				.add(ModItems.GRAY_YARN_ROLL)
+				.add(ModItems.GREEN_YARN_ROLL)
+				.add(ModItems.LIGHT_BLUE_YARN_ROLL)
+				.add(ModItems.LIGHT_GRAY_YARN_ROLL)
+				.add(ModItems.LIME_YARN_ROLL)
+				.add(ModItems.MAGENTA_YARN_ROLL)
+				.add(ModItems.ORANGE_YARN_ROLL)
+				.add(ModItems.PINK_YARN_ROLL)
+				.add(ModItems.PURPLE_YARN_ROLL)
+				.add(ModItems.RED_YARN_ROLL)
+				.add(ModItems.WHITE_YARN_ROLL)
+				.add(ModItems.YELLOW_YARN_ROLL);
 		// Yarnballs
 		getOrCreateTagBuilder(Tags.Item.ALL_YARNBALLS)
 				.add(ModItems.BLACK_YARNBALL)
@@ -107,11 +148,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		getOrCreateTagBuilder(Tags.Item.BROOM_MATERIALS) // TODO: Add broom item.
 				.add(Items.WHEAT)
 				.add(ModItems.DRY_GRASS_TUFT);
-		// Cookable Eggs
-		getOrCreateTagBuilder(Tags.Item.COOKABLE_EGGS)
-				.add(Items.EGG)
-				.add(Items.SNIFFER_EGG)
-				.add(Items.TURTLE_EGG);
 		// Raw Cake Berries
 		getOrCreateTagBuilder(Tags.Item.RAW_CAKE_BERRIES)
 				.add(Items.GLOW_BERRIES)

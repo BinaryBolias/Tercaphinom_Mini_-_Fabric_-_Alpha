@@ -5,13 +5,212 @@
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/desert_pyramid/armors",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/desert_pyramid/tools",
+					"weight": 11
+				}
+			],
+			"rolls": 2.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/desert_pyramid/tools",
+					"weight": 11
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-warm_biome",
+					"weight": 1
+				}
+			],
+			"rolls": 2.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/desert_pyramid/armors",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-warm_biome",
+					"weight": 2
+				}
+			],
+			"rolls": 2.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/village/yarn-warm_biome",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:purple_yarn_roll",
+					"weight": 1
+				}
+			],
+			"rolls": 2.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 2
+				},
+				{
 					"type": "minecraft:item",
 					"functions": [
 						{
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 4.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bone",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:skeleton_skull",
+					"weight": 9
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
 								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bone",
+					"weight": 7
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:saddle",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:copper_horse_harness",
+					"weight": 15
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:golden_horse_armor",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 21
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:golden_apple",
+					"weight": 21
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -27,13 +226,13 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 5.0,
+								"max": 8.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:brass_ingot",
+					"name": "minecraft:emerald",
 					"weight": 15
 				},
 				{
@@ -43,14 +242,14 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 5.0,
+								"max": 16.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
 					"name": "minecraft:copper_ingot",
-					"weight": 15
+					"weight": 35
 				},
 				{
 					"type": "minecraft:item",
@@ -59,14 +258,14 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 2.0
+								"max": 16.0,
+								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
 					"name": "minecraft:gold_ingot",
-					"weight": 15
+					"weight": 30
 				},
 				{
 					"type": "minecraft:item",
@@ -75,7 +274,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 5.0,
+								"max": 16.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -83,6 +282,59 @@
 					],
 					"name": "minecraft:iron_ingot",
 					"weight": 15
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 20
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:golden_apple",
+					"weight": 20
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:diamond",
+					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
@@ -107,91 +359,14 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 6.0,
-								"min": 4.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:bone",
-					"weight": 25
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
+								"max": 8.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:spider_eye",
-					"weight": 25
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 6.0,
-								"min": 3.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:rotten_flesh",
-					"weight": 25
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:saddle",
-					"weight": 12
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:brass_horse_harness",
-					"weight": 14
-				},
-				{
-					"type": "minecraft:item",
-					"name": "tercaphinom:copper_horse_harness",
-					"weight": 14
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:iron_horse_armor",
-					"weight": 14
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:golden_horse_armor",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:enchant_randomly"
-						}
-					],
-					"name": "minecraft:book",
-					"weight": 21
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:golden_apple",
-					"weight": 21
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:enchanted_golden_apple",
-					"weight": 2
+					"name": "minecraft:copper_ingot",
+					"weight": 35
 				},
 				{
 					"type": "minecraft:item",
@@ -206,14 +381,30 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:feldsand_pile",
-					"weight": 7
+					"name": "minecraft:gold_ingot",
+					"weight": 30
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_ingot",
+					"weight": 15
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 4.0,
-				"min": 2.0
+				"max": 3.0,
+				"min": 1.0
 			}
 		},
 		{
@@ -248,8 +439,8 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:gunpowder",
-					"weight": 11
+					"name": "tercaphinom:dynamite_stick",
+					"weight": 15
 				},
 				{
 					"type": "minecraft:item",
@@ -258,32 +449,62 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 16.0,
+								"max": 4.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
-						},
+						}
+					],
+					"name": "tercaphinom:dynamite_bundle",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
 						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
+							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
 								"max": 3.0,
-								"min": 0.0
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:spider_eye",
+					"weight": 25
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gunpowder",
+					"weight": 10
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 64.0,
+								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
 					"name": "tercaphinom:feldsand_pile",
-					"weight": 7
+					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
@@ -331,52 +552,76 @@
 						}
 					],
 					"name": "minecraft:string",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:white_yarnball",
-					"weight": 5
+					"weight": 14
 				}
 			],
-			"rolls": 5.0
-		},
-		{
-			"bonus_rolls": 0.0,
-			"entries": [
-				{
-					"type": "minecraft:loot_table",
-					"value": "tercaphinom:chests/special_dungeon_loot"
-				}
-			],
-			"rolls": 1.0
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 1.0
+			}
 		},
 		{
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
 					"type": "minecraft:empty",
-					"weight": 13
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"enchantments": [
+								"minecraft:efficiency"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"enchantments": [
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"enchantments": [
+								"minecraft:efficiency",
+								"minecraft:unbreaking"
+							],
+							"function": "minecraft:enchant_randomly"
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:skeleton_skull",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:purple_yarn_roll",
+					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
@@ -389,6 +634,94 @@
 					],
 					"name": "minecraft:dune_armor_trim_smithing_template",
 					"weight": 3
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:feldsand_pile",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 42.0,
+								"min": 27.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:feldsand_pile",
+					"weight": 1
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 0.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/special_dungeon_loot"
 				}
 			],
 			"rolls": 1.0

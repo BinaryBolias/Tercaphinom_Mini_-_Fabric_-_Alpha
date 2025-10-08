@@ -1,6 +1,7 @@
 package binarybolias.tercaphinom.references;
 
 import binarybolias.tercaphinom.item.*;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.effect.StatusEffect;
@@ -76,28 +77,33 @@ public class ModItems {
 	//### Items ###
 	//region ## Basic Resources ##
 	//# Ball (yarn) #
-	public static final Item BLACK_YARNBALL = registerItem("black_yarnball", newItem(64));
-	public static final Item BLUE_YARNBALL = registerItem("blue_yarnball", newItem(64));
-	public static final Item BROWN_YARNBALL = registerItem("brown_yarnball", newItem(64));
-	public static final Item CYAN_YARNBALL = registerItem("cyan_yarnball", newItem(64));
-	public static final Item GRAY_YARNBALL = registerItem("gray_yarnball", newItem(64));
-	public static final Item GREEN_YARNBALL = registerItem("green_yarnball", newItem(64));
-	public static final Item LIGHT_BLUE_YARNBALL = registerItem("light_blue_yarnball", newItem(64));
-	public static final Item LIGHT_GRAY_YARNBALL = registerItem("light_gray_yarnball", newItem(64));
-	public static final Item LIME_YARNBALL = registerItem("lime_yarnball", newItem(64));
-	public static final Item MAGENTA_YARNBALL = registerItem("magenta_yarnball", newItem(64));
-	public static final Item ORANGE_YARNBALL = registerItem("orange_yarnball", newItem(64));
-	public static final Item PINK_YARNBALL = registerItem("pink_yarnball", newItem(64));
-	public static final Item PURPLE_YARNBALL = registerItem("purple_yarnball", newItem(64));
-	public static final Item RED_YARNBALL = registerItem("red_yarnball", newItem(64));
-	public static final Item WHITE_YARNBALL = registerItem("white_yarnball", newItem(64));
-	public static final Item YELLOW_YARNBALL = registerItem("yellow_yarnball", newItem(64));
+	public static final Item BLACK_YARNBALL = registerItem("black_yarnball", newItem(96));
+	public static final Item BLUE_YARNBALL = registerItem("blue_yarnball", newItem(96));
+	public static final Item BROWN_YARNBALL = registerItem("brown_yarnball", newItem(96));
+	public static final Item CYAN_YARNBALL = registerItem("cyan_yarnball", newItem(96));
+	public static final Item GRAY_YARNBALL = registerItem("gray_yarnball", newItem(96));
+	public static final Item GREEN_YARNBALL = registerItem("green_yarnball", newItem(96));
+	public static final Item LIGHT_BLUE_YARNBALL = registerItem("light_blue_yarnball", newItem(96));
+	public static final Item LIGHT_GRAY_YARNBALL = registerItem("light_gray_yarnball", newItem(96));
+	public static final Item LIME_YARNBALL = registerItem("lime_yarnball", newItem(96));
+	public static final Item MAGENTA_YARNBALL = registerItem("magenta_yarnball", newItem(96));
+	public static final Item ORANGE_YARNBALL = registerItem("orange_yarnball", newItem(96));
+	public static final Item PINK_YARNBALL = registerItem("pink_yarnball", newItem(96));
+	public static final Item PURPLE_YARNBALL = registerItem("purple_yarnball", newItem(96));
+	public static final Item RED_YARNBALL = registerItem("red_yarnball", newItem(96));
+	public static final Item WHITE_YARNBALL = registerItem("white_yarnball", newItem(96));
+	public static final Item YELLOW_YARNBALL = registerItem("yellow_yarnball", newItem(96));
 	//# Ball (miscellaneous) #
 	public static final Item COBWEB_BALL = registerItem("cobweb_ball", newItem(64)); // TODO: Add projectile.
 	public static final Item MUDBALL = registerItem("mudball", newItem(96));
 	//# Brick #
 	public static final Item NETHERWART_BRICK = registerItem("netherwart_brick", newItem(smallBrickSettings()));
 	public static final Item STIEFANE_BRICK = registerItem("stiefane_brick", newItem(largeBrickSettings()));
+	//# Bundle & Rod & Stick #
+	public static final Item DYNAMITE_BUNDLE = registerItem("dynamite_bundle", newItem(64));
+	public static final Item DYNAMITE_STICK = registerItem("dynamite_stick", newItem(96));
+	public static final Item FREEZE_ROD = registerItem("freeze_rod", newItem(64));
+	public static final Item WOODEN_STICK_BUNDLE = registerItem("wooden_stick_bundle", newItem(64));
 	//# Chunk (ice) #
 	//# Chunk (miscellaneous) #
 	public static final Item WARPED_FLESH_CHUNK = registerItem("warped_flesh_chunk",
@@ -130,9 +136,32 @@ public class ModItems {
 	//# Lump & Nugget (miscellaneous) #
 	public static final Item INFERNOCOAL_LUMP = registerItem("infernocoal_lump", newFireproofItem(64));
 	public static final Item SULPHUR_LUMP = registerItem("sulphur_lump", newFireproofItem(64));
+	//# Pane (glass - clear) #
+	public static final Item CLEAR_GLASS_PANE = registerItem("clear_glass_pane", newGlassPaneItem(Blocks.GLASS_PANE));
+	//# Pane (glass - stained) #
+	public static final Item BLACK_STAINED_GLASS_PANE = registerItem("black_stained_glass_pane", newGlassPaneItem(Blocks.BLACK_STAINED_GLASS_PANE));
+	public static final Item BLUE_STAINED_GLASS_PANE = registerItem("blue_stained_glass_pane", newGlassPaneItem(Blocks.BLUE_STAINED_GLASS_PANE));
+	public static final Item BROWN_STAINED_GLASS_PANE = registerItem("brown_stained_glass_pane", newGlassPaneItem(Blocks.BROWN_STAINED_GLASS_PANE));
+	public static final Item CYAN_STAINED_GLASS_PANE = registerItem("cyan_stained_glass_pane", newGlassPaneItem(Blocks.CYAN_STAINED_GLASS_PANE));
+	public static final Item GRAY_STAINED_GLASS_PANE = registerItem("gray_stained_glass_pane", newGlassPaneItem(Blocks.GRAY_STAINED_GLASS_PANE));
+	public static final Item GREEN_STAINED_GLASS_PANE = registerItem("green_stained_glass_pane", newGlassPaneItem(Blocks.GREEN_STAINED_GLASS_PANE));
+	public static final Item LIGHT_BLUE_STAINED_GLASS_PANE = registerItem("light_blue_stained_glass_pane", newGlassPaneItem(Blocks.LIGHT_BLUE_STAINED_GLASS_PANE));
+	public static final Item LIGHT_GRAY_STAINED_GLASS_PANE = registerItem("light_gray_stained_glass_pane", newGlassPaneItem(Blocks.LIGHT_GRAY_STAINED_GLASS_PANE));
+	public static final Item LIME_STAINED_GLASS_PANE = registerItem("lime_stained_glass_pane", newGlassPaneItem(Blocks.LIME_STAINED_GLASS_PANE));
+	public static final Item MAGENTA_STAINED_GLASS_PANE = registerItem("magenta_stained_glass_pane", newGlassPaneItem(Blocks.MAGENTA_STAINED_GLASS_PANE));
+	public static final Item ORANGE_STAINED_GLASS_PANE = registerItem("orange_stained_glass_pane", newGlassPaneItem(Blocks.ORANGE_STAINED_GLASS_PANE));
+	public static final Item PINK_STAINED_GLASS_PANE = registerItem("pink_stained_glass_pane", newGlassPaneItem(Blocks.PINK_STAINED_GLASS_PANE));
+	public static final Item PURPLE_STAINED_GLASS_PANE = registerItem("purple_stained_glass_pane", newGlassPaneItem(Blocks.PURPLE_STAINED_GLASS_PANE));
+	public static final Item RED_STAINED_GLASS_PANE = registerItem("red_stained_glass_pane", newGlassPaneItem(Blocks.RED_STAINED_GLASS_PANE));
+	public static final Item WHITE_STAINED_GLASS_PANE = registerItem("white_stained_glass_pane", newGlassPaneItem(Blocks.WHITE_STAINED_GLASS_PANE));
+	public static final Item YELLOW_STAINED_GLASS_PANE = registerItem("yellow_stained_glass_pane", newGlassPaneItem(Blocks.YELLOW_STAINED_GLASS_PANE));
+	//# Pane (metal) #
+	//TODO: Wait for implementation of metal rods.
+	//# Pane (miscellaneous) #
+	//TODO: Wooden Pane.
 	//# Pile (seed) #
 	//# Pile (miscellaneous) #
-	public static final Item ASH_PILE = registerItem("ash_pile", new BoneMealItem(itemSettings().maxCount(96).fireproof()));
+	public static final Item ASH_PILE = registerItem("ash_pile", new AshPileItem(itemSettings().maxCount(96).fireproof()));
 	public static final Item DIRT_PILE = registerItem("dirt_pile", newFireproofItem(64));
 	public static final Item FELDSAND_PILE = registerItem("feldsand_pile", newFireproofItem(64));
 	public static final Item FERROSAND_PILE = registerItem("ferrosand_pile", newFireproofItem(64));
@@ -140,6 +169,7 @@ public class ModItems {
 	public static final Item GRAVEL_PILE = registerItem("gravel_pile", newFireproofItem(64));
 	public static final Item LEAF_PILE = registerItem("leaf_pile", newItem(96));
 	public static final Item SKORSAND_PILE = registerItem("skorsand_pile", newFireproofItem(64));
+	public static final Item SNOW_PILE = registerItem("snow_pile", new AliasedBlockItem(Blocks.SNOW, itemSettings(64)));
 	//# Plank #
 	public static final Item ACACIA_PLANK = registerItem("acacia_plank", newItem(plankSettings()));
 	public static final Item BIRCH_PLANK = registerItem("birch_plank", newItem(plankSettings()));
@@ -152,23 +182,36 @@ public class ModItems {
 	public static final Item SPRUCE_PLANK = registerItem("spruce_plank", newItem(plankSettings()));
 	public static final Item VERDAK_PLANK = registerItem("verdak_plank", newItem(plankSettings()));
 	public static final Item WARPED_PLANK = registerItem("warped_plank", newItem(plankSettings()));
-	//# Bundle & Rod & Stick #
-	public static final Item DYNAMITE_BUNDLE = registerItem("dynamite_bundle", newItem(64));
-	public static final Item DYNAMITE_STICK = registerItem("dynamite_stick", newItem(96));
-	public static final Item FREEZE_ROD = registerItem("freeze_rod", newItem(64));
-	public static final Item WOODEN_STICK_BUNDLE = registerItem("wooden_stick_bundle", newItem(64));
+	//# Roll #
+	public static final Item BLACK_YARN_ROLL = registerItem("black_yarn_roll", newYarnRollItem(Blocks.BLACK_CARPET));
+	public static final Item BLUE_YARN_ROLL = registerItem("blue_yarn_roll", newYarnRollItem(Blocks.BLUE_CARPET));
+	public static final Item BROWN_YARN_ROLL = registerItem("brown_yarn_roll", newYarnRollItem(Blocks.BROWN_CARPET));
+	public static final Item CYAN_YARN_ROLL = registerItem("cyan_yarn_roll", newYarnRollItem(Blocks.CYAN_CARPET));
+	public static final Item GRAY_YARN_ROLL = registerItem("gray_yarn_roll", newYarnRollItem(Blocks.GRAY_CARPET));
+	public static final Item GREEN_YARN_ROLL = registerItem("green_yarn_roll", newYarnRollItem(Blocks.GREEN_CARPET));
+	public static final Item LIGHT_BLUE_YARN_ROLL = registerItem("light_blue_yarn_roll", newYarnRollItem(Blocks.LIGHT_BLUE_CARPET));
+	public static final Item LIGHT_GRAY_YARN_ROLL = registerItem("light_gray_yarn_roll", newYarnRollItem(Blocks.LIGHT_GRAY_CARPET));
+	public static final Item LIME_YARN_ROLL = registerItem("lime_yarn_roll", newYarnRollItem(Blocks.LIME_CARPET));
+	public static final Item MAGENTA_YARN_ROLL = registerItem("magenta_yarn_roll", newYarnRollItem(Blocks.MAGENTA_CARPET));
+	public static final Item ORANGE_YARN_ROLL = registerItem("orange_yarn_roll", newYarnRollItem(Blocks.ORANGE_CARPET));
+	public static final Item PINK_YARN_ROLL = registerItem("pink_yarn_roll", newYarnRollItem(Blocks.PINK_CARPET));
+	public static final Item PURPLE_YARN_ROLL = registerItem("purple_yarn_roll", newYarnRollItem(Blocks.PURPLE_CARPET));
+	public static final Item RED_YARN_ROLL = registerItem("red_yarn_roll", newYarnRollItem(Blocks.RED_CARPET));
+	public static final Item WHITE_YARN_ROLL = registerItem("white_yarn_roll", newYarnRollItem(Blocks.WHITE_CARPET));
+	public static final Item YELLOW_YARN_ROLL = registerItem("yellow_yarn_roll", newYarnRollItem(Blocks.YELLOW_CARPET));
 	//# Shard #
 	public static final Item DARK_PRISMARINE_SHARD = registerItem("dark_prismarine_shard", newFireproofItem(64));
 	public static final Item GLASS_SHARD = registerItem("glass_shard", newFireproofItem(96));
 	public static final Item OBSIDIAN_SHARD = registerItem("obsidian_shard", newFireproofItem(96));
 	//# Miscellaneous #
 	public static final Item DRY_GRASS_TUFT = registerItem("dry_grass_tuft", newItem(itemSettings().maxCount(96)));
+//	public static final Item DRY_MOSS_WAD = registerItem("dry_moss_wad", newItem(96)); // TODO: Enable later.
 	public static final Item LIVE_GRASS_TUFT = registerItem("live_grass_tuft", newItem(96,
 			itemSettings().food(FoodComponents.LIVE_GRASS_TUFT)));
-	//TODO: Use 'AliasedBlockItem' functionality for adding Live Moss Wad.
-	// - This would naturally allow it to replace Moss Carpet's item form, particularly for dynamically getting the item corresponding to the Moss Carpet block.
+//	public static final Item LIVE_MOSS_WAD = registerItem("live_moss_wad", new AliasedBlockItem( // TODO: Enable later.
+//			Blocks.MOSS_CARPET, itemSettings(96)));
 	public static final Item PINECONE = registerItem("pinecone",
-			new AliasedBlockItem(Blocks.SPRUCE_SAPLING, itemSettings(64))); //TODO: Don't use 'AliasedBlockItem' here; we actually want the sapling to be a separate naturally obtainable item.
+			new IndirectBlockItem(Blocks.SPRUCE_SAPLING, itemSettings(64)));
 	public static final Item SILK_WAD = registerItem("silk_wad", newItem(96));
 	public static final Item STONE_PEBBLE = registerItem("stone_pebble", newFireproofItem(96));
 	//endregion
@@ -650,6 +693,7 @@ public class ModItems {
 		);
 	}
 	
+	
 	private static Item newFireproofItem(int maxCount) {
 		return newFireproofItem(itemSettings().maxCount(maxCount));
 	}
@@ -657,6 +701,17 @@ public class ModItems {
 	private static Item newFireproofItem(Item.Settings settings) {
 		return newItem(settings.fireproof());
 	}
+	
+	
+	private static Item newGlassPaneItem(Block block) {
+		return new AliasedBlockItem(block, itemSettings().maxCount(64).fireproof());
+	}
+	
+	
+	private static Item newYarnRollItem(Block block) {
+		return new AliasedBlockItem(block, itemSettings().maxCount(64));
+	}
+	
 	
 	//region ## New Container Item Methods ##
 	//# Bottle #
@@ -675,7 +730,7 @@ public class ModItems {
 	
 	//# Bowl #
 	private static Item newBowlBeverageItem(Item.Settings settings) {
-		return new BowlBeverageItem(settings.maxCount(1).recipeRemainder(Items.BOWL));
+		return new BowlBeverageItem(settings.maxCount(12).recipeRemainder(Items.BOWL));
 	}
 	
 	
@@ -688,7 +743,7 @@ public class ModItems {
 			ArrayList<RegistryEntry<StatusEffect>> curedStatusEffects, Item.Settings settings
 	) {
 		return new BowlStatusEffectCureBeverageItem(curedStatusEffects,
-				settings.maxCount(1).recipeRemainder(Items.BOWL));
+				settings.maxCount(12).recipeRemainder(Items.BOWL));
 	}
 	
 	

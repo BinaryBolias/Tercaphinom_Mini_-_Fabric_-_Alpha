@@ -27,7 +27,7 @@
 							"function": "minecraft:set_count"
 						},
 						{
-							"add": false,
+							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
 								"max": 1.0,
@@ -37,6 +37,45 @@
 						}
 					],
 					"name": "minecraft:echo_shard"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"conditions": [
+				{
+					"condition": "minecraft:entity_properties",
+					"entity": "killer",
+					"predicate": {
+						"type": "minecraft:creeper"
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:disc_fragment_5"
 				}
 			],
 			"rolls": 1.0

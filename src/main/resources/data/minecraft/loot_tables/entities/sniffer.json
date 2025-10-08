@@ -267,6 +267,25 @@
 				}
 			],
 			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"conditions": [
+				{
+					"condition": "minecraft:entity_properties",
+					"entity": "killer",
+					"predicate": {
+						"type": "minecraft:creeper"
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:music_disc_relic"
+				}
+			],
+			"rolls": 1.0
 		}
 	],
 	"random_sequence": "minecraft:entities/sniffer"

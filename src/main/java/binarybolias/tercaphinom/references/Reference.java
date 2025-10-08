@@ -130,7 +130,23 @@ public class Reference {
 			// Used for situations where defining a block tag is necessary, but undesired.
 			public static final TagKey<net.minecraft.block.Block> NIL = of("nil");
 			
+			//# Blacklists & Whitelists
+			public static final TagKey<net.minecraft.block.Block> BLACKLISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON = of("blacklisted_for_layered_mound_placement_upon");
+			public static final TagKey<net.minecraft.block.Block> WHITELISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON = of("whitelisted_for_layered_mound_placement_upon");
+			//# Block Types #
 			public static final TagKey<net.minecraft.block.Block> ALL_ETERNALITH_BLOCKS = of("all_eternalith_blocks");
+			public static final TagKey<net.minecraft.block.Block> ALL_COBBLED_STONE_BLOCKS = of("all_cobbled_stone_blocks");
+			public static final TagKey<net.minecraft.block.Block> ALL_NATURAL_STONE_BLOCKS = of("all_natural_stone_blocks");
+			public static final TagKey<net.minecraft.block.Block> ALL_REFINED_STONE_BLOCKS = of("all_refined_stone_blocks");
+			public static final TagKey<net.minecraft.block.Block> ALL_RAW_METAL_BLOCKS = of("all_raw_metal_blocks");
+			public static final TagKey<net.minecraft.block.Block> ALL_REFINED_METAL_BLOCKS = of("all_refined_metal_blocks");
+			//# Geological #
+			public static final TagKey<net.minecraft.block.Block> GEOLOGICALLY_COMPACTS_FROM_ABOVE = of("geologically_compacts_from_above");
+			public static final TagKey<net.minecraft.block.Block> GEOLOGICALLY_COMPACTS_FROM_BELOW = of("geologically_compacts_from_below");
+			//# Other Behaviors #
+			public static final TagKey<net.minecraft.block.Block> SPREADABLE_ATOP_ASHY_NETHERRACK = of("spreadable_atop_ashy_netherrack");
+			public static final TagKey<net.minecraft.block.Block> SPREADABLE_INTO_ASHY_NETHERRACK = of("spreadable_into_ashy_netherrack");
+			public static final TagKey<net.minecraft.block.Block> SPREADABLE_ONTO_ASHY_NETHERRACK = of("spreadable_onto_ashy_netherrack");
 			
 			
 			private static TagKey<net.minecraft.block.Block> of(String id) {
@@ -166,10 +182,11 @@ public class Reference {
 			public static final TagKey<net.minecraft.item.Item> ALL_METAL_GRAMS = of("all_metal_grams");
 			public static final TagKey<net.minecraft.item.Item> ALL_MUSHROOMS = of("all_mushrooms");
 			public static final TagKey<net.minecraft.item.Item> ALL_PLANKS = of("all_planks");
+			public static final TagKey<net.minecraft.item.Item> ALL_STAINED_GLASS_PANES = of("all_stained_glass_panes");
+			public static final TagKey<net.minecraft.item.Item> ALL_YARN_ROLLS = of("all_yarn_rolls");
 			public static final TagKey<net.minecraft.item.Item> ALL_YARNBALLS = of("all_yarnballs");
 			public static final TagKey<net.minecraft.item.Item> ARROWHEAD_MATERIALS = of("arrowhead_materials");
 			public static final TagKey<net.minecraft.item.Item> BROOM_MATERIALS = of("broom_materials");
-			public static final TagKey<net.minecraft.item.Item> COOKABLE_EGGS = of("cookable_eggs");
 			public static final TagKey<net.minecraft.item.Item> RAW_CAKE_BERRIES = of("raw_cake_berries");
 			//# Decomposable Materials #
 			public static final TagKey<net.minecraft.item.Item> DECOMPOSABLE_MATERIALS = of("decomposable_materials");

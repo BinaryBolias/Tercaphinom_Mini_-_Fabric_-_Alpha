@@ -81,37 +81,37 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:blue_stained_glass_pane",
+					"name": "tercaphinom:blue_stained_glass_pane",
 					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:light_blue_stained_glass_pane",
+					"name": "tercaphinom:light_blue_stained_glass_pane",
 					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:magenta_stained_glass_pane",
+					"name": "tercaphinom:magenta_stained_glass_pane",
 					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:pink_stained_glass_pane",
+					"name": "tercaphinom:pink_stained_glass_pane",
 					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:purple_stained_glass_pane",
+					"name": "tercaphinom:purple_stained_glass_pane",
 					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:red_stained_glass_pane",
+					"name": "tercaphinom:red_stained_glass_pane",
 					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:yellow_stained_glass_pane",
+					"name": "tercaphinom:yellow_stained_glass_pane",
 					"weight": 2
 				},
 				{

@@ -49,6 +49,50 @@
 				}
 			],
 			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"conditions": [
+				{
+					"condition": "minecraft:killed_by_player"
+				},
+				{
+					"chance": 0.015625,
+					"condition": "minecraft:random_chance_with_looting",
+					"looting_multiplier": 0.015625
+				}
+			],
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:skeleton_skull"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"conditions": [
+				{
+					"condition": "minecraft:entity_properties",
+					"entity": "killer",
+					"predicate": {
+						"type": "#minecraft:skeletons"
+					}
+				},
+				{
+					"chance": 0.125,
+					"condition": "minecraft:random_chance_with_looting",
+					"looting_multiplier": 0.0625
+				}
+			],
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:skeleton_skull"
+				}
+			],
+			"rolls": 1.0
 		}
 	],
 	"random_sequence": "minecraft:entities/stray"

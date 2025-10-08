@@ -37,7 +37,12 @@
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:copper_ingot",
-					"weight": 5
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:prismarine_crystals",
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
@@ -58,7 +63,7 @@
 						}
 					],
 					"name": "minecraft:carrot",
-					"weight": 3
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -79,7 +84,7 @@
 						}
 					],
 					"name": "minecraft:potato",
-					"weight": 3
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",

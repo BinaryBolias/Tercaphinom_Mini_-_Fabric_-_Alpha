@@ -1,9 +1,6 @@
 package binarybolias.tercaphinom.references;
 
-import binarybolias.tercaphinom.recipe.BasicGridRecipe;
-import binarybolias.tercaphinom.recipe.BucketFertilizerTransfer;
-import binarybolias.tercaphinom.recipe.SuspiciousStewRecipe;
-import binarybolias.tercaphinom.recipe.WaterTransferRecipe;
+import binarybolias.tercaphinom.recipe.*;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
@@ -28,19 +25,25 @@ public class ModRecipes {
 	public static RecipeSerializer<BucketFertilizerTransfer> BUCKET_FERTILIZER_TRANSFER;
 	public static RecipeSerializer<SuspiciousStewRecipe> SUSPICIOUS_STEW;
 	public static RecipeSerializer<WaterTransferRecipe> WATER_TRANSFER;
+	public static RecipeSerializer<ReinforcedStainedGlassBlock> REINFORCED_STAINED_GLASS_BLOCK;
 	
 	
 	public static void register() {
 		logMainEvent("Registering recipes");
 		
+		//# Fundamental #
 		BASIC_GRID_RECIPE = register(
 				"basic_grid_crafting", new BasicGridRecipe.Serializer());
+		//# Specific #
 		BUCKET_FERTILIZER_TRANSFER = register(
 				"crafting_special_bucket_fertilizer_transfer", new SpecialRecipeSerializer<>(BucketFertilizerTransfer::new));
 		SUSPICIOUS_STEW = register(
 				"crafting_special_suspicious_stew", new SpecialRecipeSerializer<>(SuspiciousStewRecipe::new));
 		WATER_TRANSFER = register(
 				"crafting_special_water_transfer", new SpecialRecipeSerializer<>(WaterTransferRecipe::new));
+		//# Joke & Unserious #
+		REINFORCED_STAINED_GLASS_BLOCK = register(
+				"reinforced_stained_glass_block", new SpecialRecipeSerializer<>(ReinforcedStainedGlassBlock::new));
 	}
 	
 	

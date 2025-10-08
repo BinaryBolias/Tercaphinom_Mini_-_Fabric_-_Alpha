@@ -1,6 +1,7 @@
 package binarybolias.tercaphinom.references;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SuspiciousStewIngredient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
@@ -18,19 +19,26 @@ import java.util.Set;
 
 import static binarybolias.tercaphinom.references.Reference.*;
 
+
+/**
+ * @see net.minecraft.item.ItemGroups
+ */
 public class ModItemGroups {
 	public ModItemGroups() {
 		// Disable instantiation.
 		throw new AssertionError();
 	}
 	
+	
 	public static void register() {
 		logMainEvent("Registering item groups");
 	}
 	
+	
 	private static Text displayName(String groupIdentifier) {
 		return translate("item_group." + groupIdentifier);
 	}
+	
 	
 	public static final ItemGroup BLOCKS = Registry.register(Registries.ITEM_GROUP,
 			identifier(ModID + "_blocks_group"),
@@ -46,12 +54,30 @@ public class ModItemGroups {
 						
 						// ## Elemental ##
 						//# Metal #
+						entries.add(Blocks.RAW_COPPER_BLOCK);
 						entries.add(ModBlocks.RAW_BRASS_BLOCK);
+						entries.add(Blocks.RAW_IRON_BLOCK);
+						entries.add(Blocks.RAW_GOLD_BLOCK);
 						entries.add(ModBlocks.RAW_EIDURIL_BLOCK);
+						entries.add(Blocks.COPPER_BLOCK);
 						entries.add(ModBlocks.REFINED_BRASS_BLOCK);
+						entries.add(Blocks.IRON_BLOCK);
+						entries.add(Blocks.GOLD_BLOCK);
+						entries.add(Blocks.NETHERITE_BLOCK);
 						entries.add(ModBlocks.REFINED_EIDURIL_BLOCK);
 						//# Mosaic & Plank #
+						entries.add(Blocks.ACACIA_PLANKS);
+						entries.add(Blocks.BAMBOO_PLANKS);
+						entries.add(Blocks.BIRCH_PLANKS);
+						entries.add(Blocks.CHERRY_PLANKS);
+						entries.add(Blocks.CRIMSON_PLANKS);
+						entries.add(Blocks.DARK_OAK_PLANKS);
+						entries.add(Blocks.JUNGLE_PLANKS);
+						entries.add(Blocks.MANGROVE_PLANKS);
+						entries.add(Blocks.OAK_PLANKS);
+						entries.add(Blocks.SPRUCE_PLANKS);
 						entries.add(ModBlocks.VERDAK_PLANK_BLOCK);
+						entries.add(Blocks.WARPED_PLANKS);
 						//# Stone (brick) #
 						entries.add(ModBlocks.STIEFANE_BRICK_BLOCK);
 						//# Stone (cobbled) #
@@ -62,13 +88,26 @@ public class ModItemGroups {
 						entries.add(ModBlocks.POLISHED_STIEFANE_BLOCK);
 						//# Miscellaneous #
 						entries.add(ModBlocks.ASH_BLOCK);
+						entries.add(Blocks.DIRT);
+						entries.add(Blocks.COARSE_DIRT);
+						entries.add(Blocks.CLAY);
+						entries.add(Blocks.SAND);
+						entries.add(Blocks.RED_SAND);
 						entries.add(ModBlocks.SKORSAND_BLOCK);
+						entries.add(Blocks.NETHERRACK);
+						entries.add(Blocks.END_STONE);
 						
 						// ## Modified & Transitional ##
+						//# Bony #
+						//# Covered #
 						// # Ore (netherrack) #
 						// # Ore (stiefane) #
 						entries.add(ModBlocks.STIEFANE_LAPIS_ORE);
 						// # Ore (zygolith) #
+						//# Reinforced #
+						//# Stony #
+						//# Miscellaneous #
+						entries.add(ModBlocks.ASHY_NETHERRACK_BLOCK);
 						
 						// ## Junction & Utility ##
 						//# Button & Pressure Plate #
@@ -100,7 +139,7 @@ public class ModItemGroups {
 						//# Miscellaneous #
 						
 						//### Joke & Unserious ###
-						//## (J&U) Elemental #
+						//## (J&U) Elemental ##
 						//# Cheese #
 						entries.add(ModBlocks.BLUE_CHEESE_BLOCK);
 						entries.add(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK);
@@ -112,6 +151,9 @@ public class ModItemGroups {
 						entries.add(ModBlocks.CHERRY_JELLYBLOCK);
 						entries.add(ModBlocks.HYPERSMOOTH_CREAMSTONE);
 						entries.add(ModBlocks.ULTRASMOOTH_STONE);
+						//## (J&U) Modified & Transitional ##
+						//# Reinforced #
+						entries.add(ModBlocks.REINFORCED_STAINED_GLASS_BLOCK);
 					})).build());
 	public static final ItemGroup EQUIPMENT = Registry.register(Registries.ITEM_GROUP,
 			identifier(ModID + "_equipment_group"),
@@ -269,69 +311,138 @@ public class ModItemGroups {
 					.icon(() -> new ItemStack(ModItems.OAK_PLANK))
 					.entries(((displayContext, entries) -> {
 						//region ## Basic Resources ##
-						//# Ball (yarn) #
-						entries.add(ModItems.WHITE_YARNBALL);
-						entries.add(ModItems.LIGHT_GRAY_YARNBALL);
-						entries.add(ModItems.GRAY_YARNBALL);
-						entries.add(ModItems.BLACK_YARNBALL);
-						entries.add(ModItems.BROWN_YARNBALL);
-						entries.add(ModItems.RED_YARNBALL);
-						entries.add(ModItems.ORANGE_YARNBALL);
-						entries.add(ModItems.YELLOW_YARNBALL);
-						entries.add(ModItems.LIME_YARNBALL);
-						entries.add(ModItems.GREEN_YARNBALL);
-						entries.add(ModItems.CYAN_YARNBALL);
-						entries.add(ModItems.LIGHT_BLUE_YARNBALL);
-						entries.add(ModItems.BLUE_YARNBALL);
-						entries.add(ModItems.PURPLE_YARNBALL);
-						entries.add(ModItems.MAGENTA_YARNBALL);
-						entries.add(ModItems.PINK_YARNBALL);
-						//# Ball (food) #
-						entries.add(ModItems.RAW_COOKIE_BALL);
-						entries.add(ModItems.RAW_HONEYBUN_BALL);
-						entries.add(ModItems.RAW_MAGMABUN_BALL);
-						entries.add(ModItems.RAW_SLIMEBUN_BALL);
+						//# Wooden Stick & Plank #
+						entries.add(Items.STICK);
+						entries.add(ModItems.WOODEN_STICK_BUNDLE);
+						entries.add(ModItems.ACACIA_PLANK);
+						entries.add(ModItems.BIRCH_PLANK);
+						entries.add(ModItems.CHERRY_PLANK);
+						entries.add(ModItems.CRIMSON_PLANK);
+						entries.add(ModItems.DARK_OAK_PLANK);
+						entries.add(ModItems.MAHOGANY_PLANK);
+						entries.add(ModItems.MANGROVE_PLANK);
+						entries.add(ModItems.OAK_PLANK);
+						entries.add(ModItems.SPRUCE_PLANK);
+						entries.add(ModItems.VERDAK_PLANK);
+						entries.add(ModItems.WARPED_PLANK);
 						//# Ball (miscellaneous) #
 						entries.add(Items.BONE_MEAL);
 						entries.add(ModItems.COBWEB_BALL);
 						entries.add(ModItems.MUDBALL);
 						entries.add(Items.SLIME_BALL);
-						//# Brick #
+						//# Miscellaneous Bundle & Rod & Stick #
+						entries.add(Items.BAMBOO);
+						entries.add(ModItems.DYNAMITE_BUNDLE);
+						entries.add(ModItems.DYNAMITE_STICK);
+						//# Brick (small) #
+						entries.add(Items.BRICK);
+						entries.add(Items.NETHER_BRICK);
 						entries.add(ModItems.NETHERWART_BRICK);
+						//# Brick (large) #
 						entries.add(ModItems.STIEFANE_BRICK);
 						//# Chunk #
-						entries.add(ModItems.WARPED_FLESH_CHUNK);
 						//# Cobblestone #
 						entries.add(ModItems.STIEFANE_COBBLESTONE);
 						//# Gram & Ingot #
-						entries.add(ModItems.BRASS_INGOT);
-						entries.add(ModItems.BRASS_GRAM);
 						entries.add(Items.COPPER_INGOT);
 						entries.add(ModItems.COPPER_GRAM);
+						entries.add(ModItems.BRASS_INGOT);
+						entries.add(ModItems.BRASS_GRAM);
+						entries.add(Items.IRON_INGOT);
+						entries.add(ModItems.IRON_GRAM);
+						entries.add(Items.GOLD_INGOT);
+						entries.add(ModItems.GOLD_GRAM);
 						entries.add(Items.NETHERITE_INGOT);
 						entries.add(ModItems.EIDURIL_INGOT);
 						entries.add(ModItems.EIDURIL_GRAM);
-						entries.add(Items.GOLD_INGOT);
-						entries.add(ModItems.GOLD_GRAM);
-						entries.add(Items.IRON_INGOT);
-						entries.add(ModItems.IRON_GRAM);
 						//# Lump & Nugget (metal) #
-						entries.add(ModItems.RAW_BRASS_LUMP);
-						entries.add(ModItems.RAW_BRASS_NUGGET);
 						entries.add(Items.RAW_COPPER);
 						entries.add(ModItems.RAW_COPPER_NUGGET);
-						entries.add(ModItems.RAW_EIDURIL_LUMP);
-						entries.add(ModItems.RAW_EIDURIL_NUGGET);
-						entries.add(Items.RAW_GOLD);
-						entries.add(Items.GOLD_NUGGET);
+						entries.add(ModItems.RAW_BRASS_LUMP);
+						entries.add(ModItems.RAW_BRASS_NUGGET);
 						entries.add(Items.RAW_IRON);
 						entries.add(Items.IRON_NUGGET);
+						entries.add(Items.RAW_GOLD);
+						entries.add(Items.GOLD_NUGGET);
+						entries.add(ModItems.RAW_EIDURIL_LUMP);
+						entries.add(ModItems.RAW_EIDURIL_NUGGET);
 						//# Lump & Nugget (miscellaneous) #
 						entries.add(Items.COAL);
 						entries.add(Items.CHARCOAL);
 						entries.add(ModItems.INFERNOCOAL_LUMP);
 						entries.add(ModItems.RAW_DOUGH_LUMP);
 						entries.add(ModItems.SULPHUR_LUMP);
+						//# Dye Blob #
+						entries.add(Items.WHITE_DYE);
+						entries.add(Items.LIGHT_GRAY_DYE);
+						entries.add(Items.GRAY_DYE);
+						entries.add(Items.BLACK_DYE);
+						entries.add(Items.BROWN_DYE);
+						entries.add(Items.RED_DYE);
+						entries.add(Items.ORANGE_DYE);
+						entries.add(Items.YELLOW_DYE);
+						entries.add(Items.LIME_DYE);
+						entries.add(Items.GREEN_DYE);
+						entries.add(Items.CYAN_DYE);
+						entries.add(Items.LIGHT_BLUE_DYE);
+						entries.add(Items.BLUE_DYE);
+						entries.add(Items.PURPLE_DYE);
+						entries.add(Items.MAGENTA_DYE);
+						entries.add(Items.PINK_DYE);
+						//# Yarn #
+						entries.add(ModItems.WHITE_YARNBALL);
+						entries.add(ModItems.WHITE_YARN_ROLL);
+						entries.add(ModItems.LIGHT_GRAY_YARNBALL);
+						entries.add(ModItems.LIGHT_GRAY_YARN_ROLL);
+						entries.add(ModItems.GRAY_YARNBALL);
+						entries.add(ModItems.GRAY_YARN_ROLL);
+						entries.add(ModItems.BLACK_YARNBALL);
+						entries.add(ModItems.BLACK_YARN_ROLL);
+						entries.add(ModItems.BROWN_YARNBALL);
+						entries.add(ModItems.BROWN_YARN_ROLL);
+						entries.add(ModItems.RED_YARNBALL);
+						entries.add(ModItems.RED_YARN_ROLL);
+						entries.add(ModItems.ORANGE_YARNBALL);
+						entries.add(ModItems.ORANGE_YARN_ROLL);
+						entries.add(ModItems.YELLOW_YARNBALL);
+						entries.add(ModItems.YELLOW_YARN_ROLL);
+						entries.add(ModItems.LIME_YARNBALL);
+						entries.add(ModItems.LIME_YARN_ROLL);
+						entries.add(ModItems.GREEN_YARNBALL);
+						entries.add(ModItems.GREEN_YARN_ROLL);
+						entries.add(ModItems.CYAN_YARNBALL);
+						entries.add(ModItems.CYAN_YARN_ROLL);
+						entries.add(ModItems.LIGHT_BLUE_YARNBALL);
+						entries.add(ModItems.LIGHT_BLUE_YARN_ROLL);
+						entries.add(ModItems.BLUE_YARNBALL);
+						entries.add(ModItems.BLUE_YARN_ROLL);
+						entries.add(ModItems.PURPLE_YARNBALL);
+						entries.add(ModItems.PURPLE_YARN_ROLL);
+						entries.add(ModItems.MAGENTA_YARNBALL);
+						entries.add(ModItems.MAGENTA_YARN_ROLL);
+						entries.add(ModItems.PINK_YARNBALL);
+						entries.add(ModItems.PINK_YARN_ROLL);
+						//# Pane (glass - clear) #
+						entries.add(ModItems.CLEAR_GLASS_PANE);
+						//# Pane (glass - stained) #
+						entries.add(ModItems.WHITE_STAINED_GLASS_PANE);
+						entries.add(ModItems.LIGHT_GRAY_STAINED_GLASS_PANE);
+						entries.add(ModItems.GRAY_STAINED_GLASS_PANE);
+						entries.add(ModItems.BLACK_STAINED_GLASS_PANE);
+						entries.add(ModItems.BROWN_STAINED_GLASS_PANE);
+						entries.add(ModItems.RED_STAINED_GLASS_PANE);
+						entries.add(ModItems.ORANGE_STAINED_GLASS_PANE);
+						entries.add(ModItems.YELLOW_STAINED_GLASS_PANE);
+						entries.add(ModItems.LIME_STAINED_GLASS_PANE);
+						entries.add(ModItems.GREEN_STAINED_GLASS_PANE);
+						entries.add(ModItems.CYAN_STAINED_GLASS_PANE);
+						entries.add(ModItems.LIGHT_BLUE_STAINED_GLASS_PANE);
+						entries.add(ModItems.BLUE_STAINED_GLASS_PANE);
+						entries.add(ModItems.PURPLE_STAINED_GLASS_PANE);
+						entries.add(ModItems.MAGENTA_STAINED_GLASS_PANE);
+						entries.add(ModItems.PINK_STAINED_GLASS_PANE);
+						//# Pane (metal) #
+						//# Pane (miscellaneous) #
 						//# Pie #
 						entries.add(ModItems.RAW_APPLE_PIE);
 						entries.add(ModItems.RAW_CHERRY_PIE);
@@ -349,29 +460,12 @@ public class ModItemGroups {
 						entries.add(ModItems.FELDSAND_PILE); // Sand
 						entries.add(ModItems.FERROSAND_PILE); // Sand
 						entries.add(ModItems.SKORSAND_PILE); // Sand
-						//# Plank #
-						entries.add(ModItems.ACACIA_PLANK);
-						entries.add(ModItems.BIRCH_PLANK);
-						entries.add(ModItems.CHERRY_PLANK);
-						entries.add(ModItems.CRIMSON_PLANK);
-						entries.add(ModItems.DARK_OAK_PLANK);
-						entries.add(ModItems.MAHOGANY_PLANK);
-						entries.add(ModItems.MANGROVE_PLANK);
-						entries.add(ModItems.OAK_PLANK);
-						entries.add(ModItems.SPRUCE_PLANK);
-						entries.add(ModItems.VERDAK_PLANK);
-						entries.add(ModItems.WARPED_PLANK);
+						entries.add(ModItems.SNOW_PILE);
 						//# Elemental Rods & Powders #
 						entries.add(Items.BLAZE_ROD);
 						entries.add(Items.BLAZE_POWDER);
 						entries.add(ModItems.FREEZE_ROD);
 						entries.add(ModItems.FREEZE_POWDER_PILE);
-						//# Bundle & Rod & Stick #
-						entries.add(Items.BAMBOO);
-						entries.add(ModItems.DYNAMITE_BUNDLE);
-						entries.add(ModItems.DYNAMITE_STICK);
-						entries.add(Items.STICK);
-						entries.add(ModItems.WOODEN_STICK_BUNDLE);
 						//# Miscellaneous Shards #
 						entries.add(Items.FLINT);
 						entries.add(ModItems.GLASS_SHARD);
@@ -381,13 +475,22 @@ public class ModItemGroups {
 						entries.add(Items.PRISMARINE_SHARD);
 						entries.add(Items.PRISMARINE_CRYSTALS);
 						//# Miscellaneous #
+						entries.add(Items.BOOK);
+						entries.add(Items.EGG);
+						entries.add(Items.FEATHER);
 						entries.add(ModItems.DRY_GRASS_TUFT);
 						entries.add(ModItems.LIVE_GRASS_TUFT);
+						entries.add(Items.INK_SAC);
+						entries.add(Items.GLOW_INK_SAC);
+						entries.add(Items.HONEYCOMB);
 						entries.add(Items.LEATHER);
 						entries.add(Items.NETHERITE_SCRAP);
 						entries.add(Items.PAPER);
 						entries.add(ModItems.PINECONE);
 						entries.add(Items.RABBIT_HIDE);
+						entries.add(Items.GHAST_TEAR);
+						entries.add(Items.SPIDER_EYE);
+						entries.add(Items.FERMENTED_SPIDER_EYE);
 						entries.add(ModItems.SILK_WAD);
 						entries.add(Items.STRING);
 						entries.add(ModItems.STONE_PEBBLE);
@@ -403,6 +506,7 @@ public class ModItemGroups {
 						entries.add(ModItems.BOTTLE_OF_MILK);
 						entries.add(ModItems.BOTTLE_OF_STEAMING_WATER);
 						entries.add(PotionContentsComponent.createStack(Items.POTION, Potions.WATER));
+						entries.add(Items.EXPERIENCE_BOTTLE);
 						//# Bowl (empty) #
 						entries.add(Items.BOWL);
 						//# Bowl (filled - miscellaneous) #
@@ -483,40 +587,39 @@ public class ModItemGroups {
 						//# [3] Wooden Stick & Bundle #
 						entries.add(Items.STICK);
 						entries.add(ModItems.WOODEN_STICK_BUNDLE);
-						//# [4] Yarnballs #
+						//# Yarn #
 						entries.add(ModItems.WHITE_YARNBALL);
+						entries.add(ModItems.WHITE_YARN_ROLL);
 						entries.add(ModItems.LIGHT_GRAY_YARNBALL);
+						entries.add(ModItems.LIGHT_GRAY_YARN_ROLL);
 						entries.add(ModItems.GRAY_YARNBALL);
+						entries.add(ModItems.GRAY_YARN_ROLL);
 						entries.add(ModItems.BLACK_YARNBALL);
+						entries.add(ModItems.BLACK_YARN_ROLL);
 						entries.add(ModItems.BROWN_YARNBALL);
+						entries.add(ModItems.BROWN_YARN_ROLL);
 						entries.add(ModItems.RED_YARNBALL);
+						entries.add(ModItems.RED_YARN_ROLL);
 						entries.add(ModItems.ORANGE_YARNBALL);
+						entries.add(ModItems.ORANGE_YARN_ROLL);
 						entries.add(ModItems.YELLOW_YARNBALL);
+						entries.add(ModItems.YELLOW_YARN_ROLL);
 						entries.add(ModItems.LIME_YARNBALL);
+						entries.add(ModItems.LIME_YARN_ROLL);
 						entries.add(ModItems.GREEN_YARNBALL);
+						entries.add(ModItems.GREEN_YARN_ROLL);
 						entries.add(ModItems.CYAN_YARNBALL);
+						entries.add(ModItems.CYAN_YARN_ROLL);
 						entries.add(ModItems.LIGHT_BLUE_YARNBALL);
+						entries.add(ModItems.LIGHT_BLUE_YARN_ROLL);
 						entries.add(ModItems.BLUE_YARNBALL);
+						entries.add(ModItems.BLUE_YARN_ROLL);
 						entries.add(ModItems.PURPLE_YARNBALL);
+						entries.add(ModItems.PURPLE_YARN_ROLL);
 						entries.add(ModItems.MAGENTA_YARNBALL);
+						entries.add(ModItems.MAGENTA_YARN_ROLL);
 						entries.add(ModItems.PINK_YARNBALL);
-						//# [5] Yarn Rolls #
-						entries.add(Items.WHITE_CARPET);
-						entries.add(Items.LIGHT_GRAY_CARPET);
-						entries.add(Items.GRAY_CARPET);
-						entries.add(Items.BLACK_CARPET);
-						entries.add(Items.BROWN_CARPET);
-						entries.add(Items.RED_CARPET);
-						entries.add(Items.ORANGE_CARPET);
-						entries.add(Items.YELLOW_CARPET);
-						entries.add(Items.LIME_CARPET);
-						entries.add(Items.GREEN_CARPET);
-						entries.add(Items.CYAN_CARPET);
-						entries.add(Items.LIGHT_BLUE_CARPET);
-						entries.add(Items.BLUE_CARPET);
-						entries.add(Items.PURPLE_CARPET);
-						entries.add(Items.MAGENTA_CARPET);
-						entries.add(Items.PINK_CARPET);
+						entries.add(ModItems.PINK_YARN_ROLL);
 						//# [6] Miscellaneous #
 						entries.add(ModItems.COBWEB_BALL);
 						entries.add(ModItems.DRY_GRASS_TUFT);

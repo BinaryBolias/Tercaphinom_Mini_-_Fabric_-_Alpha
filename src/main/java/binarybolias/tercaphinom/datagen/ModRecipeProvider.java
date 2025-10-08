@@ -2,6 +2,7 @@ package binarybolias.tercaphinom.datagen;
 
 import binarybolias.tercaphinom.datagen.recipe.BasicGridRecipeJsonBuilder;
 import binarybolias.tercaphinom.recipe.BucketFertilizerTransfer;
+import binarybolias.tercaphinom.recipe.ReinforcedStainedGlassBlock;
 import binarybolias.tercaphinom.recipe.SuspiciousStewRecipe;
 import binarybolias.tercaphinom.recipe.WaterTransferRecipe;
 import binarybolias.tercaphinom.references.ModBlocks;
@@ -162,18 +163,25 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerEightAroundOneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.BUDDING_AMETHYST,
 				ModItems.MINIWIZARD, Items.AMETHYST_SHARD, "", null);
 		//# Ash #
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, ModItems.ASH_PILE, 50,
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, ModItems.ASH_PILE, 50,
 				ModItems.LEAF_PILE, 0.125F);
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, ModItems.ASH_PILE, 50,
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, ModItems.ASH_PILE, 50,
 				ModItems.WOODEN_STICK_BUNDLE, 0.125F);
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, ModItems.ASH_PILE, 50,
-				Tags.Item.ALL_YARNBALLS, "has_any_yarnball", "_from_yarnball",
-				0.125F);
+		offerBlastingRecipe(exporter, RecipeCategory.MISC, ModItems.ASH_PILE, 50,
+				Tags.Item.ALL_PLANKS, "has_any_plank", "_from_plank", 0.125F);
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, ModItems.ASH_PILE, 50,
+				Tags.Item.ALL_YARN_ROLLS, "has_any_yarn_roll",
+				"_from_yarn_roll", 0.125F);
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, ModBlocks.ASH_BLOCK, 1, ModItems.ASH_PILE, "", null);
+		// Ash from charcoal and coal done through campfire only to maintain proper quick-movement from inventory to furnace fuel slot.
+		offerCampfireCookingRecipe(exporter, RecipeCategory.MISC, ModItems.ASH_PILE, 50,
+				Items.CHARCOAL, 0.125F, "ash");
+		offerCampfireCookingRecipe(exporter, RecipeCategory.MISC, ModItems.ASH_PILE, 50,
+				Items.COAL, 0.125F, "ash");
+		//# Charcoal #
+		offerSmeltingRecipe(exporter, RecipeCategory.MISC, Items.CHARCOAL, 400,
+				Tags.Item.ALL_PLANKS, "has_any_plank", "_from_plank", 0.25F);
 		//# Coal #
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.COAL_BLOCK, 1, Items.COAL, "", null);
@@ -214,34 +222,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//# Mud #
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MUDBALL)
 				.input(ModItems.DIRT_PILE)
-				.input(Ingredient.ofItems(
-						Items.POTION,
-						ModItems.BOTTLE_OF_BRIMWATER,
-						ModItems.BOTTLE_OF_FREEZEWATER,
-						ModItems.BOTTLE_OF_STEAMING_WATER))
-				.group("mudball")
-				.criterion(hasItem(ModItems.DIRT_PILE), conditionsFromItem(ModItems.DIRT_PILE))
-				.offerTo(exporter, idFromItem(ModItems.MUDBALL, "_from_bottled_water"));
-		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MUDBALL)
-				.input(ModItems.DIRT_PILE)
-				.input(Ingredient.ofItems(
-						ModItems.BOWL_OF_WATER,
-						ModItems.BOWL_OF_BRIMWATER,
-						ModItems.BOWL_OF_FREEZEWATER,
-						ModItems.BOWL_OF_STEAMING_WATER))
-				.group("mudball")
-				.criterion(hasItem(ModItems.DIRT_PILE), conditionsFromItem(ModItems.DIRT_PILE))
+				.input(ModItems.BOWL_OF_WATER)
+				.criterion(hasItem(ModItems.BOWL_OF_WATER), conditionsFromItem(ModItems.BOWL_OF_WATER))
 				.offerTo(exporter, idFromItem(ModItems.MUDBALL, "_from_bowled_water"));
-		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MUDBALL, 3)
-				.input(ModItems.DIRT_PILE, 3)
-				.input(Ingredient.ofItems(
-						Items.WATER_BUCKET,
-						ModItems.BUCKET_OF_BRIMWATER,
-						ModItems.BUCKET_OF_FREEZEWATER,
-						ModItems.BUCKET_OF_STEAMING_WATER))
-				.group("mudball")
-				.criterion(hasItem(ModItems.DIRT_PILE), conditionsFromItem(ModItems.DIRT_PILE))
-				.offerTo(exporter, idFromItem(ModItems.MUDBALL, "_from_bucketed_water"));
 		offerCompactingEightRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Items.MUD, 1,
 				ModItems.MUDBALL, "", null);
 		offerEightAroundOneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Items.MUDDY_MANGROVE_ROOTS,
@@ -323,13 +306,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerOneToOneRecipe(exporter,
 				RecipeCategory.MISC, Items.BLAZE_POWDER, 3, Items.BLAZE_ROD, "_from_rod", "elemental_rod_pulverizing");
 		//# Bonemeal #
-		offerOneToOneRecipe(exporter,
-				RecipeCategory.MISC, Items.BONE_MEAL, 2, Items.BONE, fromItem(Items.BONE), "bonemeal_ball");
-		offerOneToOneRecipe(exporter,
-				RecipeCategory.MISC, Items.BONE_MEAL, 3, Items.NAUTILUS_SHELL, fromItem(Items.NAUTILUS_SHELL), "bonemeal_ball");
-		//# Charcoal #
-		offerSmeltingRecipe(exporter, RecipeCategory.MISC, Items.CHARCOAL, 400,
-				Tags.Item.ALL_PLANKS, "has_any_plank", "_from_plank", 0.125F);
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, Items.BONE_MEAL, 2, Items.BONE,
+				fromItem(Items.BONE), "bonemeal_ball");
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, Items.BONE_MEAL, 3, Items.NAUTILUS_SHELL,
+				fromItem(Items.NAUTILUS_SHELL), "bonemeal_ball");
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, Items.BONE_MEAL, 3, Blocks.SKELETON_SKULL,
+				fromItem(Blocks.SKELETON_SKULL), "bonemeal_ball");
 		//# Clay Brick #
 		offerBlastingAndSmeltingAndCampfireRecipeSet(exporter, RecipeCategory.MISC, Items.BRICK,
 				50, Items.CLAY_BALL, 0.125F, null);
@@ -390,24 +372,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//region ### Container Recipes (handheld) ###
 		//## Bottle (empty) ##
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.GLASS_BOTTLE)
-				.input('#', Items.GLASS_PANE)
+				.input('#', ModItems.CLEAR_GLASS_PANE)
 				.input('/', Items.STICK)
 				.pattern("/")
 				.pattern("#")
 				.group("empty_bottle")
-				.criterion(hasItem(Items.GLASS_PANE), conditionsFromItem(Items.GLASS_PANE))
+				.criterion(hasItem(ModItems.CLEAR_GLASS_PANE), conditionsFromItem(ModItems.CLEAR_GLASS_PANE))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-				.offerTo(exporter, idFromItem(Items.GLASS_PANE, "_single"));
+				.offerTo(exporter, idFromItem(ModItems.CLEAR_GLASS_PANE, "_single"));
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.GLASS_BOTTLE, 3)
-				.input('#', Items.GLASS_PANE)
+				.input('#', ModItems.CLEAR_GLASS_PANE)
 				.input('/', Items.STICK)
 				.pattern(" / ")
 				.pattern("# #")
 				.pattern(" # ")
 				.group("empty_bottle")
-				.criterion(hasItem(Items.GLASS_PANE), conditionsFromItem(Items.GLASS_PANE))
+				.criterion(hasItem(ModItems.CLEAR_GLASS_PANE), conditionsFromItem(ModItems.CLEAR_GLASS_PANE))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-				.offerTo(exporter, idFromItem(Items.GLASS_PANE, "_triple"));
+				.offerTo(exporter, idFromItem(ModItems.CLEAR_GLASS_PANE, "_triple"));
 		//## Bowl (empty) ##
 		offerBowlRecipe(exporter,
 				RecipeCategory.MISC, Items.BOWL, 2, Tags.Item.ALL_PLANKS,
@@ -494,7 +476,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("#O#")
 				.group("leather_armor")
 				.criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
-				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.offerTo(exporter, idFromItem(Items.LEATHER_BOOTS));
 		// Leather Cap
 		ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.LEATHER_HELMET)
@@ -504,20 +485,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("#O#")
 				.group("leather_armor")
 				.criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
-				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.offerTo(exporter, idFromItem(Items.LEATHER_HELMET));
 		// Leather Horse Harness
 		ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.LEATHER_HORSE_ARMOR)
 				.input('#', Items.LEATHER)
-				.input('X', ItemTags.WOOL_CARPETS)
+				.input('X', Tags.Item.ALL_YARN_ROLLS)
 				.input('O', Tags.Item.ALL_YARNBALLS)
 				.pattern("#X#")
 				.pattern("###")
 				.pattern("#O#")
 				.group("leather_armor")
 				.criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
-				.criterion("has_any_carpet", conditionsFromTag(ItemTags.WOOL_CARPETS))
-				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.offerTo(exporter, idFromItem(Items.LEATHER_HORSE_ARMOR));
 		// Leather Pant Pair
 		ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.LEATHER_LEGGINGS)
@@ -528,7 +506,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("# #")
 				.group("leather_armor")
 				.criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
-				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.offerTo(exporter, idFromItem(Items.LEATHER_LEGGINGS));
 		// Leather Tunic
 		ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.LEATHER_CHESTPLATE)
@@ -537,17 +514,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("#O#")
 				.pattern("###")
 				.pattern("###")
+				.group("leather_armor")
 				.criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
-				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.offerTo(exporter, idFromItem(Items.LEATHER_CHESTPLATE));
 		// Leather Wolf Harness
 		// TODO: Implement Leather Wolf Harness item.
 		//# [tier 1] Wood #
-		offerBasicDaggerRecipe(exporter, ModItems.WOODEN_DAGGER, Tags.Item.ALL_PLANKS, "has_any_plank", "");
-		offerBasicMalletRecipe(exporter, ModItems.WOODEN_MALLET, Tags.Item.ALL_PLANKS, "has_any_plank", "");
-		offerBasicShovelRecipe(exporter, ModItems.WOODEN_SHOVEL, Tags.Item.ALL_PLANKS, "has_any_plank", "");
-		offerBasicSpearRecipe(exporter, ModItems.WOODEN_SPEAR, Tags.Item.ALL_PLANKS, "has_any_plank", "");
-		offerBasicSwordRecipe(exporter, ModItems.WOODEN_SWORD, Tags.Item.ALL_PLANKS, "has_any_plank", "");
+		offerBasicDaggerRecipe(exporter, ModItems.WOODEN_DAGGER, Tags.Item.ALL_PLANKS, "has_any_plank", "", "wooden_tools");
+		offerBasicMalletRecipe(exporter, ModItems.WOODEN_MALLET, Tags.Item.ALL_PLANKS, "has_any_plank", "", "wooden_tools");
+		offerBasicShovelRecipe(exporter, ModItems.WOODEN_SHOVEL, Tags.Item.ALL_PLANKS, "has_any_plank", "", "wooden_tools");
+		offerBasicSpearRecipe(exporter, ModItems.WOODEN_SPEAR, Tags.Item.ALL_PLANKS, "has_any_plank", "", "wooden_tools");
+		offerBasicSwordRecipe(exporter, ModItems.WOODEN_SWORD, Tags.Item.ALL_PLANKS, "has_any_plank", "", "wooden_tools");
 		//# [tier 2] Flint #
 		offerPrimitiveShaftedToolRecipeSet(exporter, Items.FLINT, "flint",
 				ModItems.FLINT_DAGGER, ModItems.FLINT_HATCHET, ModItems.FLINT_HOE, ModItems.FLINT_SPEAR);
@@ -640,7 +617,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				Items.LEATHER_HELMET, Items.TURTLE_SCUTE, "", null);
 		// MA&T - Map
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, Items.MAP,
-				Items.PAPER, Items.COMPASS, "", null);
+				Items.PAPER, Items.COMPASS, fromItem(Items.PAPER), "empty_map");
+		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, Items.MAP,
+				ModItems.WHITE_YARN_ROLL, Items.COMPASS, fromItem(ModItems.WHITE_YARN_ROLL), "empty_map");
 		// MA&T - Modified Fishing Rod - Carrot on a Stick
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.TRANSPORTATION, Items.CARROT_ON_A_STICK,
 				Items.FISHING_ROD, Items.CARROT, "", "modified_fishing_rods");
@@ -931,27 +910,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//# (FlR) Water (transfer) #
 		ComplexRecipeJsonBuilder.create(WaterTransferRecipe::new).offerTo(exporter, "fluid_transfer_of_water");
-//		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, )
-//				.input(ModItems.BOWL_OF_WATER).input(Items.GLASS_BOTTLE);
-//		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, Items.POTION, 1,
-//				ModItems.BOWL_OF_WATER, Items.GLASS_BOTTLE, "_from_bowl_transfer", "water_transfer");
-		// NOTE: Potions are non-stackable, so only one Bottle of Water can be provided per bucket.
-//		offerShapelessThreeAndOneRecipe(exporter, RecipeCategory.MISC, Items.POTION, 3,
-//				Items.GLASS_BOTTLE, Items.WATER_BUCKET, "_from_bucket_transfer_into_three", "water_transfer");
-//		offerShapelessTwoAndOneRecipe(exporter, RecipeCategory.MISC, Items.POTION, 2,
-//				Items.GLASS_BOTTLE, Items.WATER_BUCKET, "_from_bucket_transfer_into_two", "water_transfer");
-//		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, Items.POTION, 1,
-//				Items.GLASS_BOTTLE, Items.WATER_BUCKET, "_from_bucket_transfer_into_one", "water_transfer");
-		// TODO: Test the functionality of using a potion as a basic crafting recipe ingredient.
-		//  - Make the potion (of water) give a remainder of Empty Bottle.
-		// NOTE: We should only allow potions of water; only cooking should allow for removing the potion effect.
-//		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, ModItems.BOWL_OF_WATER, 1,
-//				Items.POTION, Items.BOWL, "_from_bottle_transfer", "water_transfer");
-//		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, ModItems.BOWL_OF_WATER, 1,
-//				Items.BOWL, Items.WATER_BUCKET, "_from_bucket_transfer", "water_transfer");
-//		offerShapelessThreeAndOneRecipe(exporter, RecipeCategory.MISC, Items.WATER_BUCKET, 1,
-//				Tags.Item.SMALL_CONTAINERS_OF_WATER, "has_small_container_of_water", Items.BUCKET,
-//				"_from_small_container_transfer", "water_transfer");
 		//endregion
 		
 		//region ## Food Recipes ##
@@ -1011,8 +969,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerSmeltingAndSmokingAndCampfireRecipes(exporter, RecipeCategory.FOOD, Items.DRIED_KELP,
 				100, Items.KELP, 0.0625F);
 		// Fried Egg
-		offerSmeltingAndSmokingAndCampfireRecipes(exporter, RecipeCategory.FOOD, ModItems.FRIED_EGG, 100, Tags.Item.COOKABLE_EGGS,
-				"has_cookable_egg", "_from_cookable_egg", 0.125F, "fried_egg");
+		offerSmeltingAndSmokingAndCampfireRecipes(exporter, RecipeCategory.FOOD, ModItems.FRIED_EGG, 100,
+				Items.EGG, 0.125F, "fried_egg");
+		offerSmeltingAndSmokingAndCampfireRecipes(exporter, RecipeCategory.FOOD, ModItems.FRIED_EGG, 100,
+				Items.SNIFFER_EGG, 0.125F, "fried_egg");
+		offerSmeltingAndSmokingAndCampfireRecipes(exporter, RecipeCategory.FOOD, ModItems.FRIED_EGG, 100,
+				Items.TURTLE_EGG, 0.125F, "fried_egg");
 		offerSmeltingAndSmokingAndCampfireRecipes(exporter, RecipeCategory.FOOD, ModItems.FRIED_EGG, 100, Tags.Item.SPAWN_EGGS,
 				"has_any_spawn_egg", "_from_spawn_egg", 0.125F, "fried_egg");
 		
@@ -1214,17 +1176,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//region ### Decoration & Utility Recipes ###
 		
 		//region ## Workstation Recipes (cooking) ##
+		//# Basic Furnace #
+		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.FURNACE)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
+				.pattern(" # ")
+				.pattern("# #")
+				.pattern("###")
+				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
+				.offerTo(exporter, idFromItem(Blocks.FURNACE));
 		//# Blast Furnace #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.BLAST_FURNACE)
-				.input('#', Tags.Item.ALL_LARGE_BRICKS)
+				.input('#', Tags.Item.ALL_COBBLESTONES)
 				.input('X', Items.IRON_INGOT)
-				.input('@', ModItems.ASH_PILE)
-				.pattern("XXX")
-				.pattern("X@X")
-				.pattern("###")
-				.criterion("has_any_large_brick", conditionsFromTag(Tags.Item.ALL_LARGE_BRICKS))
+				.pattern(" # ")
+				.pattern("# #")
+				.pattern("X#X")
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
-				.criterion(hasItem(ModItems.ASH_PILE), conditionsFromItem(ModItems.ASH_PILE))
 				.offerTo(exporter, idFromItem(Blocks.BLAST_FURNACE));
 		//# Campfire (basic) #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.CAMPFIRE)
@@ -1233,8 +1200,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.input('@', Tags.Item.BASIC_FLAME_MATERIALS)
 				.pattern("#X#")
 				.pattern("#@#")
-				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
-				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
 				.criterion("has_basic_flame_material", conditionsFromTag(Tags.Item.BASIC_FLAME_MATERIALS))
 				.offerTo(exporter, idFromItem(Blocks.CAMPFIRE));
 		//# Campfire (spirit) #
@@ -1244,25 +1209,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.input('@', Tags.Item.SPIRIT_FLAME_MATERIALS)
 				.pattern("#X#")
 				.pattern("#@#")
-				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
-				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
-				.criterion("has_basic_flame_material", conditionsFromTag(Tags.Item.SPIRIT_FLAME_MATERIALS))
+				.criterion("has_spirit_flame_material", conditionsFromTag(Tags.Item.SPIRIT_FLAME_MATERIALS))
 				.offerTo(exporter, idFromItem(Blocks.SOUL_CAMPFIRE));
-		//# Furnace #
-		offerEightAroundOneRecipe(exporter,
-				RecipeCategory.MISC, Blocks.FURNACE, 1, ModItems.ASH_PILE, Tags.Item.ALL_COBBLESTONES,
-				"has_any_cobblestone", "", null);
 		//# Smoker #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.SMOKER)
 				.input('#', Tags.Item.ALL_COBBLESTONES)
-				.input('X', ModItems.WOODEN_STICK_BUNDLE)
-				.input('@', ModItems.ASH_PILE)
+				.input('X', Tags.Item.ALL_PLANKS)
+				.pattern(" # ")
+				.pattern("# #")
 				.pattern("X#X")
-				.pattern("#@#")
-				.pattern("X#X")
-				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
-				.criterion(hasItem(ModItems.WOODEN_STICK_BUNDLE), conditionsFromItem(ModItems.WOODEN_STICK_BUNDLE))
-				.criterion(hasItem(ModItems.ASH_PILE), conditionsFromItem(ModItems.ASH_PILE))
+				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.offerTo(exporter, idFromItem(Blocks.SMOKER));
 		//endregion
 		
@@ -1280,14 +1236,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.input('#', Tags.Item.ALL_COBBLESTONES)
 				.input('/', Items.BLAZE_ROD)
 				.input('X', Items.IRON_INGOT)
-				.input('O', Blocks.GLASS_PANE)
+				.input('O', ModItems.CLEAR_GLASS_PANE)
 				.pattern("OXO")
 				.pattern("X/X")
 				.pattern("###")
 				.criterion("has_any_cobblestone", conditionsFromTag(Tags.Item.ALL_COBBLESTONES))
 				.criterion(hasItem(Items.BLAZE_ROD), conditionsFromItem(Items.BLAZE_ROD))
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
-				.criterion(hasItem(Blocks.GLASS_PANE), conditionsFromItem(Blocks.GLASS_PANE))
+				.criterion(hasItem(ModItems.CLEAR_GLASS_PANE), conditionsFromItem(ModItems.CLEAR_GLASS_PANE))
 				.offerTo(exporter, idFromItem(Blocks.BREWING_STAND));
 		//# Cartography Table #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.CARTOGRAPHY_TABLE)
@@ -1437,13 +1393,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		ComplexRecipeJsonBuilder.create(CraftingDecoratedPotRecipe::new).offerTo(exporter, "decorated_pot_dynamic");
 		//# End Crystal #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.END_CRYSTAL)
-				.input('#', Items.GLASS_PANE)
+				.input('#', ModItems.CLEAR_GLASS_PANE)
 				.input('O', Items.ENDER_EYE)
 				.input('-', Items.GHAST_TEAR)
 				.pattern("-#-")
 				.pattern("#O#")
 				.pattern("-#-")
-				.criterion(hasItem(Items.GLASS_PANE), conditionsFromItem(Items.GLASS_PANE))
+				.criterion(hasItem(ModItems.CLEAR_GLASS_PANE), conditionsFromItem(ModItems.CLEAR_GLASS_PANE))
 				.criterion(hasItem(Items.ENDER_EYE), conditionsFromItem(Items.ENDER_EYE))
 				.criterion(hasItem(Items.GHAST_TEAR), conditionsFromItem(Items.GHAST_TEAR))
 				.offerTo(exporter, idFromItem(Items.END_CRYSTAL));
@@ -1788,7 +1744,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerDoubleRowRecipe(exporter,
 				RecipeCategory.MISC, ModItems.WHITE_YARNBALL, 1, Items.STRING, "_from_string", null);
 		offerOneToOneRecipe(exporter,
-				RecipeCategory.MISC, Items.STRING, 4,
+				RecipeCategory.MISC, Items.STRING, 3,
 				Tags.Item.ALL_YARNBALLS, "has_any_yarnball", "_from_yarnball", null);
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.MISC, Items.STRING, 1,
@@ -1801,6 +1757,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerBannerPatternRecipe(exporter, Items.GLOBE_BANNER_PATTERN, ModItems.MINIWIZARD);
 		offerBannerPatternRecipe(exporter, Items.MOJANG_BANNER_PATTERN, Items.ENCHANTED_GOLDEN_APPLE);
 		offerBannerPatternRecipe(exporter, Items.PIGLIN_BANNER_PATTERN, Items.PIGLIN_HEAD);
+		//TODO: Perhaps separate patterns for ordinary and wither skulls?
+		// - (VMc only uses the wither skull for this recipe)
 		offerBannerPatternRecipe(exporter, Items.SKULL_BANNER_PATTERN,
 				Items.SKELETON_SKULL, Items.WITHER_SKELETON_SKULL);
 		//endregion
@@ -1808,62 +1766,62 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//region ## Recipes with Color Variants ##
 		//# Banners #
-		offerBannerRecipe(exporter, Blocks.BLACK_BANNER, Blocks.BLACK_CARPET);
-		offerBannerRecipe(exporter, Blocks.BLUE_BANNER, Blocks.BLUE_CARPET);
-		offerBannerRecipe(exporter, Blocks.BROWN_BANNER, Blocks.BROWN_CARPET);
-		offerBannerRecipe(exporter, Blocks.CYAN_BANNER, Blocks.CYAN_CARPET);
-		offerBannerRecipe(exporter, Blocks.GRAY_BANNER, Blocks.GRAY_CARPET);
-		offerBannerRecipe(exporter, Blocks.GREEN_BANNER, Blocks.GREEN_CARPET);
-		offerBannerRecipe(exporter, Blocks.LIGHT_BLUE_BANNER, Blocks.LIGHT_BLUE_CARPET);
-		offerBannerRecipe(exporter, Blocks.LIGHT_GRAY_BANNER, Blocks.LIGHT_GRAY_CARPET);
-		offerBannerRecipe(exporter, Blocks.LIME_BANNER, Blocks.LIME_CARPET);
-		offerBannerRecipe(exporter, Blocks.MAGENTA_BANNER, Blocks.MAGENTA_CARPET);
-		offerBannerRecipe(exporter, Blocks.ORANGE_BANNER, Blocks.ORANGE_CARPET);
-		offerBannerRecipe(exporter, Blocks.PINK_BANNER, Blocks.PINK_CARPET);
-		offerBannerRecipe(exporter, Blocks.PURPLE_BANNER, Blocks.PURPLE_CARPET);
-		offerBannerRecipe(exporter, Blocks.RED_BANNER, Blocks.RED_CARPET);
-		offerBannerRecipe(exporter, Blocks.WHITE_BANNER, Blocks.WHITE_CARPET);
-		offerBannerRecipe(exporter, Blocks.YELLOW_BANNER, Blocks.YELLOW_CARPET);
+		offerBannerRecipe(exporter, Blocks.BLACK_BANNER, ModItems.BLACK_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.BLUE_BANNER, ModItems.BLUE_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.BROWN_BANNER, ModItems.BROWN_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.CYAN_BANNER, ModItems.CYAN_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.GRAY_BANNER, ModItems.GRAY_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.GREEN_BANNER, ModItems.GREEN_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.LIGHT_BLUE_BANNER, ModItems.LIGHT_BLUE_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.LIGHT_GRAY_BANNER, ModItems.LIGHT_GRAY_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.LIME_BANNER, ModItems.LIME_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.MAGENTA_BANNER, ModItems.MAGENTA_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.ORANGE_BANNER, ModItems.ORANGE_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.PINK_BANNER, ModItems.PINK_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.PURPLE_BANNER, ModItems.PURPLE_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.RED_BANNER, ModItems.RED_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.WHITE_BANNER, ModItems.WHITE_YARN_ROLL);
+		offerBannerRecipe(exporter, Blocks.YELLOW_BANNER, ModItems.YELLOW_YARN_ROLL);
 		
 		//# Beds #
 		// Pigmented
-		offerBedOfPigmentRecipe(exporter, Blocks.BLACK_BED, Blocks.BLACK_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.BLUE_BED, Blocks.BLUE_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.BROWN_BED, Blocks.BROWN_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.CYAN_BED, Blocks.CYAN_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.GRAY_BED, Blocks.GRAY_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.GREEN_BED, Blocks.GREEN_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.LIGHT_BLUE_BED, Blocks.LIGHT_BLUE_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.LIGHT_GRAY_BED, Blocks.LIGHT_GRAY_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.LIME_BED, Blocks.LIME_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.MAGENTA_BED, Blocks.MAGENTA_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.ORANGE_BED, Blocks.ORANGE_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.PINK_BED, Blocks.PINK_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.PURPLE_BED, Blocks.PURPLE_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.RED_BED, Blocks.RED_CARPET, "", "beds");
-		offerBedOfPigmentRecipe(exporter, Blocks.YELLOW_BED, Blocks.YELLOW_CARPET, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.BLACK_BED, ModItems.BLACK_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.BLUE_BED, ModItems.BLUE_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.BROWN_BED, ModItems.BROWN_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.CYAN_BED, ModItems.CYAN_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.GRAY_BED, ModItems.GRAY_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.GREEN_BED, ModItems.GREEN_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.LIGHT_BLUE_BED, ModItems.LIGHT_BLUE_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.LIGHT_GRAY_BED, ModItems.LIGHT_GRAY_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.LIME_BED, ModItems.LIME_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.MAGENTA_BED, ModItems.MAGENTA_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.ORANGE_BED, ModItems.ORANGE_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.PINK_BED, ModItems.PINK_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.PURPLE_BED, ModItems.PURPLE_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.RED_BED, ModItems.RED_YARN_ROLL, "", "beds");
+		offerBedOfPigmentRecipe(exporter, Blocks.YELLOW_BED, ModItems.YELLOW_YARN_ROLL, "", "beds");
 		// White
 		offerBedOfWhiteRecipe(exporter, Blocks.WHITE_BED, "", "beds");
 		
 		//# Candle (basic) #
 		offerCandleRecipe(exporter, "");
 		//# Candle (pigmented) #
-		offerCandleOfPigmentRecipe(exporter, Items.BLACK_CANDLE, Items.BLACK_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.BLUE_CANDLE, Items.BLUE_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.BROWN_CANDLE, Items.BROWN_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.CYAN_CANDLE, Items.CYAN_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.GRAY_CANDLE, Items.GRAY_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.GREEN_CANDLE, Items.GREEN_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.LIGHT_BLUE_CANDLE, Items.LIGHT_BLUE_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.LIGHT_GRAY_CANDLE, Items.LIGHT_GRAY_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.LIME_CANDLE, Items.LIME_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.MAGENTA_CANDLE, Items.MAGENTA_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.ORANGE_CANDLE, Items.ORANGE_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.PINK_CANDLE, Items.PINK_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.PURPLE_CANDLE, Items.PURPLE_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.RED_CANDLE, Items.RED_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.WHITE_CANDLE, Items.WHITE_DYE, "");
-		offerCandleOfPigmentRecipe(exporter, Items.YELLOW_CANDLE, Items.YELLOW_DYE, "");
+		offerCandleOfPigmentRecipe(exporter, Items.BLACK_CANDLE, Items.BLACK_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.BLUE_CANDLE, Items.BLUE_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.BROWN_CANDLE, Items.BROWN_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.CYAN_CANDLE, Items.CYAN_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.GRAY_CANDLE, Items.GRAY_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.GREEN_CANDLE, Items.GREEN_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.LIGHT_BLUE_CANDLE, Items.LIGHT_BLUE_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.LIGHT_GRAY_CANDLE, Items.LIGHT_GRAY_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.LIME_CANDLE, Items.LIME_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.MAGENTA_CANDLE, Items.MAGENTA_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.ORANGE_CANDLE, Items.ORANGE_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.PINK_CANDLE, Items.PINK_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.PURPLE_CANDLE, Items.PURPLE_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.RED_CANDLE, Items.RED_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.WHITE_CANDLE, Items.WHITE_DYE);
+		offerCandleOfPigmentRecipe(exporter, Items.YELLOW_CANDLE, Items.YELLOW_DYE);
 		
 		//# Concrete Powder #
 		offerConcretePowderBlockRecipe(exporter, Blocks.BLACK_CONCRETE_POWDER, Items.BLACK_DYE);
@@ -1900,51 +1858,58 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//# Glass Blocks & Panes #
 		// (glass) Clear Block
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.GLASS, 1, Blocks.GLASS_PANE, "", null);
+		offerCompactingEightRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.GLASS, 1,
+				ModItems.CLEAR_GLASS_PANE, "", null);
 		// (glass) Clear Pane
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, Items.GLASS_PANE, 200, ModItems.GLASS_SHARD, 0.125F);
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, Items.GLASS_PANE, 100, Items.GLASS_BOTTLE, 0.0625F);
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, ModItems.CLEAR_GLASS_PANE,
+				200, ModItems.GLASS_SHARD, 0.125F);
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, ModItems.CLEAR_GLASS_PANE,
+				100, Items.GLASS_BOTTLE, 0.0625F);
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, ModItems.CLEAR_GLASS_PANE,
+				100, Tags.Item.ALL_STAINED_GLASS_PANES, "has_any_stained_glass_pane",
+				"_from_stained_glass_pane", 0.0625F);
 		// (glass) Stained Blocks
-		offerStainedGlassBlockRecipe(exporter, Blocks.BLACK_STAINED_GLASS, Blocks.BLACK_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.BLUE_STAINED_GLASS, Blocks.BLUE_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.BROWN_STAINED_GLASS, Blocks.BROWN_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.CYAN_STAINED_GLASS, Blocks.CYAN_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.GRAY_STAINED_GLASS, Blocks.GRAY_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.GREEN_STAINED_GLASS, Blocks.GREEN_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.LIGHT_BLUE_STAINED_GLASS, Blocks.LIGHT_BLUE_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.LIGHT_GRAY_STAINED_GLASS, Blocks.LIGHT_GRAY_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.LIME_STAINED_GLASS, Blocks.LIME_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.MAGENTA_STAINED_GLASS, Blocks.MAGENTA_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.ORANGE_STAINED_GLASS, Blocks.ORANGE_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.PINK_STAINED_GLASS, Blocks.PINK_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.PURPLE_STAINED_GLASS, Blocks.PURPLE_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.RED_STAINED_GLASS, Blocks.RED_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.WHITE_STAINED_GLASS, Blocks.WHITE_STAINED_GLASS_PANE);
-		offerStainedGlassBlockRecipe(exporter, Blocks.YELLOW_STAINED_GLASS, Blocks.YELLOW_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.BLACK_STAINED_GLASS, ModItems.BLACK_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.BLUE_STAINED_GLASS, ModItems.BLUE_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.BROWN_STAINED_GLASS, ModItems.BROWN_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.CYAN_STAINED_GLASS, ModItems.CYAN_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.GRAY_STAINED_GLASS, ModItems.GRAY_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.GREEN_STAINED_GLASS, ModItems.GREEN_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.LIGHT_BLUE_STAINED_GLASS, ModItems.LIGHT_BLUE_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.LIGHT_GRAY_STAINED_GLASS, ModItems.LIGHT_GRAY_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.LIME_STAINED_GLASS, ModItems.LIME_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.MAGENTA_STAINED_GLASS, ModItems.MAGENTA_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.ORANGE_STAINED_GLASS, ModItems.ORANGE_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.PINK_STAINED_GLASS, ModItems.PINK_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.PURPLE_STAINED_GLASS, ModItems.PURPLE_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.RED_STAINED_GLASS, ModItems.RED_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.WHITE_STAINED_GLASS, ModItems.WHITE_STAINED_GLASS_PANE);
+		offerStainedGlassBlockRecipe(exporter, Blocks.YELLOW_STAINED_GLASS, ModItems.YELLOW_STAINED_GLASS_PANE);
 		// (glass) Stained Panes
-		offerStainedGlassPaneRecipe(exporter, Blocks.BLACK_STAINED_GLASS_PANE, Items.BLACK_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.BLUE_STAINED_GLASS_PANE, Items.BLUE_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.BROWN_STAINED_GLASS_PANE, Items.BROWN_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.CYAN_STAINED_GLASS_PANE, Items.CYAN_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.GRAY_STAINED_GLASS_PANE, Items.GRAY_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.GREEN_STAINED_GLASS_PANE, Items.GREEN_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.LIGHT_BLUE_STAINED_GLASS_PANE, Items.LIGHT_BLUE_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.LIGHT_GRAY_STAINED_GLASS_PANE, Items.LIGHT_GRAY_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.LIME_STAINED_GLASS_PANE, Items.LIME_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.MAGENTA_STAINED_GLASS_PANE, Items.MAGENTA_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.ORANGE_STAINED_GLASS_PANE, Items.ORANGE_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.PINK_STAINED_GLASS_PANE, Items.PINK_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.PURPLE_STAINED_GLASS_PANE, Items.PURPLE_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.RED_STAINED_GLASS_PANE, Items.RED_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.WHITE_STAINED_GLASS_PANE, Items.WHITE_DYE);
-		offerStainedGlassPaneRecipe(exporter, Blocks.YELLOW_STAINED_GLASS_PANE, Items.YELLOW_DYE);
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, ModItems.PURPLE_STAINED_GLASS_PANE,
+				200, Items.AMETHYST_SHARD, 0.125F);
+		offerStainedGlassPaneRecipe(exporter, ModItems.BLACK_STAINED_GLASS_PANE, Items.BLACK_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.BLUE_STAINED_GLASS_PANE, Items.BLUE_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.BROWN_STAINED_GLASS_PANE, Items.BROWN_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.CYAN_STAINED_GLASS_PANE, Items.CYAN_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.GRAY_STAINED_GLASS_PANE, Items.GRAY_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.GREEN_STAINED_GLASS_PANE, Items.GREEN_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.LIGHT_BLUE_STAINED_GLASS_PANE, Items.LIGHT_BLUE_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.LIGHT_GRAY_STAINED_GLASS_PANE, Items.LIGHT_GRAY_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.LIME_STAINED_GLASS_PANE, Items.LIME_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.MAGENTA_STAINED_GLASS_PANE, Items.MAGENTA_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.ORANGE_STAINED_GLASS_PANE, Items.ORANGE_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.PINK_STAINED_GLASS_PANE, Items.PINK_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.PURPLE_STAINED_GLASS_PANE, Items.PURPLE_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.RED_STAINED_GLASS_PANE, Items.RED_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.WHITE_STAINED_GLASS_PANE, Items.WHITE_DYE);
+		offerStainedGlassPaneRecipe(exporter, ModItems.YELLOW_STAINED_GLASS_PANE, Items.YELLOW_DYE);
 		// (glass) Tinted Block
 		offerCheckeredRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.TINTED_GLASS, 1,
-				Blocks.GLASS_PANE, Items.AMETHYST_SHARD, "", null);
+				ModItems.CLEAR_GLASS_PANE, Items.AMETHYST_SHARD, "", null);
+		// (glass) Reinforced Stained Glass Block
+		ComplexRecipeJsonBuilder.create(ReinforcedStainedGlassBlock::new).offerTo(exporter, "reinforced_stained_glass_block");
 		
 		//# Terracotta (basic) #
 		//TODO: Use Clay Ball & Terracotta Chunk instead of blocks upon implementation of terracotta chunks.
@@ -1993,7 +1958,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.BEACON)
 				.input('#', ModItems.OBSIDIAN_SHARD)
 				.input('@', Items.NETHER_STAR)
-				.input('X', Blocks.GLASS_PANE)
+				.input('X', ModItems.CLEAR_GLASS_PANE)
 				.input('O', Items.DIAMOND) // TODO: Replace with celestine upon implementation.
 				.pattern("XXX")
 				.pattern("X@X")
@@ -2028,16 +1993,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//# Chain #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.CHAIN)
-				.input('#', Items.IRON_INGOT)
-				.input('X', ModItems.IRON_GRAM)
-				.pattern("X")
-				.pattern("#")
-				.pattern("X")
-				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+				.input('-', ModItems.IRON_GRAM)
+				.pattern(" - ")
+				.pattern("- -")
+				.pattern(" - ")
 				.criterion(hasItem(ModItems.IRON_GRAM), conditionsFromItem(ModItems.IRON_GRAM))
-				.offerTo(exporter, idFromItem(Blocks.CHAIN));
+				.offerTo(exporter, idFromItem(Blocks.CHAIN, "_single"));
+		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.CHAIN, 2)
+				.input('#', Items.IRON_INGOT)
+				.input('-', ModItems.IRON_GRAM)
+				.pattern("-")
+				.pattern("#")
+				.pattern("-")
+				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+				.offerTo(exporter, idFromItem(Blocks.CHAIN, "_double"));
 		offerOneToOneRecipe(exporter,
-				RecipeCategory.MISC, ModItems.IRON_GRAM, 8,
+				RecipeCategory.MISC, ModItems.IRON_GRAM, 4,
 				Blocks.CHAIN, "_from_chain", "iron_recycling_to_gram");
 		
 		//# Cheese #
@@ -2065,12 +2036,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//# Compost Bin #
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.COMPOSTER)
 				.input('#', Tags.Item.ALL_PLANKS)
-				.input('X', Tags.Item.DECOMPOSABLE_MATERIALS)
 				.pattern("# #")
-				.pattern("#X#")
+				.pattern("# #")
 				.pattern("###")
 				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
-				.criterion("has_decomposable_material", conditionsFromTag(Tags.Item.DECOMPOSABLE_MATERIALS))
 				.offerTo(exporter, idFromItem(Blocks.COMPOSTER));
 		
 		//# Dry Grass Tuft #
@@ -2170,9 +2139,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		ComplexRecipeJsonBuilder.create(FireworkStarFadeRecipe::new).offerTo(exporter, "firework_star_fade");
 		
 		//# Glass Shard #
-		offerSmeltingAndBlastingRecipes(exporter,
-				RecipeCategory.MISC, ModItems.GLASS_SHARD, 200,
-				Tags.Item.ALL_GLASSY_SAND_PILES, "has_glassy_sand_pile",
+		offerSmeltingAndBlastingRecipes(exporter, RecipeCategory.MISC, ModItems.GLASS_SHARD,
+				200, Tags.Item.ALL_GLASSY_SAND_PILES, "has_glassy_sand_pile",
 				"_from_glassy_sand_pile", 0.125F);
 		// (glass shard) Bottle recycling
 		offerOneToOneRecipe(exporter,
@@ -2244,7 +2212,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.LANTERN)
 				.input('-', ModItems.IRON_GRAM)
 				.input('X', Items.CHAIN)
-				.input('O', Blocks.GLASS_PANE)
+				.input('O', ModItems.CLEAR_GLASS_PANE)
 				.input('@', Items.GLOWSTONE_DUST)
 				.pattern("-X-")
 				.pattern("O@O")
@@ -2255,14 +2223,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.SOUL_LANTERN)
 				.input('#', Items.IRON_INGOT)
 				.input('X', ModItems.IRON_GRAM)
-				.input('O', Blocks.GLASS_PANE)
+				.input('O', ModItems.CLEAR_GLASS_PANE)
 				.input('@', Tags.Item.SPIRIT_FLAME_MATERIALS)
 				.pattern(" X ")
 				.pattern("O@O")
 				.pattern("X#X")
 				.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
 				.criterion(hasItem(ModItems.IRON_GRAM), conditionsFromItem(ModItems.IRON_GRAM))
-				.criterion(hasItem(Blocks.GLASS_PANE), conditionsFromItem(Blocks.GLASS_PANE))
+				.criterion(hasItem(ModItems.CLEAR_GLASS_PANE), conditionsFromItem(ModItems.CLEAR_GLASS_PANE))
 				.criterion("has_spirit_flame_material", conditionsFromTag(Tags.Item.SPIRIT_FLAME_MATERIALS))
 				.offerTo(exporter, idFromItem(Blocks.SOUL_LANTERN));
 		
@@ -2441,14 +2409,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				Blocks.GLOWSTONE, Items.REDSTONE, Items.COPPER_INGOT, "", null);
 		// (MRD) Daylight Detector
 		ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.DAYLIGHT_DETECTOR)
-				.input('#', Blocks.GLASS_PANE)
+				.input('#', ModItems.CLEAR_GLASS_PANE)
 				.input('/', Tags.Item.ALL_PLANKS)
 				.input('X', Items.QUARTZ)
 				.input('@', Items.REDSTONE)
 				.pattern("###")
 				.pattern("XXX")
 				.pattern("/@/")
-				.criterion(hasItem(Blocks.GLASS_PANE), conditionsFromItem(Blocks.GLASS_PANE))
+				.criterion(hasItem(ModItems.CLEAR_GLASS_PANE), conditionsFromItem(ModItems.CLEAR_GLASS_PANE))
 				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
 				.criterion(hasItem(Items.QUARTZ), conditionsFromItem(Items.QUARTZ))
 				.criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
@@ -2596,13 +2564,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		
 		//# Painting #
 		offerEightAroundOneRecipe(exporter, RecipeCategory.MISC, Items.PAINTING, 1,
-				ItemTags.WOOL_CARPETS, "has_any_yarn_carpet", Items.STICK, "", null);
+				Tags.Item.ALL_YARN_ROLLS, "has_any_yarn_roll", Items.STICK, "", null);
 		
 		//# Paper (production) #
+		offerLargeRowRecipe(exporter, RecipeCategory.MISC, Items.PAPER, 2,
+				Items.SUGAR_CANE, fromItem(Items.SUGAR_CANE), "paper");
 		offerLargeRowRecipe(exporter, RecipeCategory.MISC, Items.PAPER, 1,
-				Items.SUGAR_CANE, fromItem(Items.SUGAR_CANE), null);
-		offerLargeRowRecipe(exporter, RecipeCategory.MISC, Items.PAPER, 1,
-				ModItems.WOODEN_STICK_BUNDLE, fromItem(ModItems.WOODEN_STICK_BUNDLE), null);
+				ModItems.WOODEN_STICK_BUNDLE, fromItem(ModItems.WOODEN_STICK_BUNDLE), "paper");
 //		offerLargeRowRecipe(exporter, RecipeCategory.MISC, Items.PAPER, 1,
 //				Tags.Item.ALL_PLANKS, "has_any_plank", "", null);
 		//# Paper (recycling) #
@@ -2727,14 +2695,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				Items.MAGMA_CREAM);
 		
 		//# Snow #
+		// (snow) Ball
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, Items.SNOWBALL, ModItems.SNOW_PILE,
+				"_from_pile", null);
 		// (snow) Block
 		offerCompactingEightRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, Blocks.SNOW_BLOCK, 1,
-				Blocks.SNOW, "", null);
-		// (snow) Pile // Note: The canonical Block corresponding to the Snow Pile would be the "Snow Mound".
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.SNOW, "", null,
-				RecipeCategory.MISC, Items.SNOWBALL, "_from_pile", null);
+				ModItems.SNOW_PILE, "", null);
+		// (snow) Pile
+		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SNOW_PILE, 1)
+				.input(Items.SNOWBALL, 2)
+				.criterion(hasItem(Items.SNOWBALL), conditionsFromItem(Items.SNOWBALL))
+				.offerTo(exporter, idFromItem(ModItems.SNOW_PILE));
 		
 		//# Sponge #
 		offerSmeltingAndCampfireRecipeSet(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.SPONGE,
@@ -2775,121 +2747,40 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				"has_spirit_flame_material", "" , "spirit_torch");
 		
 		//# Yarn #
-		// Block
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.BLACK_WOOL, 1,
-				Blocks.BLACK_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.BLUE_WOOL, 1,
-				Blocks.BLUE_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.BROWN_WOOL, 1,
-				Blocks.BROWN_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.CYAN_WOOL, 1,
-				Blocks.CYAN_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.GRAY_WOOL, 1,
-				Blocks.GRAY_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.GREEN_WOOL, 1,
-				Blocks.GREEN_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.LIGHT_BLUE_WOOL, 1,
-				Blocks.LIGHT_BLUE_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.LIGHT_GRAY_WOOL, 1,
-				Blocks.LIGHT_GRAY_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.LIME_WOOL, 1,
-				Blocks.LIME_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.MAGENTA_WOOL, 1,
-				Blocks.MAGENTA_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.ORANGE_WOOL, 1,
-				Blocks.ORANGE_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.PINK_WOOL, 1,
-				Blocks.PINK_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.PURPLE_WOOL, 1,
-				Blocks.PURPLE_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.RED_WOOL, 1,
-				Blocks.RED_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.WHITE_WOOL, 1,
-				Blocks.WHITE_CARPET, "", "yarn_blocks");
-		offerCompactingEightRecipe(exporter,
-				RecipeCategory.BUILDING_BLOCKS, Blocks.YELLOW_WOOL, 1,
-				Blocks.YELLOW_CARPET, "", "yarn_blocks");
-		// Carpet
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.BLACK_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.BLACK_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.BLUE_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.BLUE_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.BROWN_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.BROWN_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.CYAN_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.CYAN_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.GRAY_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.GRAY_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.GREEN_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.GREEN_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.LIGHT_BLUE_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.LIGHT_BLUE_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.LIGHT_GRAY_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.LIGHT_GRAY_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.LIME_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.LIME_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.MAGENTA_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.MAGENTA_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.ORANGE_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.ORANGE_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.PINK_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.PINK_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.PURPLE_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.PURPLE_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.RED_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.RED_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.WHITE_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.WHITE_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		offerReversibleSmallSquareRecipes(exporter,
-				RecipeCategory.MISC, Blocks.YELLOW_CARPET, "", "yarn_carpets",
-				RecipeCategory.MISC, ModItems.YELLOW_YARNBALL,
-				"_from_carpet", "yarn_carpet_dismantling");
-		
+		// Yarn Blocks
+		offerYarnBlockRecipe(exporter, Blocks.BLACK_WOOL, ModItems.BLACK_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.BLUE_WOOL, ModItems.BLUE_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.BROWN_WOOL, ModItems.BROWN_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.CYAN_WOOL, ModItems.CYAN_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.GRAY_WOOL, ModItems.GRAY_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.GREEN_WOOL, ModItems.GREEN_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.LIGHT_BLUE_WOOL, ModItems.LIGHT_BLUE_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.LIGHT_GRAY_WOOL, ModItems.LIGHT_GRAY_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.LIME_WOOL, ModItems.LIME_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.MAGENTA_WOOL, ModItems.MAGENTA_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.ORANGE_WOOL, ModItems.ORANGE_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.PINK_WOOL, ModItems.PINK_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.PURPLE_WOOL, ModItems.PURPLE_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.RED_WOOL, ModItems.RED_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.WHITE_WOOL, ModItems.WHITE_YARN_ROLL);
+		offerYarnBlockRecipe(exporter, Blocks.YELLOW_WOOL, ModItems.YELLOW_YARN_ROLL);
+		// Yarn Rolls
+		offerYarnRollRecipes(exporter, ModItems.BLACK_YARN_ROLL, ModItems.BLACK_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.BLUE_YARN_ROLL, ModItems.BLUE_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.BROWN_YARN_ROLL, ModItems.BROWN_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.CYAN_YARN_ROLL, ModItems.CYAN_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.GRAY_YARN_ROLL, ModItems.GRAY_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.GREEN_YARN_ROLL, ModItems.GREEN_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.LIGHT_BLUE_YARN_ROLL, ModItems.LIGHT_BLUE_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.LIGHT_GRAY_YARN_ROLL, ModItems.LIGHT_GRAY_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.LIME_YARN_ROLL, ModItems.LIME_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.MAGENTA_YARN_ROLL, ModItems.MAGENTA_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.ORANGE_YARN_ROLL, ModItems.ORANGE_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.PINK_YARN_ROLL, ModItems.PINK_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.PURPLE_YARN_ROLL, ModItems.PURPLE_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.RED_YARN_ROLL, ModItems.RED_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.WHITE_YARN_ROLL, ModItems.WHITE_YARNBALL);
+		offerYarnRollRecipes(exporter, ModItems.YELLOW_YARN_ROLL, ModItems.YELLOW_YARNBALL);
 		//endregion
 		
 		
@@ -2947,6 +2838,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		offerChestBoatRecipe(exporter, chestBoatItem, boatItem);
 		//TODO: Implement chest boat separation crafting recipe.
 		// - Output a Basic Chest and override the remainder of the chest boat to be an empty boat.
+		// - Both merging and separation between boat and chest might want to use a special crafting recipe to retain chest name within item data...
 	}
 	
 	
@@ -3020,7 +2912,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//  - Not require the 'recipeCategory' parameter, defaulting to 'RecipeCategory.MISC'.
 		//  - Not require the 'count' parameter, defaulting to '1'.
 		//region # Black Dye Blob #
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, blackDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, blackDyeBlobItem,
 				Items.INK_SAC, fromItem(Items.INK_SAC), blackDyeBlobGroup);
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, blackDyeBlobItem, 2,
 				Items.INK_SAC, Items.SLIME_BALL, fromItems(Items.INK_SAC, Items.SLIME_BALL), blackDyeBlobGroup);
@@ -3031,7 +2923,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				Items.WITHER_ROSE, fromItem(Items.WITHER_ROSE), blackDyeBlobGroup);
 		//endregion
 		//region # Blue Dye Blob #
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, blueDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, blueDyeBlobItem,
 				Items.CORNFLOWER, fromItem(Items.CORNFLOWER), blueDyeBlobGroup);
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, blueDyeBlobItem, 2,
 				Items.LAPIS_LAZULI, Items.SLIME_BALL, fromItems(Items.LAPIS_LAZULI, Items.SLIME_BALL), blueDyeBlobGroup);
@@ -3041,7 +2933,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//endregion
 		//region # Brown Dye Blob #
 		// from Cocoa Bean Pile
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, brownDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, brownDyeBlobItem,
 				Items.COCOA_BEANS, fromItem(Items.COCOA_BEANS), brownDyeBlobGroup);
 		// from Cocoa Bean Pile & Slime Ball
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, brownDyeBlobItem, 2,
@@ -3110,7 +3002,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//region # Green Dye Blob #
 		offerSmeltingRecipe(exporter, RecipeCategory.MISC, greenDyeBlobItem, 200,
 				Items.CACTUS, 1.0F, greenDyeBlobGroup);
-		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, greenDyeBlobItem, 1,
+		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, greenDyeBlobItem,
 				ModItems.LIVE_GRASS_TUFT, Items.SLIME_BALL, fromItems(ModItems.LIVE_GRASS_TUFT, Items.SLIME_BALL), greenDyeBlobGroup);
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, greenDyeBlobItem, 2,
 				ModItems.SULPHUR_LUMP, Items.SLIME_BALL, fromItems(ModItems.SULPHUR_LUMP, Items.SLIME_BALL), greenDyeBlobGroup);
@@ -3118,15 +3010,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//region # Light Blue Dye Blob #
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, lightBlueDyeBlobItem, 2,
 			blueDyeBlobItem, whiteDyeBlobItem, "_from_blue_and_white", lightBlueDyeBlobGroup);
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, lightBlueDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, lightBlueDyeBlobItem,
 				Items.BLUE_ORCHID, fromItem(Items.BLUE_ORCHID), lightBlueDyeBlobGroup);
 		//endregion
 		//region # Light Gray Dye Blob #
 		// from Ash Pile & Slime Ball
-		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, lightGrayDyeBlobItem, 1,
+		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, lightGrayDyeBlobItem,
 				ModItems.ASH_PILE, Items.SLIME_BALL, fromItem(ModItems.ASH_PILE) + "_and_" + itemName(Items.SLIME_BALL), lightGrayDyeBlobGroup);
 		// from Azure Bluet
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, lightGrayDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, lightGrayDyeBlobItem,
 				Items.AZURE_BLUET, fromItem(Items.AZURE_BLUET), lightGrayDyeBlobGroup);
 		// Black + White
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, lightGrayDyeBlobItem)
@@ -3155,10 +3047,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion("has_small_container_of_brimwater", conditionsFromTag(Tags.Item.SMALL_CONTAINERS_OF_BRIMWATER))
 				.offerTo(exporter, idFromItem(lightGrayDyeBlobItem, "_from_brimwater_desaturation"));
 		// from Oxeye Daisy
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, lightGrayDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, lightGrayDyeBlobItem,
 				Items.OXEYE_DAISY, fromItem(Items.OXEYE_DAISY), lightGrayDyeBlobGroup);
 		// from White Tulip
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, lightGrayDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, lightGrayDyeBlobItem,
 				Items.WHITE_TULIP, fromItem(Items.WHITE_TULIP), lightGrayDyeBlobGroup);
 		//endregion
 		//region # Lime Dye Blob #
@@ -3171,7 +3063,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//endregion
 		//region # Magenta Dye Blob #
 		// from Allium
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, magentaDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, magentaDyeBlobItem,
 				Items.ALLIUM, fromItem(Items.ALLIUM), magentaDyeBlobGroup);
 		// Blue + Pink + Red
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, magentaDyeBlobItem, 3)
@@ -3202,7 +3094,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//endregion
 		//region # Orange Dye Blob #
 		// from Orange Tulip
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, orangeDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, orangeDyeBlobItem,
 				Items.ORANGE_TULIP, fromItem(Items.ORANGE_TULIP), orangeDyeBlobGroup);
 		// Red + Yellow
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, orangeDyeBlobItem, 2,
@@ -3213,13 +3105,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//endregion
 		//region # Pink Dye Blob #
 		// from Cherry Petal Pile
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, pinkDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, pinkDyeBlobItem,
 				Items.PINK_PETALS, fromItem(Items.PINK_PETALS), pinkDyeBlobGroup);
 		// from Peony
 		offerOneToOneRecipe(exporter, RecipeCategory.MISC, pinkDyeBlobItem, 2,
 				Items.PEONY, fromItem(Items.PEONY), pinkDyeBlobGroup);
 		// from Pink Tulip
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, pinkDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, pinkDyeBlobItem,
 				Items.PINK_TULIP, fromItem(Items.PINK_TULIP), pinkDyeBlobGroup);
 		// Red + White
 		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, pinkDyeBlobItem, 2,
@@ -3232,38 +3124,33 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		//endregion
 		//region # Red Dye Blob #
 		// from Netherwart Pile
-		offerSmeltingRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, 200,
-				Items.NETHER_WART, 0.25F, redDyeBlobGroup);
+		offerSmeltingRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, 200, Items.NETHER_WART,
+				0.25F, redDyeBlobGroup);
 		// from Poppy
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, 1,
-				Items.POPPY, fromItem(Items.POPPY), redDyeBlobGroup);
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, Items.POPPY,
+				fromItem(Items.POPPY), redDyeBlobGroup);
 		// from Radish
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, 1,
-				Items.BEETROOT, fromItem(Items.BEETROOT), redDyeBlobGroup);
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, Items.BEETROOT,
+				fromItem(Items.BEETROOT), redDyeBlobGroup);
 		// from Red Tulip
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, 1,
-				Items.RED_TULIP, fromItem(Items.RED_TULIP), redDyeBlobGroup);
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, Items.RED_TULIP,
+				fromItem(Items.RED_TULIP), redDyeBlobGroup);
 		// from Rose Bush
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, 2,
-				Items.ROSE_BUSH, fromItem(Items.ROSE_BUSH), redDyeBlobGroup);
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, redDyeBlobItem, 2, Items.ROSE_BUSH,
+				fromItem(Items.ROSE_BUSH), redDyeBlobGroup);
 		//endregion
 		//region # White Dye Blob #
-		// from Bonemeal Ball & Brimwater
-		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, whiteDyeBlobItem)
-				.input(Ingredient.ofItems(Items.BONE_MEAL))
-				.input(Tags.Item.SMALL_CONTAINERS_OF_BRIMWATER)
-				.group(whiteDyeBlobGroup)
-				.criterion(hasItem(Items.BONE_MEAL), conditionsFromItem(Items.BONE_MEAL))
-				.criterion("has_small_container_of_brimwater", conditionsFromTag(Tags.Item.SMALL_CONTAINERS_OF_BRIMWATER))
-				.offerTo(exporter, idFromItem(whiteDyeBlobItem, fromItem(Items.BONE_MEAL) + "_and_brimwater"));
+		// from Bonemeal Ball & Slime Ball
+		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, whiteDyeBlobItem, Items.BONE_MEAL, Items.SLIME_BALL,
+				fromItem(Items.BONE_MEAL) + "_and_" + itemName(Items.SLIME_BALL), whiteDyeBlobGroup);
 		// from Lily of the Valley
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, whiteDyeBlobItem, 1,
-				Items.LILY_OF_THE_VALLEY, fromItem(Items.LILY_OF_THE_VALLEY), whiteDyeBlobGroup);
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, whiteDyeBlobItem, Items.LILY_OF_THE_VALLEY,
+				fromItem(Items.LILY_OF_THE_VALLEY), whiteDyeBlobGroup);
+		// from Lily of the Valley & Slime Ball
+		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, whiteDyeBlobItem, 2, Items.LILY_OF_THE_VALLEY, Items.SLIME_BALL,
+				fromItem(Items.LILY_OF_THE_VALLEY) + "_and_" + itemName(Items.SLIME_BALL), whiteDyeBlobGroup);
 		//endregion
 		//region # Yellow Dye Blob #
-		// from Bonemeal Ball & Slime Ball
-		offerTwoIntoOneRecipe(exporter, RecipeCategory.MISC, yellowDyeBlobItem, 1,
-				Items.BONE_MEAL, Items.SLIME_BALL, fromItem(Items.BONE_MEAL) + "_and_" + itemName(Items.SLIME_BALL), yellowDyeBlobGroup);
 		// from Brown Dye Blob & Sulphur Lump & White Dye Blob
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, yellowDyeBlobItem, 4)
 				.input(Ingredient.ofItems(brownDyeBlobItem))
@@ -3275,7 +3162,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(whiteDyeBlobItem), conditionsFromItem(whiteDyeBlobItem))
 				.offerTo(exporter, idFromItem(yellowDyeBlobItem, fromItems(brownDyeBlobItem, ModItems.SULPHUR_LUMP, whiteDyeBlobItem)));
 		// from Dandelion
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, yellowDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, yellowDyeBlobItem,
 				Items.DANDELION, fromItem(Items.DANDELION), yellowDyeBlobGroup);
 		// from Slime Ball Blob & Sulphur Lump & White Dye Blob
 		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, yellowDyeBlobItem, 3)
@@ -3288,7 +3175,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(whiteDyeBlobItem), conditionsFromItem(whiteDyeBlobItem))
 				.offerTo(exporter, idFromItem(yellowDyeBlobItem, fromItems(Items.SLIME_BALL, ModItems.SULPHUR_LUMP, whiteDyeBlobItem)));
 		// from Sunflower
-		offerOneToOneRecipe(exporter, RecipeCategory.MISC, yellowDyeBlobItem, 1,
+		offerOneToOneRecipe(exporter, RecipeCategory.MISC, yellowDyeBlobItem,
 				Items.SUNFLOWER, fromItem(Items.SUNFLOWER), yellowDyeBlobGroup);
 		//endregion
 	}
@@ -4023,17 +3910,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	}
 	
 	
-	public static void offerBannerRecipe(RecipeExporter exporter, ItemConvertible bannerResult, ItemConvertible carpetItem) {
+	public static void offerBannerRecipe(RecipeExporter exporter, ItemConvertible bannerResult, ItemConvertible yarnRollItem) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, bannerResult)
 				.input('/', Items.STICK)
-				.input('#', carpetItem)
+				.input('#', yarnRollItem)
 				.input('@', Items.STRING)
 				.pattern("/#/")
-				.pattern("@# ")
+				.pattern("@#@")
 				.pattern(" / ")
 				.group("banners")
-				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-				.criterion(hasItem(carpetItem), conditionsFromItem(carpetItem))
+				.criterion(hasItem(yarnRollItem), conditionsFromItem(yarnRollItem))
 				.offerTo(exporter, idFromItem(bannerResult));
 	}
 	
@@ -4067,19 +3953,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerBedOfPigmentRecipe(
 			RecipeExporter exporter, ItemConvertible bedResult,
-			ItemConvertible pigmentedCarpetItem, String idSuffix, @Nullable String group
+			ItemConvertible pigmentedYarnRollItem, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, bedResult)
 				.input('#', Tags.Item.ALL_PLANKS)
-				.input('X', Blocks.WHITE_CARPET)
-				.input('O', pigmentedCarpetItem)
+				.input('X', ModItems.WHITE_YARN_ROLL)
+				.input('O', pigmentedYarnRollItem)
 				.pattern("OOX")
 				.pattern("XXX")
 				.pattern("###")
 				.group(group)
 				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
-				.criterion(hasItem(Blocks.WHITE_CARPET), conditionsFromItem(Blocks.WHITE_CARPET))
-				.criterion(hasItem(pigmentedCarpetItem), conditionsFromItem(pigmentedCarpetItem))
+				.criterion(hasItem(ModItems.WHITE_YARN_ROLL), conditionsFromItem(ModItems.WHITE_YARN_ROLL))
+				.criterion(hasItem(pigmentedYarnRollItem), conditionsFromItem(pigmentedYarnRollItem))
 				.offerTo(exporter, idFromItem(bedResult, idSuffix));
 	}
 	
@@ -4089,13 +3975,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, bedResult)
 				.input('#', Tags.Item.ALL_PLANKS)
-				.input('X', Blocks.WHITE_CARPET)
+				.input('X', ModItems.WHITE_YARN_ROLL)
 				.pattern("XXX")
 				.pattern("XXX")
 				.pattern("###")
 				.group(group)
 				.criterion("has_any_plank", conditionsFromTag(Tags.Item.ALL_PLANKS))
-				.criterion(hasItem(Blocks.WHITE_CARPET), conditionsFromItem(Blocks.WHITE_CARPET))
+				.criterion(hasItem(ModItems.WHITE_YARN_ROLL), conditionsFromItem(ModItems.WHITE_YARN_ROLL))
 				.offerTo(exporter, idFromItem(bedResult, idSuffix));
 	}
 	
@@ -4117,7 +4003,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerCandleOfPigmentRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			ItemConvertible pigmentItem, String idSuffix
+			ItemConvertible pigmentItem
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, resultItem)
 				.input('#', Items.HONEYCOMB)
@@ -4129,7 +4015,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.criterion(hasItem(Items.HONEYCOMB), conditionsFromItem(Items.HONEYCOMB))
 				.criterion("has_any_yarnball", conditionsFromTag(Tags.Item.ALL_YARNBALLS))
 				.criterion(hasItem(pigmentItem), conditionsFromItem(pigmentItem))
-				.offerTo(exporter, idFromItem(resultItem, idSuffix));
+				.offerTo(exporter, idFromItem(resultItem));
 	}
 	
 	
@@ -4250,13 +4136,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerBasicDaggerRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			TagKey<Item> baseItemTag, String hasTagString, String idSuffix
+			TagKey<Item> baseItemTag, String hasTagString, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItemTag)
 				.input('X', Items.STICK)
 				.pattern("#")
 				.pattern("X")
+				.group(group)
 				.criterion(hasTagString, conditionsFromTag(baseItemTag))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.offerTo(exporter, idFromItem(resultItem, idSuffix));
@@ -4311,9 +4198,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	}
 	
 	
+	public static void offerBasicLanceRecipe(
+			RecipeExporter exporter, ItemConvertible resultItem,
+			ItemConvertible ingotItem, ItemConvertible gramItem, String idSuffix, @Nullable String group
+	) {
+		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
+				.input('#', ingotItem)
+				.input('-', gramItem)
+				.input('/', Items.STICK)
+				.pattern(" -#")
+				.pattern(" /-")
+				.pattern("/  ")
+				.group(group)
+				.criterion(hasItem(ingotItem), conditionsFromItem(ingotItem))
+				.offerTo(exporter, idFromItem(resultItem, idSuffix));
+	}
+	
+	
 	public static void offerBasicMalletRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			TagKey<Item> baseItemTag, String hasTagString, String idSuffix
+			TagKey<Item> baseItemTag, String hasTagString, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItemTag)
@@ -4321,6 +4225,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern(" # ")
 				.pattern(" X#")
 				.pattern("X  ")
+				.group(group)
 				.criterion(hasTagString, conditionsFromTag(baseItemTag))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.offerTo(exporter, idFromItem(resultItem, idSuffix));
@@ -4378,7 +4283,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerBasicShovelRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			TagKey<Item> baseItemTag, String hasTagString, String idSuffix
+			TagKey<Item> baseItemTag, String hasTagString, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItemTag)
@@ -4386,6 +4291,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("#")
 				.pattern("X")
 				.pattern("X")
+				.group(group)
 				.criterion(hasTagString, conditionsFromTag(baseItemTag))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.offerTo(exporter, idFromItem(resultItem, idSuffix));
@@ -4410,7 +4316,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerBasicSpearRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			TagKey<Item> baseItemTag, String hasTagString, String idSuffix
+			TagKey<Item> baseItemTag, String hasTagString, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItemTag)
@@ -4418,6 +4324,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("  #")
 				.pattern(" X ")
 				.pattern("X  ")
+				.group(group)
 				.criterion(hasTagString, conditionsFromTag(baseItemTag))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.offerTo(exporter, idFromItem(resultItem, idSuffix));
@@ -4442,7 +4349,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	public static void offerBasicSwordRecipe(
 			RecipeExporter exporter, ItemConvertible resultItem,
-			TagKey<Item> baseItemTag, String hasTagString, String idSuffix
+			TagKey<Item> baseItemTag, String hasTagString, String idSuffix, @Nullable String group
 	) {
 		ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, resultItem)
 				.input('#', baseItemTag)
@@ -4450,6 +4357,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("#")
 				.pattern("#")
 				.pattern("X")
+				.group(group)
 				.criterion(hasTagString, conditionsFromTag(baseItemTag))
 				.criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
 				.offerTo(exporter, idFromItem(resultItem, idSuffix));
@@ -4618,6 +4526,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	
 	
 	//region ## Recipe Offers - Heating ##
+	public static void offerBlastingRecipe(
+			RecipeExporter exporter, RecipeCategory recipeCategory, ItemConvertible resultItem, int cookingTime,
+			TagKey<Item> inputItemTag, String hasTagString, String fromTagString, float experience
+	) {
+		CookingRecipeJsonBuilder.create(Ingredient.fromTag(inputItemTag), recipeCategory,
+						resultItem, experience, cookingTime,
+						RecipeSerializer.BLASTING, BlastingRecipe::new)
+				.criterion(hasTagString, conditionsFromTag(inputItemTag))
+				.offerTo(exporter, getCookingId(resultItem, fromTagString, "blasting"));
+	}
+	
+	
 	public static void offerBlastingAndSmeltingRecipeSet(
 			RecipeExporter exporter, RecipeCategory recipeCategory, ItemConvertible resultItem, int baseCookingTime,
 			ItemConvertible inputItem, float baseExperience, @Nullable String group
@@ -4661,8 +4581,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.offerTo(exporter, getCookingId(resultItem, inputItem, "smelting"));
 		
 		// Campfire cooking recipe; 4x experience, 6x duration.
+		offerCampfireCookingRecipe(exporter, recipeCategory, resultItem, baseCookingTime * 6,
+				inputItem, baseExperience * 4, group);
+		// Replaced with method call. TODO: Do this for other instances; call a method instead of manually constructing a new smelting/blasting/campfire recipe.
+//		CookingRecipeJsonBuilder.create(Ingredient.ofItems(inputItem), recipeCategory,
+//						resultItem, baseExperience * 4, baseCookingTime * 6,
+//						RecipeSerializer.CAMPFIRE_COOKING, CampfireCookingRecipe::new)
+//				.group(group)
+//				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
+//				.offerTo(exporter, getCookingId(resultItem, inputItem, "campfire_cooking"));
+	}
+	
+	
+	public static void offerCampfireCookingRecipe(
+			RecipeExporter exporter, RecipeCategory recipeCategory, ItemConvertible resultItem, int cookingTime,
+			ItemConvertible inputItem, float experience, @Nullable String group
+	) {
 		CookingRecipeJsonBuilder.create(Ingredient.ofItems(inputItem), recipeCategory,
-						resultItem, baseExperience * 4, baseCookingTime * 6,
+						resultItem, experience, cookingTime,
 						RecipeSerializer.CAMPFIRE_COOKING, CampfireCookingRecipe::new)
 				.group(group)
 				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
@@ -4976,6 +4912,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.group(reverseGroup)
 				.criterion(hasItem(compactItem), conditionsFromItem(compactItem))
 				.offerTo(exporter, idFromItem(baseItem, reverseIdSuffix));
+	}
+	
+	
+	public static void offerYarnRollRecipes(RecipeExporter exporter, ItemConvertible yarnRollItem, ItemConvertible yarnballItem) {
+		// Compacting.
+		createSmallSquareFormat(RecipeCategory.MISC, yarnRollItem, Ingredient.ofItems(yarnballItem))
+				.group("yarn_rolls")
+				.criterion(hasItem(yarnballItem), conditionsFromItem(yarnballItem))
+				.offerTo(exporter, idFromItem(yarnRollItem));
+		// Reverse.
+		ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, yarnballItem, 4)
+				.input(yarnRollItem)
+				.group("yarn_roll_dismantling")
+				.criterion(hasItem(yarnRollItem), conditionsFromItem(yarnRollItem))
+				.offerTo(exporter, idFromItem(yarnballItem, "_from_roll"));
 	}
 	//endregion
 	
@@ -5496,6 +5447,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	}
 	
 	public static void offerOneToOneRecipe(
+			RecipeExporter exporter, RecipeCategory category, ItemConvertible resultItem,
+			ItemConvertible inputItem, String idSuffix, @Nullable String group
+	) {
+		ShapelessRecipeJsonBuilder.create(category, resultItem)
+				.input(inputItem)
+				.group(group)
+				.criterion(hasItem(inputItem), conditionsFromItem(inputItem))
+				.offerTo(exporter, idFromItem(resultItem, idSuffix));
+	}
+	
+	public static void offerOneToOneRecipe(
 			RecipeExporter exporter, RecipeCategory category, ItemConvertible resultItem, int count,
 			ItemConvertible inputItem, String idSuffix, @Nullable String group
 	) {
@@ -5519,7 +5481,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	) {
 		offerTwoIntoOneRecipe(exporter,
 				RecipeCategory.BUILDING_BLOCKS, resultItem, 1,
-				Blocks.GLASS_PANE, dyeInputItem, "", "glass_pane_staining");
+				ModItems.CLEAR_GLASS_PANE, dyeInputItem, "", "glass_pane_staining");
 	}
 	
 	
@@ -5610,6 +5572,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.group("wooden_fence_gates")
 				.criterion(hasItem(plankItem), conditionsFromItem(plankItem))
 				.offerTo(exporter, idFromItem(resultItem));
+	}
+	
+	
+	public static void offerYarnBlockRecipe(
+			RecipeExporter exporter, ItemConvertible resultItem, ItemConvertible inputItem
+	) {
+		offerCompactingEightRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, resultItem, inputItem, "", "yarn_blocks");
 	}
 	//endregion
 	
@@ -5727,6 +5696,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 				.pattern("##");
 	}
 	
+	
+	public static CraftingRecipeJsonBuilder createSmallSquareFormat(
+			RecipeCategory category, ItemConvertible output, Ingredient ingredient
+	) {
+		return ShapedRecipeJsonBuilder.create(category, output)
+				.input('#', ingredient)
+				.pattern("##")
+				.pattern("##");
+	}
 	
 	public static CraftingRecipeJsonBuilder createSmallSquareFormat(
 			RecipeCategory category, ItemConvertible output, int count, Ingredient ingredient

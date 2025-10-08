@@ -14,6 +14,7 @@ import static binarybolias.tercaphinom.references.Reference.*;
 
 /**
  * Provides the default {@link ToolMaterial}s used by Tercaphinom's tools.
+ * @see ModArmorMaterials
  * @see net.minecraft.item.ToolMaterials
  */
 public enum ModToolMaterials implements ToolMaterial {
@@ -23,7 +24,7 @@ public enum ModToolMaterials implements ToolMaterial {
 	// Replacing the remaining vanilla tool/armor sets (aside from leather) would allow for an overhaul to stat scaling (notably durability).
 	// - Copper, Gold, Iron, and Brass should all have higher durability.
 	
-	// NOTE: Tool tiers no longer matter for block destruction; the "INCORRECT_FOR" tags are deprecated.
+	// NOTE: Tool "tiers" no longer matter for block destruction; the "INCORRECT_FOR" tags are deprecated.
 	// "INCORRECT_FOR" tags replaced with 'Tags.Block.NIL' for brevity.
 	WOODEN_STICK(Tags.Block.NIL, 7, 2.0F, 0.0F, 0,
 			() -> Ingredient.ofItems(Items.STICK)),

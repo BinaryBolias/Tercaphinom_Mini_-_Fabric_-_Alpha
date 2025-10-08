@@ -5,9 +5,23 @@
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
+					"type": "minecraft:empty",
+					"weight": 12
+				},
+				{
 					"type": "minecraft:item",
-					"name": "minecraft:emerald",
-					"weight": 2
+					"functions": [
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 32.0,
+								"min": 1.0
+							}
+						}
+					],
+					"name": "minecraft:book",
+					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
@@ -23,7 +37,7 @@
 						}
 					],
 					"name": "minecraft:cod",
-					"weight": 6
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -39,7 +53,7 @@
 						}
 					],
 					"name": "minecraft:salmon",
-					"weight": 3
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -78,21 +92,265 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:fermented_spider_eye",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:spider_eye",
+					"weight": 2
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
 								"max": 3.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:wheat_seeds",
-					"weight": 1
+					"name": "minecraft:cod",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:salmon",
+					"weight": 3
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 4.0,
+				"max": 2.0,
 				"min": 1.0
 			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:fishing_rod",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						},
+						{
+							"function": "minecraft:enchant_with_levels",
+							"levels": {
+								"type": "minecraft:uniform",
+								"max": 24.0,
+								"min": 1.0
+							},
+							"treasure": true
+						}
+					],
+					"name": "minecraft:fishing_rod",
+					"weight": 1
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:cooked_cod",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:cooked_salmon",
+					"weight": 4
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:string"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:stick"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:iron_gram"
+				}
+			],
+			"rolls": 1.0
 		},
 		{
 			"bonus_rolls": 0.0,
@@ -116,7 +374,7 @@
 						}
 					],
 					"name": "minecraft:coal",
-					"weight": 1
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -132,7 +390,7 @@
 						}
 					],
 					"name": "minecraft:charcoal",
-					"weight": 2
+					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
@@ -197,13 +455,13 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:iron_gram",
+					"name": "minecraft:slime_ball",
 					"weight": 5
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 4.0,
+				"max": 2.0,
 				"min": 1.0
 			}
 		},
@@ -212,8 +470,88 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:bread",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:cooked_cod",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:cooked_salmon",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:slimebun",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
 					"name": "minecraft:emerald",
 					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:ink_sac",
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -284,7 +622,7 @@
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 4.0,
+				"max": 3.0,
 				"min": 1.0
 			}
 		}

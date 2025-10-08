@@ -1,4 +1,11 @@
 {
+	"comment": [
+		"After some distress, I have discovered through the testing and recomposition of this loot table ",
+		" that vanilla Minecraft has some implicit mechanism which automatically splits large stacks into multiple slots.",
+		"I find this behavior to be undesirable; if anything, I would want the loot generation to implicitly condense ",
+		" stacks of similar items (opposite behavior), to better replicate how the items would realistically be stored by player.",
+		"I do not, as of yet, know how to disable this feature, but at least it shouldn't disrupt total item quantity..."
+	],
 	"type": "minecraft:chest",
 	"pools": [
 		{
@@ -6,67 +13,7 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:string",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 2.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:string",
-					"weight": 3
-				}
-			],
-			"rolls": 1.0
-		},
-		{
-			"bonus_rolls": 0.0,
-			"entries": [
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:flint",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 2.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:flint",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:flint",
-					"weight": 1
+					"name": "tercaphinom:flint_hatchet"
 				}
 			],
 			"rolls": 1.0
@@ -77,7 +24,7 @@
 				{
 					"type": "minecraft:item",
 					"name": "tercaphinom:flint_dagger",
-					"weight": 9
+					"weight": 8
 				},
 				{
 					"type": "minecraft:item",
@@ -86,20 +33,128 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:flint_hatchet",
-					"weight": 14
+					"name": "tercaphinom:flint_hoe",
+					"weight": 3
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:flint"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:string"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:charcoal"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:apple"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:bread"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:baked_carrot",
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
-					"name": "tercaphinom:flint_hoe",
+					"name": "minecraft:baked_potato",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "tercaphinom:baked_radish",
+					"weight": 2
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:cooked_cod",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:cooked_salmon",
 					"weight": 4
 				}
 			],
-			"rolls": {
-				"type": "minecraft:uniform",
-				"max": 2.0,
-				"min": 0.0
-			}
+			"rolls": 1.0
 		},
 		{
 			"bonus_rolls": 0.0,
@@ -115,10 +170,19 @@
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:apple",
-					"weight": 9
+					"name": "minecraft:stripped_acacia_log",
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -131,10 +195,19 @@
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:bread",
-					"weight": 7
+					"name": "minecraft:stripped_birch_log",
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -147,57 +220,18 @@
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:baked_carrot",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
+						},
 						{
-							"add": false,
+							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 2.0,
-								"min": 1.0
+								"max": 1.0,
+								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:baked_potato",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 2.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:baked_radish",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 2.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:cooked_cod",
+					"name": "minecraft:stripped_dark_oak_log",
 					"weight": 3
 				},
 				{
@@ -211,100 +245,19 @@
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:cooked_salmon",
-					"weight": 4
-				}
-			],
-			"rolls": 3.0
-		},
-		{
-			"bonus_rolls": 0.0,
-			"entries": [
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
 						},
 						{
 							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 3.0,
+								"max": 1.0,
 								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "minecraft:stick",
-					"weight": 36
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 11.0,
-								"min": 4.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stick",
-					"weight": 21
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 26.0,
-								"min": 11.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 15.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stick",
-					"weight": 7
+					"name": "minecraft:stripped_jungle_log",
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
@@ -328,8 +281,8 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:wooden_stick_bundle",
-					"weight": 11
+					"name": "minecraft:stripped_mangrove_log",
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -338,7 +291,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 4.0,
+								"max": 2.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -353,8 +306,8 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:wooden_stick_bundle",
-					"weight": 7
+					"name": "minecraft:stripped_oak_log",
+					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
@@ -363,7 +316,7 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 8.0,
+								"max": 2.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
@@ -372,41 +325,21 @@
 							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 3.0,
+								"max": 1.0,
 								"min": 0.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:wooden_stick_bundle",
-					"weight": 2
+					"name": "minecraft:stripped_spruce_log",
+					"weight": 4
 				}
 			],
-			"rolls": {
-				"type": "minecraft:uniform",
-				"max": 7.0,
-				"min": 4.0
-			}
+			"rolls": 3.0
 		},
 		{
 			"bonus_rolls": 0.0,
 			"entries": [
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stripped_acacia_log",
-					"weight": 5
-				},
 				{
 					"type": "minecraft:item",
 					"functions": [
@@ -430,23 +363,7 @@
 						}
 					],
 					"name": "tercaphinom:acacia_plank",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stripped_birch_log",
-					"weight": 5
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -471,23 +388,7 @@
 						}
 					],
 					"name": "tercaphinom:birch_plank",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stripped_dark_oak_log",
-					"weight": 5
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -512,23 +413,7 @@
 						}
 					],
 					"name": "tercaphinom:dark_oak_plank",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stripped_jungle_log",
-					"weight": 5
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
@@ -553,23 +438,7 @@
 						}
 					],
 					"name": "tercaphinom:mahogany_plank",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stripped_mangrove_log",
-					"weight": 5
+					"weight": 3
 				},
 				{
 					"type": "minecraft:item",
@@ -594,23 +463,7 @@
 						}
 					],
 					"name": "tercaphinom:mangrove_plank",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stripped_oak_log",
-					"weight": 5
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -635,22 +488,6 @@
 						}
 					],
 					"name": "tercaphinom:oak_plank",
-					"weight": 11
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 3.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:stripped_spruce_log",
 					"weight": 5
 				},
 				{
@@ -676,14 +513,50 @@
 						}
 					],
 					"name": "tercaphinom:spruce_plank",
-					"weight": 11
+					"weight": 4
 				}
 			],
-			"rolls": {
-				"type": "minecraft:uniform",
-				"max": 3.0,
-				"min": 2.0
-			}
+			"rolls": 3.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 6.0,
+								"min": 3.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:stick"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 3.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:wooden_stick_bundle"
+				}
+			],
+			"rolls": 1.0
 		}
 	],
 	"random_sequence": "minecraft:chests/spawn_bonus_chest"

@@ -88,7 +88,6 @@ public class SuspiciousStewRecipe extends SpecialCraftingRecipe {
 	
 	@Override
 	public DefaultedList<ItemStack> getRemainder(RecipeInputInventory inventory) {
-		// No remainder.
 		return EmptyRemainderOverride.remainder(inventory);
 	}
 	

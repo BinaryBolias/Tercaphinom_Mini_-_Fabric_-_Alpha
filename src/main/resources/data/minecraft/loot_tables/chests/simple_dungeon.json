@@ -1272,7 +1272,7 @@
 			"entries": [
 				{
 					"type": "minecraft:loot_table",
-					"value": "tercaphinom:chests/special_dungeon_loot"
+					"value": "tercaphinom:chest/special_dungeon_loot"
 				}
 			],
 			"rolls": 1.0

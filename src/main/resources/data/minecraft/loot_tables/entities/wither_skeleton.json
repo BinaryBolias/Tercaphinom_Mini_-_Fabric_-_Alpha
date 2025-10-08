@@ -100,6 +100,11 @@
 					"predicate": {
 						"type": "#minecraft:skeletons"
 					}
+				},
+				{
+					"chance": 0.125,
+					"condition": "minecraft:random_chance_with_looting",
+					"looting_multiplier": 0.0625
 				}
 			],
 			"entries": [

@@ -130,6 +130,61 @@
 				}
 			],
 			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"conditions": [
+				{
+					"condition": "minecraft:entity_properties",
+					"entity": "killer",
+					"predicate": {
+						"type": "#minecraft:skeletons"
+					}
+				},
+				{
+					"chance": 0.125,
+					"condition": "minecraft:random_chance"
+				}
+			],
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"components": {
+								"minecraft:written_book_content": {
+									"author": "villager",
+									"generation": 3,
+									"pages": [
+										"[{\"text\": \"Hmm.\"}]",
+										"[{\"text\": \"Hum.\"}]",
+										"[{\"text\": \"Hurrm.\"}]",
+										"[{\"text\": \"Mmm, mmm.\"}]",
+										"[{\"text\": \"Hmm.\n\nHurrm.\"}]",
+										"[{\"text\": \"Ouch! I have just been shot by a skeletal archer! Needless to say, this is quite distressing.\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]",
+										"[{\"text\": \"\"}]"
+									],
+									"title": {
+										"raw": "Personal Journal"
+									}
+								}
+							},
+							"function": "minecraft:set_components"
+						}
+					],
+					"name": "minecraft:written_book"
+				}
+			],
+			"rolls": 1.0
 		}
 	]
 }

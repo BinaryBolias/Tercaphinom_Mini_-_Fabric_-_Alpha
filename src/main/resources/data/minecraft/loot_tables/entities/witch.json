@@ -43,6 +43,41 @@
 								"min": 0.0
 							},
 							"function": "minecraft:looting_enchant"
+						},
+						{
+							"function": "minecraft:limit_count",
+							"limit": {
+								"max": 1.0
+							}
+						}
+					],
+					"name": "minecraft:emerald"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": -2.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:looting_enchant"
 						}
 					],
 					"name": "minecraft:brown_mushroom",
@@ -219,6 +254,30 @@
 							"function": "minecraft:looting_enchant"
 						}
 					],
+					"name": "tercaphinom:silk_wad",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": -2.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1.0,
+								"min": 0.0
+							},
+							"function": "minecraft:looting_enchant"
+						}
+					],
 					"name": "minecraft:sugar",
 					"weight": 7
 				},
@@ -258,7 +317,7 @@
 			"entries": [
 				{
 					"type": "minecraft:empty",
-					"weight": 3
+					"weight": 5
 				},
 				{
 					"type": "minecraft:item",
@@ -288,18 +347,18 @@
 						}
 					],
 					"name": "minecraft:stick",
-					"weight": 5
+					"weight": 3
 				}
 			],
-			"rolls": {
-				"type": "minecraft:uniform",
-				"max": 1.0,
-				"min": 0.0
-			}
+			"rolls": 1.0
 		},
 		{
 			"bonus_rolls": 0.0,
 			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				},
 				{
 					"type": "minecraft:item",
 					"functions": [
@@ -328,7 +387,7 @@
 						}
 					],
 					"name": "minecraft:glass_bottle",
-					"weight": 3
+					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
@@ -339,7 +398,7 @@
 						}
 					],
 					"name": "minecraft:potion",
-					"weight": 2
+					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
@@ -360,8 +419,8 @@
 							"id": "minecraft:poison"
 						}
 					],
-					"name": "minecraft:potion",
-					"weight": 3
+					"name": "minecraft:splash_potion",
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -372,7 +431,18 @@
 						}
 					],
 					"name": "minecraft:potion",
-					"weight": 3
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_potion",
+							"id": "minecraft:regeneration"
+						}
+					],
+					"name": "minecraft:splash_potion",
+					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
@@ -382,8 +452,19 @@
 							"id": "minecraft:slowness"
 						}
 					],
+					"name": "minecraft:splash_potion",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_potion",
+							"id": "minecraft:swiftness"
+						}
+					],
 					"name": "minecraft:potion",
-					"weight": 3
+					"weight": 2
 				},
 				{
 					"type": "minecraft:item",
@@ -395,6 +476,17 @@
 					],
 					"name": "minecraft:potion",
 					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_potion",
+							"id": "minecraft:weakness"
+						}
+					],
+					"name": "minecraft:splash_potion",
+					"weight": 2
 				}
 			],
 			"rolls": 1.0

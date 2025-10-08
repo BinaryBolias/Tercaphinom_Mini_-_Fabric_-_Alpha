@@ -106,17 +106,23 @@ public class ModRegistries {
 		// - 2400: Blaze Rod
 		// - 20000: Lava Bucket
 		
-		//# Basic Resources #
+		//# Basic Resources (bamboo) #
 		registry.add(Items.BAMBOO, 100); // TODO: Perhaps rework with implementation of Dry Bamboo Stick.
+		//# Basic Resources (grass) #
+		registry.add(ModItems.DRY_GRASS_TUFT, 100);
+		registry.add(ModItems.LIVE_GRASS_TUFT, 50);
+		//# Basic Resources (kelp) #
+		registry.add(Items.DRIED_KELP, 300);
+		registry.add(ModItems.DRY_KELP_BUNDLE, 1200);
+		registry.add(Items.KELP, 50);
+		//# Basic Resources (moss) #
+		// TODO: Add Dry Moss Wad upon implementation.
+		//# Basic Resources (miscellaneous) #
 		registry.add(Items.BLAZE_POWDER, 600);
 		registry.add(Items.BLAZE_ROD, 2400);
 		registry.add(Items.CHARCOAL, 1200);
 		registry.add(Items.COAL, 1600);
-		registry.add(ModItems.COBWEB_BALL, 100);
-		registry.add(Items.DRIED_KELP, 300);
-		registry.add(ModItems.DRY_GRASS_TUFT, 100);
-		registry.add(ModItems.DRY_KELP_BUNDLE, 1200);
-		// TODO: Add Dry Moss Wad upon implementation.
+		registry.add(ModItems.COBWEB_BALL, 800);
 		registry.add(ModItems.INFERNOCOAL_LUMP, 6400);
 		registry.add(ModItems.LEAF_PILE, 150);
 		registry.add(Items.PAPER, 100);
@@ -128,7 +134,7 @@ public class ModRegistries {
 		registry.add(ModItems.WOODEN_STICK_BUNDLE, 400);
 		//# Books #
 		registry.add(Items.BOOK, 900);
-		registry.add(Items.ENCHANTED_BOOK, 1600);
+		registry.add(Items.ENCHANTED_BOOK, 2400);
 		registry.add(Items.WRITABLE_BOOK, 1200);
 		registry.add(Items.WRITTEN_BOOK, 1200);
 		//# Containers & Equipment #
@@ -149,15 +155,15 @@ public class ModRegistries {
 		registry.add(Items.DEAD_BUSH, 200);
 		registry.add(Items.FLOWERING_AZALEA, 200);
 		//# Joke & Unserious #
-		registry.add(Items.FLETCHING_TABLE, 16000); // Finally gave the Fletching Table a use, lol. (aside from villager assignment)
+		registry.add(Items.FLETCHING_TABLE, 16000); // It's finally useful!
 		registry.add(ModItems.MINIWIZARD, 25600);
 		//# Tags #
-		registry.add(Tags.Item.ALL_PLANKS, 300);
+		registry.add(Tags.Item.ALL_PLANKS, 400);
 		registry.add(Tags.Item.ALL_YARNBALLS, 100);
+		registry.add(Tags.Item.ALL_YARN_ROLLS, 400);
 		registry.add(ItemTags.SAPLINGS, 200);
-		registry.add(ItemTags.WOOL_CARPETS, 400);
-		registry.add(ItemTags.BANNERS, 1600); // Note: Not precisely calculated.
-		// TODO: Add remaining fuels.
+		registry.add(ItemTags.BANNERS, 1200);
+		// TODO: Add remaining fuels. (if any?)
 	}
 	
 	/**
@@ -300,9 +306,20 @@ public class ModRegistries {
 		registry.add(Items.TORCHFLOWER, 0.5F);
 		registry.add(Items.WHITE_TULIP, 0.5F);
 		registry.add(Items.WITHER_ROSE, 0.5F);
-		//# Foods #
-		registry.add(Items.APPLE, 0.5F);
+		//# Foods (pie - cooked) #
 		registry.add(ModItems.APPLE_PIE, 1.0F);
+		registry.add(ModItems.CHERRY_PIE, 1.0F);
+		registry.add(ModItems.GLOWBERRY_PIE, 1.0F);
+		registry.add(ModItems.PUMPKIN_PIE, 1.0F);
+		registry.add(ModItems.SWEETBERRY_PIE, 1.0F);
+		//# Foods (pie - raw) #
+		registry.add(ModItems.RAW_APPLE_PIE, 0.96875F);
+		registry.add(ModItems.RAW_CHERRY_PIE, 0.96875F);
+		registry.add(ModItems.RAW_GLOWBERRY_PIE, 0.96875F);
+		registry.add(ModItems.RAW_PUMPKIN_PIE, 0.96875F);
+		registry.add(ModItems.RAW_SWEETBERRY_PIE, 0.96875F);
+		//# Foods (miscellaneous) #
+		registry.add(Items.APPLE, 0.5F);
 		registry.add(ModItems.BAKED_CARROT, 0.625F);
 		registry.add(ModItems.BAKED_MUSHROOM, 0.625F);
 		registry.add(Items.BAKED_POTATO, 0.625F);
@@ -313,14 +330,12 @@ public class ModRegistries {
 		registry.add(Items.CARROT, 0.5F);
 		registry.add(ModItems.CHERRY_BUNCH, 0.125F);
 		registry.add(ModItems.CHERRY_JELLYBALL, 0.5F);
-		registry.add(ModItems.CHERRY_PIE, 1.0F);
 		registry.add(ModItems.CHOCOLATE_BAR, 0.25F);
 		registry.add(ModItems.CHULK_BERRY_BUNCH, 0.25F);
 		registry.add(Items.COOKIE, 0.375F);
 		registry.add(Items.DRIED_KELP, 0.25F);
 		registry.add(ModItems.DRY_KELP_BUNDLE, 1.0F);
 		registry.add(Items.GLOW_BERRIES, 0.125F);
-		registry.add(ModItems.GLOWBERRY_PIE, 1.0F);
 		registry.add(ModItems.HONEYBUN, 0.375F);
 		registry.add(ModItems.HONEYPOD, 0.625F);
 		registry.add(ModItems.LIVE_GRASS_TUFT, 0.25F);
@@ -329,25 +344,19 @@ public class ModRegistries {
 		registry.add(ModItems.MILKLEAF_PILE, 0.875F);
 		registry.add(ModItems.NUTRILLARN_GRAM, 0.1667F);
 		registry.add(ModItems.NUTRILLARN_INGOT, 1.0F);
+		registry.add(Items.POISONOUS_POTATO, 0.375F);
 		registry.add(Items.POTATO, 0.5F);
-		registry.add(ModItems.PUMPKIN_PIE, 1.0F);
-		registry.add(ModItems.RAW_APPLE_PIE, 1.0F);
 		registry.add(ModItems.RAW_CAKE, 1.0F);
-		registry.add(ModItems.RAW_CHERRY_PIE, 1.0F);
 		registry.add(ModItems.RAW_COOKIE_BALL, 0.375F);
 		registry.add(ModItems.RAW_DOUGH_LUMP, 0.875F);
-		registry.add(ModItems.RAW_GLOWBERRY_PIE, 1.0F);
 		registry.add(ModItems.RAW_HONEYBUN_BALL, 0.375F);
 		registry.add(ModItems.RAW_MAGMABUN_BALL, 0.375F);
 		registry.add(ModItems.RAW_NUTRILLARN_LUMP, 1.0F);
 		registry.add(ModItems.RAW_NUTRILLARN_NUGGET, 0.1667F);
-		registry.add(ModItems.RAW_PUMPKIN_PIE, 1.0F);
 		registry.add(ModItems.RAW_SLIMEBUN_BALL, 0.375F);
-		registry.add(ModItems.RAW_SWEETBERRY_PIE, 1.0F);
 		registry.add(Items.ROTTEN_FLESH, 0.0625F);
 		registry.add(ModItems.SLIMEBUN, 0.375F);
 		registry.add(Items.SWEET_BERRIES, 0.125F);
-		registry.add(ModItems.SWEETBERRY_PIE, 1.0F);
 		registry.add(ModItems.WARPED_FLESH_CHUNK, 0.0625F);
 		//# Mushrooms #
 		registry.add(Items.BROWN_MUSHROOM, 0.5F);

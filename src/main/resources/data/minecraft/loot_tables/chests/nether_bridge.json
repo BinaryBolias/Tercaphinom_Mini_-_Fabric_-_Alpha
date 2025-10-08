@@ -11,14 +11,14 @@
 							"add": false,
 							"count": {
 								"type": "minecraft:uniform",
-								"max": 4.0,
+								"max": 2.0,
 								"min": 1.0
 							},
 							"function": "minecraft:set_count"
 						}
 					],
 					"name": "minecraft:nether_wart",
-					"weight": 9
+					"weight": 45
 				},
 				{
 					"type": "minecraft:item",
@@ -43,7 +43,7 @@
 						}
 					],
 					"name": "minecraft:nether_wart",
-					"weight": 5
+					"weight": 14
 				},
 				{
 					"type": "minecraft:item",
@@ -68,120 +68,22 @@
 						}
 					],
 					"name": "minecraft:nether_wart",
-					"weight": 2
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": 64.0,
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:nether_wart",
+					"weight": 1
 				}
 			],
 			"rolls": 1.0
-		},
-		{
-			"bonus_rolls": 0.0,
-			"entries": [
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:nether_brick",
-					"weight": 14
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 18.0,
-								"min": 3.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 15.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:nether_brick",
-					"weight": 15
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:netherwart_brick",
-					"weight": 3
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 18.0,
-								"min": 3.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 15.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						},
-						{
-							"add": true,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 7.0,
-								"min": 0.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "tercaphinom:netherwart_brick",
-					"weight": 2
-				}
-			],
-			"rolls": {
-				"type": "minecraft:uniform",
-				"max": 3.0,
-				"min": 0.0
-			}
 		},
 		{
 			"bonus_rolls": 0.0,
@@ -199,7 +101,7 @@
 							"function": "minecraft:set_count"
 						},
 						{
-							"add": false,
+							"add": true,
 							"count": {
 								"type": "minecraft:uniform",
 								"max": 7.0,
@@ -208,8 +110,157 @@
 							"function": "minecraft:set_count"
 						}
 					],
-					"name": "tercaphinom:infernocoal_lump",
-					"weight": 8
+					"name": "minecraft:nether_brick",
+					"weight": 11
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 42.0,
+								"min": 11.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:nether_brick",
+					"weight": 5
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:netherwart_brick",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 42.0,
+								"min": 11.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 15.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:netherwart_brick",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:nether_wart",
+					"weight": 2
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:flint",
+					"weight": 4
 				},
 				{
 					"type": "minecraft:item",
@@ -225,7 +276,470 @@
 						}
 					],
 					"name": "minecraft:iron_ingot",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:leather",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:flint_and_steel",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:saddle",
+					"weight": 1
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:flint",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:flint_and_steel",
+					"weight": 1
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:ash_pile",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 5.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
 					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 5.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:infernocoal_lump",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 5.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:flint",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_ingot",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:gold_gram",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_ingot",
+					"weight": 2
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:iron_gram",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 5.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:obsidian_shard",
+					"weight": 7
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 5.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:nether_wart",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:quartz",
+					"weight": 9
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:raw_gold",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_nugget",
+					"weight": 5
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:raw_iron",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 16.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:iron_nugget",
+					"weight": 5
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 4.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
+					"weight": 6
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 33.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 31.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
+					"weight": 3
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 8.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 7.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:infernocoal_lump",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 33.0,
+								"min": 2.0
+							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 31.0,
+								"min": 0.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "tercaphinom:infernocoal_lump",
+					"weight": 2
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 3.0,
+				"min": 0.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/nether_fortress/golden_armors",
+					"weight": 18
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/nether_fortress/golden_tools",
+					"weight": 36
 				},
 				{
 					"type": "minecraft:item",
@@ -241,7 +755,78 @@
 						}
 					],
 					"name": "minecraft:gold_ingot",
-					"weight": 15
+					"weight": 8
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"damage": {
+								"type": "minecraft:uniform",
+								"max": 0.9375,
+								"min": 0.125
+							},
+							"function": "minecraft:set_damage"
+						}
+					],
+					"name": "minecraft:golden_horse_armor",
+					"weight": 1
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 4
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/nether_fortress/golden_armors",
+					"weight": 18
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/nether_fortress/golden_tools",
+					"weight": 36
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 4.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:gold_ingot",
+					"weight": 6
+				}
+			],
+			"rolls": {
+				"type": "minecraft:uniform",
+				"max": 2.0,
+				"min": 1.0
+			}
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:empty",
+					"weight": 1
+				},
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:chest/nether_fortress/obsidian_tools",
+					"weight": 12
 				},
 				{
 					"type": "minecraft:item",
@@ -266,300 +851,13 @@
 						}
 					],
 					"name": "tercaphinom:obsidian_shard",
-					"weight": 7
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 8.0,
-								"min": 5.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:nether_wart",
-					"weight": 3
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:flint_and_steel",
-					"weight": 4
-				},
-				{
-					"type": "minecraft:item",
-					"name": "minecraft:saddle",
-					"weight": 2
-				}
-			],
-			"rolls": {
-				"type": "minecraft:uniform",
-				"max": 5.0,
-				"min": 2.0
-			}
-		},
-		{
-			"bonus_rolls": 0.0,
-			"entries": [
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"count": {
-								"type": "minecraft:uniform",
-								"max": 4.0,
-								"min": 1.0
-							},
-							"function": "minecraft:set_count"
-						}
-					],
-					"name": "minecraft:gold_ingot",
-					"weight": 21
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_axe",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "tercaphinom:golden_dagger",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "tercaphinom:golden_hatchet",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_hoe",
-					"weight": 2
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "tercaphinom:golden_mallet",
-					"weight": 8
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_pickaxe",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_shovel",
-					"weight": 4
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "tercaphinom:golden_spear",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_sword",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_boots",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_chestplate",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_helmet",
-					"weight": 6
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_leggings",
-					"weight": 5
-				},
-				{
-					"type": "minecraft:item",
-					"functions": [
-						{
-							"add": false,
-							"damage": {
-								"type": "minecraft:uniform",
-								"max": 0.9375,
-								"min": 0.125
-							},
-							"function": "minecraft:set_damage"
-						}
-					],
-					"name": "minecraft:golden_horse_armor",
 					"weight": 3
 				}
 			],
 			"rolls": {
 				"type": "minecraft:uniform",
-				"max": 3.0,
-				"min": 0.0
+				"max": 2.0,
+				"min": 1.0
 			}
 		},
 		{
@@ -567,7 +865,23 @@
 			"entries": [
 				{
 					"type": "minecraft:empty",
-					"weight": 15
+					"weight": 14
+				},
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 64.0,
+								"min": 1.0
+							},
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "minecraft:coal",
+					"weight": 1
 				},
 				{
 					"type": "minecraft:item",
