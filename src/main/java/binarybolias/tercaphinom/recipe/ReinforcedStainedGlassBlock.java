@@ -2,10 +2,7 @@ package binarybolias.tercaphinom.recipe;
 
 
 import binarybolias.tercaphinom.recipe.remainderOverride.EmptyRemainderOverride;
-import binarybolias.tercaphinom.references.ModBlocks;
-import binarybolias.tercaphinom.references.ModItems;
-import binarybolias.tercaphinom.references.ModRecipes;
-import binarybolias.tercaphinom.references.Reference;
+import binarybolias.tercaphinom.references.*;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -15,8 +12,6 @@ import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
 
 
 public class ReinforcedStainedGlassBlock extends SpecialCraftingRecipe {
@@ -117,7 +112,7 @@ public class ReinforcedStainedGlassBlock extends SpecialCraftingRecipe {
 	
 	@Override
 	public ItemStack craft(RecipeInputInventory inventory, RegistryWrapper.WrapperLookup lookup) {
-		return new ItemStack(ModBlocks.REINFORCED_STAINED_GLASS_BLOCK);
+		return new ItemStack(JAUBlocks.REINFORCED_STAINED_GLASS_BLOCK);
 	}
 	
 	

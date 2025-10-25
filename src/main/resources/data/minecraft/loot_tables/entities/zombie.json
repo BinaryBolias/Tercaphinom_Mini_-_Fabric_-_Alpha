@@ -23,6 +23,16 @@
 		},
 		{
 			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:entity/zombie_copper"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
 			"conditions": [
 				{
 					"condition": "minecraft:killed_by_player"

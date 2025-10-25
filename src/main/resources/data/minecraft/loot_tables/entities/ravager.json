@@ -130,6 +130,20 @@
 							"function": "minecraft:set_count"
 						},
 						{
+							"add": true,
+							"conditions": [
+								{
+									"condition": "minecraft:entity_properties",
+									"entity": "this",
+									"predicate": {
+										"flags": {"is_on_fire": true}
+									}
+								}
+							],
+							"count": 1.0,
+							"function": "minecraft:set_count"
+						},
+						{
 							"count": {
 								"type": "minecraft:uniform",
 								"max": 1.0,

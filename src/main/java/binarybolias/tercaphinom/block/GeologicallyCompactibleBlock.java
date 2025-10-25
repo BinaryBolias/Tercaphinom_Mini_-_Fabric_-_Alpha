@@ -1,5 +1,6 @@
 package binarybolias.tercaphinom.block;
 
+import binarybolias.tercaphinom.registry.tag.BlockTags;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.Block;
@@ -9,6 +10,8 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+
+import java.util.List;
 
 import static binarybolias.tercaphinom.references.Reference.*;
 
@@ -43,6 +46,12 @@ public class GeologicallyCompactibleBlock extends Block {
 					createSettingsCodec()
 			).apply(instance, GeologicallyCompactibleBlock::new));
 	
+	//TODO: Create a public collection of block offset lists for this to exist within instead.
+	public static final List<BlockPos> HORIZONTAL_ORTHOGONAL_NEIGHBORS = BlockPos.stream(-1, 0, -1, 1, 0, 1)
+			.filter(pos -> pos.getX() == 0 || pos.getZ() == 0)
+			.map(BlockPos::toImmutable)
+			.toList();
+	
 	private final Block compactedForm;
 	private final int pressureRequirement;
 	private final int uncertaintyRange;
@@ -76,13 +85,13 @@ public class GeologicallyCompactibleBlock extends Block {
 	@Override
 	protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 		// Require a geological compacting support block below.
-		if (!world.getBlockState(pos.down()).isIn(Tags.Block.GEOLOGICALLY_COMPACTS_FROM_BELOW)) {
+		if (!world.getBlockState(pos.down()).isIn(BlockTags.GEOLOGICALLY_COMPACTS_STRONGLY)) {
 			return;
 		}
 		int guaranteedCompactingPressure = pressureRequirement + uncertaintyRange;
 		// Get compacting pressure from contiguous pillar of blocks directly above.
 		int compactingPressure = 0;
-		while (world.getBlockState(pos.up(compactingPressure + 1)).isIn(Tags.Block.GEOLOGICALLY_COMPACTS_FROM_ABOVE)) {
+		while (world.getBlockState(pos.up(compactingPressure + 1)).isIn(BlockTags.GEOLOGICALLY_COMPACTS_WEAKLY)) {
 			compactingPressure++;
 			// Instantly transform if pressure reaches the maximum threshold.
 			if (compactingPressure == guaranteedCompactingPressure) {
@@ -90,11 +99,24 @@ public class GeologicallyCompactibleBlock extends Block {
 				return;
 			}
 		}
-		// Require pressure to be no less than minimum requirement.
+		// Require pressure from blocks above to be no less than minimum requirement.
 		if (compactingPressure < pressureRequirement) {
 			return;
 		}
-		// Randomly choose to transform based on pressure relative to minimum anf maximum.
+		// Add compacting pressure from strongly compacting blocks to the sides.
+		// This increases the chance of compacting based on surrounding blocks.
+		// This does not reduce the minimum requirement of compressive blocks above for compacting.
+		for (BlockPos offset : HORIZONTAL_ORTHOGONAL_NEIGHBORS) {
+			if (world.getBlockState(pos.add(offset)).isIn(BlockTags.GEOLOGICALLY_COMPACTS_STRONGLY)) {
+				compactingPressure++;
+				// Instantly transform if pressure reaches the maximum threshold.
+				if (compactingPressure == guaranteedCompactingPressure) {
+					transformIntoCompactedForm(world, pos);
+					return;
+				}
+			}
+		}
+		// Randomly choose to transform based on pressure relative to minimum and maximum.
 		// Note that 'guaranteedCompactingPressure' logically must be greater than 'pressureRequirement' at this point.
 		// With 'pressureRequirement' as "min" and 'guaranteedCompactingPressure' as "max":
 		//  - 'compactingPressure' cannot become greater than or equal to max; transformation would have already occurred.

@@ -1,5 +1,6 @@
 package binarybolias.tercaphinom.item;
 
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -8,23 +9,43 @@ import net.minecraft.item.Items;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
+
 public class BowlBeverageItem extends Item {
 	private static final int MAX_USE_TIME = 20;
 	
+	
 	public BowlBeverageItem(Settings settings) {
-		super(settings.maxCount(1));
+		super(settings);
+	}
+	
+	
+	public ItemStack getEmptyItem() {
+		return new ItemStack(Items.BOWL);
 	}
 	
 	
 	@Override
 	public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-		// Return the original item for players in creative mode, else return an Empty Bowl.
-		ItemStack itemStack = stack.copy();
 		super.finishUsing(stack, world, user);
-		if (user instanceof PlayerEntity playerEntity && playerEntity.isInCreativeMode()) {
-			return itemStack;
+		
+		// Decrement manually if not already a food item; decrement is automatic for food items.
+		if (!stack.contains(DataComponentTypes.FOOD)) {
+			stack.decrementUnlessCreative(1, user);
 		}
-		return new ItemStack(Items.BOWL);
+		
+		// Add a new Empty Bowl.
+		if (stack.isEmpty()) {
+			return getEmptyItem();
+		} else {
+			if (user instanceof PlayerEntity playerEntity && !playerEntity.isInCreativeMode()) {
+				ItemStack itemStack = getEmptyItem();
+				if (!playerEntity.getInventory().insertStack(itemStack)) {
+					playerEntity.dropItem(itemStack, false);
+				}
+			}
+			
+			return stack;
+		}
 	}
 	
 	

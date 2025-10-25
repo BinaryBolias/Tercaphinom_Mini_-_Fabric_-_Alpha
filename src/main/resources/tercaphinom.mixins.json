@@ -2,8 +2,19 @@
 	"required": true,
 	"minVersion": "0.8",
 	"package": "binarybolias.tercaphinom.mixin",
-	"compatibilityLevel": "JAVA_17",
+	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"block.AnvilBlockMixin",
+		"block.BlockMixin",
+		"block.CarvedPumpkinBlockMixin",
+		"block.CaveVinesBodyBlockMixin",
+		"block.CaveVinesHeadBlockMixin",
+		"block.CropBlockMixin",
+		"block.EnchantingTableBlockMixin",
+		"entity.ItemEntityMixin",
+		"entity.mob.CreeperEntityMixin",
+		"entity.passive.IronGolemEntityMixin",
+		"entity.projectile.FireballEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

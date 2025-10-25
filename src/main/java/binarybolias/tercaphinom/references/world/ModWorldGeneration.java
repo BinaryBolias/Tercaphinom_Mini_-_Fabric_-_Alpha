@@ -2,11 +2,13 @@ package binarybolias.tercaphinom.references.world;
 
 import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
+
 public class ModWorldGeneration {
 	public ModWorldGeneration() {
 		// Disable instantiation.
 		throw new AssertionError();
 	}
+	
 	
 	public static void register() {
 		logMainEvent("Registering world generation");

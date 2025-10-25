@@ -1,12 +1,13 @@
 package binarybolias.tercaphinom.references;
 
+import binarybolias.tercaphinom.registry.tag.ItemTags;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
-import net.minecraft.registry.tag.ItemTags;
 
 import static binarybolias.tercaphinom.references.Reference.*;
+
 
 public class ModRegistries {
 	public static void register() {
@@ -23,9 +24,12 @@ public class ModRegistries {
 		registerPortals();
 	}
 	
+	
 	/**
 	 * Vanilla fuels reference:<br>
-	 * {@link net.minecraft.block.entity.AbstractFurnaceBlockEntity}
+	 * {@link net.minecraft.block.entity.AbstractFurnaceBlockEntity}<br>
+	 * <p>
+	 * The maximum phlogiston an item can be assigned is 32767. ()
 	 */
 	private static void registerFuels() {
 		logMainEvent("Registering fuels");
@@ -76,24 +80,24 @@ public class ModRegistries {
 		registry.remove(Items.WOODEN_SHOVEL);
 		registry.remove(Items.WOODEN_SWORD);
 		//# Tags #
-		registry.remove(ItemTags.BAMBOO_BLOCKS);
-		registry.remove(ItemTags.BANNERS);
-		registry.remove(ItemTags.BOATS);
-		registry.remove(ItemTags.FENCE_GATES);
-		registry.remove(ItemTags.HANGING_SIGNS);
-		registry.remove(ItemTags.LOGS);
-		registry.remove(ItemTags.PLANKS);
-		registry.remove(ItemTags.SAPLINGS);
-		registry.remove(ItemTags.SIGNS);
-		registry.remove(ItemTags.WOODEN_BUTTONS);
-		registry.remove(ItemTags.WOODEN_DOORS);
-		registry.remove(ItemTags.WOODEN_FENCES);
-		registry.remove(ItemTags.WOODEN_PRESSURE_PLATES);
-		registry.remove(ItemTags.WOODEN_SLABS);
-		registry.remove(ItemTags.WOODEN_STAIRS);
-		registry.remove(ItemTags.WOODEN_TRAPDOORS);
-		registry.remove(ItemTags.WOOL);
-		registry.remove(ItemTags.WOOL_CARPETS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.BAMBOO_BLOCKS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.BANNERS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.BOATS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.FENCE_GATES);
+		registry.remove(net.minecraft.registry.tag.ItemTags.HANGING_SIGNS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.LOGS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.PLANKS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.SAPLINGS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.SIGNS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOODEN_BUTTONS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOODEN_DOORS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOODEN_FENCES);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOODEN_PRESSURE_PLATES);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOODEN_SLABS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOODEN_STAIRS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOODEN_TRAPDOORS);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOOL);
+		registry.remove(net.minecraft.registry.tag.ItemTags.WOOL_CARPETS);
 		// TODO: Remove remaining vanilla fuels.
 		//endregion
 		
@@ -107,29 +111,29 @@ public class ModRegistries {
 		// - 20000: Lava Bucket
 		
 		//# Basic Resources (bamboo) #
-		registry.add(Items.BAMBOO, 100); // TODO: Perhaps rework with implementation of Dry Bamboo Stick.
+		registry.add(VMOItems.BAMBOO, 100); // TODO: Perhaps rework with implementation of Dry Bamboo Stick.
 		//# Basic Resources (grass) #
 		registry.add(ModItems.DRY_GRASS_TUFT, 100);
 		registry.add(ModItems.LIVE_GRASS_TUFT, 50);
 		//# Basic Resources (kelp) #
-		registry.add(Items.DRIED_KELP, 300);
+		registry.add(VMOItems.DRIED_KELP, 300);
 		registry.add(ModItems.DRY_KELP_BUNDLE, 1200);
-		registry.add(Items.KELP, 50);
+		registry.add(VMOItems.KELP, 50);
 		//# Basic Resources (moss) #
 		// TODO: Add Dry Moss Wad upon implementation.
 		//# Basic Resources (miscellaneous) #
-		registry.add(Items.BLAZE_POWDER, 600);
-		registry.add(Items.BLAZE_ROD, 2400);
+		registry.add(VMOItems.BLAZE_POWDER, 600);
+		registry.add(VMOItems.BLAZE_ROD, 2400);
 		registry.add(Items.CHARCOAL, 1200);
-		registry.add(Items.COAL, 1600);
+		registry.add(VMOItems.COAL, 1600);
 		registry.add(ModItems.COBWEB_BALL, 800);
 		registry.add(ModItems.INFERNOCOAL_LUMP, 6400);
 		registry.add(ModItems.LEAF_PILE, 150);
-		registry.add(Items.PAPER, 100);
+		registry.add(VMOItems.PAPER, 100);
 		registry.add(ModItems.PINECONE, 800);
 		registry.add(ModItems.SILK_WAD, 50);
-		registry.add(Items.STICK, 100);
-		registry.add(Items.STRING, 50);
+		registry.add(VMOItems.STICK, 100);
+		registry.add(VMOItems.STRING, 50);
 		registry.add(ModItems.SULPHUR_LUMP, 1600);
 		registry.add(ModItems.WOODEN_STICK_BUNDLE, 400);
 		//# Books #
@@ -140,10 +144,10 @@ public class ModRegistries {
 		//# Containers & Equipment #
 		// NOTE: Items with durability are intended to provide half the sum of their fuel ingredients.
 		registry.add(Items.BOW, 150);
-		registry.add(Items.BOWL, 450);
+		registry.add(VMOItems.BOWL, 450);
 		registry.add(Items.CROSSBOW, 400);
 		registry.add(Items.FISHING_ROD, 200);
-		registry.add(Items.LAVA_BUCKET, 20000);
+		registry.add(VMOItems.LAVA_BUCKET, 20000);
 		registry.add(ModItems.SHARP_WOODEN_STICK, 50);
 		registry.add(ModItems.WOODEN_DAGGER, 200);
 		registry.add(ModItems.WOODEN_MALLET, 400);
@@ -155,16 +159,16 @@ public class ModRegistries {
 		registry.add(Items.DEAD_BUSH, 200);
 		registry.add(Items.FLOWERING_AZALEA, 200);
 		//# Joke & Unserious #
-		registry.add(Items.FLETCHING_TABLE, 16000); // It's finally useful!
-		registry.add(ModItems.MINIWIZARD, 25600);
+		registry.add(VMOItems.FLETCHING_TABLE, 16000); // It's finally useful!
+		registry.add(JAUItems.MINIWIZARD, 25600);
 		//# Tags #
-		registry.add(Tags.Item.ALL_PLANKS, 400);
-		registry.add(Tags.Item.ALL_YARNBALLS, 100);
-		registry.add(Tags.Item.ALL_YARN_ROLLS, 400);
-		registry.add(ItemTags.SAPLINGS, 200);
-		registry.add(ItemTags.BANNERS, 1200);
-		// TODO: Add remaining fuels. (if any?)
+		registry.add(ItemTags.ALL_PLANKS, 400);
+		registry.add(ItemTags.ALL_YARNBALLS, 100);
+		registry.add(ItemTags.ALL_YARN_ROLLS, 400);
+		registry.add(net.minecraft.registry.tag.ItemTags.SAPLINGS, 200);
+		registry.add(net.minecraft.registry.tag.ItemTags.BANNERS, 1200);
 	}
+	
 	
 	/**
 	 * Vanilla compostables reference:<br>
@@ -319,50 +323,50 @@ public class ModRegistries {
 		registry.add(ModItems.RAW_PUMPKIN_PIE, 0.96875F);
 		registry.add(ModItems.RAW_SWEETBERRY_PIE, 0.96875F);
 		//# Foods (miscellaneous) #
-		registry.add(Items.APPLE, 0.5F);
+		registry.add(VMOItems.APPLE, 0.5F);
 		registry.add(ModItems.BAKED_CARROT, 0.625F);
 		registry.add(ModItems.BAKED_MUSHROOM, 0.625F);
-		registry.add(Items.BAKED_POTATO, 0.625F);
+		registry.add(VMOItems.BAKED_POTATO, 0.625F);
 		registry.add(ModItems.BAKED_RADISH, 0.625F);
-		registry.add(Items.BEETROOT, 0.5F);
-		registry.add(Items.BREAD, 0.875F);
-		registry.add(Items.CAKE, 1.0F);
-		registry.add(Items.CARROT, 0.5F);
+		registry.add(VMOItems.BEETROOT, 0.5F);
+		registry.add(VMOItems.BREAD, 0.875F);
+		registry.add(VMOItems.CAKE, 1.0F);
+		registry.add(VMOItems.CARROT, 0.5F);
 		registry.add(ModItems.CHERRY_BUNCH, 0.125F);
-		registry.add(ModItems.CHERRY_JELLYBALL, 0.5F);
-		registry.add(ModItems.CHOCOLATE_BAR, 0.25F);
-		registry.add(ModItems.CHULK_BERRY_BUNCH, 0.25F);
-		registry.add(Items.COOKIE, 0.375F);
-		registry.add(Items.DRIED_KELP, 0.25F);
+		registry.add(JAUItems.CHERRY_JELLYBALL, 0.5F);
+		registry.add(JAUItems.CHOCOLATE_BAR, 0.25F);
+		registry.add(JAUItems.CHULK_BERRY_BUNCH, 0.25F);
+		registry.add(VMOItems.COOKIE, 0.375F);
+		registry.add(VMOItems.DRIED_KELP, 0.25F);
 		registry.add(ModItems.DRY_KELP_BUNDLE, 1.0F);
-		registry.add(Items.GLOW_BERRIES, 0.125F);
+		registry.add(VMOItems.GLOW_BERRIES, 0.125F);
 		registry.add(ModItems.HONEYBUN, 0.375F);
-		registry.add(ModItems.HONEYPOD, 0.625F);
+		registry.add(JAUItems.HONEYPOD, 0.625F);
 		registry.add(ModItems.LIVE_GRASS_TUFT, 0.25F);
 		registry.add(ModItems.MAGMABUN, 0.375F);
-		registry.add(Items.MELON_SLICE, 0.375F);
-		registry.add(ModItems.MILKLEAF_PILE, 0.875F);
-		registry.add(ModItems.NUTRILLARN_GRAM, 0.1667F);
-		registry.add(ModItems.NUTRILLARN_INGOT, 1.0F);
-		registry.add(Items.POISONOUS_POTATO, 0.375F);
-		registry.add(Items.POTATO, 0.5F);
+		registry.add(VMOItems.MELON_SLICE, 0.375F);
+		registry.add(JAUItems.MILKLEAF_PILE, 0.875F);
+		registry.add(JAUItems.NUTRILLARN_GRAM, 0.1667F);
+		registry.add(JAUItems.NUTRILLARN_INGOT, 1.0F);
+		registry.add(VMOItems.POISONOUS_POTATO, 0.375F);
+		registry.add(VMOItems.POTATO, 0.5F);
 		registry.add(ModItems.RAW_CAKE, 1.0F);
 		registry.add(ModItems.RAW_COOKIE_BALL, 0.375F);
-		registry.add(ModItems.RAW_DOUGH_LUMP, 0.875F);
+		registry.add(ModItems.RAW_DOUGH_LUMP, 0.96875F);
 		registry.add(ModItems.RAW_HONEYBUN_BALL, 0.375F);
 		registry.add(ModItems.RAW_MAGMABUN_BALL, 0.375F);
-		registry.add(ModItems.RAW_NUTRILLARN_LUMP, 1.0F);
-		registry.add(ModItems.RAW_NUTRILLARN_NUGGET, 0.1667F);
+		registry.add(JAUItems.RAW_NUTRILLARN_LUMP, 1.0F);
+		registry.add(JAUItems.RAW_NUTRILLARN_NUGGET, 0.1667F);
 		registry.add(ModItems.RAW_SLIMEBUN_BALL, 0.375F);
-		registry.add(Items.ROTTEN_FLESH, 0.0625F);
+		registry.add(VMOItems.ROTTEN_FLESH, 0.0625F);
 		registry.add(ModItems.SLIMEBUN, 0.375F);
-		registry.add(Items.SWEET_BERRIES, 0.125F);
+		registry.add(VMOItems.SWEET_BERRIES, 0.125F);
 		registry.add(ModItems.WARPED_FLESH_CHUNK, 0.0625F);
 		//# Mushrooms #
 		registry.add(Items.BROWN_MUSHROOM, 0.5F);
 		registry.add(Items.CRIMSON_FUNGUS, 0.5F);
 		registry.add(Items.RED_MUSHROOM, 0.5F);
-		registry.add(ModItems.STARCHCAP_MUSHROOM, 0.5F);
+		registry.add(JAUItems.STARCHCAP_MUSHROOM, 0.5F);
 		registry.add(Items.WARPED_FUNGUS, 0.5F);
 		//# Saplings #
 		registry.add(Items.ACACIA_SAPLING, 0.5F);
@@ -374,11 +378,11 @@ public class ModRegistries {
 		registry.add(Items.OAK_SAPLING, 0.5F);
 		registry.add(Items.SPRUCE_SAPLING, 0.5F);
 		//# Seed Piles #
-		registry.add(Items.BEETROOT_SEEDS, 0.0625F);
-		registry.add(Items.MELON_SEEDS, 0.0625F);
-		registry.add(Items.PUMPKIN_SEEDS, 0.0625F);
-		registry.add(Items.TORCHFLOWER_SEEDS, 0.0625F);
-		registry.add(Items.WHEAT_SEEDS, 0.0625F);
+		registry.add(VMOItems.BEETROOT_SEEDS, 0.0625F);
+		registry.add(VMOItems.MELON_SEEDS, 0.0625F);
+		registry.add(VMOItems.PUMPKIN_SEEDS, 0.0625F);
+		registry.add(VMOItems.TORCHFLOWER_SEEDS, 0.0625F);
+		registry.add(VMOItems.WHEAT_SEEDS, 0.0625F);
 		//# Yarnballs #
 		registry.add(ModItems.BLACK_YARNBALL, 0.375F);
 		registry.add(ModItems.BLUE_YARNBALL, 0.375F);
@@ -409,13 +413,13 @@ public class ModRegistries {
 		registry.add(Items.FERN, 0.5F);
 		registry.add(Items.FLOWERING_AZALEA, 0.6875F);
 		registry.add(Items.GLOW_LICHEN, 0.375F);
-		registry.add(Items.KELP, 0.1875F);
+		registry.add(VMOItems.KELP, 0.1875F);
 		registry.add(ModItems.LEAF_PILE, 1.0F);
 		registry.add(Items.LILY_PAD, 0.5F);
 		registry.add(Items.MOSS_CARPET, 0.75F); // TODO: Replace with Dry Moss Wad & Live Moss Wad upon implementation.
-		registry.add(Items.NETHER_SPROUTS, 0.625F);
-		registry.add(Items.NETHER_WART, 0.625F);
-		registry.add(Items.PAPER, 0.125F);
+		registry.add(VMOItems.NETHER_SPROUTS, 0.625F);
+		registry.add(VMOItems.NETHER_WART, 0.625F);
+		registry.add(VMOItems.PAPER, 0.125F);
 		registry.add(ModItems.PINECONE, 0.375F);
 		registry.add(Items.PINK_PETALS, 0.375F);
 		registry.add(Items.PITCHER_PLANT, 0.875F);
@@ -425,8 +429,8 @@ public class ModRegistries {
 		registry.add(ModItems.SHARP_WOODEN_STICK, 0.0625F);
 		registry.add(ModItems.SILK_WAD, 0.25F);
 		registry.add(Items.SMALL_DRIPLEAF, 0.375F);
-		registry.add(Items.STICK, 0.125F);
-		registry.add(Items.STRING, 0.0625F);
+		registry.add(VMOItems.STICK, 0.125F);
+		registry.add(VMOItems.STRING, 0.0625F);
 		registry.add(Items.SUGAR_CANE, 0.25F);
 		registry.add(Items.TWISTING_VINES, 0.5F);
 		registry.add(Items.VINE, 0.5F);
@@ -434,37 +438,46 @@ public class ModRegistries {
 		registry.add(Items.WHEAT, 0.875F);
 	}
 	
+	
 	private static void registerCommands() {
 		logMainEvent("Registering commands");
 	}
+	
 	
 	private static void registerEvents() {
 		logMainEvent("Registering events");
 	}
 	
+	
 	private static void registerPotionRecipes() {
 		logMainEvent("Registering potion recipes");
 	}
+	
 	
 	private static void registerCustomTrades() {
 		logMainEvent("Registering trades");
 	}
 	
+	
 	private static void registerStrippables() {
 		logMainEvent("Registering strippables");
 	}
+	
 	
 	private static void registerFlammables() {
 		logMainEvent("Registering flammables");
 	}
 	
+	
 	private static void registerAttributes() {
 		logMainEvent("Registering attributes");
 	}
 	
+	
 	private static void registerOxidizables() {
 		logMainEvent("Registering oxidizables");
 	}
+	
 	
 	private static void registerPortals() {
 		logMainEvent("Registering portals");

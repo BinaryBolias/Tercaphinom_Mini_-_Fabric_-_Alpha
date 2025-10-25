@@ -1,0 +1,22 @@
+{
+	"comment": [
+		"Modified to universally disable the generation of dirt as ore blobs underground",
+		"Dirt does not make sense to be hanging out as random ore blobs underground."
+	],
+	"type": "minecraft:ore",
+	"config": {
+		"discard_chance_on_air_exposure": 0.0,
+		"size": 0,
+		"targets": [
+			{
+				"state": {
+					"Name": "minecraft:dirt"
+				},
+				"target": {
+					"predicate_type": "minecraft:tag_match",
+					"tag": "minecraft:base_stone_overworld"
+				}
+			}
+		]
+	}
+}

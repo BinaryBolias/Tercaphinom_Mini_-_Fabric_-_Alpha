@@ -260,6 +260,7 @@ Now with brass!
 Now with cobblestones!
 Now with colder water!
 Now with cookable water!
+Now with easier furnaces!
 Now with edible bees!
 Now with edible bugs!
 Now with edible eggs!
@@ -289,17 +290,17 @@ Now with hotter coal!
 Now with individual planks!
 Now with infinitely fewer genders!
 Now with infinitely fewer Herobrines!
-Now with infinitely more mods enabled by default!
-Now with infinitely more mods enabled by default! And infinitely fewer genders?!
 Now with less expressive humanoids!
 Now with less potable water!
 Now with more count nouns and fewer mass nouns!
 Now with more cylindrical carpets!
+Now with more difficult chests!
 Now with more game balance!
 Now with more game balance maybe!
 Now with more gameplay progression!
 Now with more loot!
 Now with more meats!
+Now with more mods enabled by default!
 Now with more pies!
 Now with more soups!
 Now with more stews!
@@ -340,6 +341,7 @@ Piles of sand!
 Piles of seeds!
 Piles of snow!
 Pixels everywhere!
+Placeable material items!
 Planks everywhere!
 Plant a tree!
 Planks!

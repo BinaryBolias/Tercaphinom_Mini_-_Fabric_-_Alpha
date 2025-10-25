@@ -1,15 +1,15 @@
 package binarybolias.tercaphinom.datagen;
 
+import binarybolias.tercaphinom.references.JAUBlocks;
 import binarybolias.tercaphinom.references.ModBlocks;
+import binarybolias.tercaphinom.registry.tag.BlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
-import static binarybolias.tercaphinom.references.Reference.*;
 import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
 
@@ -34,33 +34,73 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 		*  vanilla tags are inappropriate; only custom tags are to be used instead.
 		 */
 		
-		getOrCreateTagBuilder(Tags.Block.NIL); // Intentionally empty.
+		getOrCreateTagBuilder(BlockTags.NIL); // Intentionally empty.
 		
-		getOrCreateTagBuilder(Tags.Block.ALL_ETERNALITH_BLOCKS)
+		getOrCreateTagBuilder(BlockTags.ALL_ETERNALITH_BLOCKS)
 				.add(ModBlocks.CHISELED_ETERNALITH_BLOCK, ModBlocks.ETERNALITH_BLOCK);
 		
 		// Eternalith block properties.
-		getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
-		getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
-		getOrCreateTagBuilder(BlockTags.GEODE_INVALID_BLOCKS).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
-		getOrCreateTagBuilder(BlockTags.INFINIBURN_END).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
-		getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
-		getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE).addTag(Tags.Block.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.DRAGON_IMMUNE).addTag(BlockTags.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.FEATURES_CANNOT_REPLACE).addTag(BlockTags.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.GEODE_INVALID_BLOCKS).addTag(BlockTags.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.INFINIBURN_END).addTag(BlockTags.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.OCCLUDES_VIBRATION_SIGNALS).addTag(BlockTags.ALL_ETERNALITH_BLOCKS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.WITHER_IMMUNE).addTag(BlockTags.ALL_ETERNALITH_BLOCKS);
 		
 		// Tool tier elitism removal for vanilla tool materials.
-		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL).setReplace(true);
-		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_STONE_TOOL).setReplace(true);
-		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL).setReplace(true);
-		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_IRON_TOOL).setReplace(true);
-		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).setReplace(true);
-		getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).setReplace(true);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.INCORRECT_FOR_WOODEN_TOOL).setReplace(true);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.INCORRECT_FOR_STONE_TOOL).setReplace(true);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.INCORRECT_FOR_GOLD_TOOL).setReplace(true);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.INCORRECT_FOR_IRON_TOOL).setReplace(true);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.INCORRECT_FOR_DIAMOND_TOOL).setReplace(true);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.INCORRECT_FOR_NETHERITE_TOOL).setReplace(true);
 		
 		// BlockTags.PICKAXE_MINEABLE: (I think) The blocks within this tag only drop loot if mined with a pickaxe.
 		// - Intended to be used for blocks with the "requiresTool" setting.
 		//  - This setting reduces mining speed and disallows loot drops by default.
 		// - Allows for ordinary mining speed, and for the block to drop loot, when mined with a PickaxeItem.
 		//  - Does not seem to have relation to the "pickaxes" item tag.
-		getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.PICKAXE_MINEABLE)
+				//# Glass (clear) #
+				.add(Blocks.GLASS)
+				//# Glass (tinted) #
+				.add(Blocks.TINTED_GLASS)
+				//# Glass Block (stained) #
+				.add(Blocks.BLACK_STAINED_GLASS)
+				.add(Blocks.BLUE_STAINED_GLASS)
+				.add(Blocks.BROWN_STAINED_GLASS)
+				.add(Blocks.CYAN_STAINED_GLASS)
+				.add(Blocks.GRAY_STAINED_GLASS)
+				.add(Blocks.GREEN_STAINED_GLASS)
+				.add(Blocks.LIGHT_BLUE_STAINED_GLASS)
+				.add(Blocks.LIGHT_GRAY_STAINED_GLASS)
+				.add(Blocks.LIME_STAINED_GLASS)
+				.add(Blocks.MAGENTA_STAINED_GLASS)
+				.add(Blocks.ORANGE_STAINED_GLASS)
+				.add(Blocks.PINK_STAINED_GLASS)
+				.add(Blocks.PURPLE_STAINED_GLASS)
+				.add(Blocks.RED_STAINED_GLASS)
+				.add(Blocks.WHITE_STAINED_GLASS)
+				.add(Blocks.YELLOW_STAINED_GLASS)
+				//# Glass Pane (clear) #
+				.add(Blocks.GLASS_PANE)
+				//# Glass Pane (stained) #
+				.add(Blocks.BLACK_STAINED_GLASS_PANE)
+				.add(Blocks.BLUE_STAINED_GLASS_PANE)
+				.add(Blocks.BROWN_STAINED_GLASS_PANE)
+				.add(Blocks.CYAN_STAINED_GLASS_PANE)
+				.add(Blocks.GRAY_STAINED_GLASS_PANE)
+				.add(Blocks.GREEN_STAINED_GLASS_PANE)
+				.add(Blocks.LIGHT_BLUE_STAINED_GLASS_PANE)
+				.add(Blocks.LIGHT_GRAY_STAINED_GLASS_PANE)
+				.add(Blocks.LIME_STAINED_GLASS_PANE)
+				.add(Blocks.MAGENTA_STAINED_GLASS_PANE)
+				.add(Blocks.ORANGE_STAINED_GLASS_PANE)
+				.add(Blocks.PINK_STAINED_GLASS_PANE)
+				.add(Blocks.PURPLE_STAINED_GLASS_PANE)
+				.add(Blocks.RED_STAINED_GLASS_PANE)
+				.add(Blocks.WHITE_STAINED_GLASS_PANE)
+				.add(Blocks.YELLOW_STAINED_GLASS_PANE)
 				//# Stone (stiefane) #
 				.add(ModBlocks.STIEFANE_BRICK_BLOCK)
 				.add(ModBlocks.COBBLED_STIEFANE_BLOCK)
@@ -79,12 +119,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.REFINED_EIDURIL_BLOCK)
 				//## Joke & Unserious ##
 				//# (J&U) Metal #
-				.add(ModBlocks.RAW_NUTRILLARN_BLOCK)
-				.add(ModBlocks.REFINED_NUTRILLARN_BLOCK)
+				.add(JAUBlocks.RAW_NUTRILLARN_BLOCK)
+				.add(JAUBlocks.REFINED_NUTRILLARN_BLOCK)
 				//# (J&U) Miscellaneous #
-				.add(ModBlocks.ULTRASMOOTH_STONE);
+				.add(JAUBlocks.ULTRASMOOTH_STONE);
 		
-		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.SHOVEL_MINEABLE)
 				//# Stone (cobbled) #
 				.add(ModBlocks.COBBLED_STIEFANE_BLOCK) // TODO: Perhaps make a separate block tag for cobbled stone blocks.
 				.add(Blocks.MOSSY_COBBLESTONE, Blocks.INFESTED_COBBLESTONE)
@@ -100,13 +140,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				
 				//## Joke & Unserious ##
 				//# (J&U) Cheese #
-				.add(ModBlocks.BLUE_CHEESE_BLOCK)
-				.add(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK)
-				.add(ModBlocks.YELLOW_CHEESE_BLOCK)
+				.add(JAUBlocks.BLUE_CHEESE_BLOCK)
+				.add(JAUBlocks.SILKY_SMOOTH_CHEESE_BLOCK)
+				.add(JAUBlocks.YELLOW_CHEESE_BLOCK)
 				//# (J&U) Miscellaneous #
-				.add(ModBlocks.CHERRY_JELLYBLOCK);
+				.add(JAUBlocks.CHERRY_JELLYBLOCK);
 		
-		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.AXE_MINEABLE)
 				.add(ModBlocks.VERDAK_LOG)
 				.add(ModBlocks.VERDAK_TRUNK)
 				.add(ModBlocks.VERDAK_PLANK_BLOCK)
@@ -119,62 +159,59 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.VERDAK_PLANK_SLAB)
 				.add(ModBlocks.VERDAK_PLANK_STAIR);
 		
-		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.HOE_MINEABLE);
 		
 		// In vanilla, this is copied as an item tag and only used for defining which logs can be cooked into charcoal.
-		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.LOGS_THAT_BURN);
 		
-		getOrCreateTagBuilder(BlockTags.WALLS)
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.WALLS)
 				.add(ModBlocks.STIEFANE_BRICK_WALL_POST);
-		getOrCreateTagBuilder(BlockTags.FENCES)
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.FENCES)
 				.add(ModBlocks.VERDAK_FENCE_POST);
-		getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.FENCE_GATES)
 				.add(ModBlocks.VERDAK_GATE);
-		getOrCreateTagBuilder(BlockTags.STAIRS);
-		getOrCreateTagBuilder(BlockTags.DOORS);
-		getOrCreateTagBuilder(BlockTags.TRAPDOORS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.STAIRS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.DOORS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.TRAPDOORS);
 		
 		// These are copied as item tags, but don't seem to actually be used for anything.
 		// If these WERE used for something, it would probably just be for smelting ore blocks into resources,
 		//  which in Tercaphinom is not only ILLEGAL, but also impossible (given that the ore blocks are unobtainable in survival)
 		//  and ALSO just plain inefficient, since mining the ore blocks gives a minimum of more than one resource per block anyway.
-		getOrCreateTagBuilder(BlockTags.COAL_ORES);
-		getOrCreateTagBuilder(BlockTags.COPPER_ORES);
-		getOrCreateTagBuilder(BlockTags.DIAMOND_ORES);
-		getOrCreateTagBuilder(BlockTags.EMERALD_ORES);
-		getOrCreateTagBuilder(BlockTags.GOLD_ORES);
-		getOrCreateTagBuilder(BlockTags.LAPIS_ORES);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.COAL_ORES);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.COPPER_ORES);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.DIAMOND_ORES);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.EMERALD_ORES);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.GOLD_ORES);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.LAPIS_ORES);
 		
 		// Used for transparent blocks which are intended to be solid.
 		// Only includes glass blocks (clear, stained, and tinted) in vanilla (as of MC 1.20.6).
-		getOrCreateTagBuilder(BlockTags.IMPERMEABLE);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.IMPERMEABLE);
 		
-		getOrCreateTagBuilder(BlockTags.SAPLINGS);
-		getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS);
-		
-		getOrCreateTagBuilder(Tags.Block.BLACKLISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON)
+		getOrCreateTagBuilder(BlockTags.BLACKLISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON)
 				.add(Blocks.BARRIER)
 		;
-		getOrCreateTagBuilder(Tags.Block.WHITELISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON)
-				.add(ModBlocks.CHERRY_JELLYBLOCK)
+		getOrCreateTagBuilder(BlockTags.WHITELISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON)
+				.add(JAUBlocks.CHERRY_JELLYBLOCK)
 				.add(Blocks.HONEY_BLOCK, Blocks.SOUL_SAND, Blocks.MUD)
 		;
-		getOrCreateTagBuilder(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON).setReplace(true)
-				.addTag(Tags.Block.WHITELISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.SNOW_LAYER_CAN_SURVIVE_ON).setReplace(true)
+				.addTag(BlockTags.WHITELISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON);
 		
-		getOrCreateTagBuilder(BlockTags.ENCHANTMENT_POWER_PROVIDER).setReplace(true)
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.ENCHANTMENT_POWER_PROVIDER).setReplace(true)
 				.add(Blocks.BOOKSHELF) // "Oak Packed Bookshelf"
 		;
 		
 		
-		getOrCreateTagBuilder(Tags.Block.ALL_COBBLED_STONE_BLOCKS)
+		getOrCreateTagBuilder(BlockTags.ALL_COBBLED_STONE_BLOCKS)
 				.add(Blocks.COBBLED_DEEPSLATE)
 				.add(ModBlocks.COBBLED_STIEFANE_BLOCK)
 				.add(Blocks.COBBLESTONE)
 				.add(Blocks.INFESTED_COBBLESTONE)
 				.add(Blocks.MOSSY_COBBLESTONE)
 		;
-		getOrCreateTagBuilder(Tags.Block.ALL_NATURAL_STONE_BLOCKS)
+		getOrCreateTagBuilder(BlockTags.ALL_NATURAL_STONE_BLOCKS)
 				.add(Blocks.TERRACOTTA,
 						Blocks.BLACK_TERRACOTTA, Blocks.BLUE_TERRACOTTA, Blocks.BROWN_TERRACOTTA, Blocks.CYAN_TERRACOTTA,
 						Blocks.GRAY_TERRACOTTA, Blocks.GREEN_TERRACOTTA, Blocks.LIGHT_BLUE_TERRACOTTA, Blocks.LIGHT_GRAY_TERRACOTTA,
@@ -199,7 +236,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(Blocks.STONE)
 				.add(Blocks.TUFF)
 		;
-		getOrCreateTagBuilder(Tags.Block.ALL_REFINED_STONE_BLOCKS)
+		getOrCreateTagBuilder(BlockTags.ALL_REFINED_STONE_BLOCKS)
 				.add(Blocks.BLACK_GLAZED_TERRACOTTA, Blocks.BLUE_GLAZED_TERRACOTTA,
 						Blocks.BROWN_GLAZED_TERRACOTTA, Blocks.CYAN_GLAZED_TERRACOTTA,
 						Blocks.GRAY_GLAZED_TERRACOTTA, Blocks.GREEN_GLAZED_TERRACOTTA,
@@ -248,14 +285,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(Blocks.POLISHED_GRANITE)
 				.add(Blocks.POLISHED_TUFF)
 		;
-		getOrCreateTagBuilder(Tags.Block.ALL_RAW_METAL_BLOCKS)
+		getOrCreateTagBuilder(BlockTags.ALL_RAW_METAL_BLOCKS)
 				.add(ModBlocks.RAW_BRASS_BLOCK)
 				.add(Blocks.RAW_COPPER_BLOCK)
 				.add(ModBlocks.RAW_EIDURIL_BLOCK)
 				.add(Blocks.RAW_GOLD_BLOCK)
 				.add(Blocks.RAW_IRON_BLOCK)
 		;
-		getOrCreateTagBuilder(Tags.Block.ALL_REFINED_METAL_BLOCKS)
+		getOrCreateTagBuilder(BlockTags.ALL_REFINED_METAL_BLOCKS)
 				.add(Blocks.CUT_COPPER, Blocks.EXPOSED_CUT_COPPER,
 						Blocks.OXIDIZED_CUT_COPPER, Blocks.WEATHERED_CUT_COPPER,
 						Blocks.WAXED_CUT_COPPER, Blocks.WAXED_EXPOSED_CUT_COPPER,
@@ -274,18 +311,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(ModBlocks.REFINED_BRASS_BLOCK)
 		;
 		
-		getOrCreateTagBuilder(Tags.Block.GEOLOGICALLY_COMPACTS_FROM_BELOW)
-				.addTag(Tags.Block.ALL_COBBLED_STONE_BLOCKS)
-				.addTag(Tags.Block.ALL_NATURAL_STONE_BLOCKS)
-				.addTag(Tags.Block.ALL_RAW_METAL_BLOCKS)
-				.addTag(Tags.Block.ALL_REFINED_METAL_BLOCKS)
+		getOrCreateTagBuilder(BlockTags.GEOLOGICALLY_COMPACTS_STRONGLY)
+				.addTag(BlockTags.ALL_COBBLED_STONE_BLOCKS)
+				.addTag(BlockTags.ALL_NATURAL_STONE_BLOCKS)
+				.addTag(BlockTags.ALL_RAW_METAL_BLOCKS)
+				.addTag(BlockTags.ALL_REFINED_METAL_BLOCKS)
 				.add(Blocks.INFESTED_CHISELED_STONE_BRICKS, Blocks.INFESTED_COBBLESTONE,
 						Blocks.INFESTED_CRACKED_STONE_BRICKS, Blocks.INFESTED_DEEPSLATE,
 						Blocks.INFESTED_MOSSY_STONE_BRICKS, Blocks.INFESTED_STONE, Blocks.INFESTED_STONE_BRICKS)
 				.add(ModBlocks.ETERNALITH_BLOCK, ModBlocks.CHISELED_ETERNALITH_BLOCK)
 		;
-		getOrCreateTagBuilder(Tags.Block.GEOLOGICALLY_COMPACTS_FROM_ABOVE)
-				.addTag(Tags.Block.GEOLOGICALLY_COMPACTS_FROM_BELOW)
+		getOrCreateTagBuilder(BlockTags.GEOLOGICALLY_COMPACTS_WEAKLY)
+				.addTag(BlockTags.GEOLOGICALLY_COMPACTS_STRONGLY)
 				.add(Blocks.BLACK_CONCRETE_POWDER, Blocks.BLUE_CONCRETE_POWDER,
 						Blocks.BROWN_CONCRETE_POWDER, Blocks.CYAN_CONCRETE_POWDER,
 						Blocks.GRAY_CONCRETE_POWDER, Blocks.GREEN_CONCRETE_POWDER,
@@ -307,33 +344,92 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(Blocks.SOUL_SOIL)
 		;
 		
-		getOrCreateTagBuilder(Tags.Block.SPREADABLE_ATOP_ASHY_NETHERRACK)
+		getOrCreateTagBuilder(BlockTags.SPREADABLE_ATOP_ASHY_NETHERRACK)
 				.add(Blocks.BROWN_MUSHROOM)
 				.add(Blocks.CRIMSON_FUNGUS)
 				.add(Blocks.CRIMSON_ROOTS)
 				.add(Blocks.NETHER_SPROUTS)
 				.add(Blocks.RED_MUSHROOM)
-				.add(ModBlocks.STARCHCAP_MUSHROOM)
+				.add(JAUBlocks.STARCHCAP_MUSHROOM)
 				.add(Blocks.WARPED_FUNGUS)
 				.add(Blocks.WARPED_ROOTS)
 		;
-		getOrCreateTagBuilder(Tags.Block.SPREADABLE_INTO_ASHY_NETHERRACK)
+		getOrCreateTagBuilder(BlockTags.SPREADABLE_INTO_ASHY_NETHERRACK)
 				.add(Blocks.GLOWSTONE)
 				.add(Blocks.NETHER_QUARTZ_ORE)
 		;
-		getOrCreateTagBuilder(Tags.Block.SPREADABLE_ONTO_ASHY_NETHERRACK)
+		getOrCreateTagBuilder(BlockTags.SPREADABLE_ONTO_ASHY_NETHERRACK)
 				.add(Blocks.CRIMSON_NYLIUM)
 				.add(Blocks.WARPED_NYLIUM)
+		;
+		
+		// Required for later tag builders.
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.SAPLINGS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.SMALL_FLOWERS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.TALL_FLOWERS);
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.CROPS);
+		
+		// Blocks that Sporcreepers can destroy via explosion.
+		getOrCreateTagBuilder(BlockTags.VULNERABLE_TO_CREEPER_EXPLOSION)
+				//# Tags #
+				.addTag(net.minecraft.registry.tag.BlockTags.SAPLINGS)
+				.addTag(net.minecraft.registry.tag.BlockTags.SMALL_FLOWERS)
+				.addTag(net.minecraft.registry.tag.BlockTags.TALL_FLOWERS)
+				.addTag(net.minecraft.registry.tag.BlockTags.CROPS)
+				// Bushes & Ferns
+				.add(Blocks.DEAD_BUSH)
+				.add(Blocks.FERN)
+				.add(Blocks.SWEET_BERRY_BUSH)
+				// Centralized Vines
+				.add(Blocks.CAVE_VINES)
+				.add(Blocks.CAVE_VINES_PLANT)
+				.add(Blocks.TWISTING_VINES)
+				.add(Blocks.TWISTING_VINES_PLANT)
+				.add(Blocks.WEEPING_VINES)
+				.add(Blocks.WEEPING_VINES_PLANT)
+				// Edible Blocks
+				.add(Blocks.CAKE)
+				// Mushrooms
+				.add(Blocks.BROWN_MUSHROOM)
+				.add(Blocks.CRIMSON_FUNGUS)
+				.add(Blocks.RED_MUSHROOM)
+				.add(JAUBlocks.STARCHCAP_MUSHROOM)
+				.add(Blocks.WARPED_FUNGUS)
+				// Torches (basic)
+				.add(Blocks.TORCH)
+				.add(Blocks.WALL_TORCH)
+				// Torches (spirit)
+				.add(Blocks.SOUL_TORCH)
+				.add(Blocks.SOUL_WALL_TORCH)
+				// Torches (erythrite)
+				.add(Blocks.REDSTONE_TORCH)
+				.add(Blocks.REDSTONE_WALL_TORCH)
+				// Wall Flora
+				.add(Blocks.GLOW_LICHEN)
+				.add(Blocks.VINE)
+				// Wild Grass Crops
+				.add(Blocks.CRIMSON_ROOTS)
+				.add(Blocks.SHORT_GRASS)
+				.add(Blocks.TALL_GRASS)
+				.add(Blocks.WARPED_ROOTS)
+				// Miscellaneous
+				.add(Blocks.AMETHYST_CLUSTER)
+				.add(Blocks.BAMBOO_SAPLING)
+				.add(Blocks.COBWEB)
+				.add(Blocks.COCOA)
+				.add(Blocks.LILY_PAD)
+				.add(Blocks.SCAFFOLDING)
+				.add(Blocks.SUGAR_CANE)
 		;
 		
 		// Everything Endermen can hold!
 		// Notably, Enderman block holding mechanics do NOT respect wall torches;
 		//  according to some testing, wall torches simply vanish when the Enderman attempts to place them.
-		getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE)
+		getOrCreateTagBuilder(net.minecraft.registry.tag.BlockTags.ENDERMAN_HOLDABLE)
 				.setReplace(true)
 				//# Tags #
-				.addTag(BlockTags.SAPLINGS)
-				.addTag(BlockTags.SMALL_FLOWERS)
+				.addTag(net.minecraft.registry.tag.BlockTags.SAPLINGS)
+				.addTag(net.minecraft.registry.tag.BlockTags.SMALL_FLOWERS)
 				//# Individual Blocks #
 				// Bales
 				.add(Blocks.DRIED_KELP_BLOCK)
@@ -348,19 +444,19 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 				.add(Blocks.CARVED_PUMPKIN)
 				.add(Blocks.MELON)
 				.add(Blocks.PUMPKIN)
-				// Grass Crops
-				.add(Blocks.CRIMSON_ROOTS)
-				.add(Blocks.SHORT_GRASS)
-				.add(Blocks.WARPED_ROOTS)
 				// Mushrooms
 				.add(Blocks.BROWN_MUSHROOM)
 				.add(Blocks.CRIMSON_FUNGUS)
 				.add(Blocks.RED_MUSHROOM)
-				.add(ModBlocks.STARCHCAP_MUSHROOM)
+				.add(JAUBlocks.STARCHCAP_MUSHROOM)
 				.add(Blocks.WARPED_FUNGUS)
 				// Wall Flora
 				.add(Blocks.GLOW_LICHEN)
 				.add(Blocks.VINE)
+				// Wild Grass Crops
+				.add(Blocks.CRIMSON_ROOTS)
+				.add(Blocks.SHORT_GRASS)
+				.add(Blocks.WARPED_ROOTS)
 				// Miscellaneous
 				.add(Blocks.AMETHYST_CLUSTER)
 				.add(Blocks.ANCIENT_DEBRIS) // Ha.

@@ -7,7 +7,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
 import java.util.EnumMap;
@@ -32,7 +31,7 @@ public class ModArmorMaterials {
 				map.put(ArmorItem.Type.BODY, 5);
 			}),
 			10, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F,
-			() -> Ingredient.ofItems(Items.COPPER_INGOT)
+			() -> Ingredient.ofItems(ModItems.COPPER_GRAM)
 	);
 	public static final RegistryEntry<ArmorMaterial> BRASS = register("brass",
 			Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
@@ -43,7 +42,7 @@ public class ModArmorMaterials {
 				map.put(ArmorItem.Type.BODY, 5);
 			}),
 			9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F,
-			() -> Ingredient.ofItems(ModItems.BRASS_INGOT)
+			() -> Ingredient.ofItems(ModItems.BRASS_GRAM)
 	);
 	public static final RegistryEntry<ArmorMaterial> DEMENTHUM = register("dementhum", // TODO: Implement dementhum armors.
 			Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
@@ -54,7 +53,7 @@ public class ModArmorMaterials {
 				map.put(ArmorItem.Type.BODY, 11);
 			}),
 			4, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.125F,
-			() -> Ingredient.ofItems(Items.NETHERITE_INGOT)
+			() -> Ingredient.ofItems(Items.NETHERITE_INGOT) // TODO: Add Dementhum Gram upon dementhum update.
 	);
 	public static final RegistryEntry<ArmorMaterial> EIDURIL = register("eiduril",
 			Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
@@ -65,7 +64,7 @@ public class ModArmorMaterials {
 				map.put(ArmorItem.Type.BODY, 11);
 			}),
 			10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F,
-			() -> Ingredient.ofItems(ModItems.EIDURIL_INGOT)
+			() -> Ingredient.ofItems(ModItems.EIDURIL_GRAM)
 	);
 	public static final RegistryEntry<ArmorMaterial> NUTRILLARN = register("nutrillarn",
 			Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
@@ -76,7 +75,7 @@ public class ModArmorMaterials {
 				map.put(ArmorItem.Type.BODY, 11);
 			}),
 			0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0625F,
-			() -> Ingredient.ofItems(ModItems.NUTRILLARN_INGOT)
+			() -> Ingredient.ofItems(JAUItems.NUTRILLARN_GRAM)
 	);
 	
 	
@@ -89,7 +88,6 @@ public class ModArmorMaterials {
 			float knockbackResistance,
 			Supplier<Ingredient> repairIngredient
 	) {
-//		List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(new Identifier(id)));
 		List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(identifier(id)));
 		return register(id, defense, enchantability, equipSound, toughness, knockbackResistance, repairIngredient, list);
 	}
@@ -110,7 +108,7 @@ public class ModArmorMaterials {
 			Supplier<Ingredient> repairIngredient,
 			List<ArmorMaterial.Layer> layers
 	) {
-		EnumMap<ArmorItem.Type, Integer> enumMap = new EnumMap(ArmorItem.Type.class);
+		EnumMap<ArmorItem.Type, Integer> enumMap = new EnumMap<>(ArmorItem.Type.class);
 		
 		for (ArmorItem.Type type : ArmorItem.Type.values()) {
 			enumMap.put(type, defense.get(type));

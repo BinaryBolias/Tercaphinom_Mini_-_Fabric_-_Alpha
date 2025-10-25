@@ -1,5 +1,7 @@
 package binarybolias.tercaphinom.datagen;
 
+import binarybolias.tercaphinom.references.JAUBlocks;
+import binarybolias.tercaphinom.references.JAUItems;
 import binarybolias.tercaphinom.references.ModBlocks;
 import binarybolias.tercaphinom.references.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -60,10 +62,12 @@ public class ModModelProvider extends FabricModelProvider {
 		//# Bale #
 		bSMG.registerSingleton(Blocks.TNT, TexturedModel.CUBE_BOTTOM_TOP);
 		//# Metal #
+		bSMG.registerSimpleCubeAll(ModBlocks.CORRODED_VILBIARN_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.RAW_BRASS_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.RAW_EIDURIL_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.REFINED_BRASS_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.REFINED_EIDURIL_BLOCK);
+		bSMG.registerSingleton(ModBlocks.REFINED_VILBIARN_BLOCK, TexturedModel.CUBE_BOTTOM_TOP);
 		//# Mosaic & Plank #
 		// TODO: For using the new (non-cube-all) model, the corresponding block texture pool needs to be removed.
 		//  This requires the corresponding button, pressure plate, stair, slab, fence post, and fence gate to have separate model registration methods.
@@ -78,10 +82,13 @@ public class ModModelProvider extends FabricModelProvider {
 		//# Miscellaneous #
 //		bSMG.registerSimpleCubeAll(ModBlocks.ASH_BLOCK);
 		registerAshBlockAndMound(bSMG);
+		bSMG.registerSimpleCubeAll(ModBlocks.GLASS_SHARD_BLOCK);
 		bSMG.registerSimpleCubeAll(ModBlocks.SKORSAND_BLOCK);
 		//endregion
 		
 		//region ## Modified & Transitional ##
+		//# Ore (slate) #
+		bSMG.registerSingleton(Blocks.DEEPSLATE_IRON_ORE, TexturedModel.CUBE_TOP);
 		//# Ore (stiefane) #
 		bSMG.registerSimpleCubeAll(ModBlocks.STIEFANE_LAPIS_ORE);
 		//# Reinforced #
@@ -126,22 +133,23 @@ public class ModModelProvider extends FabricModelProvider {
 		//### Joke & Unserious ###
 		//## (J&U) Crops & Foliage ##
 		//# Miscellaneous #
-		bSMG.registerTintableCrossBlockState(ModBlocks.STARCHCAP_MUSHROOM, BlockStateModelGenerator.TintType.NOT_TINTED);
+		bSMG.registerTintableCrossBlockState(JAUBlocks.STARCHCAP_MUSHROOM, BlockStateModelGenerator.TintType.NOT_TINTED);
 		//## (J&U) Elemental ##
 		//# Cheese #
-		bSMG.registerSimpleCubeAll(ModBlocks.BLUE_CHEESE_BLOCK);
-		bSMG.registerSimpleCubeAll(ModBlocks.SILKY_SMOOTH_CHEESE_BLOCK);
-		bSMG.registerSimpleCubeAll(ModBlocks.YELLOW_CHEESE_BLOCK);
+		bSMG.registerSimpleCubeAll(JAUBlocks.BLUE_CHEESE_BLOCK);
+		bSMG.registerSimpleCubeAll(JAUBlocks.SILKY_SMOOTH_CHEESE_BLOCK);
+		bSMG.registerSimpleCubeAll(JAUBlocks.YELLOW_CHEESE_BLOCK);
 		//# Metal #
-		bSMG.registerSimpleCubeAll(ModBlocks.RAW_NUTRILLARN_BLOCK);
-		bSMG.registerSimpleCubeAll(ModBlocks.REFINED_NUTRILLARN_BLOCK);
+		bSMG.registerSimpleCubeAll(JAUBlocks.RAW_NUTRILLARN_BLOCK);
+		bSMG.registerSimpleCubeAll(JAUBlocks.REFINED_NUTRILLARN_BLOCK);
 		//# Miscellaneous #
-		bSMG.registerSimpleState(ModBlocks.CHERRY_JELLYBLOCK);
-		bSMG.registerSimpleCubeAll(ModBlocks.HYPERSMOOTH_CREAMSTONE);
-		bSMG.registerSimpleCubeAll(ModBlocks.ULTRASMOOTH_STONE);
+		bSMG.registerSimpleCubeAll(JAUBlocks.CANDESAND_BLOCK);
+		bSMG.registerSimpleState(JAUBlocks.CHERRY_JELLYBLOCK);
+		bSMG.registerSimpleCubeAll(JAUBlocks.HYPERSMOOTH_CREAMSTONE);
+		bSMG.registerSimpleCubeAll(JAUBlocks.ULTRASMOOTH_STONE);
 		//## (J&U) Modified & Transitional ##
 		//# Reinforced #
-		bSMG.registerSingleton(ModBlocks.REINFORCED_STAINED_GLASS_BLOCK, TexturedModel.CUBE_BOTTOM_TOP);
+		bSMG.registerSingleton(JAUBlocks.REINFORCED_STAINED_GLASS_BLOCK, TexturedModel.CUBE_BOTTOM_TOP);
 	}
 	
 	
@@ -290,10 +298,6 @@ public class ModModelProvider extends FabricModelProvider {
 		//# Ball (miscellaneous) #
 		genItem(iMG, ModItems.COBWEB_BALL, "ball", Models.GENERATED);
 		genItem(iMG, ModItems.MUDBALL, "ball", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_COOKIE_BALL, "ball", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_HONEYBUN_BALL, "ball", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_MAGMABUN_BALL, "ball", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_SLIMEBUN_BALL, "ball", Models.GENERATED);
 		//# Brick #
 		genItem(iMG, ModItems.NETHERWART_BRICK, "brick", Models.GENERATED);
 		genItem(iMG, ModItems.STIEFANE_BRICK, "brick", Models.GENERATED);
@@ -304,6 +308,8 @@ public class ModModelProvider extends FabricModelProvider {
 		iMG.register(ModItems.WOODEN_STICK_BUNDLE, Models.GENERATED);
 		//# Chunk #
 		genItem(iMG, ModItems.WARPED_FLESH_CHUNK, "chunk", Models.GENERATED);
+		//# Clod #
+		genItem(iMG, ModItems.SOULSOIL_CLOD, "clod", Models.GENERATED);
 		//# Cobblestone #
 		genItem(iMG, ModItems.STIEFANE_COBBLESTONE, "cobblestone", Models.GENERATED);
 		//# Gram & Ingot #
@@ -319,14 +325,15 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.VERDAK_LOG, "log", Models.GENERATED);
 		genItem(iMG, ModItems.VERDAK_TRUNK, "log", Models.GENERATED);
 		//# Lump & Nugget (metal) #
+		genItem(iMG, ModItems.CORRODED_VILBIARN_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_BRASS_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_BRASS_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_COPPER_NUGGET, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_EIDURIL_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.RAW_EIDURIL_NUGGET, "lump", Models.GENERATED);
+		genItem(iMG, ModItems.REFINED_VILBIARN_LUMP, "lump", Models.GENERATED);
 		//# Lump & Nugget (miscellaneous) #
 		genItem(iMG, ModItems.INFERNOCOAL_LUMP, "lump", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_DOUGH_LUMP, "lump", Models.GENERATED);
 		genItem(iMG, ModItems.SULPHUR_LUMP, "lump", Models.GENERATED);
 		//# Pane (glass - clear) #
 		genItem(iMG, ModItems.CLEAR_GLASS_PANE, "pane", Models.GENERATED);
@@ -349,18 +356,6 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.YELLOW_STAINED_GLASS_PANE, "pane", Models.GENERATED);
 		//# Pane (metal) #
 		//# Pane (miscellaneous) #
-		//# Pie (cooked) #
-		genItem(iMG, ModItems.APPLE_PIE, "pie", Models.GENERATED);
-		genItem(iMG, ModItems.CHERRY_PIE, "pie", Models.GENERATED);
-		genItem(iMG, ModItems.GLOWBERRY_PIE, "pie", Models.GENERATED);
-		genItem(iMG, ModItems.PUMPKIN_PIE, "pie", Models.GENERATED);
-		genItem(iMG, ModItems.SWEETBERRY_PIE, "pie", Models.GENERATED);
-		//# Pie (raw) #
-		genItem(iMG, ModItems.RAW_APPLE_PIE, "pie", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_CHERRY_PIE, "pie", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_GLOWBERRY_PIE, "pie", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_PUMPKIN_PIE, "pie", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_SWEETBERRY_PIE, "pie", Models.GENERATED);
 		//# Pile (seed) #
 		//# Pile (miscellaneous) #
 		genItem(iMG, ModItems.ASH_PILE, "pile", Models.GENERATED);
@@ -372,6 +367,7 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.LEAF_PILE, "pile", Models.GENERATED);
 		genItem(iMG, ModItems.SKORSAND_PILE, "pile", Models.GENERATED);
 		genItem(iMG, ModItems.SNOW_PILE, "pile", Models.GENERATED);
+		genItem(iMG, ModItems.SOULSAND_PILE, "pile", Models.GENERATED);
 		//# Plank #
 		genItem(iMG, ModItems.ACACIA_PLANK, "plank", Models.GENERATED);
 		genItem(iMG, ModItems.BIRCH_PLANK, "plank", Models.GENERATED);
@@ -409,25 +405,10 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, Items.SKELETON_SKULL, "skull", Models.GENERATED);
 		genItem(iMG, Items.WITHER_SKELETON_SKULL, "skull", Models.GENERATED);
 		//# Miscellaneous #
-		iMG.register(ModItems.BAKED_CARROT, Models.GENERATED);
-		iMG.register(ModItems.BAKED_MUSHROOM, Models.GENERATED);
-		iMG.register(ModItems.BAKED_RADISH, Models.GENERATED);
-		iMG.register(ModItems.CHEESE_WHEEL, Models.GENERATED);
-		iMG.register(ModItems.CHERRY_BUNCH, Models.GENERATED);
-		iMG.register(ModItems.COOKED_BUGMEAT_STEAK, Models.GENERATED);
-		iMG.register(ModItems.COOKED_MEAT_MORSEL, Models.GENERATED);
 		iMG.register(ModItems.DRY_GRASS_TUFT, Models.GENERATED);
-		iMG.register(ModItems.DRY_KELP_BUNDLE, Models.GENERATED);
-		iMG.register(ModItems.FRIED_EGG, Models.GENERATED);
-		iMG.register(ModItems.HONEYBUN, Models.GENERATED);
 		iMG.register(ModItems.LIVE_GRASS_TUFT, Models.GENERATED);
-		iMG.register(ModItems.MAGMABUN, Models.GENERATED);
 		iMG.register(ModItems.PINECONE, Models.GENERATED);
-		iMG.register(ModItems.RAW_BUGMEAT_STEAK, Models.GENERATED);
-		iMG.register(ModItems.RAW_CAKE, Models.GENERATED);
-		iMG.register(ModItems.RAW_MEAT_MORSEL, Models.GENERATED);
 		iMG.register(ModItems.SILK_WAD, Models.GENERATED);
-		iMG.register(ModItems.SLIMEBUN, Models.GENERATED);
 		iMG.register(ModItems.STONE_PEBBLE, Models.GENERATED);
 		//endregion
 		
@@ -566,69 +547,110 @@ public class ModModelProvider extends FabricModelProvider {
 		genItem(iMG, ModItems.TARGET_TELEPORTATION_TUNER, "equipment", Models.HANDHELD);
 		//endregion
 		
+		//region ## Foods ##
+		//# Basic (cooked) #
+		iMG.register(ModItems.BAKED_CARROT, Models.GENERATED);
+		iMG.register(ModItems.BAKED_MUSHROOM, Models.GENERATED);
+		iMG.register(ModItems.BAKED_RADISH, Models.GENERATED);
+		iMG.register(ModItems.COOKED_BUGMEAT_STEAK, Models.GENERATED);
+		iMG.register(ModItems.COOKED_MEAT_MORSEL, Models.GENERATED);
+		//# Basic (raw) #
+		iMG.register(ModItems.RAW_BUGMEAT_STEAK, Models.GENERATED);
+		iMG.register(ModItems.RAW_MEAT_MORSEL, Models.GENERATED);
+		//# Bread, Bun, Cake, & Cookie (cooked) #
+		iMG.register(ModItems.HONEYBUN, Models.GENERATED);
+		iMG.register(ModItems.MAGMABUN, Models.GENERATED);
+		iMG.register(ModItems.SLIMEBUN, Models.GENERATED);
+		//# Bread, Bun, Cake, & Cookie (raw) #
+		iMG.register(ModItems.RAW_CAKE, Models.GENERATED);
+		genItem(iMG, ModItems.RAW_COOKIE_BALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_DOUGH_LUMP, "lump", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_HONEYBUN_BALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_MAGMABUN_BALL, "ball", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_SLIMEBUN_BALL, "ball", Models.GENERATED);
+		//# Pie (cooked) #
+		genItem(iMG, ModItems.APPLE_PIE, "pie", Models.GENERATED);
+		genItem(iMG, ModItems.CHERRY_PIE, "pie", Models.GENERATED);
+		genItem(iMG, ModItems.GLOWBERRY_PIE, "pie", Models.GENERATED);
+		genItem(iMG, ModItems.PUMPKIN_PIE, "pie", Models.GENERATED);
+		genItem(iMG, ModItems.SWEETBERRY_PIE, "pie", Models.GENERATED);
+		//# Pie (raw) #
+		genItem(iMG, ModItems.RAW_APPLE_PIE, "pie", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_CHERRY_PIE, "pie", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_GLOWBERRY_PIE, "pie", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_PUMPKIN_PIE, "pie", Models.GENERATED);
+		genItem(iMG, ModItems.RAW_SWEETBERRY_PIE, "pie", Models.GENERATED);
+		//# Miscellaneous #
+		iMG.register(ModItems.CHEESE_WHEEL, Models.GENERATED);
+		iMG.register(ModItems.CHERRY_BUNCH, Models.GENERATED);
+		iMG.register(ModItems.DRY_KELP_BUNDLE, Models.GENERATED);
+		iMG.register(ModItems.FRIED_EGG, Models.GENERATED);
+		//endregion
+		
 		
 		//region  ## Joke & Unserious ##
 		
 		//## (J&U) Basic Resources ##
 		//# Ball #
-		genItem(iMG, ModItems.CHERRY_JELLYBALL, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.CHERRY_JELLYBALL, "unserious", Models.GENERATED);
 		//# Brick #
 		//# Cobblestone #
 		//# Gram & Ingot #
-		genItem(iMG, ModItems.NUTRILLARN_GRAM, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.NUTRILLARN_INGOT, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.NUTRILLARN_GRAM, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.NUTRILLARN_INGOT, "unserious", Models.GENERATED);
 		//# Jewel #
 		//# Log & Trunk #
 		//# Lump & Nugget #
-		genItem(iMG, ModItems.RAW_NUTRILLARN_LUMP, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.RAW_NUTRILLARN_NUGGET, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.RAW_NUTRILLARN_LUMP, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.RAW_NUTRILLARN_NUGGET, "unserious", Models.GENERATED);
 		//# Pile (seed) #
 		//# Pile (miscellaneous) #
-		genItem(iMG, ModItems.MILKLEAF_PILE, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.CANDESAND_PILE, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.MILKLEAF_PILE, "unserious", Models.GENERATED);
 		//# Plank #
 		//# Bundle & Rod & Stick #
 		//# Shard #
 		//# Wedge #
-		genItem(iMG, ModItems.BLUE_CHEESE_WEDGE, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.SILKY_SMOOTH_CHEESE_WEDGE, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.YELLOW_CHEESE_WEDGE, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.BLUE_CHEESE_WEDGE, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.SILKY_SMOOTH_CHEESE_WEDGE, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.YELLOW_CHEESE_WEDGE, "unserious", Models.GENERATED);
 		//# Miscellaneous #
-		genItem(iMG, ModItems.CHOCOLATE_BAR, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.CHULK_BERRY_BUNCH, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.ENCHANTED_BRICK, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.HONEYPOD, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.MINIWIZARD, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.STARCHCAP_MUSHROOM, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.CHOCOLATE_BAR, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.CHULK_BERRY_BUNCH, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.ENCHANTED_BRICK, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.HONEYPOD, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.MINIWIZARD, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.STARCHCAP_MUSHROOM, "unserious", Models.GENERATED);
 		
 		//## (J&U) Containers ##
 		//# Bottle #
 		//# Bowl #
-		genItem(iMG, ModItems.BOWL_OF_OMNISTEW, "bowl", Models.GENERATED);
-		genItem(iMG, ModItems.BOWL_OF_STONE_SOUP, "bowl", Models.GENERATED);
+		genItem(iMG, JAUItems.BOWL_OF_OMNISTEW, "bowl", Models.GENERATED);
+		genItem(iMG, JAUItems.BOWL_OF_STONE_SOUP, "bowl", Models.GENERATED);
 		//# Bucket #
 		
 		//## (J&U) Equipment ##
 		//# Nutrillarn (armor) #
-		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_BOOT_PAIR);
-		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_CHESTPLATE);
-		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_HELMET);
-		genItem(iMG, ModItems.NUTRILLARN_HORSE_HARNESS, "equipment", Models.GENERATED);
-		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_JELLYBOOT_PAIR); // TODO: Figure out how to override armor model texture.
-		iMG.registerArmor((ArmorItem) ModItems.NUTRILLARN_LEGGING_PAIR);
+		iMG.registerArmor((ArmorItem) JAUItems.NUTRILLARN_BOOT_PAIR);
+		iMG.registerArmor((ArmorItem) JAUItems.NUTRILLARN_CHESTPLATE);
+		iMG.registerArmor((ArmorItem) JAUItems.NUTRILLARN_HELMET);
+		genItem(iMG, JAUItems.NUTRILLARN_HORSE_HARNESS, "equipment", Models.GENERATED);
+		iMG.registerArmor((ArmorItem) JAUItems.NUTRILLARN_JELLYBOOT_PAIR); // TODO: Figure out how to override armor model texture.
+		iMG.registerArmor((ArmorItem) JAUItems.NUTRILLARN_LEGGING_PAIR);
 		//# Nutrillarn (tools) #
-		genItem(iMG, ModItems.NUTRILLARN_AXE, "equipment", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_DAGGER, "equipment", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_HATCHET, "equipment", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_HOE, "equipment", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_MALLET, "equipment", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_PICKAXE, "equipment", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_SHOVEL, "equipment", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_SPEAR, "equipment", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_SWORD, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_AXE, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_DAGGER, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_HATCHET, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_HOE, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_MALLET, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_PICKAXE, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_SHOVEL, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_SPEAR, "equipment", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_SWORD, "equipment", Models.HANDHELD);
 		//# Miscellaneous #
-		genItem(iMG, ModItems.ENCHANTED_CHEESE_WHEEL, "unserious", Models.HANDHELD);
-		genItem(iMG, ModItems.NUTRILLARN_COMPASS, "unserious", Models.GENERATED);
-		genItem(iMG, ModItems.ORB_OF_ZOT, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.ENCHANTED_CHEESE_WHEEL, "unserious", Models.HANDHELD);
+		genItem(iMG, JAUItems.NUTRILLARN_COMPASS, "unserious", Models.GENERATED);
+		genItem(iMG, JAUItems.ORB_OF_ZOT, "unserious", Models.GENERATED);
 		
 		//endregion
 	}

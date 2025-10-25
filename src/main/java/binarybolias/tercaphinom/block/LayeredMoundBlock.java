@@ -1,5 +1,6 @@
 package binarybolias.tercaphinom.block;
 
+import binarybolias.tercaphinom.registry.tag.BlockTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -15,8 +16,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
-
-import static binarybolias.tercaphinom.references.Reference.*;
 
 
 public class LayeredMoundBlock extends Block {
@@ -102,10 +101,10 @@ public class LayeredMoundBlock extends Block {
 	@Override
 	protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
 		BlockState blockState = world.getBlockState(pos.down());
-		if (blockState.isIn(Tags.Block.BLACKLISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON)) {
+		if (blockState.isIn(BlockTags.BLACKLISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON)) {
 			return false;
 		} else {
-			return blockState.isIn(Tags.Block.WHITELISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON)
+			return blockState.isIn(BlockTags.WHITELISTED_FOR_LAYERED_MOUND_PLACEMENT_UPON)
 					|| Block.isFaceFullSquare(blockState.getCollisionShape(world, pos.down()), Direction.UP)
 					|| (blockState.isOf(this) && blockState.get(LAYERS) == 8);
 		}

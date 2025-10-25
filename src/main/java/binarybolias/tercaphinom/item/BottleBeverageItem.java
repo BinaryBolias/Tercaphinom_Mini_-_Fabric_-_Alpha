@@ -6,12 +6,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
+
 public class BottleBeverageItem extends Item {
 	private static final int MAX_USE_TIME = 40;
+	
 	
 	public BottleBeverageItem(Settings settings) {
 		super(settings);
@@ -22,7 +23,7 @@ public class BottleBeverageItem extends Item {
 	public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
 		super.finishUsing(stack, world, user);
 		
-		// Decrement manually if not already a food item; decrement only automatically happens for food items.
+		// Decrement manually if not already a food item; decrement is automatic for food items.
 		if (!stack.contains(DataComponentTypes.FOOD)) {
 			stack.decrementUnlessCreative(1, user);
 		}

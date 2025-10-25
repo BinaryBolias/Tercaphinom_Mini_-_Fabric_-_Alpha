@@ -43,7 +43,7 @@ public class IndirectBlockItem extends Item {
 		ActionResult placementActionResult = place(new ItemPlacementContext(context));
 		if (!placementActionResult.isAccepted() && context.getStack().contains(DataComponentTypes.FOOD)) {
 			ActionResult ingestionActionResult = super.use(context.getWorld(), context.getPlayer(), context.getHand()).getResult();
-			return ingestionActionResult == ActionResult.CONSUME ? ActionResult.CONSUME_PARTIAL : ingestionActionResult;
+			return (ingestionActionResult == ActionResult.CONSUME) ? ActionResult.CONSUME_PARTIAL : ingestionActionResult;
 		} else {
 			return placementActionResult;
 		}

@@ -1,12 +1,8 @@
 package binarybolias.tercaphinom;
 
-import binarybolias.tercaphinom.references.ModBlocks;
-import binarybolias.tercaphinom.references.ModMessages;
-import binarybolias.tercaphinom.references.ModModelPredicateProvider;
-import binarybolias.tercaphinom.references.Reference;
+import binarybolias.tercaphinom.references.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 
 
@@ -15,17 +11,24 @@ public class Client implements ClientModInitializer {
 	public void onInitializeClient() {
 		Reference.logMainEvent("Initializing client");
 		
-		// Allow block textures to render with transparency (cutout).
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STARCHCAP_MUSHROOM, RenderLayer.getCutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.VERDAK_DOOR, RenderLayer.getCutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.VERDAK_HATCH, RenderLayer.getCutout());
-		// Allow block textures to render with transparency (translucent).
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CHERRY_JELLYBLOCK, RenderLayer.getTranslucent());
-		BlockRenderLayerMap.INSTANCE.putBlock(Blocks.GLASS, RenderLayer.getTranslucent());
-		BlockRenderLayerMap.INSTANCE.putBlock(Blocks.GLASS_PANE, RenderLayer.getTranslucent());
+		setBlockRenderLayers();
 		
 		ModMessages.registerS2CPackets();
 		
 		ModModelPredicateProvider.register();
+	}
+	
+	
+	private void setBlockRenderLayers() {
+		// Allow block textures to render with transparency (cutout).
+		BlockRenderLayerMap.INSTANCE.putBlock(JAUBlocks.STARCHCAP_MUSHROOM, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.VERDAK_DOOR, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.VERDAK_HATCH, RenderLayer.getCutout());
+		// Allow block textures to render with transparency (translucent).
+		BlockRenderLayerMap.INSTANCE.putBlock(JAUBlocks.CHERRY_JELLYBLOCK, RenderLayer.getTranslucent());
+//		BlockRenderLayerMap.INSTANCE.putBlock(Blocks.GLASS, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(VMOBlocks.GLASS, RenderLayer.getTranslucent());
+//		BlockRenderLayerMap.INSTANCE.putBlock(Blocks.GLASS_PANE, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(VMOBlocks.GLASS_PANE, RenderLayer.getTranslucent());
 	}
 }

@@ -1,6 +1,6 @@
 package binarybolias.tercaphinom.item;
 
-import binarybolias.tercaphinom.references.Reference;
+import binarybolias.tercaphinom.registry.tag.EntityTags;
 import net.minecraft.client.item.TooltipType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
@@ -82,7 +82,7 @@ public class TargetTeleporterItem extends Item {
 	public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
 		@Nullable var data = stack.get(DataComponentTypes.CUSTOM_DATA);
 		
-		if (data == null || entity.isPlayer() || entity.getType().isIn(Tags.Entity.BLACKLISTED_FOR_TARGET_TELEPORTER_ITEM)) {
+		if (data == null || entity.isPlayer() || entity.getType().isIn(EntityTags.BLACKLISTED_FOR_TARGET_TELEPORTER_ITEM)) {
 			return ActionResult.FAIL;
 		}
 		

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 // Note: Only one piece of each applicable armor set should use this class;
 //  each armor item of this type checks all armor slots,
 //   so multiple pieces of the set sharing this class would result in superfluous checks every tick while in inventory.
@@ -116,7 +117,7 @@ public class SetBonusArmorItem extends ArmorItem {
 	
 	
 	private static void addValue(RegistryEntry<ArmorMaterial> material, RegistryEntry<StatusEffect> statusEffect, int amplifier) {
-		ArrayList tempList;
+		ArrayList<StatusEffectInstance> tempList;
 		
 		StatusEffectInstance newEffect = new StatusEffectInstance(statusEffect, REFRESH_DURATION, amplifier,
 				false, false, true);

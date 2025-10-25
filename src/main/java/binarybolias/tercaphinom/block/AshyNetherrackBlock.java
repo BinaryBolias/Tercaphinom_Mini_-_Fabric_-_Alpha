@@ -1,6 +1,7 @@
 package binarybolias.tercaphinom.block;
 
 
+import binarybolias.tercaphinom.registry.tag.BlockTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static binarybolias.tercaphinom.references.Reference.*;
-
 
 /**
  * @see net.minecraft.block.NetherrackBlock
@@ -22,7 +21,7 @@ import static binarybolias.tercaphinom.references.Reference.*;
 public class AshyNetherrackBlock extends Block {
 	public static final MapCodec<AshyNetherrackBlock> CODEC = createCodec(AshyNetherrackBlock::new);
 	
-	//TODO: Create a public collection of block offset lists to be used by block classes ans such.
+	//TODO: Create a public collection of block offset lists to be used by block classes and such.
 	// - Handy for not needing to redefine these when the same offset list would be used in multiple classes.
 	// - This offset list could be used for a bunch of other types of things, especially blocks that can spread.
 	// - It could contain a built-in method for getting a shuffled copy of any list.
@@ -34,7 +33,7 @@ public class AshyNetherrackBlock extends Block {
 			.filter(pos -> pos.getX() != 0 || pos.getZ() != 0)
 			.map(BlockPos::toImmutable)
 			.toList();
-	public static final List<BlockPos> ALL_IMMEDIATE_NEIGHBOR = BlockPos.stream(-1, -1, -1, 1, 1, 1)
+	public static final List<BlockPos> ALL_IMMEDIATE_NEIGHBORS = BlockPos.stream(-1, -1, -1, 1, 1, 1)
 			.filter(pos -> pos.getX() != 0 || pos.getY() != 0 || pos.getZ() != 0)
 			.map(BlockPos::toImmutable)
 			.toList();
@@ -57,17 +56,17 @@ public class AshyNetherrackBlock extends Block {
 	
 	
 	public static boolean canSpreadAtopSelf(BlockState blockState) {
-		return blockState.isIn(Tags.Block.SPREADABLE_ATOP_ASHY_NETHERRACK);
+		return blockState.isIn(BlockTags.SPREADABLE_ATOP_ASHY_NETHERRACK);
 	}
 	
 	
 	public static boolean canSpreadIntoSelf(BlockState blockState) {
-		return blockState.isIn(Tags.Block.SPREADABLE_INTO_ASHY_NETHERRACK);
+		return blockState.isIn(BlockTags.SPREADABLE_INTO_ASHY_NETHERRACK);
 	}
 	
 	
 	public static boolean canSpreadOntoSelf(BlockState blockState) {
-		return blockState.isIn(Tags.Block.SPREADABLE_ONTO_ASHY_NETHERRACK);
+		return blockState.isIn(BlockTags.SPREADABLE_ONTO_ASHY_NETHERRACK);
 	}
 	
 	
@@ -110,7 +109,8 @@ public class AshyNetherrackBlock extends Block {
 			}
 		}
 		// When no other spreading behaviors succeed, try spreading into self.
-		if (!spreadHasOccurred) {
+		// Only a 1 in 4 chance of success.
+		if (!spreadHasOccurred && random.nextInt(4) < 1) {
 			trySpreadingIntoSelf(world, pos);
 		}
 	}
@@ -121,7 +121,7 @@ public class AshyNetherrackBlock extends Block {
 //			, Random random
 	) {
 		// Define a random order of offsets for checking surrounding positions.
-		ArrayList<BlockPos> offsets = new ArrayList<>(ALL_IMMEDIATE_NEIGHBOR);
+		ArrayList<BlockPos> offsets = new ArrayList<>(ALL_IMMEDIATE_NEIGHBORS);
 		Collections.shuffle(offsets);
 		//TODO: Not sure if this works (untested; just disabling for safety)
 		// - I'm guessing it doesn't...

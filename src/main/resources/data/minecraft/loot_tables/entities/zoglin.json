@@ -5,6 +5,16 @@
 			"bonus_rolls": 0.0,
 			"entries": [
 				{
+					"type": "minecraft:loot_table",
+					"value": "tercaphinom:entity/zombie_copper"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
 					"type": "minecraft:item",
 					"functions": [
 						{
@@ -125,8 +135,22 @@
 							"count": {
 								"type": "minecraft:uniform",
 								"max": 1.0,
-								"min": 0.0
+								"min": -2.0
 							},
+							"function": "minecraft:set_count"
+						},
+						{
+							"add": true,
+							"conditions": [
+								{
+									"condition": "minecraft:entity_properties",
+									"entity": "this",
+									"predicate": {
+										"flags": {"is_on_fire": true}
+									}
+								}
+							],
+							"count": 1.0,
 							"function": "minecraft:set_count"
 						},
 						{

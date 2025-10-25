@@ -9,19 +9,23 @@ import net.minecraft.world.World;
 
 import static binarybolias.tercaphinom.references.Reference.logMainEvent;
 
+
 public class ModMessages {
 	public ModMessages() {
 		// Disable instantiation.
 		throw new AssertionError();
 	}
 	
+	
 	public static void registerC2SPackets() {
 		logMainEvent("Registering client-to-server messages");
 	}
 	
+	
 	public static void registerS2CPackets() {
 		logMainEvent("Registering server-to-client messages");
 	}
+	
 	
 	public static void sendToClientPlayerEntities(World world, BlockPos pos, CustomPayload payload) {
 		// TODO: Add a method here. ("PlayerLookup.tracking...")
